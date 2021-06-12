@@ -18,8 +18,8 @@ class UsersTableSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         DB::table('users')->truncate();
-        DB::insert('insert into users (id,name,email,password,sexo_id,role_id) values (?,?,?,?,?,?)', [1, 'Josué Admin', 'admin@miotek.es', '$2y$10$ZkchI/spnVo6d1S9emGeOuoYYwRSpJPOzNvox9VXCUPqDfhgaj6jO', 1, 1]);
-        DB::insert('insert into users (id,name,email,password,sexo_id,role_id,altura,peso,edad,objetivo_id,nivel_ejercicio_id) values (?,?,?,?,?,?,?,?,?,?,?)', [2, 'Josué User', 'user@miotek.es', '$2y$10$ZkchI/spnVo6d1S9emGeOuoYYwRSpJPOzNvox9VXCUPqDfhgaj6jO', 2, 2, 183, 73, 31, 3, 4]);
+        DB::insert('insert into users (id,name,email,password,sexo_id,role_id) values (?,?,?,?,?,?)', [1, 'Sergio Admin', 'ser.zabala@mistmeals.com', '$2y$10$UdTfs2oxfyMyGGDLL0UuZOT9Ri5JR1qbTPyZp.PtmkGBb0iPxWhke', 1, 1]);
+        // DB::insert('insert into users (id,name,email,password,sexo_id,role_id,altura,peso,edad,objetivo_id,nivel_ejercicio_id) values (?,?,?,?,?,?,?,?,?,?,?)', [2, 'Josué User', 'user@miotek.es', '$2y$10$ZkchI/spnVo6d1S9emGeOuoYYwRSpJPOzNvox9VXCUPqDfhgaj6jO', 2, 2, 183, 73, 31, 3, 4]);
 
         Schema::enableForeignKeyConstraints();
     }

@@ -18,9 +18,9 @@ class ObjetivoTableSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         DB::table('objetivo')->truncate();
-        DB::insert('insert into objetivo (id,nombre,coef) values (?,?,?)', [1, 'WE!GHT FIGHTER', -26]);
-        DB::insert('insert into objetivo (id,nombre,coef) values (?,?,?)', [2, 'WE!GHT KEEPER', 0]);
-        DB::insert('insert into objetivo (id,nombre,coef) values (?,?,?)', [3, 'WE!GHT PROMOTER', 26]);
+        DB::insert('insert into objetivo (id,nombre,coef) values (?,?,?)', [1, 'Mejora de rendimiento', -26]);
+        DB::insert('insert into objetivo (id,nombre,coef) values (?,?,?)', [2, 'Control de calorías', 0]);
+        DB::insert('insert into objetivo (id,nombre,coef) values (?,?,?)', [3, 'Ganancia muscular', 26]);
 
         Schema::enableForeignKeyConstraints();
     }

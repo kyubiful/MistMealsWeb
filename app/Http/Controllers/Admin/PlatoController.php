@@ -117,6 +117,7 @@ class PlatoController extends Controller
       'codigo' => $cod_plato_comp,
       'nombre' => $request->nombre,
       'ingredientes' => $request->ingredientes,
+      'receta'=> $request->receta,
       'calorias' => $request->calorias,
       'precio' => $request->precio,
       'plato_codigo_id' => $request->plato_codigo_id,
@@ -221,6 +222,7 @@ class PlatoController extends Controller
       'codigo' => $cod_plato_comp,
       'nombre' => $request->nombre,
       'ingredientes' => $request->ingredientes,
+      'receta' => $request->receta,
       'calorias' => $request->calorias,
       'precio' => $request->precio,
       'plato_codigo_id' => $request->plato_codigo_id,
@@ -229,6 +231,7 @@ class PlatoController extends Controller
       'imagen_1' => $request->imagen_1 == null ? $plato->imagen_1 : $request->imgen_1,
       'imagen_2' => $request->imagen_2 == null ? $plato->imagen_2 : $request->imgen_2,
     ]);
+
     $plato->plato_alergeno()->sync($request->alergenos);
     $plato->plato_etiqueta()->sync($request->etiquetas);
 

@@ -13,6 +13,7 @@ class Plato extends Model
     'codigo',
     'nombre',
     'ingredientes',
+    'receta',
     'calorias',
     'precio',
     'plato_codigo_id',

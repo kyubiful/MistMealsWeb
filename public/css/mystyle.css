@@ -151,6 +151,12 @@ body, p {
 
 .product_description_iner .tab-pane .additional_info .single_additional_info {
     padding: 1px 20px;
+    border-bottom: 1px solid #F9F2E1;
+}
+
+.product_description_iner .tab-pane .additional_info .single_additional_info_no_underline {
+  padding: 1px 20px;
+  border-bottom: none;
 }
 
 .product_description_iner .tab-pane .additional_info .single_additional_info.title {
@@ -158,12 +164,21 @@ body, p {
 }
 
 .product_description_iner .tab-pane .additional_info .single_additional_info h5 {
-    width: 60%;
+    width: 30%;
+    font-family: CoreSansC35 !important;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.product_description_iner .tab-pane .additional_info .single_additional_info .sat-az-left {
+    padding-left: 15px;
 }
 
 .product_description_iner .tab-pane .additional_info .single_additional_info p {
     width: 20%;
     text-align: right;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .product_description_iner .tab-pane .additional_info .single_additional_info.title h5 {
@@ -1876,6 +1891,39 @@ nav{
     body.menu-step2 .profile_info .pdf-form form button{
         font-size: 12px !important;
     }
+
+    .dish-img-card{
+      flex: auto;
+      max-width: 100%;
+    }
+
+    .dish-card-fdirection{
+      flex-direction: column;
+    }
+
+    .dish-card-menu{
+      font-size: 14px !important;
+    }
+
+    .dish-carousel-menu{
+      height: auto;
+    }
+
+    .product_description_iner .tab-pane .additional_info .single_additional_info h5 {
+      font-size: 12px;
+  }
+
+  .product_description_iner .tab-pane .additional_info .single_additional_info p {
+    font-size: 12px;
+}
+
+.dish-recipe-text{
+  font-size: 12px;
+}
+
+.dish-ingredients-text p{
+  font-size: 12px;
+}
 
     /* footer */
 

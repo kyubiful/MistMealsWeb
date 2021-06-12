@@ -193,6 +193,14 @@
                                 </div><!-- Col -->
                             </div>
                             <div class="row form-group">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="receta">Receta</label>
+                                        {!! Form::textarea('receta', old('receta'), ['class' => 'form-control', '', 'id'=> 'receta', 'size' => '5x5']) !!}
+                                    </div>
+                                </div><!-- Col -->
+                            </div>
+                            <div class="row form-group">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         {!! Form::label('alergenos', trans('admin.page.plato.table.allergens')) !!}

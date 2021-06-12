@@ -194,6 +194,12 @@
                   {!! Form::textarea('ingredientes', $plato->ingredientes, ['class' => 'form-control', '', 'id'=> 'ingredientes', 'size' => '5x5']) !!}
                 </div>
               </div><!-- Col -->
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="receta">Receta</label>
+                  {!! Form::textarea('receta', $plato->receta, ['class' => 'form-control', '', 'id'=> 'receta', 'size' => '5x5']) !!}
+                </div>
+              </div><!-- Col -->
             </div>
             <div class="row form-group">
               <div class="col-sm-6">

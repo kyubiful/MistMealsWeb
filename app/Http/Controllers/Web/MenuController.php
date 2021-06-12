@@ -23,11 +23,11 @@ class MenuController extends Controller
 
     public function index(Request $request)
     {
-        if (auth()->check() && !User::findOrFail(auth()->user()->id)->isAdmin()) {
-            $user = User::findOrFail(auth()->user()->id);
+        // if (auth()->check() && !User::findOrFail(auth()->user()->id)->isAdmin()) {
+        //     $user = User::findOrFail(auth()->user()->id);
 
-            return redirect()->route('web.menu.step1', ['id' => $user->objetivo_id]);
-        }
+        //     return redirect()->route('web.menu.step1', ['id' => $user->objetivo_id]);
+        // }
 
         $objetivo = Objetivo::all();
 
@@ -158,6 +158,9 @@ class MenuController extends Controller
             'dinner' => $dinner,
             'semana' => $semana
         ];
+
+        // dd($lunch);
+        // dd($lunch[3]->getUrlImagePdfAttribute());
 
         return PDF::loadView('pdf.menu', $data)->setPaper('a4', 'landscape')->stream('mist-meals-menu.pdf');
         //return PDF::loadView('pdf.menu', $data)->setPaper('a4', 'landscape')->setWarnings(false)->save('mist-meals-menu.pdf');

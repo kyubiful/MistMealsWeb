@@ -92,7 +92,7 @@
                                                 <!-- <p class="name">{{ $dinner[$i]->nombre }}</p> -->
                                             </div>
                                             <div class="dish-photo">
-                                                <img src="{{ $dinner[$i]->getUrlImage1Attribute() }}" alt="{{ $dinner[$i]->nombre }}" data-toggle="modal" data-target="#modal-dish-lunch-{{ $i }}">
+                                                <img src="{{ $dinner[$i]->getUrlImage1Attribute() }}" alt="{{ $dinner[$i]->nombre }}" data-toggle="modal" data-target="#modal-dish-dinner-{{ $i }}">
                                             </div>
                                         </div>
                                         <div class="right-dish">
@@ -169,10 +169,10 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-8 col-sm-6">
+                                        <div class="row dish-card-fdirection">
+                                            <div class="col-8 col-sm-6 dish-img-card">
                                                 <div id="dish-lunch-carousel-{{ $i }}" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false" data-keyboard="true">
-                                                    <div class="carousel-inner">
+                                                    <div class="carousel-inner dish-carousel-menu">
                                                         <div class="carousel-item active">
                                                             <img class="w-100 d-block" src="{{ $el->getUrlImage1Attribute() }}" alt="{{ $el->nombre }}_1">
                                                         </div>
@@ -194,16 +194,16 @@
                                                     </ol>
                                                 </div>
                                             </div>
-                                            <div class="col-4 col-sm-6 product_description_iner">
-                                                <h3>{{ $el->nombre }}</h3>
-                                                <nav>
-                                                    <div class="nav nav-tabs" role="tablist" style="justify-content: left">
-                                                        <a class="nav-item nav-link active" data-toggle="tab" href="#nav_nutritional_lunch_{{ $i }}"
-                                                           role="tab" aria-controls="nav_nutritional_lunch_{{ $i }}" aria-selected="false">Nutricional </a>
-                                                        <a class="nav-item nav-link" data-toggle="tab" href="#nav_description_lunch_{{ $i }}"
-                                                           role="tab" aria-controls="nav_description_lunch_{{ $i }}" aria-selected="true">Ingredientes</a>
-                                                    </div>
-                                                </nav>
+                                            <div class="col-4 col-sm-6 product_description_iner dish-img-card">
+                                                <h3>{{ $el->nombre }}</h3>                                   
+                                                  <div class="nav nav-tabs" role="tablist" style="justify-content: left">
+                                                      <a class="nav-item nav-link active dish-card-menu" data-toggle="tab" href="#nav_nutritional_lunch_{{ $i }}"
+                                                          role="tab" aria-controls="nav_nutritional_lunch_{{ $i }}" aria-selected="false">Nutricional </a>
+                                                      <a class="nav-item nav-link dish-card-menu" data-toggle="tab" href="#nav_description_lunch_{{ $i }}"
+                                                          role="tab" aria-controls="nav_description_lunch_{{ $i }}" aria-selected="true">Ingredientes</a>
+                                                      <a class="nav-item nav-link dish-card-menu" data-toggle="tab" href="#nav_recipe_lunch_{{ $i }}"
+                                                          role="tab" aria-controls="nav_description_lunch_{{ $i }}" aria-selected="true">Receta</a>
+                                                  </div>
                                                 <div class="tab-content">
                                                     <div class="tab-pane fade show active" id="nav_nutritional_lunch_{{ $i }}" role="tabpanel" style="padding-top: 20px;">
                                                         <div class="row justify-content-center">
@@ -229,23 +229,23 @@
                                                                         <p>{{ round(($el->plato_info_nutricional->proteinas / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->proteinas, 1) }}g</p>
                                                                     </div>
-                                                                    <div class="single_additional_info">
+                                                                    <div class="single_additional_info single_additional_info_no_underline">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.fats')</h5>
                                                                         <p>{{ round(($el->plato_info_nutricional->grasas / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->grasas, 1) }}g</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
-                                                                        <h5>@lang('admin.page.plato.info_nutritional.satured')</h5>
+                                                                        <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.satured')</h5>
                                                                         <p>{{ round(($el->plato_info_nutricional->saturadas / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->saturadas, 1) }}g</p>
                                                                     </div>
-                                                                    <div class="single_additional_info">
+                                                                    <div class="single_additional_info single_additional_info_no_underline">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.carbo')</h5>
                                                                         <p>{{ round(($el->plato_info_nutricional->carbohidratos / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->carbohidratos, 1) }}g</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
-                                                                        <h5>@lang('admin.page.plato.info_nutritional.sugars')</h5>
+                                                                        <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.sugars')</h5>
                                                                         <p>{{ round(($el->plato_info_nutricional->azucar / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->azucar, 1) }}g</p>
                                                                     </div>
@@ -265,10 +265,17 @@
                                                     </div>
                                                     <div class="tab-pane fade" id="nav_description_lunch_{{ $i }}" role="tabpanel" style="padding-top: 20px;">
                                                         <div class="row justify-content-center">
-                                                            <div class="col-lg-12">
+                                                            <div class="col-lg-12 dish-ingredients-text">
                                                                 <p><b>Ingredientes:</b> {{ $el->ingredientes }}</p>
                                                                 <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
                                                                 <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="nav_recipe_lunch_{{ $i }}" role="tabpanel" style="padding-top: 20px;">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-lg-12">
+                                                                <p class="dish-recipe-text"><b>Receta:</b> {{$el->receta}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -297,10 +304,10 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-8 col-sm-6">
+                                        <div class="row dish-card-fdirection">
+                                            <div class="col-8 col-sm-6 dish-img-card">
                                                 <div id="dish-dinner-carousel-{{ $i }}" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false" data-keyboard="true">
-                                                    <div class="carousel-inner">
+                                                    <div class="carousel-inner dish-carousel-menu">
                                                         <div class="carousel-item active">
                                                             <img class="w-100 d-block" src="{{ $el->getUrlImage1Attribute() }}" alt="{{ $el->nombre }}_1">
                                                         </div>
@@ -322,16 +329,16 @@
                                                     </ol>
                                                 </div>
                                             </div>
-                                            <div class="col-4 col-sm-6 product_description_iner">
-                                                <h3>{{ $el->nombre }}</h3>
-                                                <nav>
-                                                    <div class="nav nav-tabs" role="tablist" style="justify-content: left">
-                                                        <a class="nav-item nav-link active" data-toggle="tab" href="#nav_nutritional_dinner_{{ $i }}"
-                                                           role="tab" aria-controls="nav_nutritional_dinner_{{ $i }}" aria-selected="false">Nutricional </a>
-                                                        <a class="nav-item nav-link" data-toggle="tab" href="#nav_description_dinner_{{ $i }}"
-                                                           role="tab" aria-controls="nav_description_dinner_{{ $i }}" aria-selected="true">Ingredientes</a>
-                                                    </div>
-                                                </nav>
+                                            <div class="col-4 col-sm-6 product_description_iner dish-img-card">
+                                                <h3>{{ $el->nombre }}</h3>                                                
+                                                  <div class="nav nav-tabs" role="tablist" style="justify-content: left">
+                                                      <a class="nav-item nav-link active dish-card-menu" data-toggle="tab" href="#nav_nutritional_dinner_{{ $i }}"
+                                                          role="tab" aria-controls="nav_nutritional_dinner_{{ $i }}" aria-selected="false">Nutricional </a>
+                                                      <a class="nav-item nav-link dish-card-menu" data-toggle="tab" href="#nav_description_dinner_{{ $i }}"
+                                                          role="tab" aria-controls="nav_description_dinner_{{ $i }}" aria-selected="true">Ingredientes</a>
+                                                      <a class="nav-item nav-link dish-card-menu" data-toggle="tab" href="#nav_recipe_dinner_{{ $i }}"
+                                                          role="tab" aria-controls="nav_description_dinner_{{ $i }}" aria-selected="true">Receta</a>
+                                                  </div>                                                
                                                 <div class="tab-content">
                                                     <div class="tab-pane fade show active" id="nav_nutritional_dinner_{{ $i }}" role="tabpanel" style="padding-top: 20px;">
                                                         <div class="row justify-content-center">
@@ -357,23 +364,23 @@
                                                                         <p>{{ round(($el->plato_info_nutricional->proteinas / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->proteinas, 1) }}g</p>
                                                                     </div>
-                                                                    <div class="single_additional_info">
+                                                                    <div class="single_additional_info single_additional_info_no_underline">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.fats')</h5>
                                                                         <p>{{ round(($el->plato_info_nutricional->grasas / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->grasas, 1) }}g</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
-                                                                        <h5>@lang('admin.page.plato.info_nutritional.satured')</h5>
+                                                                        <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.satured')</h5>
                                                                         <p>{{ round(($el->plato_info_nutricional->saturadas / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->saturadas, 1) }}g</p>
                                                                     </div>
-                                                                    <div class="single_additional_info">
+                                                                    <div class="single_additional_info single_additional_info_no_underline">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.carbo')</h5>
                                                                         <p>{{ round(($el->plato_info_nutricional->carbohidratos / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->carbohidratos, 1) }}g</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
-                                                                        <h5>@lang('admin.page.plato.info_nutritional.sugars')</h5>
+                                                                        <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.sugars')</h5>
                                                                         <p>{{ round(($el->plato_info_nutricional->azucar / 100) * $el->plato_peso->peso, 1) }}g</p>
                                                                         <p>{{ round($el->plato_info_nutricional->azucar, 1) }}g</p>
                                                                     </div>
@@ -393,10 +400,17 @@
                                                     </div>
                                                     <div class="tab-pane fade" id="nav_description_dinner_{{ $i }}" role="tabpanel" style="padding-top: 20px;">
                                                         <div class="row justify-content-center">
-                                                            <div class="col-lg-12">
+                                                            <div class="col-lg-12 dish-ingredients-text">
                                                                 <p><b>Ingredientes:</b> {{ $el->ingredientes }}</p>
                                                                 <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
                                                                 <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="nav_recipe_dinner_{{ $i }}" role="tabpanel" style="padding-top: 20px;">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-lg-12">
+                                                                <p class="dish-recipe-text"><b>Receta:</b> {{$el->receta}}</p>
                                                             </div>
                                                         </div>
                                                     </div>

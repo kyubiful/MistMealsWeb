@@ -18,6 +18,7 @@ class CreatePlatosTable extends Migration
             $table->string('codigo');
             $table->string('nombre');
             $table->text('ingredientes')->nullable();
+            $table->text('receta');
             $table->decimal('calorias');
             $table->string('imagen_1');
             $table->string('imagen_2');
