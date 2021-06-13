@@ -3,7 +3,7 @@
         <div class="row justify-content-between">
             <div class="col-lg-4 col-sm-6">
                 <div class="single_footer_widget">
-                    <img class="mp-mobile-hidden" src="/img/favicon_mistmeals1.png" srcset="img/favicon_mistmeals1.png 2x" alt="Logo" width="83px">
+                    <img class="mp-mobile-hidden" src="/img/favicon_mistmeals1.png" srcset="/img/favicon_mistmeals1.png 2x" alt="Logo" width="83px">
                     <p class="mp-mobile-hidden">*Este sitio no proporciona ningún tipo de recomendación ni de asesoramiento nutricional. En todo caso, el usuario antes de decidir sobre el contenido de su alimentación, deberá ser evaluado y obtener el correspondiente asesoramiento profesional por parte de su proveedor de servicios de salud.</p>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-8">
                         </div>
-                        <img class="mp-desktop-hidden" src="/img/favicon_mistmeals1.png" srcset="img/favicon_mistmeals1.png 2x" alt="Logo" width="63px" style="margin: auto;">
+                        <img class="mp-desktop-hidden" src="/img/favicon_mistmeals1.png" srcset="/img/favicon_mistmeals1.png 2x" alt="Logo" width="63px" style="margin: auto;">
                         <div class="col-lg-6 col-md-4">
                             <div class="social_icon">
                                 <a href="https://www.instagram.com/mistmeals/" target="_blank"><i class="ti-instagram"></i></a>

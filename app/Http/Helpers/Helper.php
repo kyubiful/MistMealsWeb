@@ -193,10 +193,9 @@ class Helper
 
             while (in_array($random->id, $randonLunchDishes)) {
                 $random = $dishesLunch->inRandomOrder()->first();
-            }
+	    }
 
             array_push($randonLunchDishes, $random->id);
-
         }
 
         $dishesDinner = Plato::where('plato_codigo_id', $dinnerDishCode->id);

@@ -3,13 +3,13 @@
     <section class="about_section padding_top padding_bottom carousel-target-{{ $objetivo->id }} meplan-carousel-mobil">
         <div class="container">
             <div class="row">
-                <div class="col-sm-5 col-lg-5">
+                <div class="col-sm-5 col-lg-5 pad-0">
                     <div class="img_section">
                         <img src="/img/home/target_{{ $objetivo->id }}.png" alt="#" class="about_img_3" data-parallax='{"x": 0, "y": -50, "rotateZ":0}'>
                         <p class="text-center">{{ $objetivo->nombre }}</p>
                     </div>
                     <div class="meplan-img-mobile">
-                        <img src="/img/mealplan/target_{{ $objetivo->id }}.png" alt="#" class="about_img_3" data-parallax='{"x": 0, "y": -50, "rotateZ":0}'>
+                        <img src="/img/mealplan/targett_{{ $objetivo->id }}.png" alt="#" class="about_img_3" data-parallax='{"x": 0, "y": -50, "rotateZ":0}'>
                     </div>
                 </div>
                 <div class="col-sm-7 col-lg-7 menu-form-step">
