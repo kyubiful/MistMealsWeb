@@ -213,28 +213,31 @@
                                                             <div class="col-lg-12">
                                                                 <div class="additional_info">
                                                                     <div class="single_additional_info title">
-                                                                        <h5>@lang('admin.page.plato.serving')</h5>
-                                                                        <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p>
-                                                                        <p>@lang('admin.page.plato.per_100')</p>
+                                                                        <!-- <h5>@lang('admin.page.plato.serving')</h5> -->
+                                                                        <h5></h5>
+                                                                        <!-- <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p> -->
+                                                                        <!-- <p>@lang('admin.page.plato.per_100')</p> -->
+                                                                        <p>1 Plato</p>
+                                                                    
                                                                     </div>
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.energy')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->energia / 100) * $el->plato_peso->peso, 1) }}kJ</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->energia / 100) * $el->plato_peso->peso, 1) }}kJ</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->energia, 1) }}kJ</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.calories')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->calorias / 100) * $el->plato_peso->peso, 1) }} Cal</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->calorias / 100) * $el->plato_peso->peso, 1) }} Cal</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->calorias, 1) }} Cal</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.protein')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->proteinas / 100) * $el->plato_peso->peso, 1) }}g</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->proteinas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->proteinas, 1) }}g</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.fats')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->grasas / 100) * $el->plato_peso->peso, 1) }}g</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->grasas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->grasas, 1) }}g</p>
                                                                     </div>
                                                                     <!-- <div class="single_additional_info">
@@ -244,7 +247,7 @@
                                                                     </div> -->
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.carbo')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->carbohidratos / 100) * $el->plato_peso->peso, 1) }}g</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->carbohidratos / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->carbohidratos, 1) }}g</p>
                                                                     </div>
                                                                     <!-- <div class="single_additional_info">
@@ -254,7 +257,7 @@
                                                                     </div> -->
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.fibre')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->fibra / 100) * $el->plato_peso->peso, 1) }}g</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->fibra / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->fibra, 1) }}g</p>
                                                                     </div>
                                                                     <!-- <div class="single_additional_info">
@@ -348,28 +351,30 @@
                                                             <div class="col-lg-12">
                                                                 <div class="additional_info">
                                                                     <div class="single_additional_info title">
-                                                                        <h5>@lang('admin.page.plato.serving')</h5>
-                                                                        <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p>
-                                                                        <p>@lang('admin.page.plato.per_100')</p>
+                                                                        <!-- <h5>@lang('admin.page.plato.serving')</h5> -->
+                                                                        <h5></h5>
+                                                                        <!-- <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p> -->
+                                                                        <!-- <p>@lang('admin.page.plato.per_100')</p> -->
+                                                                        <p>1 Plato</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.energy')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->energia / 100) * $el->plato_peso->peso, 1) }}kJ</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->energia / 100) * $el->plato_peso->peso, 1) }}kJ</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->energia, 1) }}kJ</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.calories')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->calorias / 100) * $el->plato_peso->peso, 1) }} Cal</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->calorias / 100) * $el->plato_peso->peso, 1) }} Cal</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->calorias, 1) }} Cal</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.protein')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->proteinas / 100) * $el->plato_peso->peso, 1) }}g</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->proteinas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->proteinas, 1) }}g</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.fats')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->grasas / 100) * $el->plato_peso->peso, 1) }}g</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->grasas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->grasas, 1) }}g</p>
                                                                     </div>
                                                                     <!-- <div class="single_additional_info">
@@ -379,7 +384,7 @@
                                                                     </div> -->
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.carbo')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->carbohidratos / 100) * $el->plato_peso->peso, 1) }}g</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->carbohidratos / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->carbohidratos, 1) }}g</p>
                                                                     </div>
                                                                     <!-- <div class="single_additional_info">
@@ -389,7 +394,7 @@
                                                                     </div> -->
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.fibre')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->fibra / 100) * $el->plato_peso->peso, 1) }}g</p>
+                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->fibra / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                                                         <p>{{ round($el->plato_info_nutricional->fibra, 1) }}g</p>
                                                                     </div>
                                                                     <!-- <div class="single_additional_info">

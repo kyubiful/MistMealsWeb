@@ -25,33 +25,17 @@
                 </div>
             </div>
             <div class="row mp-meal-container">
-              <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 2) }}">
-                  <div class="single_services_part style_2 mb-0">
-                      <a href="{{ route('web.menu.step1', 2) }}">
-                          <img class="mp-image-desktop" src="img/home/target_2.png" alt="Control de calorías">
-                          <img class="mp-image-mobile" src="img/mealplan/targett_2.png" alt="Control de calorías">
-                      </a>
-                      <p class="subtitle mt-3">Control de calorías</p>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 1) }}">
-                  <div class="single_services_part style_2 mb-0">
-                      <a href="{{ route('web.menu.step1', 1) }}">
-                          <img class="mp-image-desktop" src="img/home/target_1.png" alt="Mejora de rendimiento">
-                          <img class="mp-image-mobile" src="img/mealplan/targett_1.png" alt="Mejora de rendimiento">
-                      </a>
-                      <p class="subtitle mt-3">Mejora de rendimiento</p>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 3) }}">
-                  <div class="single_services_part style_2 mb-0">
-                      <a href="{{ route('web.menu.step1', 3) }}">
-                          <img class="mp-image-desktop" src="img/home/target_3.png" alt="Ganancia muscular">
-                          <img class="mp-image-mobile" src="img/mealplan/targett_3.png" alt="Ganancia muscular">
-                      </a>
-                      <p class="subtitle mt-3">Ganancia muscular</p>
-                  </div>
-              </div>
+                @foreach($objetivo as $i => $el)
+                    <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + $i) }}">
+                        <div class="single_services_part style_2 mb-0">
+                            <a href="{{ route('web.menu.step1', $el->id) }}">
+                                <img class="mp-image-desktop" src="img/home/target_{{ $i + 1 }}.png" alt="{{ $el->name }}">
+                                <img class="mp-image-mobile" src="img/mealplan/targett_{{ $i + 1 }}.png" alt="{{ $el->name }}">
+                            </a>
+                            <p class="subtitle mt-3">{{ $el->nombre }}</p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

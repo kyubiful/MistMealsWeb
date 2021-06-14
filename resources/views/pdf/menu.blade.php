@@ -49,8 +49,10 @@
 
         img.claim {
             position: absolute;
-            top: 150px;
-            left: 150px;
+            top: 170px;
+            left: 120px;
+            width: 402px;
+            height: 497px;
         }
 
         img.tag {
@@ -148,24 +150,74 @@
             padding: 0;
             margin: 0;
         }
+
+        .first-page-data{
+          position: absolute;
+          top: 400px;
+          left: 550px;
+        }
+
+        .description{
+          margin-left: 50px;
+        }
+
+        .cal-number{
+          font-family: TuskerGrotesk35;
+          font-size: 60px;
+        }
+
+        .cal-text{
+          position: absolute;
+          left: 140px;
+          top: 105px;
+          font-family: CoreSansC65;
+          font-size: 25px;
+          width: 275px;
+        }
+
     </style>
 </head>
 
 <body>
-@if($user->objetivo_id == 1)
+<!-- @if($user->objetivo_id == 1)
     <img class="claim" src="img/pdf/fighter_menu.jpg">
 @elseif($user->objetivo_id == 2)
     <img class="claim" src="img/pdf/keeper_menu.jpg">
 @elseif($user->objetivo_id == 3)
     <img class="claim" src="img/pdf/promoter_menu.jpg">
+@endif -->
+
+@if($user->objetivo_id == 1)
+    <img class="claim" src="img/pdf/keeper_logo.png">
+@elseif($user->objetivo_id == 2)
+    <img class="claim" src="img/pdf/promoter_logo.png">
+@elseif($user->objetivo_id == 3)
+    <img class="claim" src="img/pdf/fighter_logo.png">
 @endif
+
+@if($user->objetivo_id == 1)
+    <img class="tag" src="img/pdf/keeper_claim.png">
+@elseif($user->objetivo_id == 2)
+    <img class="tag" src="img/pdf/promoter_claim.png">
+@elseif($user->objetivo_id == 3)
+    <img class="tag" src="img/pdf/fighter_claim.png">
+@endif
+
+<div class="first-page-data">
+  <img class="ymp-img" src="img/mealplan/your_meal_plan.png">
+  <div class="description">
+    <div class="cal-number">{{ $user->calorias_propuestas }}</div>
+    <div class="cal-text">Calorías diarias para lograr tu objetivo.</div>
+  </div>
+</div>
+
 <div class="page-break"></div>
 @if($user->objetivo_id == 1)
-    <img class="tag" src="img/pdf/fighter_claim.png">
-@elseif($user->objetivo_id == 2)
     <img class="tag" src="img/pdf/keeper_claim.png">
-@elseif($user->objetivo_id == 3)
+@elseif($user->objetivo_id == 2)
     <img class="tag" src="img/pdf/promoter_claim.png">
+@elseif($user->objetivo_id == 3)
+    <img class="tag" src="img/pdf/fighter_claim.png">
 @endif
 <div class="top">
     <div class="user">
@@ -181,11 +233,11 @@
     </div>
 
     @if($user->objetivo_id == 1)
-        <img class="logo" src="img/pdf/fighter_logo.png">
-    @elseif($user->objetivo_id == 2)
         <img class="logo" src="img/pdf/keeper_logo.png">
-    @elseif($user->objetivo_id == 3)
+    @elseif($user->objetivo_id == 2)
         <img class="logo" src="img/pdf/promoter_logo.png">
+    @elseif($user->objetivo_id == 3)
+        <img class="logo" src="img/pdf/fighter_logo.png">
     @endif
 </div>
 <div class="middle">
@@ -237,11 +289,11 @@
     </div>
 </div>
 @if($user->objetivo_id == 1)
-    <img class="tag-bottom" src="img/pdf/fighter_claim1.png">
-@elseif($user->objetivo_id == 2)
     <img class="tag-bottom" src="img/pdf/keeper_claim1.png">
-@elseif($user->objetivo_id == 3)
+@elseif($user->objetivo_id == 2)
     <img class="tag-bottom" src="img/pdf/promoter_claim1.png">
+@elseif($user->objetivo_id == 3)
+    <img class="tag-bottom" src="img/pdf/fighter_claim1.png">
 @endif
 </body>
 </html>
