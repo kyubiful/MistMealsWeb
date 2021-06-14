@@ -54,17 +54,17 @@
     <div class="row">
       <div class="col-lg-4 col-sm-6 wow fadeInLeftBig pad-0" data-wow-duration="1s">
         <div class="single_services_part style_2 mb-0">
-          <img class="mp-mobile-hidden" src="img/home/target_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
-          <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
-          <p class="subtitle mt-3">{{ $objetivo[0]->nombre }}</p>
+          <img class="mp-mobile-hidden" src="img/home/target_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
+          <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
+          <p class="subtitle mt-3">{{ $objetivo[1]->nombre }}</p>
         </div>
       </div>
 
       <div class="col-lg-4 col-sm-6 pad-0">
         <div class="single_services_part style_2 mb-0">
-          <img class="mp-mobile-hidden" src="img/home/target_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
-          <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
-          <p class="subtitle mt-3">{{ $objetivo[1]->nombre }}</p>
+          <img class="mp-mobile-hidden" src="img/home/target_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
+          <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
+          <p class="subtitle mt-3">{{ $objetivo[0]->nombre }}</p>
         </div>
       </div>
 
