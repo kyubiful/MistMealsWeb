@@ -54,7 +54,9 @@
                                         <span>{{ $lunch[$i]->plato_info_nutricional->carbohidratos + $dinner[$i]->plato_info_nutricional->carbohidratos }} <b>Carbohidratos</b></span>
                                         <span>{{ $lunch[$i]->plato_info_nutricional->grasas + $dinner[$i]->plato_info_nutricional->grasas }} <b>Grasas</b></span>
                                         <span>{{ $lunch[$i]->plato_info_nutricional->fibra + $dinner[$i]->plato_info_nutricional->fibra }} <b>Fibra</b></span>
-                                        <div class="open-carousel-img"></div>
+                                        <div class="open-carousel-img-container">
+                                          <div class="open-carousel-img"></div>
+                                        </div>
                                     </div>
                                 </button>
                             </h5>

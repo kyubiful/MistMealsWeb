@@ -1474,6 +1474,8 @@ nav {
 
 @media (max-width: 991px) {
 
+  
+
   .step1-policy {
     font-size: 12px;
     margin-top: 30px;
@@ -2383,6 +2385,12 @@ body.menu-step1 .carousel-target-3 .carousel-control-prev-icon {
     section.values {
         height: 100%;
         padding-bottom: 0px;
+    }
+
+    .open-carousel-img-container{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
 
     @media (min-width: 576px) {
