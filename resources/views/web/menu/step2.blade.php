@@ -217,7 +217,7 @@
                                                                         <h5></h5>
                                                                         <!-- <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p> -->
                                                                         <!-- <p>@lang('admin.page.plato.per_100')</p> -->
-                                                                        <p>1 Plato</p>
+                                                                        <p>Por plato</p>
                                                                     
                                                                     </div>
                                                                     <div class="single_additional_info">
@@ -355,7 +355,7 @@
                                                                         <h5></h5>
                                                                         <!-- <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p> -->
                                                                         <!-- <p>@lang('admin.page.plato.per_100')</p> -->
-                                                                        <p>1 Plato</p>
+                                                                        <p>Por plato</p>
                                                                     </div>
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.energy')</h5>
