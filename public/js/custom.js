@@ -1231,3 +1231,108 @@
     });
 
 }(jQuery));
+
+const openDish = document.querySelectorAll('.open-carousel-img');
+const closeDish = document.querySelectorAll('.close-carousel-img');
+const card = document.querySelectorAll('.menu-step2 .card .card-header .btn');
+const carouselControlNext = document.querySelector('.carousel-control-next');
+const carouselControlPrev = document.querySelector('.carousel-control-prev');
+
+for(let i=0; i<card.length; i++){
+  card[i].addEventListener('click', () =>{
+    openDish[i].classList.toggle('close-carousel-img');
+  })
+}
+
+const carouselIndicators = document.querySelector('.carousel-indicators').children;
+for(let i=0; i<carouselIndicators.length; i++){
+  carouselIndicators[i].addEventListener('click', () =>{
+    setTimeout(()=>{
+      if(carouselIndicators[3].className == 'active'){
+        carouselControlNext.style.display='none';
+      } else{
+        carouselControlNext.style.display='flex';
+      }
+    }, 500)
+  })
+}
+
+
+
+if(window.innerWidth < 991 ){
+  setTimeout(()=>{
+    if(carouselIndicators[3].className == 'active'){
+      carouselControlNext.style.display='none';
+    } else{
+      carouselControlNext.style.display='flex';
+      carouselControlPrev.style.display='flex';
+    }
+  }, 500)
+  
+  setTimeout(()=>{
+    if(carouselIndicators[0].className == 'active'){
+      carouselControlPrev.style.display='none';
+    } else{
+      carouselControlNext.style.display='flex';
+      carouselControlPrev.style.display='flex';
+    }
+  }, 500)
+  
+  carouselControlNext.addEventListener('click', () => {
+    setTimeout(()=>{
+      if(carouselIndicators[3].className == 'active'){
+        carouselControlNext.style.display='none';
+      } else{
+        carouselControlNext.style.display='flex';
+        carouselControlPrev.style.display='flex';
+      }
+    }, 500)
+  })
+  
+  carouselControlPrev.addEventListener('click', () => {
+    setTimeout(()=>{
+      if(carouselIndicators[0].className == 'active'){
+        carouselControlPrev.style.display='none';
+      } else{
+        carouselControlNext.style.display='flex';
+        carouselControlPrev.style.display='flex';
+      }
+    }, 500)
+  })
+}
+
+setTimeout(()=>{
+  if(carouselIndicators[3].className == 'active'){
+    carouselControlNext.style.display='none';
+  } else{
+    carouselControlNext.style.display='flex';
+  }
+}, 500)
+
+setTimeout(()=>{
+  if(carouselIndicators[0].className == 'active'){
+    carouselControlPrev.style.display='none';
+  } else{
+    carouselControlPrev.style.display='flex';
+  }
+}, 500)
+
+carouselControlNext.addEventListener('click', () => {
+  setTimeout(()=>{
+    if(carouselIndicators[3].className == 'active'){
+      carouselControlNext.style.display='none';
+    } else{
+      carouselControlNext.style.display='flex';
+    }
+  }, 500)
+})
+
+carouselControlPrev.addEventListener('click', () => {
+  setTimeout(()=>{
+    if(carouselIndicators[0].className == 'active'){
+      carouselControlPrev.style.display='none';
+    } else{
+      carouselControlPrev.style.display='flex';
+    }
+  }, 500)
+})
