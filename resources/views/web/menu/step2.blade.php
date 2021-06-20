@@ -49,11 +49,11 @@
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{ $i }}" aria-expanded="false" aria-controls="collapse{{ $i }}">
                                     <div class="day-title">Día <b>{{ $i+1 }}</b></div>
                                     <div class="day-info">
-                                        <span>{{ round($lunch[$i]->calorias + $dinner[$i]->calorias, 0) }} <b>Calorías</b></span>
-                                        <span>{{ $lunch[$i]->plato_info_nutricional->proteinas + $dinner[$i]->plato_info_nutricional->proteinas }} <b>Proteinas</b></span>
-                                        <span>{{ $lunch[$i]->plato_info_nutricional->carbohidratos + $dinner[$i]->plato_info_nutricional->carbohidratos }} <b>Carbohidratos</b></span>
-                                        <span>{{ $lunch[$i]->plato_info_nutricional->grasas + $dinner[$i]->plato_info_nutricional->grasas }} <b>Grasas</b></span>
-                                        <span>{{ $lunch[$i]->plato_info_nutricional->fibra + $dinner[$i]->plato_info_nutricional->fibra }} <b>Fibra</b></span>
+                                        <span class="menu2-span-130">{{ round($lunch[$i]->calorias + $dinner[$i]->calorias, 0) }} <b>Calorías</b></span>
+                                        <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->proteinas + $dinner[$i]->plato_info_nutricional->proteinas }} <b>Proteinas</b></span>
+                                        <span class="menu2-span-190">{{ $lunch[$i]->plato_info_nutricional->carbohidratos + $dinner[$i]->plato_info_nutricional->carbohidratos }} <b>Carbohidratos</b></span>
+                                        <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->grasas + $dinner[$i]->plato_info_nutricional->grasas }} <b>Grasas</b></span>
+                                        <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->fibra + $dinner[$i]->plato_info_nutricional->fibra }} <b>Fibra</b></span>
                                         <div class="open-carousel-img-container">
                                           <div class="open-carousel-img"></div>
                                         </div>
@@ -71,7 +71,7 @@
                                                 <!-- <p class="name">{{ $lunch[$i]->nombre }}</p> -->
                                             </div>
                                             <div class="dish-photo">
-                                                <img src="{{ $lunch[$i]->getUrlImage1Attribute() }}" alt="{{ $lunch[$i]->nombre }}" data-toggle="modal" data-target="#modal-dish-lunch-{{ $i }}">
+                                                <img src="{{ asset($lunch[$i]->getUrlImage1Attribute()) }}" alt="{{ $lunch[$i]->nombre }}" data-toggle="modal" data-target="#modal-dish-lunch-{{ $i }}">
                                             </div>
                                         </div>
                                         <div class="right-dish">
@@ -95,7 +95,7 @@
                                                 <!-- <p class="name">{{ $dinner[$i]->nombre }}</p> -->
                                             </div>
                                             <div class="dish-photo">
-                                                <img src="{{ $dinner[$i]->getUrlImage1Attribute() }}" alt="{{ $dinner[$i]->nombre }}" data-toggle="modal" data-target="#modal-dish-dinner-{{ $i }}">
+                                                <img src="{{ asset($dinner[$i]->getUrlImage1Attribute()) }}" alt="{{ $dinner[$i]->nombre }}" data-toggle="modal" data-target="#modal-dish-dinner-{{ $i }}">
                                             </div>
                                         </div>
                                         <div class="right-dish">
@@ -177,13 +177,13 @@
                                                 <div id="dish-lunch-carousel-{{ $i }}" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false" data-keyboard="true">
                                                     <div class="carousel-inner dish-carousel-menu">
                                                         <div class="carousel-item active">
-                                                            <img class="w-100 d-block" src="{{ $el->getUrlImage1Attribute() }}" alt="{{ $el->nombre }}_1">
+                                                            <img class="w-100 d-block" src="{{ asset(asset($el->getUrlImage1Attribute())) }}" alt="{{ $el->nombre }}_1">
                                                         </div>
                                                         <div class="carousel-item">
-                                                            <img class="w-100 d-block" src="{{ $el->getUrlImage2Attribute() }}" alt="{{ $el->nombre }}_2">
+                                                            <img class="w-100 d-block" src="{{ asset($el->getUrlImage2Attribute()) }}" alt="{{ $el->nombre }}_2">
                                                         </div>
                                                     </div>
-                                                    <a class="carousel-control-prev" href="#dish-lunch-carousel-{{ $i }}" role="button" data-slide="prev">
+                                                    <a class="carousel-control-prev" href="#dish-lunch-carousel-{{ $i }}" role="button" data-slide="prev" style="display: none;">
                                                         <span class="carousel-control-prev-icon"></span>
                                                         <span class="sr-only">Previous</span>
                                                     </a>
@@ -315,13 +315,13 @@
                                                 <div id="dish-dinner-carousel-{{ $i }}" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false" data-keyboard="true">
                                                     <div class="carousel-inner dish-carousel-menu">
                                                         <div class="carousel-item active">
-                                                            <img class="w-100 d-block" src="{{ $el->getUrlImage1Attribute() }}" alt="{{ $el->nombre }}_1">
+                                                            <img class="w-100 d-block" src="{{ asset($el->getUrlImage1Attribute()) }}" alt="{{ $el->nombre }}_1">
                                                         </div>
                                                         <div class="carousel-item">
-                                                            <img class="w-100 d-block" src="{{ $el->getUrlImage2Attribute() }}" alt="{{ $el->nombre }}_2">
+                                                            <img class="w-100 d-block" src="{{ asset($el->getUrlImage2Attribute()) }}" alt="{{ $el->nombre }}_2">
                                                         </div>
                                                     </div>
-                                                    <a class="carousel-control-prev" href="#dish-dinner-carousel-{{ $i }}" role="button" data-slide="prev">
+                                                    <a class="carousel-control-prev" href="#dish-dinner-carousel-{{ $i }}" role="button" data-slide="prev" style="display: none;">
                                                         <span class="carousel-control-prev-icon"></span>
                                                         <span class="sr-only">Previous</span>
                                                     </a>

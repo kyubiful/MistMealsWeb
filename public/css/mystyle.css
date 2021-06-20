@@ -18,6 +18,10 @@
     src: url("../fonts/TuskerGrotesk-6500Medium.ttf") format("truetype");
 }
 
+.CookieDeclaration{
+	display: none;
+}
+
 body,
 p,
 .cu_btn,
@@ -54,6 +58,14 @@ h6 {
 body,
 p {
     font-size: 15px;
+}
+
+.menu2-span-130{
+    width: 130px !important;
+}
+
+.menu2-span-190{
+    width: 190px !important;
 }
 
 .subtotal_sontent .niceSelect {
@@ -319,7 +331,7 @@ p {
 }
 
 .mist_btn:hover {
-    background: url("../img/mist-button-hover.png") no-repeat;
+    background: url("../img/mist-button-hover.png") no-repeat !important;
     color: #533fb8;
 }
 
@@ -1039,7 +1051,7 @@ body.menu-step2 #accordion {
 body.menu-step2 #accordion button {
     color: #ffffff;
     font-family: CoreSansC35;
-    /* width: 1100px; */
+    width: 946px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1057,7 +1069,7 @@ body.menu-step2 #accordion button .day-info {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 860px;
+    width: 855px;
 }
 
 body.menu-step2 #accordion button .day-info span {
@@ -1930,7 +1942,7 @@ body.menu-step1 .carousel-target-3 .carousel-control-prev-icon {
 
     body.menu-step2 #accordion button .day-info span {
         text-align: left;
-        width: 140px;
+        width: 140px !important;
     }
 
     body.menu-step2 #accordion button .day-info {
