@@ -47,7 +47,7 @@
       <div class="col-sm-10">
         <div class="section_tittle style_2 wow fadeInUp" data-wow-delay=".5s">
           <h2>Meal Plan</h2>
-          <p class="subtitle">Elige tu tipo de dieta</p>
+          <p class="subtitle">Elige tu menú</p>
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@
         <div class="single_services_part style_2 mb-0">
           <img class="mp-mobile-hidden" src="img/home/target_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
           <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
-          <p class="subtitle mt-3">{{ $objetivo[1]->nombre }}</p>
+          <p class="subtitle negative-margin">{{ $objetivo[1]->nombre }}</p>
         </div>
       </div>
 
@@ -64,7 +64,7 @@
         <div class="single_services_part style_2 mb-0">
           <img class="mp-mobile-hidden" src="img/home/target_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
           <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
-          <p class="subtitle mt-3">{{ $objetivo[0]->nombre }}</p>
+          <p class="subtitle">{{ $objetivo[0]->nombre }}</p>
         </div>
       </div>
 
@@ -72,7 +72,7 @@
         <div class="single_services_part style_2 mb-0">
           <img class="mp-mobile-hidden" src="img/home/target_{{ 2 + 1 }}.png" alt="{{ $objetivo[2]->name }}">
           <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 2 + 1 }}.png" alt="{{ $objetivo[2]->name }}">
-          <p class="subtitle mt-3">{{ $objetivo[2]->nombre }}</p>
+          <p class="subtitle negative-margin">{{ $objetivo[2]->nombre }}</p>
         </div>
       </div>
     </div>
@@ -164,6 +164,7 @@
               <button type="submit" class="cu_btn animate_btn text-white">Suscríbete</button>
             </div>
           </div>
+          @if (!auth()->check())
           <div class="form-row justify-content-center">
             <div class="col-lg-4 mt-3 wow fadeInDown" data-wow-delay=".7s">
               <div class="custom-control custom-checkbox single_contact_form">
@@ -172,6 +173,7 @@
               </div>
             </div>
           </div>
+        @endif
         </form>
       </div>
     </div>

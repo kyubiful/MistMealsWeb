@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>{{ $details['title'] }}</title>
+    <title>Mist Meals - Menú</title>
     <style type="text/css">
         img {
             max-width: 100%;
@@ -97,7 +97,7 @@
                                 </tr>
                                 <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                     <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                        Hola {{ $details['name'] }}! Adjunto te hemos enviado un pdf con tu menú personalizado.
+                                        Hola {{ $user->name }}! Adjunto te hemos enviado un pdf con tu menú personalizado.
                                     </td>
                                 </tr>
                                 <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">

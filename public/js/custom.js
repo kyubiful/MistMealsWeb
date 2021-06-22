@@ -1053,7 +1053,7 @@
     $window.trigger('scroll');
 
 
-    //product count 
+    //product count
     var incrementPlus;
     var incrementMinus;
     var buttonPlus = $(".cart-qty-plus");
@@ -1076,7 +1076,7 @@
         }
     });
 
-    // easying js code 
+    // easying js code
     $('.page-scroll').bind('click', function (event) {
         var $anchor = $(this);
         var headerH = '115';
@@ -1232,107 +1232,146 @@
 
 }(jQuery));
 
-const openDish = document.querySelectorAll('.open-carousel-img');
-const closeDish = document.querySelectorAll('.close-carousel-img');
-const card = document.querySelectorAll('.menu-step2 .card .card-header .btn');
-const carouselControlNext = document.querySelector('.carousel-control-next');
-const carouselControlPrev = document.querySelector('.carousel-control-prev');
+if(window.location.pathname=='/menu/config/1' || window.location.pathname=='/menu/config/2' || window.location.pathname=='/menu/config/3'){
 
-for(let i=0; i<card.length; i++){
-  card[i].addEventListener('click', () =>{
-    openDish[i].classList.toggle('close-carousel-img');
-  })
-}
+    const step1WeightMore = document.querySelector('.step1-weight-more');
+    const step1WeightLess = document.querySelector('.step1-weight-less');
+    const step1HeightMore = document.querySelector('.step1-height-more');
+    const step1HeightLess = document.querySelector('.step1-height-less');
+    const weightValue = document.querySelector('#range-value-weight');
+    const formWeight = document.querySelector('#slide-weight')
+    const heightValue = document.querySelector('#range-value-height');
+    const formHeight = document.querySelector('#slide-height');
 
-const carouselIndicators = document.querySelector('.carousel-indicators').children;
-for(let i=0; i<carouselIndicators.length; i++){
-  carouselIndicators[i].addEventListener('click', () =>{
+    step1WeightMore.addEventListener('click', () => {
+        weightValue.innerHTML = Math.round((parseFloat(weightValue.innerHTML)+ 0.1) * 100) / 100;
+        formWeight.value = Math.round((parseFloat(formWeight.value)+ 0.1) * 100) / 100;
+    });
+
+    step1WeightLess.addEventListener('click', () => {
+        weightValue.innerHTML = Math.round((parseFloat(weightValue.innerHTML)- 0.1) * 100) / 100;
+        formWeight.value = Math.round((parseFloat(formWeight.value)- 0.1) * 100) / 100;
+    });
+
+    step1HeightMore.addEventListener('click', () => {
+        heightValue.innerHTML = Math.round((parseFloat(heightValue.innerHTML)+ 1) * 100) / 100;
+        formHeight.value = Math.round((parseFloat(formHeight.value)+ 1) * 100) / 100;
+    });
+
+    step1HeightLess.addEventListener('click', () => {
+        heightValue.innerHTML = Math.round((parseFloat(heightValue.innerHTML)- 1) * 100) / 100;
+        formHeight.value = Math.round((parseFloat(formHeight.value)- 1) * 100) / 100;
+    });
+
+    const carouselIndicators = document.querySelector('.carousel-indicators').children;
+    const carouselControlNext = document.querySelector('.menu-step1 .carousel-control-next');
+    const carouselControlPrev = document.querySelector('.menu-step1 .carousel-control-prev');
+
+    for(let i=0; i<carouselIndicators.length; i++){
+      carouselIndicators[i].addEventListener('click', () =>{
+        setTimeout(()=>{
+          if(carouselIndicators[3].className == 'active'){
+            carouselControlNext.style.display='none';
+          } else{
+            carouselControlNext.style.display='flex';
+          }
+        }, 500)
+      })
+    };
+
+    if(window.innerWidth < 991 ){
+      setTimeout(()=>{
+        if(carouselIndicators[3].className == 'active'){
+          carouselControlNext.style.display='none';
+        } else{
+          carouselControlNext.style.display='flex';
+          carouselControlPrev.style.display='flex';
+        }
+      }, 500);
+
+      setTimeout(()=>{
+        if(carouselIndicators[0].className == 'active'){
+          carouselControlPrev.style.display='none';
+        } else{
+          carouselControlNext.style.display='flex';
+          carouselControlPrev.style.display='flex';
+        }
+      }, 500);
+
+      carouselControlNext.addEventListener('click', () => {
+        setTimeout(()=>{
+          if(carouselIndicators[3].className == 'active'){
+            carouselControlNext.style.display='none';
+          } else{
+            carouselControlNext.style.display='flex';
+            carouselControlPrev.style.display='flex';
+          }
+        }, 500)
+      });
+
+      carouselControlPrev.addEventListener('click', () => {
+        setTimeout(()=>{
+          if(carouselIndicators[0].className == 'active'){
+            carouselControlPrev.style.display='none';
+          } else{
+            carouselControlNext.style.display='flex';
+            carouselControlPrev.style.display='flex';
+          }
+        }, 500)
+      })
+    };
+
     setTimeout(()=>{
       if(carouselIndicators[3].className == 'active'){
         carouselControlNext.style.display='none';
       } else{
         carouselControlNext.style.display='flex';
       }
-    }, 500)
-  })
-}
+    }, 500);
 
-
-
-if(window.innerWidth < 991 ){
-  setTimeout(()=>{
-    if(carouselIndicators[3].className == 'active'){
-      carouselControlNext.style.display='none';
-    } else{
-      carouselControlNext.style.display='flex';
-      carouselControlPrev.style.display='flex';
-    }
-  }, 500)
-  
-  setTimeout(()=>{
-    if(carouselIndicators[0].className == 'active'){
-      carouselControlPrev.style.display='none';
-    } else{
-      carouselControlNext.style.display='flex';
-      carouselControlPrev.style.display='flex';
-    }
-  }, 500)
-  
-  carouselControlNext.addEventListener('click', () => {
-    setTimeout(()=>{
-      if(carouselIndicators[3].className == 'active'){
-        carouselControlNext.style.display='none';
-      } else{
-        carouselControlNext.style.display='flex';
-        carouselControlPrev.style.display='flex';
-      }
-    }, 500)
-  })
-  
-  carouselControlPrev.addEventListener('click', () => {
     setTimeout(()=>{
       if(carouselIndicators[0].className == 'active'){
         carouselControlPrev.style.display='none';
       } else{
-        carouselControlNext.style.display='flex';
         carouselControlPrev.style.display='flex';
       }
-    }, 500)
-  })
+    }, 500);
+
+    carouselControlNext.addEventListener('click', () => {
+      setTimeout(()=>{
+        if(carouselIndicators[3].className == 'active'){
+          carouselControlNext.style.display='none';
+        } else{
+          carouselControlNext.style.display='flex';
+        }
+      }, 500)
+    });
+
+    carouselControlPrev.addEventListener('click', () => {
+      setTimeout(()=>{
+        if(carouselIndicators[0].className == 'active'){
+          carouselControlPrev.style.display='none';
+        } else{
+          carouselControlPrev.style.display='flex';
+        }
+      }, 500)
+    });
 }
 
-setTimeout(()=>{
-  if(carouselIndicators[3].className == 'active'){
-    carouselControlNext.style.display='none';
-  } else{
-    carouselControlNext.style.display='flex';
-  }
-}, 500)
+if(window.location.pathname=='/menu/dishes'){
 
-setTimeout(()=>{
-  if(carouselIndicators[0].className == 'active'){
-    carouselControlPrev.style.display='none';
-  } else{
-    carouselControlPrev.style.display='flex';
-  }
-}, 500)
+    const openDish = document.querySelectorAll('.open-carousel-img');
+    const dishCollapse = document.querySelectorAll('.collapse');
+    const card = document.querySelectorAll('.menu-step2 .card .card-header .btn');
 
-carouselControlNext.addEventListener('click', () => {
-  setTimeout(()=>{
-    if(carouselIndicators[3].className == 'active'){
-      carouselControlNext.style.display='none';
-    } else{
-      carouselControlNext.style.display='flex';
-    }
-  }, 500)
-})
+    for(let i=0; i<card.length; i++){
+      card[i].addEventListener('click', () =>{
+          if(dishCollapse[i].className=='collapse'){
+            openDish[i].className='close-carousel-img';
+          } else if(dishCollapse[i].className=='collapse show') {
+            openDish[i].className='open-carousel-img';
+          }
+      })
+    };
 
-carouselControlPrev.addEventListener('click', () => {
-  setTimeout(()=>{
-    if(carouselIndicators[0].className == 'active'){
-      carouselControlPrev.style.display='none';
-    } else{
-      carouselControlPrev.style.display='flex';
-    }
-  }, 500)
-})
+}

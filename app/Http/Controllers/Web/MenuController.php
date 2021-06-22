@@ -172,24 +172,58 @@ class MenuController extends Controller
 
     public function sendMailMenu(Request $request)
     {
-        $details = [
-            'title' => 'Mist Meals - Menú',
-            'name' => $request->name
+
+        $userId = session('userid');
+        $user = User::findOrFail($userId);
+
+        if (!$user->name && !str_contains($user->email, '@')) {
+
+            if (!User::where('email', $request->email)->exists()) {
+                $user->update([
+                    'name' => "Name",
+                    'email' => $request->email
+                ]);
+            } else {
+                $user->update([
+                    'name' => "Name"
+                ]);
+            }
+
+        }
+
+        $lunch = session('lunch');
+        $dinner = session('dinner');
+
+        if ($lunch == null && $dinner == null) {
+            return view('errors.500');
+        }
+
+        $semana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+
+        //$pdf = PDF::loadView('pdf.menu', $data);
+
+        $data = [
+            'user' => $user,
+            'lunch' => $lunch,
+            'dinner' => $dinner,
+            'semana' => $semana
         ];
 
         try {
-            Mail::to($request->email)->send(new MenuMail($details));
+            Mail::to($request->email)->send(new MenuMail($data));
         } catch (\Exception $e) {
-            return response()->json(array(
+            $t = response()->json(array(
                 'status' => 500,
                 'message' => 'Error!'
             ));
         }
 
-        return response()->json(array(
+        $t = response()->json(array(
             'status' => 200,
             'message' => 'Enviado!',
         ));
+
+        return PDF::loadView('pdf.menu', $data)->setPaper('a4', 'landscape')->stream('mist-meals-menu.pdf');
     }
 
 }

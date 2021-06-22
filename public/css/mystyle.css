@@ -151,6 +151,7 @@ p {
 .cu_btn.animate_btn {
     background-color: #533fb8;
     border: none;
+    padding-bottom: 20px;
 }
 
 .header_part,
@@ -244,6 +245,7 @@ p {
 
 .footer_section .single_footer_widget p {
     font-size: 12px;
+    line-height: 18px;
 }
 
 .eight-cols .single_services_part.h5,
@@ -372,6 +374,7 @@ p {
     width: 20px;
     height: 11px;
     margin-left: 2vw;
+    background-position-y: bottom;
 }
 
 .close-carousel-img {
@@ -549,7 +552,6 @@ p {
     font-family: TuskerGrotesk35 !important;
     font-size: 30px;
     color: #f9f2e1;
-    text-align: justify;
     line-height: 36px;
     font-weight: 400;
     letter-spacing: 4.2px;
@@ -746,7 +748,9 @@ body.signupform .signupform label {
     position: absolute;
     top: 0;
     bottom: 0;
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: -40px;
     height: 40px;
     right: -50px;
     left: auto;
@@ -823,9 +827,16 @@ body.menu-step1 .carousel-target-3 .menu-form-step::after {
     background: #009167;
 }
 
-body.menu-step1 .sex-wp,
 body.menu-step1 .training-wp {
     margin: 60px 0;
+}
+
+body.menu-step1 .sex-wp {
+    margin: 95px 0;
+}
+
+body.menu-step1 .whdiv{
+   margin-top: 80px;
 }
 
 body.menu-step1 .sex-field,
@@ -875,7 +886,7 @@ body.menu-step1 .carousel-control-next {
     flex-direction: column;
 }
 
-.carousel-control-prev{
+body.menu-step1 .carousel-control-prev{
   display: none;
 }
 
@@ -967,7 +978,7 @@ body.menu-step1 .carousel-target-1 .slide-wp {
 
 .info-wp {
     width: 60%; /* Width of the outside container */
-    margin: 180px auto;
+    margin: 120px auto;
 }
 
 /* The slider itself */
@@ -1075,6 +1086,7 @@ body.menu-step2 #accordion button .day-info {
 body.menu-step2 #accordion button .day-info span {
     width: 160px;
     text-align: right;
+    font-weight: bold;
 }
 
 body.menu-step2 #target-1 #accordion button .day-info span b {
@@ -1106,6 +1118,7 @@ body.menu-step2 #accordion .dish-photo,
 body.menu-step2 #accordion .dish-photo img {
     width: 171px;
     height: 171px;
+    cursor: pointer;
 }
 
 /* body.menu-step2 #accordion .dish-text {
@@ -1486,14 +1499,20 @@ nav {
 
 @media (max-width: 991px) {
 
-  
+    .subtitle.negative-margin{
+        margin-top: -20px;
+    }
+
+    .single_services_part .subtitle{
+        margin-bottom: 40px;
+    }
 
   .step1-policy {
     font-size: 12px;
     margin-top: 30px;
-}
+  }
 
-  .carousel-control-prev{
+  body.menu-step1 .carousel-control-prev{
     display: flex;
     height: 70px;
   }
@@ -1507,41 +1526,41 @@ nav {
     top: 0;
   }
 
-  body.menu-step1 .carousel-target-1 .carousel-control-prev {
-    font-family: CoreSansC35;
-    font-size: 20px;
-    color: #533fb8;
-    opacity: 1;
-}
-body.menu-step1 .carousel-target-1 .carousel-control-prev-icon {
-    background-image: url("../img/icon/arrow_down_1.png");
-    transform: rotate(180deg);
-}
-body.menu-step1 .carousel-target-1 .slider-color::-webkit-slider-thumb {
-    background: #533fb8;
-}
+    body.menu-step1 .carousel-target-1 .carousel-control-prev {
+      font-family: CoreSansC35;
+      font-size: 20px;
+      color: #533fb8;
+      opacity: 1;
+    }
+    body.menu-step1 .carousel-target-1 .carousel-control-prev-icon {
+        background-image: url("../img/icon/arrow_down_1.png");
+        transform: rotate(180deg);
+    }
+    body.menu-step1 .carousel-target-1 .slider-color::-webkit-slider-thumb {
+        background: #533fb8;
+    }
 
-body.menu-step1 .carousel-target-2 .carousel-control-prev {
-  font-family: CoreSansC35;
-  font-size: 20px;
-  color: #ff0033;
-  opacity: 1;
-}
-body.menu-step1 .carousel-target-2 .carousel-control-prev-icon {
-  background-image: url("../img/icon/arrow_down_2.png");
-  transform: rotate(180deg);
-}
+    body.menu-step1 .carousel-target-2 .carousel-control-prev {
+      font-family: CoreSansC35;
+      font-size: 20px;
+      color: #ff0033;
+      opacity: 1;
+    }
+    body.menu-step1 .carousel-target-2 .carousel-control-prev-icon {
+      background-image: url("../img/icon/arrow_down_2.png");
+      transform: rotate(180deg);
+    }
 
-body.menu-step1 .carousel-target-3 .carousel-control-prev {
-  font-family: CoreSansC35;
-  font-size: 20px;
-  color: #ff810c;
-  opacity: 1;
-}
-body.menu-step1 .carousel-target-3 .carousel-control-prev-icon {
-  background-image: url("../img/icon/arrow_down_3.png");
-  transform: rotate(180deg);
-}
+    body.menu-step1 .carousel-target-3 .carousel-control-prev {
+      font-family: CoreSansC35;
+      font-size: 20px;
+      color: #ff810c;
+      opacity: 1;
+    }
+    body.menu-step1 .carousel-target-3 .carousel-control-prev-icon {
+      background-image: url("../img/icon/arrow_down_3.png");
+      transform: rotate(180deg);
+    }
 
     .menu-btn {
         display: block !important;
@@ -1823,7 +1842,7 @@ body.menu-step1 .carousel-target-3 .carousel-control-prev-icon {
         margin: 54px auto;
     }
 
-    .carousel-inner {
+    body.step1 .carousel-inner {
         height: 500px;
         padding-top: 80px;
     }
@@ -1853,6 +1872,27 @@ body.menu-step1 .carousel-target-3 .carousel-control-prev-icon {
 
     body.menu-step1 .carousel-target-1 .carousel-item h5 {
         color: #f9f2e1;
+    }
+
+    body.menu-step1 .carousel-item{
+        margin-top: 90px;
+    }
+
+    body.menu-step1 .carousel-control-next{
+        top: 430px;
+        height: 70px;
+    }
+
+    body.menu-step1 .whdiv{
+        margin-top: 50px;
+    }
+
+    body.menu-step1 .training-wp{
+        margin: 50px 0;
+    }
+
+    body.menu-step1 .sex-wp{
+        margin: 65px 0;
     }
 
     /* mealplan not logged */
@@ -2086,6 +2126,8 @@ body.menu-step1 .carousel-target-3 .carousel-control-prev-icon {
 
     .home-potatoe-text {
         width: 100%;
+        padding: 0 26px;
+        font-size: 12px;
     }
 
     .home-potatoe-img {
@@ -2186,7 +2228,7 @@ body.menu-step1 .carousel-target-3 .carousel-control-prev-icon {
 
     .home-description-text {
         width: 100%;
-        padding: 0 20px;
+        padding: 0 36px;
         font-size: 12px;
     }
 
@@ -2196,12 +2238,12 @@ body.menu-step1 .carousel-target-3 .carousel-control-prev-icon {
     }
 
     .home-make-diet-img {
-        padding: 0 20px;
+        padding: 0 36px;
         max-width: 375px !important;
     }
 
     .home-make-diet-btn {
-        margin: 0 20px;
+        margin: 0 36px;
     }
 
     .home-mist-img {
