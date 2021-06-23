@@ -637,6 +637,49 @@ body.menu-step2 #target-3 .card-header {
     justify-content: center;
 }
 
+body.menu-step2 #target-1 .modal-header {
+    background: #ffcf00;
+    color: #000000;
+    clip-path: polygon(0px 0px, 100% 0px, 99.90% 67.12%, 0px 100%);
+    height: 150px;
+}
+body.menu-step2 #target-2 .modal-header {
+    background: #533fb8;
+    clip-path: polygon(0px 0px, 100% 0px, 99.90% 67.12%, 0px 100%);
+    height: 150px;
+}
+body.menu-step2 #target-3 .modal-header {
+    background: #009167;
+    clip-path: polygon(0px 0px, 100% 0px, 99.90% 67.12%, 0px 100%);
+    height: 150px;
+}
+
+body.menu-step2 #target-1 .modal-header h3 {
+    width: 100%;
+    margin-top: 25px;
+    font-size: 30px;
+}
+body.menu-step2 #target-2 .modal-header h3 {
+    width: 100%;
+    margin-top: 25px;
+    font-size: 30px;
+}
+body.menu-step2 #target-3 .modal-header h3 {
+    width: 100%;
+    margin-top: 25px;
+    font-size: 30px;
+}
+
+body.menu-step2 .modal-header button span{
+    color: #f9f2e1;
+    font-size: 60px;
+    font-weight: normal;
+}
+
+body.menu-step2 .product_description_iner.dish-img-card .nav{
+    border: 0px;
+}
+
 .card-header h5 {
     display: flex;
     justify-content: center;
@@ -1245,7 +1288,7 @@ body.menu-step2 .profile_info .pdf-form form {
 
 body.menu-step2 .modal-content {
     background: #000000;
-    border: 1px solid #f9f2e1;
+    border: 0px;
 }
 
 body.menu-step2 .product_description_iner .nav-link {
@@ -2052,6 +2095,21 @@ nav {
 
     body.menu-step2 .profile_info .text {
         font-size: 12px;
+    }
+
+    body.menu-step2 #target-1 .modal-header h3 {
+        font-size: 22px;
+    }
+    body.menu-step2 #target-2 .modal-header h3 {
+        font-size: 22px;
+    }
+    body.menu-step2 #target-3 .modal-header h3 {
+        font-size: 22px;
+    }
+
+    body.menu-step2 .modal .close{
+        margin: 0px;
+        padding: 0px;
     }
 
     body.menu-step2 .profile_info .pdf-form form input,

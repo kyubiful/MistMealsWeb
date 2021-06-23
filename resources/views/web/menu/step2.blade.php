@@ -166,7 +166,9 @@
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header" style="border: none">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class=""></div>
+                            <h3 class="col-lg-5 col-sm-11">{{ $el->nombre }}</h3>
+                            <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
@@ -198,7 +200,6 @@
                                                 </div>
                                             </div>
                                             <div class="col-4 col-sm-6 product_description_iner dish-img-card">
-                                                <h3>{{ $el->nombre }}</h3>
                                                   <div class="nav nav-tabs" role="tablist" style="justify-content: left">
                                                       <a class="nav-item nav-link active dish-card-menu" data-toggle="tab" href="#nav_nutritional_lunch_{{ $i }}"
                                                           role="tab" aria-controls="nav_nutritional_lunch_{{ $i }}" aria-selected="false">Nutricional </a>
@@ -304,7 +305,9 @@
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header" style="border: none">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class="col-6"></div>
+                            <h3 class="col-5">{{ $el->nombre }}</h3>
+                            <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
@@ -336,7 +339,6 @@
                                                 </div>
                                             </div>
                                             <div class="col-4 col-sm-6 product_description_iner dish-img-card">
-                                                <h3>{{ $el->nombre }}</h3>
                                                   <div class="nav nav-tabs" role="tablist" style="justify-content: left">
                                                       <a class="nav-item nav-link active dish-card-menu" data-toggle="tab" href="#nav_nutritional_dinner_{{ $i }}"
                                                           role="tab" aria-controls="nav_nutritional_dinner_{{ $i }}" aria-selected="false">Nutricional </a>

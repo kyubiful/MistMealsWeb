@@ -1357,12 +1357,29 @@ if(window.location.pathname=='/menu/config/1' || window.location.pathname=='/men
       }, 500)
     });
 }
-
 if(window.location.pathname=='/menu/dishes'){
 
     const openDish = document.querySelectorAll('.open-carousel-img');
     const dishCollapse = document.querySelectorAll('.collapse');
     const card = document.querySelectorAll('.menu-step2 .card .card-header .btn');
+    const modalTitle = document.querySelectorAll('.modal-header div');
+    console.log(modalTitle);
+
+    for(let i=0; i<modalTitle.length; i++){
+        if(window.innerWidth<991){
+            modalTitle[i].className='';
+        }else{
+            modalTitle[i].className='col-lg-6';
+        }
+
+        window.addEventListener('resize', ()=>{
+            if(window.innerWidth<991){
+                modalTitle[i].className='';
+            }else{
+                modalTitle[i].className='col-lg-6';
+            }
+        });
+    }
 
     for(let i=0; i<card.length; i++){
       card[i].addEventListener('click', () =>{
