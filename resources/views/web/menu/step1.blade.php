@@ -33,7 +33,7 @@
                 <h2>¿CUÁL ES TU SEXO?</h2>
                 <div class="sex-wp">
                   @foreach($sexo as $i => $el)
-                  <div class="sex-field {{ $user != null && $user->sexo_id == $i+1 ? 'active' : '' }}" data-value="{{ $el->id }}">{{ strtoupper($el->nombre) }}</div>
+                  <div class="sex-field {{ $user != null && $user->sexo_id == $i+1 ? 'active' : '' }}" data-target="#carouselExampleIndicators" data-slide-to="1" data-value="{{ $el->id }}">{{ strtoupper($el->nombre) }}</div>
                   @endforeach
                 </div>
               </div>
@@ -60,7 +60,7 @@
                 <h2>¿NIVEL DE EJERCICIO?</h2>
                 <div class="training-wp">
                   @foreach($ejercicio as $i => $el)
-                  <div class="training-field {{ $user != null && $user->nivel_ejercicio_id == $i+1 ? 'active' : '' }}" data-value="{{ $el->id }}">{{ strtoupper($el->nombre) }}</div>
+                  <div class="training-field {{ $user != null && $user->nivel_ejercicio_id == $i+1 ? 'active' : '' }}" data-target="#carouselExampleIndicators" data-slide-to="3" data-value="{{ $el->id }}">{{ strtoupper($el->nombre) }}</div>
                   @endforeach
                 </div>
               </div>
