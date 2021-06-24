@@ -1244,23 +1244,39 @@ if(window.location.pathname=='/menu/config/1' || window.location.pathname=='/men
     const formHeight = document.querySelector('#slide-height');
 
     step1WeightMore.addEventListener('click', () => {
-        weightValue.innerHTML = Math.round((parseFloat(weightValue.innerHTML)+ 0.1) * 100) / 100;
-        formWeight.value = Math.round((parseFloat(formWeight.value)+ 0.1) * 100) / 100;
+        if(weightValue.innerHTML < 120 && weightValue.innerHTML >= 40){
+            if(weightValue.innerHTML < 100){
+                weightValue.innerHTML = (Math.round((parseFloat(weightValue.innerHTML)+ 0.1) * 100) / 100).toPrecision(3);
+            } else{
+                weightValue.innerHTML = (Math.round((parseFloat(weightValue.innerHTML)+ 0.1) * 100) / 100).toPrecision(4);
+            }
+            formWeight.value = Math.round((parseFloat(formWeight.value)+ 0.1) * 100) / 100;
+        }
     });
 
     step1WeightLess.addEventListener('click', () => {
-        weightValue.innerHTML = Math.round((parseFloat(weightValue.innerHTML)- 0.1) * 100) / 100;
-        formWeight.value = Math.round((parseFloat(formWeight.value)- 0.1) * 100) / 100;
+        if(weightValue.innerHTML <= 120 && weightValue.innerHTML > 40){
+            if(weightValue.innerHTML < 100){
+                weightValue.innerHTML = (Math.round((parseFloat(weightValue.innerHTML)- 0.1) * 100) / 100).toPrecision(3);
+            } else{
+                weightValue.innerHTML = (Math.round((parseFloat(weightValue.innerHTML)- 0.1) * 100) / 100).toPrecision(4);
+            }
+            formWeight.value = Math.round((parseFloat(formWeight.value)- 0.1) * 100) / 100;
+        }
     });
 
     step1HeightMore.addEventListener('click', () => {
-        heightValue.innerHTML = Math.round((parseFloat(heightValue.innerHTML)+ 1) * 100) / 100;
-        formHeight.value = Math.round((parseFloat(formHeight.value)+ 1) * 100) / 100;
+        if(heightValue.innerHTML < 210 && heightValue.innerHTML >= 140){
+            heightValue.innerHTML = Math.round((parseFloat(heightValue.innerHTML)+ 1) * 100) / 100;
+            formHeight.value = Math.round((parseFloat(formHeight.value)+ 1) * 100) / 100;
+        }
     });
 
     step1HeightLess.addEventListener('click', () => {
-        heightValue.innerHTML = Math.round((parseFloat(heightValue.innerHTML)- 1) * 100) / 100;
-        formHeight.value = Math.round((parseFloat(formHeight.value)- 1) * 100) / 100;
+        if(heightValue.innerHTML <= 210 && heightValue.innerHTML > 140){
+            heightValue.innerHTML = Math.round((parseFloat(heightValue.innerHTML)- 1) * 100) / 100;
+            formHeight.value = Math.round((parseFloat(formHeight.value)- 1) * 100) / 100;
+        }
     });
 
     const carouselIndicators = document.querySelector('.carousel-indicators').children;

@@ -167,9 +167,19 @@
   let slideW = document.getElementById("slide-weight");
   let valueW = document.getElementById("range-value-weight");
   valueW.innerHTML = slideW.value;
+  if(parseFloat(valueW.innerHTML)%1==0){
+    valueW.innerHTML = slideW.value+'.0';
+  }else{
+    valueW.innerHTML = slideW.value;
+  }
 
   slideW.oninput = function() {
-    valueW.innerHTML = this.value;
+    if((this.value%1)==0){
+      console.log(this.value);
+      valueW.innerHTML = this.value+'.0';
+    }else{
+      valueW.innerHTML = this.value;
+    }
   }
 
   let slideH = document.getElementById("slide-height");
