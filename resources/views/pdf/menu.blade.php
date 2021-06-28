@@ -49,10 +49,10 @@
 
         img.claim {
             position: absolute;
-            top: 170px;
+            top: 55px;
             left: 120px;
-            width: 402px;
-            height: 497px;
+            width: 422px;
+            height: 661px;
         }
 
         img.tag {
@@ -188,28 +188,20 @@
 @endif -->
 
 @if($user->objetivo_id == 1)
-    <img class="claim" src="img/pdf/keeper_logo.png">
+    <img class="claim" src="img/pdf/MISTMEALS_DOBETTER_PNG.png">
 @elseif($user->objetivo_id == 2)
-    <img class="claim" src="img/pdf/promoter_logo.png">
+    <img class="claim" src="img/pdf/MISTMEALS_MUSCLEUP_PNG.png">
 @elseif($user->objetivo_id == 3)
-    <img class="claim" src="img/pdf/fighter_logo.png">
+    <img class="claim" src="img/pdf/MISTMEALS_FOCUSON_PNG.png">
 @endif
 
-@if($user->objetivo_id == 1)
-    <img class="tag" src="img/pdf/keeper_claim.png">
-@elseif($user->objetivo_id == 2)
-    <img class="tag" src="img/pdf/promoter_claim.png">
-@elseif($user->objetivo_id == 3)
-    <img class="tag" src="img/pdf/fighter_claim.png">
-@endif
-
-<div class="first-page-data">
+<!-- <div class="first-page-data">
   <img class="ymp-img" src="img/mealplan/your_meal_plan.png">
   <div class="description">
     <div class="cal-number">{{ $user->calorias_propuestas }}</div>
     <div class="cal-text">Calorías diarias para lograr tu objetivo.</div>
   </div>
-</div>
+</div> -->
 
 <div class="page-break"></div>
 @if($user->objetivo_id == 1)
