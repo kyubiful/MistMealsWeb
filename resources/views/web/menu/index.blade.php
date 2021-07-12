@@ -20,7 +20,7 @@
                 <div class="col-sm-10">
                     <div class="section_tittle style_2 wow fadeInDown" data-wow-delay=".5s">
                         <h2>Meal Plan</h2>
-                        <p class="subtitle">Elige tu tipo de dieta</p>
+                        <p class="subtitle">Elige tu tipo menú</p>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                           <img class="mp-image-desktop" src="img/home/target_2.png" alt="Control de calorías">
                           <img class="mp-image-mobile" src="img/mealplan/targett_2.png" alt="Control de calorías">
                       </a>
-                      <p class="subtitle mt-3">Control de calorías</p>
+                      <p class="subtitle negative-margin">Control de calorías</p>
                   </div>
               </div>
               <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 1) }}">
@@ -40,7 +40,7 @@
                           <img class="mp-image-desktop" src="img/home/target_1.png" alt="Mejora de rendimiento">
                           <img class="mp-image-mobile" src="img/mealplan/targett_1.png" alt="Mejora de rendimiento">
                       </a>
-                      <p class="subtitle mt-3">Mejora de rendimiento</p>
+                      <p class="subtitle">Mejora de rendimiento</p>
                   </div>
               </div>
               <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 3) }}">
@@ -49,7 +49,7 @@
                           <img class="mp-image-desktop" src="img/home/target_3.png" alt="Ganancia muscular">
                           <img class="mp-image-mobile" src="img/mealplan/targett_3.png" alt="Ganancia muscular">
                       </a>
-                      <p class="subtitle mt-3">Ganancia muscular</p>
+                      <p class="subtitle negative-margin">Ganancia muscular</p>
                   </div>
               </div>
             </div>
@@ -82,6 +82,7 @@
                                 <button type="submit" class="cu_btn animate_btn text-white">Suscríbete</button>
                             </div>
                         </div>
+                        @if (!auth()->check())
                         <div class="form-row justify-content-center">
                             <div class="col-lg-4 mt-3 wow fadeInDown" data-wow-delay=".7s">
                                 <div class="custom-control custom-checkbox single_contact_form">
@@ -90,6 +91,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </form>
                 </div>
             </div>

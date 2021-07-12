@@ -33,28 +33,34 @@
                 <h2>¿CUÁL ES TU SEXO?</h2>
                 <div class="sex-wp">
                   @foreach($sexo as $i => $el)
-                  <div class="sex-field {{ $user != null && $user->sexo_id == $i+1 ? 'active' : '' }}" data-value="{{ $el->id }}">{{ strtoupper($el->nombre) }}</div>
+                  <div class="sex-field {{ $user != null && $user->sexo_id == $i+1 ? 'active' : '' }}" data-target="#carouselExampleIndicators" data-slide-to="1" data-value="{{ $el->id }}">{{ strtoupper($el->nombre) }}</div>
                   @endforeach
                 </div>
               </div>
               <div class="carousel-item">
                 <h2>¿CUÁL ES TU PESO Y ALTURA?</h2>
+                <div class="whdiv">
                 <div class="slide-wp">
-                  <input type="range" class="slider-color form-range" id="slide-weight" name="peso" min="40" max="120" value={{ $user != null ? $user->peso : '80' }} step="0.1">
                   <label for="slide-weight">PESO</label>
+                  <span class="step1-weight-less" style="cursor: pointer;"><</span>
                   <span class="range-text"><span id="range-value-weight" class="range-value">0</span> kg</span>
+                  <span class="step1-weight-more" style="cursor: pointer;">></span>
+                  <input type="range" class="slider-color form-range" id="slide-weight" name="peso" min="40" max="120" value={{ $user != null ? $user->peso : '80' }} step="0.1">
                 </div>
                 <div class="slide-wp mt-3">
-                  <input type="range" class="slider-color form-range" id="slide-height" name="altura" min="140" max="210" value="{{ $user != null ? $user->altura : '160' }}" step="1">
                   <label for="slide-height">ALTURA</label>
+                  <span class="step1-height-less" style="cursor: pointer;"><</span>
                   <span class="range-text"><span id="range-value-height" class="range-value">0</span> m</span>
+                  <span class="step1-height-more" style="cursor: pointer;">></span>
+                  <input type="range" class="slider-color form-range" id="slide-height" name="altura" min="140" max="210" value="{{ $user != null ? $user->altura : '160' }}" step="1">
                 </div>
+                  </div>
               </div>
               <div class="carousel-item">
                 <h2>¿NIVEL DE EJERCICIO?</h2>
                 <div class="training-wp">
                   @foreach($ejercicio as $i => $el)
-                  <div class="training-field {{ $user != null && $user->nivel_ejercicio_id == $i+1 ? 'active' : '' }}" data-value="{{ $el->id }}">{{ strtoupper($el->nombre) }}</div>
+                  <div class="training-field {{ $user != null && $user->nivel_ejercicio_id == $i+1 ? 'active' : '' }}" data-target="#carouselExampleIndicators" data-slide-to="3" data-value="{{ $el->id }}">{{ strtoupper($el->nombre) }}</div>
                   @endforeach
                 </div>
               </div>
@@ -70,10 +76,12 @@
                   <div class="single_contact_form mt-5">
                     <button type="submit" class="mist_btn animate_btn text-uppercase">Ver mi Meal Plan</button>
                   </div>
+                  @if (!auth()->check())
                   <div class="custom-control custom-checkbox step1-policy">
                     <input type="checkbox" class="custom-control-input" id="customContro2" required>
                     <label class="custom-control-label" for="customContro2" style="color: #F9F2E1;">Acepto la <a href="{{ route('web.politicaprivacidad') }}" target="_blank" class="base_color">política de privacidad</a> del sitio web</label>
                   </div>
+                  @endif
                 </div>
               </div>
 
@@ -118,10 +126,12 @@
           </div>
           <div class="form-row justify-content-center">
             <div class="col-lg-4 mt-3 wow fadeInDown" data-wow-delay=".7s">
+              @if (!auth()->check())
               <div class="custom-control custom-checkbox single_contact_form">
                 <input type="checkbox" class="custom-control-input" id="customControl" required>
                 <label class="custom-control-label" for="customControl" style="color: #F9F2E1;">Acepto la <a href="{{ route('web.politicaprivacidad') }}" target="_blank" class="base_color">política de privacidad</a> del sitio web</label>
               </div>
+              @endif
             </div>
           </div>
         </form>
@@ -157,9 +167,19 @@
   let slideW = document.getElementById("slide-weight");
   let valueW = document.getElementById("range-value-weight");
   valueW.innerHTML = slideW.value;
+  if(parseFloat(valueW.innerHTML)%1==0){
+    valueW.innerHTML = slideW.value+'.0';
+  }else{
+    valueW.innerHTML = slideW.value;
+  }
 
   slideW.oninput = function() {
-    valueW.innerHTML = this.value;
+    if((this.value%1)==0){
+      console.log(this.value);
+      valueW.innerHTML = this.value+'.0';
+    }else{
+      valueW.innerHTML = this.value;
+    }
   }
 
   let slideH = document.getElementById("slide-height");

@@ -29,7 +29,7 @@
                         <div class="text">Más abajo encontrarás nuestra propuesta de menú para ti, basada en tu frecuencia de deporte y tus datos personales.</div>
 
                         <div class="pdf-form">
-                            {!! Form::open(['method' => 'GET', 'route' => ['web.menu.pdf'], 'id' => 'pdfMenu', 'target' => '_blank']) !!}
+                            {!! Form::open(['method' => 'POST', 'route' => ['web.menu.mail'], 'id' => 'pdfMenu', 'target' => '_blank']) !!}
                             <input type="email" name="email" class="form-control cu_input" placeholder="Email" value="{{ str_contains($user->email, '@') ? $user->email : '' }}" required>
                             <button type="submit" class="cu_btn animate_btn text-white">Descargar PDF</button>
                             {!! Form::close() !!}
@@ -77,7 +77,7 @@
                                         <div class="right-dish">
                                             <div class="dish-text">
                                                 <!-- <p class="title">COMIDA</p> -->
-                                                <p class="name">{{ $lunch[$i]->nombre }}</p>
+                                                <p class="name">{{ $lunch[$i]->nombre }} ({{ $lunch[$i]->plato_peso->valor }})</p>
                                             </div>
                                             <div class="dish-info">
                                                 <span>{{ round($lunch[$i]->calorias, 0) }} <b>CAL</b></span>
@@ -86,7 +86,7 @@
                                                 <span>{{ $lunch[$i]->plato_info_nutricional->grasas }} <b>G</b></span>
                                                 <span>{{ $lunch[$i]->plato_info_nutricional->fibra }} <b>F</b></span>
                                             </div>
-                                        </div>  
+                                        </div>
                                     </div>
                                     <div class="day-dinner">
                                         <div class="left-dish">
@@ -101,7 +101,7 @@
                                         <div class="right-dish">
                                             <div class="dish-text">
                                                 <!-- <p class="title">CENA</p> -->
-                                                <p class="name">{{ $dinner[$i]->nombre }}</p>
+                                                <p class="name">{{ $dinner[$i]->nombre }} ({{ $dinner[$i]->plato_peso->valor }})</p>
                                             </div>
                                             <div class="dish-info">
                                                 <span>{{ round($dinner[$i]->calorias, 0) }} <b>CAL</b></span>
@@ -166,7 +166,9 @@
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header" style="border: none">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class=""></div>
+                            <h3 class="col-lg-5 col-sm-11">{{ $el->nombre }}</h3>
+                            <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
@@ -183,7 +185,7 @@
                                                             <img class="w-100 d-block" src="{{ asset($el->getUrlImage2Attribute()) }}" alt="{{ $el->nombre }}_2">
                                                         </div>
                                                     </div>
-                                                    <a class="carousel-control-prev" href="#dish-lunch-carousel-{{ $i }}" role="button" data-slide="prev" style="display: none;">
+                                                    <a class="carousel-control-prev" href="#dish-lunch-carousel-{{ $i }}" role="button" data-slide="prev">
                                                         <span class="carousel-control-prev-icon"></span>
                                                         <span class="sr-only">Previous</span>
                                                     </a>
@@ -198,7 +200,6 @@
                                                 </div>
                                             </div>
                                             <div class="col-4 col-sm-6 product_description_iner dish-img-card">
-                                                <h3>{{ $el->nombre }}</h3>                                   
                                                   <div class="nav nav-tabs" role="tablist" style="justify-content: left">
                                                       <a class="nav-item nav-link active dish-card-menu" data-toggle="tab" href="#nav_nutritional_lunch_{{ $i }}"
                                                           role="tab" aria-controls="nav_nutritional_lunch_{{ $i }}" aria-selected="false">Nutricional </a>
@@ -218,13 +219,13 @@
                                                                         <!-- <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p> -->
                                                                         <!-- <p>@lang('admin.page.plato.per_100')</p> -->
                                                                         <p>Por plato</p>
-                                                                    
+
                                                                     </div>
-                                                                    <div class="single_additional_info">
+                                                                    <!-- <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.energy')</h5>
-                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->energia / 100) * $el->plato_peso->peso, 1) }}kJ</p> -->
+                                                                        <p>{{ round(($el->plato_info_nutricional->energia / 100) * $el->plato_peso->peso, 1) }}kJ</p>
                                                                         <p>{{ round($el->plato_info_nutricional->energia, 1) }}kJ</p>
-                                                                    </div>
+                                                                    </div> -->
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.calories')</h5>
                                                                         <!-- <p>{{ round(($el->plato_info_nutricional->calorias / 100) * $el->plato_peso->peso, 1) }} Cal</p> -->
@@ -273,8 +274,8 @@
                                                         <div class="row justify-content-center">
                                                             <div class="col-lg-12 dish-ingredients-text">
                                                                 <p><b>Ingredientes:</b> {{ $el->ingredientes }}</p>
-                                                                <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
-                                                                <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p>
+                                                                <!-- <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
+                                                                <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p> -->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -304,7 +305,9 @@
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header" style="border: none">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class="col-6"></div>
+                            <h3 class="col-5">{{ $el->nombre }}</h3>
+                            <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
@@ -321,7 +324,7 @@
                                                             <img class="w-100 d-block" src="{{ asset($el->getUrlImage2Attribute()) }}" alt="{{ $el->nombre }}_2">
                                                         </div>
                                                     </div>
-                                                    <a class="carousel-control-prev" href="#dish-dinner-carousel-{{ $i }}" role="button" data-slide="prev" style="display: none;">
+                                                    <a class="carousel-control-prev" href="#dish-dinner-carousel-{{ $i }}" role="button" data-slide="prev">
                                                         <span class="carousel-control-prev-icon"></span>
                                                         <span class="sr-only">Previous</span>
                                                     </a>
@@ -336,7 +339,6 @@
                                                 </div>
                                             </div>
                                             <div class="col-4 col-sm-6 product_description_iner dish-img-card">
-                                                <h3>{{ $el->nombre }}</h3>                                                
                                                   <div class="nav nav-tabs" role="tablist" style="justify-content: left">
                                                       <a class="nav-item nav-link active dish-card-menu" data-toggle="tab" href="#nav_nutritional_dinner_{{ $i }}"
                                                           role="tab" aria-controls="nav_nutritional_dinner_{{ $i }}" aria-selected="false">Nutricional </a>
@@ -344,7 +346,7 @@
                                                           role="tab" aria-controls="nav_description_dinner_{{ $i }}" aria-selected="true">Ingredientes</a>
                                                       <a class="nav-item nav-link dish-card-menu" data-toggle="tab" href="#nav_recipe_dinner_{{ $i }}"
                                                           role="tab" aria-controls="nav_description_dinner_{{ $i }}" aria-selected="true">Receta</a>
-                                                  </div>                                                
+                                                  </div>
                                                 <div class="tab-content">
                                                     <div class="tab-pane fade show active" id="nav_nutritional_dinner_{{ $i }}" role="tabpanel" style="padding-top: 20px;">
                                                         <div class="row justify-content-center">
@@ -357,11 +359,11 @@
                                                                         <!-- <p>@lang('admin.page.plato.per_100')</p> -->
                                                                         <p>Por plato</p>
                                                                     </div>
-                                                                    <div class="single_additional_info">
+                                                                    <!-- <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.energy')</h5>
-                                                                        <!-- <p>{{ round(($el->plato_info_nutricional->energia / 100) * $el->plato_peso->peso, 1) }}kJ</p> -->
+                                                                        <p>{{ round(($el->plato_info_nutricional->energia / 100) * $el->plato_peso->peso, 1) }}kJ</p>
                                                                         <p>{{ round($el->plato_info_nutricional->energia, 1) }}kJ</p>
-                                                                    </div>
+                                                                    </div> -->
                                                                     <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.calories')</h5>
                                                                         <!-- <p>{{ round(($el->plato_info_nutricional->calorias / 100) * $el->plato_peso->peso, 1) }} Cal</p> -->
@@ -410,8 +412,8 @@
                                                         <div class="row justify-content-center">
                                                             <div class="col-lg-12 dish-ingredients-text">
                                                                 <p><b>Ingredientes:</b> {{ $el->ingredientes }}</p>
-                                                                <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
-                                                                <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p>
+                                                                <!-- <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
+                                                                <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p> -->
                                                             </div>
                                                         </div>
                                                     </div>

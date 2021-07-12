@@ -133,6 +133,7 @@
                                 <button type="submit" class="cu_btn animate_btn text-white">Suscríbete</button>
                             </div>
                         </div>
+                        @if (!auth()->check())
                         <div class="form-row justify-content-center">
                             <div class="col-lg-4 mt-3 wow fadeInDown" data-wow-delay=".7s">
                                 <div class="custom-control custom-checkbox single_contact_form">
@@ -141,6 +142,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </form>
                 </div>
             </div>

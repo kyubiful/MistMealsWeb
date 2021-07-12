@@ -31,14 +31,12 @@ class MenuMail extends Mailable
      */
     public function build()
     {
-        $data = [
-            'text' => 'Hello world!'
-        ];
+        $data = $this->details;
 
-        $pdf = PDF::loadView('pdf.menu', $data);
+        $pdf = PDF::loadView('pdf.menu', $data)->setPaper('a4', 'landscape');
 
         return $this->subject('Mist Meals - Menú')
-                    ->view('emails.menuMail')
+                    ->view('emails.menuMail', $data)
                     ->attachData($pdf->output(), 'mist-meals-menu.pdf', [
                         'mime' => 'application/pdf',
                     ]);

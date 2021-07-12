@@ -78,15 +78,15 @@
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
   'coresansc35' => array(
-    'normal' => $fontDir . '/coresansc35_normal_c5e80ffed154f2b7dd30a7a9c38c1736',
+    'normal' => $fontDir . '/coresansc35_normal_65ca0ee4767bbd17b05659a90c5efb57',
   ),
   'coresansc65' => array(
-    'normal' => $fontDir . '/coresansc65_normal_5e368cfd8541a353403af24fc64f4cd0',
+    'normal' => $fontDir . '/coresansc65_normal_3ecd7374f84b113fd4027c14a817e7f5',
   ),
   'tuskergrotesk35' => array(
-    'normal' => $fontDir . '/tuskergrotesk35_normal_3f3473cedb84abf8e158bccaa2666357',
+    'normal' => $fontDir . '/tuskergrotesk35_normal_a74cd461aed25b32cbeacd560d92f213',
   ),
   'tuskergrotesk65' => array(
-    'normal' => $fontDir . '/tuskergrotesk65_normal_0d3733bb7cd28e53e8dffa319dfb0718',
+    'normal' => $fontDir . '/tuskergrotesk65_normal_cdde6a6f07e3a3a259c08483d22b7af4',
   ),
 ) ?>
