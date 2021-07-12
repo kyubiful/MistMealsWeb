@@ -21,6 +21,7 @@ class Plato extends Model
     'plato_peso_id',
     'imagen_1',
     'imagen_2',
+    'active'
   ];
 
   public function plato_codigo()
@@ -94,4 +95,18 @@ class Plato extends Model
   {
     return '/plato/' . $this->id . '/';
   }
+
+  public function carts(){
+    return $this->morphedByMany(Cart::class, 'productable')->withPivot('quantity');
+  }
+
+  public function orders(){
+    return $this->morphedByMany(Order::class, 'productable')->withPivot('quantity');
+  }
+
+  public function getTotalAttribute()
+  {
+    return $this->pivot->quantity * $this->precio;
+  }
+
 }
