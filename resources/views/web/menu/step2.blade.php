@@ -118,6 +118,10 @@
                     </div>
 
                 @endforeach
+                <form method="POST" action="{{ route('web.menu.addtocart') }}">
+                  @csrf
+                  <button type="submit">Añadir al carrito</button>
+                </form>
             </div>
         </section>
 

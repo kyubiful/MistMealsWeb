@@ -33,6 +33,7 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::get('/menu/config/{id}', 'MenuController@step1')->name('menu.step1');
   Route::post('/menu/config/{id}', 'MenuController@step1Store')->name('menu.step1.store');
   Route::get('/menu/dishes', 'MenuController@step2')->name('menu.step2');
+  Route::post('/menu/platos/carts', 'MenuController@addToCart')->name('menu.addtocart');
   Route::post('/menu/mail', 'MenuController@sendMailMenu')->name('menu.mail');
   Route::get('/menu/pdf', 'MenuController@pdfMenu')->name('menu.pdf');
 
@@ -44,7 +45,7 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::get('/politica-privacidad', 'CondicionesController@privacidad')->name('politicaprivacidad');
 
   Route::get('/platos', 'PlatosController@index')->name('platos');
-  Route::resource('/platos.carts', 'PlatosCartController')->only(['store','destroy']);
+  Route::resource('/platos.carts', 'PlatosCartController')->only(['store', 'destroy']);
   Route::resource('/carts', 'CartController')->only(['index']);
   Route::resource('/orders', 'OrderController')->only(['create', 'store']);
   Route::resource('/orders.payments', 'OrderPaymentController')->only(['create', 'store']);

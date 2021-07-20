@@ -12,14 +12,22 @@ use App\Models\Sexo;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
+use App\Services\CartService;
 
 class MenuController extends Controller
 {
+    public $cartService;
     //
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
 
     public function index(Request $request)
     {
@@ -119,6 +127,36 @@ class MenuController extends Controller
         $bodyclass = "menu-step2";
 
         return view('web.menu.step2', compact('user', 'lunch', 'dinner', 'semana', 'bodyclass'));
+    }
+
+    public function addToCart(Request $request)
+    {
+        $dinner = Session::get('dinner');
+        $lunch = Session::get('lunch');
+        $cart = $this->cartService->getFromCookieOrCreate();
+
+        for($i = 0; $i<$dinner->count(); $i++)
+        {
+            $quantity = $cart->products()->find($dinner[$i]->id)->pivot->quantity ?? 0;
+
+            $cart->products()->syncWithoutDetaching([
+                $dinner[$i]->id => ['quantity' => $quantity + 1],
+            ]);
+
+        }
+
+        for($i = 0; $i<$lunch->count(); $i++)
+        {
+            $quantity = $cart->products()->find($lunch[$i]->id)->pivot->quantity ?? 0;
+
+            $cart->products()->syncWithoutDetaching([
+                $lunch[$i]->id => ['quantity' => $quantity + 1],
+            ]);
+
+        }
+
+        $cookie = $this->cartService->makeCookie($cart);
+        return redirect()->back()->cookie($cookie);
     }
 
     public function pdfMenu(Request $request)
