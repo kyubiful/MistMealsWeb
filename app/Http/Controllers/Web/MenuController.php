@@ -119,7 +119,6 @@ class MenuController extends Controller
 
             session(['lunch' => $lunch]);
             session(['dinner' => $dinner]);
-
         }
 
         $semana = ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5', 'Día 6', 'Día 7'];
@@ -131,28 +130,25 @@ class MenuController extends Controller
 
     public function addToCart(Request $request)
     {
+        dd($request->all());
         $dinner = Session::get('dinner');
         $lunch = Session::get('lunch');
         $cart = $this->cartService->getFromCookieOrCreate();
 
-        for($i = 0; $i<$dinner->count(); $i++)
-        {
+        for ($i = 0; $i < $dinner->count(); $i++) {
             $quantity = $cart->products()->find($dinner[$i]->id)->pivot->quantity ?? 0;
 
             $cart->products()->syncWithoutDetaching([
                 $dinner[$i]->id => ['quantity' => $quantity + 1],
             ]);
-
         }
 
-        for($i = 0; $i<$lunch->count(); $i++)
-        {
+        for ($i = 0; $i < $lunch->count(); $i++) {
             $quantity = $cart->products()->find($lunch[$i]->id)->pivot->quantity ?? 0;
 
             $cart->products()->syncWithoutDetaching([
                 $lunch[$i]->id => ['quantity' => $quantity + 1],
             ]);
-
         }
 
         $cookie = $this->cartService->makeCookie($cart);
@@ -176,7 +172,6 @@ class MenuController extends Controller
                     'name' => "Name"
                 ]);
             }
-
         }
 
         $lunch = session('lunch');
@@ -226,7 +221,6 @@ class MenuController extends Controller
                     'name' => "Name"
                 ]);
             }
-
         }
 
         $lunch = session('lunch');
@@ -263,5 +257,4 @@ class MenuController extends Controller
 
         return PDF::loadView('pdf.menu', $data)->setPaper('a4', 'landscape')->stream('mist-meals-menu.pdf');
     }
-
 }

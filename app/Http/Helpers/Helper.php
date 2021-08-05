@@ -185,7 +185,6 @@ class Helper
         $caloriesRest = $caloriasDiariasTotales - $caloriesMist;
 
         // Dishes
-
         $dishesLunch = Plato::where('plato_codigo_id', $lunchDishCode->id);
         for($i = 0; $i < 7; $i++) {
 

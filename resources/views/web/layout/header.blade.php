@@ -10,7 +10,7 @@
             <li><a href="{{ route('web.revolucion') }}" class="menu-i">La Revolución</a></li>
             <li><a href="{{ route('web.contacto') }}" class="menu-i">Contacto</a></li>
             @if(auth()->check() && \App\Models\User::findOrFail(auth()->user()->id)->isAdmin())
-                <li><a href="{{ route('admin.home') }}" class="menu-i">Panel Administracion</a></li>
+            <li><a href="{{ route('admin.home') }}" class="menu-i">Panel Administracion</a></li>
             @endif
             <li class="session">
                 @if (!auth()->check())
@@ -26,7 +26,7 @@
                 </a>
 
                 <div class="logout">
-                    <a href="{{ route('web.user.logout') }}"  title="Cerrar sesión" class="menu-i"><i class="icon feather icon-log-out"></i></a>
+                    <a href="{{ route('web.user.logout') }}" title="Cerrar sesión" class="menu-i"><i class="icon feather icon-log-out"></i></a>
                 </div>
                 @elseif(auth()->check() && \App\Models\User::findOrFail(auth()->user()->id)->isAdmin())
 
@@ -41,7 +41,7 @@
             </li>
             <li>
                 @inject('cartService','App\Services\CartService')
-                <a href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/cart.png" >({{ $cartService->countProducts() }})</a>
+                <a href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/cart.png">({{ $cartService->countProducts() }})</a>
             </li>
         </ul>
         <div class="menu-btn">

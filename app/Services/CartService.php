@@ -27,7 +27,7 @@ class CartService
   }
 
   public function makeCookie(Cart $cart)
-  { 
+  {
     return Cookie::make($this->cookieName, $cart->id, 7 * 24 * 60);
   }
 
@@ -35,11 +35,15 @@ class CartService
   {
     $cart = $this->getFromCookie();
 
-    if($cart != null){
+    if ($cart != null) {
       return $cart->products->pluck('pivot.quantity')->sum();
     }
 
     return 0;
   }
 
+  public function deleteCookie()
+  {
+    return Cookie::queue(Cookie::forget($this->cookieName));
+  }
 }
