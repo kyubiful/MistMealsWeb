@@ -130,29 +130,19 @@ class MenuController extends Controller
 
     public function addToCart(Request $request)
     {
-        dd($request->all());
-        $dinner = Session::get('dinner');
-        $lunch = Session::get('lunch');
+        $menu = $request->id;
         $cart = $this->cartService->getFromCookieOrCreate();
 
-        for ($i = 0; $i < $dinner->count(); $i++) {
-            $quantity = $cart->products()->find($dinner[$i]->id)->pivot->quantity ?? 0;
+        for ($i = 0; $i < count($menu); $i++) {
+            $quantity = $cart->products()->find($menu[$i])->pivot->quantity ?? 0;
 
             $cart->products()->syncWithoutDetaching([
-                $dinner[$i]->id => ['quantity' => $quantity + 1],
-            ]);
-        }
-
-        for ($i = 0; $i < $lunch->count(); $i++) {
-            $quantity = $cart->products()->find($lunch[$i]->id)->pivot->quantity ?? 0;
-
-            $cart->products()->syncWithoutDetaching([
-                $lunch[$i]->id => ['quantity' => $quantity + 1],
+                $menu[$i] => ['quantity' => $quantity + 1],
             ]);
         }
 
         $cookie = $this->cartService->makeCookie($cart);
-        return redirect()->back()->cookie($cookie);
+        return redirect('carts')->cookie($cookie);
     }
 
     public function pdfMenu(Request $request)

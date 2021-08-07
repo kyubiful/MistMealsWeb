@@ -86,7 +86,7 @@
                       <span>{{ $lunch[$i]->plato_info_nutricional->grasas }} <b>G</b></span>
                       <span>{{ $lunch[$i]->plato_info_nutricional->fibra }} <b>F</b></span>
                     </div>
-                    <input type="checkbox" name="id[]" id="" value="{{$lunch[$i]->id}} checked">
+                    <input type="checkbox" name="id[]" id="" value="{{$lunch[$i]->id}}" checked>
                   </div>
                 </div>
                 <div class="day-dinner">
@@ -111,7 +111,7 @@
                       <span>{{ $dinner[$i]->plato_info_nutricional->grasas }} <b>G</b></span>
                       <span>{{ $dinner[$i]->plato_info_nutricional->fibra }} <b>F</b></span>
                     </div>
-                    <input type="checkbox" name="id[]" id="" value="{{$dinner[$i]->id}} checked">
+                    <input type="checkbox" name="id[]" id="" value="{{$dinner[$i]->id}}" checked>
                   </div>
                 </div>
               </div>
