@@ -28,4 +28,8 @@ if(path == '/usuario/signup' || path == '/menu/dishes'){
     }
   
   })
+  if(document.documentElement.scrollTop>100 && i == 0){
+    nav.classList.toggle('black');
+    i=1;
+  }
 }
