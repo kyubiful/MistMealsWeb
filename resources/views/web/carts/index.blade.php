@@ -28,10 +28,15 @@
         <div class="cart-price-subtotal-content">
           <p class="cart-price-subtotal"><span>Subtotal</span><span>{{$cart->total}}€</span></p>
           <p class="cart-price-subtotal"><span>Descuento</span><span>0€</span></p>
+          <p class="cart-price-subtotal"><span>Gastos de envío</span><span>3,50€</span></p> <!-- implementar gastos de envío -->
         </div>
         <p class="cart-price-total"><b><span>TOTAL</span><span>{{ $cart->total }}€</span></b></p>
       </div>
-      <a class="mist_btn" href="{{ route('web.orders.create') }}">Tramitar pedido</a>
+      @inject('cartService','App\Services\CartService')
+      @if($cartService->countProducts() < 5) <a class="mist_btn_disable" href="#">Pedido mínimo de 5 platos</a>
+        @else
+        <a class="mist_btn" href="{{ route('web.orders.create') }}">Tramitar pedido</a>
+        @endif
     </div>
   </div>
   @endif

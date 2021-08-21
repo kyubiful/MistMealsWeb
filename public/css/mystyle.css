@@ -347,6 +347,32 @@ p {
   opacity: 0.6;
 }
 
+.mist_btn_disable {
+  background: url("../img/mist-button.png") no-repeat;
+  width: 203px;
+  height: 49px;
+  background-size: contain;
+  display: block;
+  border: none;
+  color: #f9f2e1;
+  text-align: center;
+  line-height: 49px;
+  cursor: none;
+}
+
+.mist_btn_disable:hover {
+  background: url("../img/mist-button.png") no-repeat;
+  width: 203px;
+  height: 49px;
+  background-size: contain;
+  display: block;
+  border: none;
+  color: #f9f2e1;
+  text-align: center;
+  line-height: 49px;
+  cursor: default;
+}
+
 .section_tittle.style_2 {
   margin-bottom: 40px;
 }

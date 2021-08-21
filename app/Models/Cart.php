@@ -10,7 +10,8 @@ class Cart extends Model
 {
     use HasFactory;
 
-    public function products(){
+    public function products()
+    {
         return $this->morphToMany(Plato::class, 'productable')->withPivot('quantity');
     }
 
