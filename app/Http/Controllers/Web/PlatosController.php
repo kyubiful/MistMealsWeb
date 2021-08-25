@@ -8,12 +8,13 @@ use App\Models\Plato;
 
 class PlatosController extends Controller
 {
-    public function index(Request $request){
-        $platos = Plato::all();
+    public function index(Request $request)
+    {
+        $platos = Plato::paginate(12);
         return view('web.platos.index', compact('platos'));
     }
 
-    public function addToCart(){
-
+    public function addToCart()
+    {
     }
 }

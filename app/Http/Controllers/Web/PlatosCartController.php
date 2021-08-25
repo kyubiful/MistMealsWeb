@@ -15,7 +15,7 @@ class PlatosCartController extends Controller
 
     public function __construct(CartService $cartService)
     {
-       $this->cartService = $cartService; 
+        $this->cartService = $cartService;
     }
     /**
      * Store a newly created resource in storage.
@@ -34,9 +34,14 @@ class PlatosCartController extends Controller
             $plato->id => ['quantity' => $quantity + 1],
         ]);
 
-        $cookie = $this->cartService->makeCookie($cart);
+        $infoName = $cart->products()->find($plato->id)->nombre;
+        $infoPrice = $cart->products()->find($plato->id)->precio;
 
-        return redirect()->back()->cookie($cookie);
+        $cookie = $this->cartService->makeCookie($cart);
+        $infoCookieName = Cookie::make('infoName', $infoName, 7 * 24 * 60, null, null, false, false);
+        $infoCookiePrice = Cookie::make('infoPrice', $infoPrice, 7 * 24 * 60, null, null, false, false);
+
+        return redirect()->back()->cookie($cookie)->cookie($infoCookieName)->cookie($infoCookiePrice);
     }
 
     /**
@@ -49,10 +54,9 @@ class PlatosCartController extends Controller
     public function destroy(Plato $plato, Cart $cart)
     {
         $cart->products()->detach($plato->id);
-        
+
         $cookie = $this->cartService->makeCookie($cart);
 
         return redirect()->back()->cookie($cookie);
     }
-
 }

@@ -1436,4 +1436,18 @@ if(window.location.pathname=='/platos'){
     })
   }
   window.scrollTo(0, parseInt(getCookie('pageHeight')));
+
+  const hideModalBtn = document.querySelector('.plates-modal-hide');
+  hideModalBtn.addEventListener('click', () => {
+    document.querySelector('.plates-modal').style.display = 'none';
+    document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  });
+
+  const cartModalBtn = document.querySelector('.plates-modal-cart-btn');
+  cartModalBtn.addEventListener('click', () => {
+    document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    document.cookie = "pageHeight=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  });
 }

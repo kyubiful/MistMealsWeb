@@ -25,6 +25,27 @@
   </div>
   @endforeach
 </div>
+
+{{ $platos->links() }}
+
+@if(Cookie::get('infoName') AND Cookie::get('infoPrice'))
+<div class="plates-modal">
+  <div>
+    <button class="plates-modal-hide">X</button>
+  </div>
+  <div>
+    <h3>Añadido al carrito</h3>
+  </div>
+  <div>
+    <p class="plates-modal-info-name">{{Cookie::get('infoName')}}</p>
+    <p class="plates-modal-info-price"><b>{{Cookie::get('infoPrice')}}€</b></p>
+  </div>
+  <div class="plates-buttons">
+    <a class="plates-modal-cart-btn" href="{{route('web.carts.index')}}">VER CARRITO</a>
+  </div>
+</div>
+@endif
+
 <section class="subscribe_form_section section_padding parallaxie stay-alert" style="background-color: #FF810C;">
   <div class="container wow fadeInUp" data-wow-duration="1s">
     <div class="row justify-content-center">

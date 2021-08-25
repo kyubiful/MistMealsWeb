@@ -1301,6 +1301,41 @@ body.menu-step2 #accordion .card-body .container {
   display: flex;
 }
 
+.home-msg-container {
+  background: url("../img/home/msg-background.png") no-repeat;
+  width: 625px;
+  height: 136px;
+  bottom: 100px;
+  right: 100px;
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.home-msg-title {
+  font-size: 40px;
+  line-height: 48px;
+  font-family: coresansc65;
+  display: flex;
+  justify-content: center;
+}
+
+.home-msg-title h2 {
+  color: #533fb8;
+}
+
+.home-msg {
+  display: flex;
+  justify-content: center;
+}
+
+.home-msg p {
+  color: #533fb8;
+}
+
 body.menu-step2 .profile_info .description {
   display: flex;
   align-items: center;
@@ -1313,7 +1348,7 @@ body.menu-step2 .profile_info .description .cal-number {
 }
 
 body.menu-step2 .profile_info .description .cal-text {
-  font-family: CoreSansC65;
+  font-family: coresansc65;
   font-size: 23px;
   max-width: 275px;
 }
@@ -1653,6 +1688,86 @@ nav {
 .plato-btn {
   margin-bottom: 30px;
   margin-top: 20px;
+}
+
+.plates-modal {
+  background-color: #f9f2e1;
+  position: fixed;
+  top: 120px;
+  right: 40px;
+  width: 400px;
+  height: auto;
+  padding: 10px 20px 30px 40px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 4;
+}
+
+.plates-modal-hide {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  margin-right: 0px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.plates-modal h3 {
+  color: black;
+  margin-bottom: 20px;
+}
+
+.plates-modal-info-name {
+  color: black;
+  font-size: 15px;
+}
+
+.plates-modal-info-price {
+  color: #533fb8;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.plates-modal-cart-btn {
+  background: #533fb8;
+  padding: 12px 50px;
+  color: #f9f2e1;
+  font-size: 13px;
+}
+
+.plates-modal-cart-btn:hover {
+  color: #f9f2e1;
+}
+
+/* Paginación */
+
+.mistmeals-pagination-nav {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  background-color: #009167;
+}
+
+.mistmeals-pagination {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+
+.page-link {
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+  color: white;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.page-item.active .page-link {
+  background-color: #ff810c;
+  border-color: #ff810c;
+  border-radius: 20px;
 }
 
 /* Vista Carrito */

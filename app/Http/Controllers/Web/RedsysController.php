@@ -109,13 +109,11 @@ class RedsysController extends Controller
                 $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => env('HOLDED_API_KEY_TEST')], 'body' => $payJSON]);
 
                 $this->cartService->deleteCookie();
-                return redirect('carts');
+                return redirect('/')->with('message', 'success');
             } else {
-                return redirect('carts');
+                return redirect('/')->with('message', 'error');
             }
         } catch (Exception $e) {
-            dump($e);
-            dd('Error a la hora de realizar la operación');
             return redirect()->withErrors($e);
         }
     }

@@ -14,7 +14,6 @@
     </div>
   </div>
 </section>
-
 <section class="py-20" style="margin-top: 40px">
   <div class="container-fluid">
     <div class="row justify-content-center flex-column align-items-center position-relative">
@@ -173,10 +172,30 @@
               </div>
             </div>
           </div>
-        @endif
+          @endif
         </form>
       </div>
     </div>
   </div>
 </section>
+@if(session()->has('message')=='success')
+<div class="home-msg-container">
+  <div class="home-msg-title">
+    <h2><b>¡PEDIDO RECIBIDO!</b></h2>
+  </div>
+  <div class="home-msg">
+    <p>Hemos recibido tu pedido, en breves recibirás un email de confirmación ;)</p>
+  </div>
+</div>
+@endif
+@if(session()->has('message')=='error')
+<div class="home-msg-container">
+  <div class="home-msg-title">
+    <h2><b>¡ERROR!</b></h2>
+  </div>
+  <div class="home-msg">
+    <p>Ha habído un problema a la hora de realizar el pago, por favor intentelo de nuevo</p>
+  </div>
+</div>
+@endif
 @endsection
