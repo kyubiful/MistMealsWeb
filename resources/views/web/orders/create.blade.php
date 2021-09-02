@@ -21,10 +21,22 @@
           <p>Dirección</p> <input class="order-inp-2" type="text" name="address" id="" value="{{ $user->address }}" required>
         </div>
         <div>
-          <p>Población</p> <input class="order-inp-1" type="text" name="city" id="" value="{{ $user->city }}" required>
+          <p>Número</p> <input class="order-inp-1" type="text" name="address_number" id="" value="{{ $user->address_number }}" required>
         </div>
         <div>
-          <p>Código postal</p> <input class="order-inp-1" type="number" name="cp" id="" value="{{ $user->cp }}" required>
+          <p>Piso</p> <input class="order-inp-1" type="text" name="address_letter" id="" value="{{ $user->address_letter }}" required>
+        </div>
+        <div>
+          <p>Código postal</p> <input class="order-inp-1" type="text" name="cp" id="" value="{{ $user->cp }}" required>
+        </div>
+        <div>
+          <p>Región</p> <input class="order-inp-1" type="text" name="region" id="" value="{{ $user->region }}" required>
+        </div>
+        <div>
+          <p>Provincia</p> <input class="order-inp-1" type="text" name="province" id="" value="{{ $user->province }}" required>
+        </div>
+        <div>
+          <p>Ciudad</p> <input class="order-inp-1" type="text" name="city" id="" value="{{ $user->city }}" required>
         </div>
       </div>
       <table>

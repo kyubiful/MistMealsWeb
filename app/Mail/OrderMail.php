@@ -6,22 +6,19 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Barryvdh\DomPDF\Facade as PDF;
 
-class SignUpUserMail extends Mailable
+class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $details;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct()
     {
-        $this->details = $details;
+        //
     }
 
     /**
@@ -31,7 +28,7 @@ class SignUpUserMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Bienvenido al EATIVISM, bienvenido a MISTMEALS')
-            ->view('emails.signUpUser');
+        return $this->subject('Hemos recibido tu pedido')
+            ->view('emails.orderMail');
     }
 }

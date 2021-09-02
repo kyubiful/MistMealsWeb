@@ -10,6 +10,7 @@
     <h1>Detalles del pago</h1>
     <form class="order-form" method="POST" action="{{ route('web.orders.store') }}">
       @csrf
+
       <div class="order-form-content">
         <div>
           <p>Nombre</p> <input class="order-inp-2" type="text" name="name" id="" value="{{ $user->name }}" disabled>
@@ -21,10 +22,22 @@
           <p>Dirección</p> <input class="order-inp-2" type="text" name="address" id="" value="{{ $user->address }}" disabled>
         </div>
         <div>
-          <p>Población</p> <input class="order-inp-1" type="text" name="city" id="" value="{{ $user->city }}" disabled>
+          <p>Número</p> <input class="order-inp-1" type="text" name="address_number" id="" value="{{ $user->address_number }}" disabled>
         </div>
         <div>
-          <p>Código postal</p> <input class="order-inp-1" type="number" name="cp" id="" value="{{ $user->cp }}" disabled>
+          <p>Piso</p> <input class="order-inp-1" type="text" name="address_letter" id="" value="{{ $user->address_letter }}" disabled>
+        </div>
+        <div>
+          <p>Código postal</p> <input class="order-inp-1" type="text" name="cp" id="" value="{{ $user->cp }}" disabled>
+        </div>
+        <div>
+          <p>Región</p> <input class="order-inp-1" type="text" name="region" id="" value="{{ $user->region }}" disabled>
+        </div>
+        <div>
+          <p>Provincia</p> <input class="order-inp-1" type="text" name="province" id="" value="{{ $user->province }}" disabled>
+        </div>
+        <div>
+          <p>Ciudad</p> <input class="order-inp-1" type="text" name="city" id="" value="{{ $user->city }}" disabled>
         </div>
       </div>
       <table>

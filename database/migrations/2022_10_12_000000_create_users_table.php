@@ -23,9 +23,23 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('DNI')->unique()->nullable();
-            $table->string('city')->nullable();
-            $table->integer('cp')->nullable();
+
             $table->string('address')->nullable();
+            $table->string('address_number')->nullable();
+            $table->string('address_letter')->nullable();
+            $table->string('cp')->nullable();
+            $table->string('region')->nullable();
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+
+            $table->string('invoice_address')->nullable();
+            $table->string('invoice_address_number')->nullable();
+            $table->string('invoice_address_letter')->nullable();
+            $table->string('invoice_cp')->nullable();
+            $table->string('invoice_region')->nullable();
+            $table->string('invoice_province')->nullable();
+            $table->string('invoice_city')->nullable();
+
             $table->decimal('peso')->nullable();
             $table->decimal('altura')->nullable();
             $table->integer('edad')->nullable();

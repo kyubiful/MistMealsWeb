@@ -1428,6 +1428,14 @@ function getCookie(name) {
   return null;
 }
 
+if(window.location.pathname == '/'){
+    const popupBtn = document.querySelector('.home-popup-btn');
+    const popup = document.querySelector('.home-popup-container');
+    popupBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+}
+
 if(window.location.pathname=='/platos'){
   const buttons = document.querySelectorAll('button');
   for(let i=0;i<buttons.length;i++){
@@ -1451,3 +1459,8 @@ if(window.location.pathname=='/platos'){
     document.cookie = "pageHeight=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
   });
 }
+
+
+// MailChimp integration
+
+!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/bcef03a2016fd98bf6181e989/b175fd65158069fd4b818283f.js");

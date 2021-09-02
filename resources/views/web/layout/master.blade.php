@@ -28,6 +28,11 @@
         </div>
     </div>
 
+    <div class="footer-popup-background">
+        <div class="footer-popup-container">
+            <div>De momento solo repartimos en ZONA y ZONA, pero no te preocupes, dentro de poco llegaremos a tu ciudad ;)</div>
+        </div>
+    </div>
     @include('web.layout.header')
     @yield('content')
     @include('web.layout.modal')

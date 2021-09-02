@@ -273,6 +273,40 @@ p {
   }
 }
 
+.footer-popup-background {
+  background: url("../img/otros/footer-popup-background.png") no-repeat;
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
+}
+
+.footer-popup-container {
+  width: 99%;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.footer-popup-container div {
+  color: #533fb8;
+  animation: marquee 30s linear infinite;
+  width: 100%;
+  white-space: nowrap;
+  margin-right: 15px;
+  display: inline-block;
+  padding-left: 100%;
+}
+
+@keyframes marquee {
+  100% {
+    transform: translate(-150%, 0);
+  }
+}
+
 /* NEW LAYOUT */
 
 body {
@@ -1313,6 +1347,86 @@ body.menu-step2 #accordion .card-body .container {
   justify-content: center;
   align-content: center;
   flex-direction: column;
+}
+
+.home-popup-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-popup-content {
+  width: 625px;
+  height: 287px;
+  background: url("../img/home/popup-background.png") no-repeat;
+  padding: 20px;
+}
+
+.home-popup-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.home-popup-form input {
+  padding: 10px;
+  background-color: #f9f2e1;
+  width: 212px;
+  border: none;
+}
+
+.home-popup-form button {
+  color: white;
+  width: 102px;
+  background-color: #ff810c;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+.home-popup-form button:hover {
+  color: #ff810c;
+  background-color: #f9f2e1;
+  border: none;
+}
+
+.home-popup-btn {
+  background: none;
+  border: none;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.home-popup-content h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.home-popup-content p {
+  display: flex;
+  justify-content: center;
+}
+
+.home-popup-form-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.home-popup-form-btn input {
+  background: url("../img/home/popup-btn.png") no-repeat;
+  border: none;
+  width: 203px;
+  height: 49px;
+  color: #ff810c;
+  margin-top: 5px;
 }
 
 .home-msg-title {

@@ -38,6 +38,20 @@ class User extends Authenticatable
         'objetivo_id',
         'estado_civil_id',
         'estado_laboral_id',
+        'address',
+        'address_number',
+        'address_letter',
+        'cp',
+        'region',
+        'province',
+        'city',
+        'invoice_address',
+        'invoice_address_number',
+        'invoice_address_letter',
+        'invoice_cp',
+        'invoice_region',
+        'invoice_province',
+        'invoice_city'
     ];
 
     /**
@@ -104,11 +118,13 @@ class User extends Authenticatable
         return ($this->role != null && $this->role->name == 'admin');
     }
 
-    public function orders(){
+    public function orders()
+    {
         return $this->hasMany(Order::class, 'customer_id');
     }
 
-    public function payments(){
+    public function payments()
+    {
         return $this->hasManyThrough(Payment::class, Order::class, 'customer_id');
     }
 }

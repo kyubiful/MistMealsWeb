@@ -50,6 +50,10 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::resource('/orders', 'OrderController')->only(['create', 'store']);
   Route::resource('/orders.payments', 'OrderPaymentController')->only(['create', 'store']);
 
+
+  Route::post('/home/cpVerify', 'AvailableCPController@verifyCP')->name('verifyCP');
+  Route::get('/home/endPopup', 'HomeController@endHomePopup')->name('endHomePopup');
+
   Route::post('/tpv', 'RedsysController@index')->name('tpv');
 
   Route::get('/redsys/notification', 'RedsysController@comprobar');

@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Mail\OrderMail;
 use Ssheduardo\Redsys\Facades\Redsys;
 use Exception;
 use App\Services\CartService;
 use App\Models\User;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Mail;
 
 class RedsysController extends Controller
 {
@@ -70,8 +72,6 @@ class RedsysController extends Controller
                 $invoiceURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice';
                 $payedURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
 
-
-
                 $items = array();
 
                 for ($i = 0; $i < $cart->products->count(); $i++) {
@@ -101,12 +101,21 @@ class RedsysController extends Controller
                 $holdedArray['items'] = $items;
 
                 $holdedArray = json_encode($holdedArray);
-                $client->post($salesorderURL, ['headers' => ['key' => env('HOLDED_API_KEY_TEST')], 'body' => $holdedArray]);
-                $res = $client->post($invoiceURL, ['headers' => ['key' => env('HOLDED_API_KEY_TEST')], 'body' => $holdedArray]);
+                $client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                $res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
                 $res = json_decode($res->getBody()->getContents());
                 $invoiceId = $res->id;
                 $payJSON = json_encode(['date' => time(), 'amount' => $cart->total]);
-                $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => env('HOLDED_API_KEY_TEST')], 'body' => $payJSON]);
+                $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => config('holded.key')], 'body' => $payJSON]);
+
+                try {
+                    Mail::to(auth()->user()->email)->send(new OrderMail());
+                } catch (\Exception $e) {
+                    return response()->json(array(
+                        'status' => 500,
+                        'message' => $e->getMessage()
+                    ));
+                }
 
                 $this->cartService->deleteCookie();
                 return redirect('/')->with('message', 'success');
@@ -114,7 +123,7 @@ class RedsysController extends Controller
                 return redirect('/')->with('message', 'error');
             }
         } catch (Exception $e) {
-            return redirect()->withErrors($e);
+            return redirect('/')->with('error', $e);
         }
     }
 }
