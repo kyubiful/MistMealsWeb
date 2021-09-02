@@ -17,6 +17,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
 class UserController extends Controller
 {
@@ -75,6 +76,7 @@ class UserController extends Controller
         ]);
 
         $user = User::create($request->all());
+        Newsletter::subscribeOrUpdate($request->email);
 
         // Login
         Auth::attempt($credentials);

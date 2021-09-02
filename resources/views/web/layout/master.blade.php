@@ -33,6 +33,14 @@
             <div>De momento solo repartimos en ZONA y ZONA, pero no te preocupes, dentro de poco llegaremos a tu ciudad ;)</div>
         </div>
     </div>
+
+    @if(session()->has('message') AND session()->get('message')=='newsletter')
+    <div class="home-msg-container">
+        <div class="home-msg">
+            <p>¡Gracias por suscribirte a nuestra newsletter!</p>
+        </div>
+    </div>
+    @endif
     @include('web.layout.header')
     @yield('content')
     @include('web.layout.modal')

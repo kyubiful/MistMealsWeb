@@ -282,6 +282,7 @@ p {
   position: fixed;
   bottom: 0px;
   z-index: 10;
+  padding-top: 4px;
 }
 
 .footer-popup-container {
@@ -1347,6 +1348,11 @@ body.menu-step2 #accordion .card-body .container {
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  transition: opacity 3 ease-in-out;
+}
+
+.home-msg-container.fade {
+  opacity: 0;
 }
 
 .home-popup-container {

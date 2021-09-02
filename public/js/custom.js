@@ -1428,7 +1428,7 @@ function getCookie(name) {
   return null;
 }
 
-if(window.location.pathname == '/'){
+if(window.location.pathname == '/' && document.querySelector('.home-popup-btn')!=null){
     const popupBtn = document.querySelector('.home-popup-btn');
     const popup = document.querySelector('.home-popup-container');
     popupBtn.addEventListener('click', () => {
@@ -1464,3 +1464,12 @@ if(window.location.pathname=='/platos'){
 // MailChimp integration
 
 !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/bcef03a2016fd98bf6181e989/b175fd65158069fd4b818283f.js");
+
+
+// fadeout popup msg
+let popupMsg = document.querySelector('.home-msg-container');
+if(popupMsg!=null){
+    setTimeout(() => {
+       popupMsg.classList.toggle('fade'); 
+    }, 5000);
+}
