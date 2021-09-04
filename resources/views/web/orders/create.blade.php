@@ -39,6 +39,41 @@
           <p>Ciudad</p> <input class="order-inp-1" type="text" name="city" id="" value="{{ $user->city }}" required>
         </div>
       </div>
+
+      <p>      
+        <button class="order-accordion-button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <input type="checkbox" name="invoice-check" id="invoice-check"><label for="invoice-check" class="invoice-check-label"> Necesito factura</label>
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="order-accordion-card card card-body">
+          <h1>Detalles de facturación</h1>
+          <div class="order-form-content">
+            <div>
+              <p>Dirección</p> <input class="order-inp-2" type="text" name="invoice_address" id="" value="{{ $user->invoice_address }}" required>
+            </div>
+            <div>
+              <p>Número</p> <input class="order-inp-1" type="text" name="invoice_address_number" id="" value="{{ $user->invoice_address_number }}" required>
+            </div>
+            <div>
+              <p>Piso</p> <input class="order-inp-1" type="text" name="invoice_address_letter" id="" value="{{ $user->invoice_address_letter }}" required>
+            </div>
+            <div>
+              <p>Código postal</p> <input class="order-inp-1" type="text" name="invoice_cp" id="" value="{{ $user->invoice_cp }}" required>
+            </div>
+            <div>
+              <p>Región</p> <input class="order-inp-1" type="text" name="invoice_region" id="" value="{{ $user->invoice_region }}" required>
+            </div>
+            <div>
+              <p>Provincia</p> <input class="order-inp-1" type="text" name="invoice_province" id="" value="{{ $user->invoice_province }}" required>
+            </div>
+            <div>
+              <p>Ciudad</p> <input class="order-inp-1" type="text" name="invoice_city" id="" value="{{ $user->invoice_city }}" required>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <table>
         <thead>
           <tr>
