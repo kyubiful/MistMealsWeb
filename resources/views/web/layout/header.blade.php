@@ -9,9 +9,6 @@
             <li><a href="{{ route('web.platos') }}" class="menu-i">Platos</a></li>
             <li><a href="{{ route('web.revolucion') }}" class="menu-i">La Revolución</a></li>
             <li><a href="{{ route('web.contacto') }}" class="menu-i">Contacto</a></li>
-            @if(auth()->check() && \App\Models\User::findOrFail(auth()->user()->id)->isAdmin())
-            <li><a href="{{ route('admin.home') }}" class="menu-i">Panel Administracion</a></li>
-            @endif
             <li class="session">
                 @if (!auth()->check())
 
@@ -41,8 +38,11 @@
             </li>
             <li>
                 @inject('cartService','App\Services\CartService')
-                <a href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/cart.png">({{ $cartService->countProducts() }})</a>
+                <a class="menu-cart-btn" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/icon/cart.png" style="margin-top: -5px;"><p>{{ $cartService->countProducts() }}</p></a>
             </li>
+            @if(auth()->check() && \App\Models\User::findOrFail(auth()->user()->id)->isAdmin())
+            <li><a href="{{ route('admin.home') }}" class="menu-i"><img style="width: 20px; height: 20px; margin-top: -5px;" src="/img/menu/settings.png" alt=""></a></li>
+            @endif
         </ul>
         <div class="menu-btn">
 
