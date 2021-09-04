@@ -19,6 +19,11 @@
       </div>
       <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}">
         @csrf
+        <div style="display:flex;">
+          <button type="button" class="plate-btn-less">-</button>
+          <input type="number" name="plateQuantity" class="plate-quantity-display" id="plateQuantity" value="1" min="0">
+          <button type="button" class="plate-btn-more">+</button>
+        </div>
         <button class="mist_btn plato-btn" type="submit">Añadir</button>
       </form>
     </div>
@@ -27,8 +32,7 @@
 </div>
 
 {{ $platos->links() }}
-
-@if(Cookie::get('infoName') AND Cookie::get('infoPrice'))
+@if(session()->has('itemName') AND session()->has('infoPrice') AND session()->has('itemQuantity'))
 <div class="plates-modal">
   <div>
     <button class="plates-modal-hide">X</button>
@@ -37,8 +41,8 @@
     <h3>Añadido al carrito</h3>
   </div>
   <div>
-    <p class="plates-modal-info-name">{{Cookie::get('infoName')}}</p>
-    <p class="plates-modal-info-price"><b>{{Cookie::get('infoPrice')}}€</b></p>
+    <p class="plates-modal-info-name">{{session()->get('itemQuantity')}}x {{session()->get('itemName')}}</p>
+    <p class="plates-modal-info-price"><b>{{session()->get('infoPrice')}}€</b></p>
   </div>
   <div class="plates-buttons">
     <a class="plates-modal-cart-btn" href="{{route('web.carts.index')}}">VER CARRITO</a>

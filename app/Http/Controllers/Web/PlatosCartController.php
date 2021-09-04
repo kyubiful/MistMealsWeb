@@ -26,22 +26,25 @@ class PlatosCartController extends Controller
      */
     public function store(Request $request, Plato $plato)
     {
+        $plateQuantity = $request->plateQuantity;
+        if($plateQuantity<0){
+            return redirect()->back()->with('message','<0');
+        }
+
         $cart = $this->cartService->getFromCookieOrCreate();
 
         $quantity = $cart->products()->find($plato->id)->pivot->quantity ?? 0;
 
         $cart->products()->syncWithoutDetaching([
-            $plato->id => ['quantity' => $quantity + 1],
+            $plato->id => ['quantity' => $quantity + $plateQuantity],
         ]);
 
         $infoName = $cart->products()->find($plato->id)->nombre;
         $infoPrice = $cart->products()->find($plato->id)->precio;
+        $totalPrice = $infoPrice * $plateQuantity;
 
         $cookie = $this->cartService->makeCookie($cart);
-        $infoCookieName = Cookie::make('infoName', $infoName, 7 * 24 * 60, null, null, false, false);
-        $infoCookiePrice = Cookie::make('infoPrice', $infoPrice, 7 * 24 * 60, null, null, false, false);
-
-        return redirect()->back()->cookie($cookie)->cookie($infoCookieName)->cookie($infoCookiePrice);
+        return redirect()->back()->cookie($cookie)->with('itemName',$infoName)->with('infoPrice', $totalPrice)->with('itemQuantity', $plateQuantity);
     }
 
     /**

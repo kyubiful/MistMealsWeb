@@ -42,6 +42,12 @@
   <section>
     <div id="accordion">
       <form method="POST" action="{{ route('web.menu.addtocart') }}">
+        @csrf
+        <div>
+          @inject('cartService','App\Services\CartService')
+          <p>Selecciona 5 platos mínimo ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
+          <button class="step2-btn-submit" type="submit">Añadir al carrito</button>
+        </div>
         @foreach($lunch as $i => $el)
         <div class="card">
           <div class="card-header" id="heading{{ $i }}">
@@ -120,8 +126,6 @@
         </div>
 
         @endforeach
-        @csrf
-        <button class="step2-btn-submit" type="submit">Añadir al carrito</button>
       </form>
     </div>
   </section>

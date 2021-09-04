@@ -1443,21 +1443,40 @@ if(window.location.pathname=='/platos'){
       document.cookie = 'pageHeight='+window.scrollY;
     })
   }
+
+  const plateBtnMore = document.querySelectorAll('.plate-btn-more');
+  const plateBtnLess = document.querySelectorAll('.plate-btn-less');
+  const plateQuantitiyDisplay = document.querySelectorAll('.plate-quantity-display');
+
+  for(let i=0; i<plateQuantitiyDisplay.length; i++){
+      plateBtnMore[i].addEventListener('click', ()=>{
+        plateQuantitiyDisplay[i].value = parseInt(plateQuantitiyDisplay[i].value) + 1;
+      });
+
+      plateBtnLess[i].addEventListener('click', () => {
+          if(parseInt(plateQuantitiyDisplay[i].value) > 0){
+            plateQuantitiyDisplay[i].value = parseInt(plateQuantitiyDisplay[i].value) - 1;
+          }
+      })
+  }
+
   window.scrollTo(0, parseInt(getCookie('pageHeight')));
 
   const hideModalBtn = document.querySelector('.plates-modal-hide');
-  hideModalBtn.addEventListener('click', () => {
-    document.querySelector('.plates-modal').style.display = 'none';
-    document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-  });
-
-  const cartModalBtn = document.querySelector('.plates-modal-cart-btn');
-  cartModalBtn.addEventListener('click', () => {
-    document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    document.cookie = "pageHeight=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-  });
+  if(hideModalBtn != null){
+    hideModalBtn.addEventListener('click', () => {
+      document.querySelector('.plates-modal').style.display = 'none';
+      document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    });
+    
+    const cartModalBtn = document.querySelector('.plates-modal-cart-btn');
+    cartModalBtn.addEventListener('click', () => {
+      document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      document.cookie = "pageHeight=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    });
+  }
 }
 
 
