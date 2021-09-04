@@ -10,7 +10,7 @@
             <div class="wow fadeInDown revolution-protest-text" data-wow-delay=".3s">
                 <h2>THE PROTEST</h2>
                 <div class="description">Hemos inventado el “Eativism”, un movimiento que cuestiona la forma en la que comemos, cómo producimos los alimentos y todas las consecuencias negativas que esto provoca en nuestro organismo y en el planeta.</div>
-                <div class="revolution_header_claim">¡NO A MUCHAS COSAS! ¡SÍ A OTRAS TANTAS! SOMOS UN MOVIMIENTO DE REACCIÓN A TODAS LAS ACEPCIONES NEGATIVAS QUE TIENE EL CONCEPTO DE DIETA Y DE COMER BIEN. UNA DIETA NO ES UN MENÚ BAJONERO.CUIDAR LO QUE COMES TIENE MUCHO QUE VER CON CUIDAR NUESTRO CUERPO, NUESTROS DERECHOS O NUESTRO PLANETA.</div>
+                <div class="revolution_header_claim">¡NO A MUCHAS COSAS! ¡SÍ A OTRAS TANTAS! SOMOS UN MOVIMIENTO DE REACCIÓN A TODAS LAS ACEPCIONES NEGATIVAS QUE TIENE EL CONCEPTO DE DIETA Y DE COMER BIEN. UNA DIETA NO ES UN MENÚ BAJONERO. CUIDAR LO QUE COMES TIENE MUCHO QUE VER CON CUIDAR NUESTRO CUERPO, NUESTROS DERECHOS O NUESTRO PLANETA.</div>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                                     entender el concepto “dieta”.
                                     De uno mismo hacia la
                                     comprensión y la conexión con su cuerpo.
-                                    Hacia el entendimiento de cómo afecta el mundo de alimentación al planeta. Lo que comes y cómo lo comes.
+                                    Hacia el entendimiento de cómo afecta el mundo de alimentación al planeta. Qué comes y cómo lo comes.
                                 </p>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                             entender el concepto “dieta”.
                             De uno mismo hacia la
                             comprensión y la conexión con su cuerpo.
-                            Hacia el entendimiento de cómo afecta el mundo de alimentación al planeta. Lo que comes y cómo lo comes.
+                            Hacia el entendimiento de cómo afecta el mundo de alimentación al planeta. Qué comes y cómo lo comes.
                         </p>
                     </div>
                 </div>

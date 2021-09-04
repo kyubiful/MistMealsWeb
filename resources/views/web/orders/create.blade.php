@@ -75,5 +75,15 @@
   </div>
   @endif
 </div>
+  @if(session()->has('message') AND session()->get('message')=='invalid cp')
+  <div class="home-msg-container">
+    <div class="home-msg-title">
+      <h2><b>¡ERROR!</b></h2>
+    </div>
+    <div class="home-msg">
+      <p>De momento no repartimos en tu zona, pero no te preocupes, dentro de poco llegarmos a tu ciudad :)</p>
+    </div>
+  </div>
+  @endif
 @include('web.layout.newsletter')
 @endsection

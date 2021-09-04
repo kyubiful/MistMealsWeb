@@ -104,7 +104,7 @@
 
                         <!-- <div class="sharp_border mt-3 mb-5"></div> -->
 
-                        <h2 style="margin-bottom: 0px;">DIRECCIÓN</h2>
+                        <h2 style="margin-bottom: 0px;">DIRECCIÓN DE ENVIO</h2>
                         <div class="col-lg-12 col-sm-12">
                             <div class="single_contact_form">
                                 <label for="address" style="float: left;">Dirección</label>

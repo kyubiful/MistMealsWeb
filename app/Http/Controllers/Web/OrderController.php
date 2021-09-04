@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
 use App\Models\User;
+use App\Models\AvailableCP;
 
 class OrderController extends Controller
 {
@@ -43,6 +44,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $user = $request->user();
+        $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
 
         $user->name = $request->name;
         $user->surname = $request->surname;
@@ -51,6 +53,10 @@ class OrderController extends Controller
         $user->city = $request->city;
 
         $user->save();
+
+        if(in_array($user->cp, $availableCP)==false) {
+            return redirect()->back()->with('message','invalid cp');
+        }
 
         $order = $user->orders()->create(['status' => 'pendiente']);
 

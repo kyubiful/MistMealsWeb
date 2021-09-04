@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
+use App\Models\AvailableCP;
 
 class OrderPaymentController extends Controller
 {
@@ -25,8 +26,13 @@ class OrderPaymentController extends Controller
    * @param  \App\Models\Order  $order
    * @return \Illuminate\Http\Response
    */
-  public function create(Order $order)
+  public function create(Order $order, Request $request)
   {
+    $user = $request->user();
+        $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
+        if(in_array($user->cp, $availableCP)==false) {
+            return redirect()->back()->with('message','invalid cp');
+        }
 
     $user = User::findOrFail(auth()->user()->id);
     $cart = $this->cartService->getFromCookie();
