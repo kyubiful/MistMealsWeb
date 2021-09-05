@@ -702,6 +702,29 @@ section.values .testimonial_slider .owl-nav {
   border-bottom: 1px solid #fff;
 }
 
+body .menu-step2-plates-count-container{
+  background-color: #F9F2E1;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+body .menu-step2-plates-count-content{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+body .menu-step2-plates-count-content p{
+  color: black; 
+  font-family: TuskerGrotesk35 !important; 
+  font-size: 23px;
+  letter-spacing: 0.02em;
+}
+
 body.menu-step2 #target-1 .card-header {
   background: #ffcf00;
   color: #000000;
@@ -760,6 +783,16 @@ body.menu-step2 .modal-header button span {
 
 body.menu-step2 .product_description_iner.dish-img-card .nav {
   border: 0px;
+}
+
+body.menu-step2 .step2-checkbox-container{
+  display: flex;
+}
+
+body.menu-step2 .right-dish input[type="checkbox"]{
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .card-header h5 {
@@ -1273,13 +1306,13 @@ body.menu-step2 #accordion .left-dish {
   width: auto !important;
   transition: 0.3s !important;
   border: none !important;
-  margin: 20px auto;
   font-size: 20px;
 }
 
 .step2-btn-submit:hover {
-  background-color: #f9f2e1 !important;
-  color: #533fb8 !important;
+  background-color: #533fb8 !important;
+  opacity: 0.5;
+  color: #f9f2e1 !important;
 }
 
 body.menu-step2 #accordion .right-dish {
@@ -1322,18 +1355,18 @@ body.menu-step2 #accordion .left-dish {
   justify-content: center;
 }
 
-body.menu-step2 #accordion .dish-info {
+body.menu-step2 #accordion .b {
   display: flex;
   justify-content: space-around;
 }
 
-body.menu-step2 #target-1 #accordion .dish-info span b {
+body.menu-step2 #target-1 #accordion .b span b {
   color: #ff0033;
 }
-body.menu-step2 #target-2 #accordion .dish-info span b {
+body.menu-step2 #target-2 #accordion .b span b {
   color: #ff0033;
 }
-body.menu-step2 #target-3 #accordion .dish-info span b {
+body.menu-step2 #target-3 #accordion .b span b {
   color: #ff0033;
 }
 
@@ -1471,6 +1504,8 @@ body.menu-step2 #accordion .card-body .container {
 .home-msg {
   display: flex;
   justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .home-msg p {
@@ -1759,6 +1794,27 @@ nav {
 }
 
 /* Vista Platos */
+body .platos-count-container{
+  background-color: #F9F2E1;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 120px;
+}
+
+body .platos-count-content{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+body .platos-count-content p{
+  color: black; 
+  font-family: TuskerGrotesk35 !important; 
+  font-size: 23px;
+  letter-spacing: 0.02em;
+}
 
 .platos-top-title {
   font-family: TuskerGrotesk65 !important;
@@ -1788,18 +1844,59 @@ nav {
 
 .platos-container {
   background-color: #000000;
-  padding-top: 140px;
+  padding-top: 70px;
   padding-left: 480px;
   padding-right: 480px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 90px;
+}
+
+.plate-quantity-container{
+  display: flex;
+  margin-top: 15px;
+}
+
+.plate-quantity-display{
+  width: 40px;
+  border: none;
+  -webkit-appearance: none;
+}
+
+.plate-quantity-display::-webkit-inner-spin-button, 
+.plate-quantity-display::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.plate-btn-less{
+  border: none;
+  background-color: #533fb8;
+  color: #F9F2E1;
+  transition: all 0.3s ease;
+}
+.plate-btn-less:hover{
+  background-color: #F9F2E1;
+  color: #533fb8;
+}
+
+.plate-btn-more{
+  border: none;
+  background-color: #533fb8;
+  color: #F9F2E1;
+  transition: all 0.3s ease;
+}
+.plate-btn-more:hover{
+  background-color: #F9F2E1;
+  color: #533fb8;
 }
 
 .plato-container {
   width: 208px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .plato-img {
@@ -2634,7 +2731,7 @@ nav {
     font-size: 14px;
   }
 
-  .right-dish .dish-info {
+  .right-dish .b {
     font-size: 11px;
   }
 

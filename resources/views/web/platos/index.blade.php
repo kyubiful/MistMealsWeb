@@ -4,6 +4,12 @@
   <p class="platos-top-title">PLATOS</p>
 </div>
 <div class="platos-top-label"></div>
+<div class="platos-count-container">
+  <div class="platos-count-content">
+    @inject('cartService','App\Services\CartService')
+    <p>Selecciona 5 platos mínimo ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
+  </div>
+</div>
 <div class="platos-container">
   @foreach($platos as $i => $plato)
   <div class="plato-container">
@@ -19,7 +25,7 @@
       </div>
       <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}">
         @csrf
-        <div style="display:flex;">
+        <div class="plate-quantity-container">
           <button type="button" class="plate-btn-less">-</button>
           <input type="number" name="plateQuantity" class="plate-quantity-display" id="plateQuantity" value="1" min="0">
           <button type="button" class="plate-btn-more">+</button>

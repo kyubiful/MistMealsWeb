@@ -43,10 +43,12 @@
     <div id="accordion">
       <form method="POST" action="{{ route('web.menu.addtocart') }}">
         @csrf
-        <div>
-          @inject('cartService','App\Services\CartService')
-          <p>Selecciona 5 platos mínimo ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
-          <button class="step2-btn-submit" type="submit">Añadir al carrito</button>
+        <div class="menu-step2-plates-count-container">
+          <div class="menu-step2-plates-count-content">
+           @inject('cartService','App\Services\CartService')
+           <p>Selecciona 5 platos mínimo ( @if($cartService->countProducts()>5)5 @else { {$cartService->countProducts()}} @endif/ 5 )</p>
+           <button class="step2-btn-submit" type="submit">Añadir al carrito</button>
+          </div>
         </div>
         @foreach($lunch as $i => $el)
         <div class="card">
@@ -92,7 +94,10 @@
                       <span>{{ $lunch[$i]->plato_info_nutricional->grasas }} <b>G</b></span>
                       <span>{{ $lunch[$i]->plato_info_nutricional->fibra }} <b>F</b></span>
                     </div>
-                    <input type="checkbox" name="id[]" id="" value="{{$lunch[$i]->id}}" checked>
+                    <div class="step2-checkbox-container">
+                      <input type="checkbox" class="step2-checkbox" name="id[]" id="step2-checkbox-{{$lunch[$i]->id}}" value="{{$lunch[$i]->id}}" checked>
+                      <label for="{{$lunch[$i]->id}}">Seleccionar </label>
+                    </div>
                   </div>
                 </div>
                 <div class="day-dinner">
@@ -117,7 +122,10 @@
                       <span>{{ $dinner[$i]->plato_info_nutricional->grasas }} <b>G</b></span>
                       <span>{{ $dinner[$i]->plato_info_nutricional->fibra }} <b>F</b></span>
                     </div>
-                    <input type="checkbox" name="id[]" id="" value="{{$dinner[$i]->id}}" checked>
+                    <div class="step2-checkbox-container">
+                      <input type="checkbox" class="step2-checkbox" name="id[]" id="step2-checkbox-{{$dinner[$i]->id}}" value="{{$dinner[$i]->id}}" checked>
+                      <label for="step2-checkbox-{{$dinner[$i]->id}}">Seleccionar </label>
+                    </div>
                   </div>
                 </div>
               </div>
