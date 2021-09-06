@@ -1436,6 +1436,50 @@ if(window.location.pathname == '/' && document.querySelector('.home-popup-btn')!
     });
 }
 
+if(window.location.pathname == '/orders/create'){
+
+    const orderCheckbox = document.querySelector('#invoice_check');
+    const invoice_address = document.querySelector('#invoice_address');
+    const invoice_address_number = document.querySelector('#invoice_address_number');
+    const invoice_address_letter = document.querySelector('#invoice_address_letter');
+    const invoice_cp = document.querySelector('#invoice_cp');
+    const invoice_region = document.querySelector('#invoice_region');
+    const invoice_province = document.querySelector('#invoice_province');
+    const invoice_city = document.querySelector('#invoice_city');
+
+    let invoice_count = 0;
+
+    orderCheckbox.checked = false;
+
+    orderCheckbox.addEventListener('click', () => {
+        setTimeout(()=>{
+            orderCheckbox.setAttribute('disabled', '');
+        }, 100);
+        setTimeout(()=>{
+            orderCheckbox.removeAttribute('disabled', '');
+        }, 500);
+            if(invoice_count == 0){
+                invoice_address.required = true;
+                invoice_address_number.required = true;
+                invoice_cp.required = true;
+                invoice_region.required = true;
+                invoice_province.required = true;
+                invoice_city.required = true;
+                invoice_count=1;
+                console.log('activa');
+            } else if(invoice_count == 1){
+                invoice_address.required = false;
+                invoice_address_number.required = false;
+                invoice_cp.required = false;
+                invoice_region.required = false;
+                invoice_province.required = false;
+                invoice_city.required = false;
+                invoice_count=0;
+                console.log('desactiva');
+            }
+    });
+}
+
 if(window.location.pathname=='/platos'){
   const buttons = document.querySelectorAll('button');
   for(let i=0;i<buttons.length;i++){

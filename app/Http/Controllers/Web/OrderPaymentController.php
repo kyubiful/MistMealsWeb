@@ -51,32 +51,5 @@ class OrderPaymentController extends Controller
   {
     $cart = $this->cartService->getFromCookie();
 
-    $Ds_MerchanParameters = array(
-      'DS_MERCHANT_AMOUNT' => $cart->total,
-      'DS_MERCHANT_CURRENCY' => 978,
-      "DS_MERCHANT_MERCHANTCODE" => 326251592,
-      "DS_MERCHANT_ORDER" => 202100001,
-      "DS_MERCHANT_TERMINAL" => 1,
-      "DS_MERCHANT_TRANSACTIONTYPE" => 0,
-
-    );
-
-    $Ds_SignatureVersion = 'HMAC_SHA256_V1';
-
-    $Ds_Signature = 'sq7HjrUOBfKmC576ILgskD5srU870gJ7';
-    $Ds_Signature = base64_encode($Ds_Signature);
-
-    $Ds_MerchanParameters = json_encode($Ds_MerchanParameters);
-    $Ds_MerchanParameters = base64_encode($Ds_MerchanParameters);
-
-    // dump($cart->total);
-    // dump($order);
-    // dump($Ds_SignatureVersion);
-    // dump($Ds_MerchanParameters);
-    // dump($Ds_Signature);
-    // dd($request);
-    // dd('fin');
-
-    return redirect('https://sis-t.redsys.es:25443/sis/realizarPago')->with(['Ds_SignatureVersion' => $Ds_SignatureVersion, 'Ds_MerchantParameters' => $Ds_MerchanParameters, 'Ds_Signature' => $Ds_Signature]);
   }
 }

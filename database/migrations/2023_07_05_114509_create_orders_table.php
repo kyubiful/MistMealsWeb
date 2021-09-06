@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('status')->default('pending');
             $table->bigInteger('customer_id')->unsigned();
+            $table->boolean('invoice')->default(false);
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('users');

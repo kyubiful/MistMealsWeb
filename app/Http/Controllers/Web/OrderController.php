@@ -43,6 +43,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        
         $user = $request->user();
         $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
 
@@ -54,11 +55,17 @@ class OrderController extends Controller
 
         $user->save();
 
+        if($request->invoice_check == null){
+            $invoice = false;
+        } else if($request->invoice_check=='on'){
+            $invoice = true;
+        }
+
         if(in_array($user->cp, $availableCP)==false) {
             return redirect()->back()->with('message','invalid cp');
         }
 
-        $order = $user->orders()->create(['status' => 'pendiente']);
+        $order = $user->orders()->create(['status' => 'pendiente', 'invoice' => $invoice]);
 
         $cart = $this->cartService->getFromCookie();
 
@@ -72,7 +79,8 @@ class OrderController extends Controller
             );
 
         $order->products()->attach($cartProductsWithQuantity->toArray());
+        $orderCookie = cookie('order_id', $order->id, 60*24*30);
 
-        return redirect()->route('web.orders.payments.create', ['order' => $order->id]);
+        return redirect()->route('web.orders.payments.create', ['order' => $order->id])->cookie($orderCookie);
     }
 }

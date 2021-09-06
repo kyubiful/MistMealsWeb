@@ -46,7 +46,7 @@
         <div class="menu-step2-plates-count-container">
           <div class="menu-step2-plates-count-content">
            @inject('cartService','App\Services\CartService')
-           <p>Selecciona 5 platos mínimo ( @if($cartService->countProducts()>5)5 @else { {$cartService->countProducts()}} @endif/ 5 )</p>
+           <p>Selecciona 5 platos mínimo ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
            <button class="step2-btn-submit" type="submit">Añadir al carrito</button>
           </div>
         </div>

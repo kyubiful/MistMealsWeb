@@ -2,7 +2,7 @@
 @section('content')
 <div class="cart-container">
   @if(!isset($cart) || $cart->products->isEmpty())
-  <div>
+  <div class="empty-cart">
     <p>El carrito está vacío</p>
   </div>
   @else

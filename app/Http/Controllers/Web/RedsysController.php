@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Mail\OrderMail;
+use App\Models\Order;
 use Ssheduardo\Redsys\Facades\Redsys;
 use Exception;
 use App\Services\CartService;
 use App\Models\User;
+use App\Models\Payment;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 
 class RedsysController extends Controller
@@ -25,7 +28,6 @@ class RedsysController extends Controller
 
     public static function index($amount)
     {
-
         try {
             $key = config('redsys.key');
             $merchantcode = config('redsys.merchantcode');
@@ -58,6 +60,7 @@ class RedsysController extends Controller
 
     public function comprobar(Request $request)
     {
+
         try {
             $key = config('redsys.key');
             $parameters = Redsys::getMerchantParameters($request->input('Ds_MerchantParameters'));
@@ -73,6 +76,7 @@ class RedsysController extends Controller
                 $payedURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
 
                 $items = array();
+                $amount = 0;
 
                 for ($i = 0; $i < $cart->products->count(); $i++) {
                     $product = $cart->products[$i];
@@ -84,6 +88,7 @@ class RedsysController extends Controller
                     );
 
                     array_push($items, $item);
+                    $amount = $amount + ($product->precio * $product->pivot->quantity);
                 };
 
                 $holdedArray = array(
@@ -108,6 +113,18 @@ class RedsysController extends Controller
                 $payJSON = json_encode(['date' => time(), 'amount' => $cart->total]);
                 $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => config('holded.key')], 'body' => $payJSON]);
 
+                $order_id = (int)$request->cookie('order_id');
+
+                $payment = new Payment(array(
+                    'amount' => $amount,
+                    'payed_at' => time(),
+                    'order_id' => $order_id
+                ));
+
+                $payment->save();
+
+                Order::whereId($order_id)->update(['status' => 'pagado']);
+
                 try {
                     Mail::to(auth()->user()->email)->send(new OrderMail());
                 } catch (\Exception $e) {
@@ -118,7 +135,7 @@ class RedsysController extends Controller
                 }
 
                 $this->cartService->deleteCookie();
-                return redirect('/')->with('message', 'success');
+                return redirect('/')->with('message', 'success')->withoutCookie('order_id');
             } else {
                 return redirect('/')->with('message', 'error');
             }
