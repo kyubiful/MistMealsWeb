@@ -63,6 +63,7 @@ class OrderController extends Controller
         $user->invoice_region = $request->invoice_region;
         $user->invoice_province = $request->invoice_province;
         $user->invoice_city = $request->invoice_city;
+        $user->invoice_cp = $request->invoice_cp;
 
         $user->save();
 
