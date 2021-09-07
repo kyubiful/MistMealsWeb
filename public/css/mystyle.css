@@ -2261,6 +2261,53 @@ body .platos-count-content p{
   border: 1px solid #533fb8;
 }
 
+/* Reset password */
+
+.reset-password-container{
+  margin-top: 90px;
+}
+
+.reset-password-btn{
+  background-color: #533fb8;
+  border: none;
+}
+
+.reset-password-btn:hover{
+  background-color: #F9F2E1;
+  color: #533fb8;
+}
+
+.reset-password-link{
+  color:#533fb8 !important;
+}
+
+.reset-password-link:hover{
+  color: #F9F2E1 !important;
+}
+/* Nueva contraseña */
+
+.new-password-container{
+  margin-top: 90px;
+}
+
+.new-password-btn{
+  background-color: #533fb8;
+  border: none;
+}
+
+.new-password-btn:hover{
+  background-color: #F9F2E1;
+  color: #533fb8;
+}
+
+.new-password-link{
+  color:#533fb8 !important;
+}
+
+.new-password-link:hover{
+  color: #F9F2E1 !important;
+}
+
 @media (max-width: 991px) {
   .subtitle.negative-margin {
     margin-top: -20px;
