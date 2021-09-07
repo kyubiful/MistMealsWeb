@@ -1,4 +1,4 @@
-@extends('admin.layouts.auth')
+@extends('web.layout.master')
 
 @section('content')
 <div class="container-scroller">
@@ -61,4 +61,5 @@
         </div>
     </div>
 </div>
+@include('web.layout.newsletter')
 @endsection

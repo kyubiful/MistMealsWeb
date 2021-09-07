@@ -18,7 +18,7 @@ class CreateProductablesTable extends Migration
             $table->integer('quantity')->unsigned();
             $table->morphs('productable');
 
-            $table->foreign('plato_id')->references('id')->on('platos');
+            $table->foreign('plato_id')->references('id')->on('platos')->onDelete('cascade');
         });
     }
 

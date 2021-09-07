@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col-12 text-right mt-3">
-                        <a class="recoverpass" href="#">He olvidado mi contraseña</a>
+                        <a class="recoverpass" href="{{ route('password.request') }}">He olvidado mi contraseña</a>
                     </div>
                 </div>
 

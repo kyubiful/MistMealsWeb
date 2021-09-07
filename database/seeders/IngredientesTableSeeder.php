@@ -18,7 +18,7 @@ class IngredientesTableSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         DB::table('ingredientes')->truncate();
-        DB::insert('insert into ingredientes (id,nombre,peso,hidratos,proteinas,grasas,calorias,plato_id) values (?,?,?,?,?,?,?,?)', [1, 'Brócoli', 380, 40, 40, 20, 700, 1]);
+        // DB::insert('insert into ingredientes (id,nombre,peso,hidratos,proteinas,grasas,calorias,plato_id) values (?,?,?,?,?,?,?,?)', [1, 'Brócoli', 380, 40, 40, 20, 700, 1]);
 
         Schema::enableForeignKeyConstraints();
     }
