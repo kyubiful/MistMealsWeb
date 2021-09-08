@@ -1,7 +1,10 @@
 @extends('web.layout.master')
 @section('content')
-
-@if(!auth()->check())
+{{session()->get('popupCp2')}}
+{{session()->get('popupCp')}}
+@if(!empty($popupCp))
+{{$popupCp}}
+@endif
 @if(!empty($popupCp) AND $popupCp < 4 AND Cookie::get('popupCpEnd') == false)
  <section class="home-popup-container">
     <div class="home-popup-content">
@@ -17,14 +20,14 @@
       <p style="font-size: 10px;">*no enviamos a islas, Ceuta y Melilla</p>
       @endif
       @if(session()->has('popupCp2') AND session()->get('popupCp2')==2)
-      <p style="font-size: 13px; color:#FF810C; margin-top: 5px;">¡Llegamos hasta allí!</p>
+      <p style="font-size: 13px; margin-top: 5px;">¡Llegamos hasta allí!</p>
       <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
         @csrf
         <input type="submit" value="Visitar la web">
       </form>
       @endif
       @if(session()->has('popupCp2') AND session()->get('popupCp2')==3)
-      <p style="font-size: 13px; color:#FF810C; margin-top: 5px;">¡Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)</p>
+      <p style="font-size: 13px; line-height: inherit; margin-bottom:10px; margin-top: 5px;">¡Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)</p>
       <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
         @csrf
         <input type="submit" value="Visitar la web">
@@ -33,6 +36,29 @@
     </div>
   </section>
   @endif
+
+@if(session()->has('popupCp2') AND session()->get('popupCp2')==2 AND Cookie::get('popupCpEnd') == false)
+ <section class="home-popup-container">
+    <div class="home-popup-content">
+      <button class="home-popup-btn">X</button>
+      <h2>¡BIENVENID@S!</h2>
+      <p>Introduce tu código postal para verificar que repartimos en tu zona de entrega</p>
+      @if(session()->has('popupCp2') AND session()->get('popupCp2')==2)
+      <p style="font-size: 13px; margin-top: 5px;">¡Llegamos hasta allí!</p>
+      <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
+        @csrf
+        <input type="submit" value="Visitar la web">
+      </form>
+      @endif
+      @if(session()->has('popupCp2') AND session()->get('popupCp2')==3)
+      <p style="font-size: 13px; line-height: inherit; margin-bottom:10px; margin-top: 5px;">¡Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)</p>
+      <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
+        @csrf
+        <input type="submit" value="Visitar la web">
+      </form>
+      @endif
+    </div>
+  </section>
   @endif
 
  <section class="home-popup-container2 home-popup-hidden">

@@ -86,7 +86,7 @@
                     <div class="dish-text">
                       <!-- <p class="title">COMIDA</p> -->
                       <p class="dish-price">{{ $lunch[$i]->precio}}€</p>
-                      <p class="name">{{ $lunch[$i]->nombre }} ({{ $lunch[$i]->plato_peso->valor }})</p>
+                      <p class="name">{{ $lunch[$i]->nombre }} - {{ $lunch[$i]->plato_peso->valor }}</p>
                     </div>
                     <div class="dish-info">
                       <span>{{ round($lunch[$i]->calorias, 0) }} <b>CAL</b></span>
@@ -115,7 +115,7 @@
                     <div class="dish-text">
                       <!-- <p class="title">CENA</p> -->
                       <p class="dish-price">{{ $dinner[$i]->precio }}€</p>
-                      <p class="name">{{ $dinner[$i]->nombre }} ({{ $dinner[$i]->plato_peso->valor }})</p>
+                      <p class="name">{{ $dinner[$i]->nombre }} - {{ $dinner[$i]->plato_peso->valor }}</p>
                     </div>
                     <div class="dish-info">
                       <span>{{ round($dinner[$i]->calorias, 0) }} <b>CAL</b></span>

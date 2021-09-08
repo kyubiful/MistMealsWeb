@@ -12,6 +12,7 @@ use Exception;
 use App\Services\CartService;
 use App\Models\User;
 use App\Models\Payment;
+use Barryvdh\DomPDF\Facade as PDF;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
@@ -70,10 +71,12 @@ class RedsysController extends Controller
 
                 $user = User::findOrFail(auth()->user()->id);
                 $cart = $this->cartService->getFromCookie();
+                $order = Order::findOrFail($request->cookie('order_id'));
                 $client = new Client();
                 $salesorderURL = 'https://api.holded.com/api/invoicing/v1/documents/salesorder';
                 $invoiceURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice';
                 $payedURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
+                $getPdfUrl = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
 
                 $items = array();
                 $amount = 0;
@@ -91,28 +94,92 @@ class RedsysController extends Controller
                     $amount = $amount + ($product->precio * $product->pivot->quantity);
                 };
 
-                $holdedArray = array(
-                    'contactCode' => $user->id + 10,
-                    'contactName' => $user->name,
-                    'contactEmail' => $user->email,
-                    'contactAddress' => $user->address,
-                    'contactCity' => $user->city,
-                    'contactCp' => $user->cp,
-                    'notes' => 'Telefono de contacto: '.$user->phone,
-                    'date' => time(),
-                    'items' => '',
-                    'applyContactDefaults' => False
-                );
+                // if($order->invoice == 1){
+                //     $holdedInvoiceArray = array(
+                //         'contactCode' => $user->invoice_nif,
+                //         'contactName' => $user->name,
+                //         'contactEmail' => $user->email,
+                //         'contactAddress' => $user->invoice_address,
+                //         'contactCity' => $user->invoice_city,
+                //         'contactCp' => $user->invoice_cp,
+                //         'notes' => 'Telefono de contacto: '.$user->phone,
+                //         'date' => time(),
+                //         'items' => '',
+                //         'applyContactDefaults' => False
+                //     );
 
-                $holdedArray['items'] = $items;
+                //     $holdedArray = array(
+                //         'contactCode' => $user->id + 10,
+                //         'contactName' => $user->name,
+                //         'contactEmail' => $user->email,
+                //         'contactAddress' => $user->address,
+                //         'contactCity' => $user->city,
+                //         'contactCp' => $user->cp,
+                //         'notes' => 'Telefono de contacto: '.$user->phone,
+                //         'date' => time(),
+                //         'items' => '',
+                //         'applyContactDefaults' => False
+                //     );
+                //     $holdedArray['items'] = $items;
+                //     $holdedInvoiceArray['items'] = $items;
 
-                $holdedArray = json_encode($holdedArray);
-                $client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
-                $res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
-                $res = json_decode($res->getBody()->getContents());
-                $invoiceId = $res->id;
-                $payJSON = json_encode(['date' => time(), 'amount' => $cart->total]);
-                $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => config('holded.key')], 'body' => $payJSON]);
+                //     $holdedArray = json_encode($holdedArray);
+                //     $holdedInvoiceArray = json_encode($holdedInvoiceArray);
+
+                //     $client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                //     $res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedInvoiceArray]);
+                //     $res = json_decode($res->getBody()->getContents());
+                //     $invoiceId = $res->id;
+                //     $payJSON = json_encode(['date' => time(), 'amount' => $cart->total]);
+                //     $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => config('holded.key')], 'body' => $payJSON]);
+                //     $pdf = $client->get($getPdfUrl.$invoiceId.'/pdf', ['headers' => ['key' => config('holded.key')]]);
+                //     dd($pdf->getBody()->getContents());
+                //     $res2 = $pdf->getBody()->getContents();
+
+                //     $invoicePdf = PDF::loadHTML($res2)->setPaper('a4', 'landscape');
+                    
+                //     try {
+                //         Mail::to(auth()->user()->email)->send(new OrderMail($cart, $invoicePdf));
+                //     } catch (\Exception $e) {
+                //         return response()->json(array(
+                //             'status' => 500,
+                //             'message' => $e->getMessage()
+                //         ));
+                //     }
+                // } else {
+                    $holdedArray = array(
+                        'contactCode' => $user->nif ?? $user->id + 10,
+                        'contactName' => $user->name,
+                        'contactEmail' => $user->email,
+                        'contactAddress' => $user->address,
+                        'contactCity' => $user->city,
+                        'contactCp' => $user->cp,
+                        'notes' => 'Telefono de contacto: '.$user->phone,
+                        'date' => time(),
+                        'items' => '',
+                        'applyContactDefaults' => False
+                    );
+
+                    $holdedArray['items'] = $items;
+                    $holdedArray = json_encode($holdedArray);
+
+                    $client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                    $res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                    $res = json_decode($res->getBody()->getContents());
+                    $invoiceId = $res->id;
+                    $payJSON = json_encode(['date' => time(), 'amount' => $cart->total]);
+                    $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => config('holded.key')], 'body' => $payJSON]);
+
+                    try {
+                        Mail::to(auth()->user()->email)->send(new OrderMail($cart, null));
+                    } catch (\Exception $e) {
+                        return response()->json(array(
+                            'status' => 500,
+                            'message' => $e->getMessage()
+                        ));
+                    }
+
+                // }
 
                 $order_id = (int)$request->cookie('order_id');
 
@@ -126,22 +193,13 @@ class RedsysController extends Controller
 
                 Order::whereId($order_id)->update(['status' => 'pagado']);
 
-                try {
-                    Mail::to(auth()->user()->email)->send(new OrderMail());
-                } catch (\Exception $e) {
-                    return response()->json(array(
-                        'status' => 500,
-                        'message' => $e->getMessage()
-                    ));
-                }
-
                 $this->cartService->deleteCookie();
                 return redirect('/')->with('message', 'success')->withoutCookie('order_id');
             } else {
                 return redirect('/')->with('message', 'error');
             }
         } catch (Exception $e) {
-            return redirect('/')->with('error', $e);
+            return redirect('/')->with('message', 'error');
         }
     }
 }

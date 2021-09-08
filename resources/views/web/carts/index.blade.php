@@ -14,7 +14,7 @@
       @csrf
       @method('DELETE')
       <div class="cart-product-content-product">
-        <span class="cart-product-name">{{ $plato->pivot->quantity }}x {{ $plato->nombre }}</span> <span class="cart-product-price"><b>{{ $plato->total }}€</b></span><button type="submit">x</button>
+        <span class="cart-product-name">{{ $plato->pivot->quantity }}x {{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</span> <span class="cart-product-price"><b>{{ $plato->total }}€</b></span><button type="submit">x</button>
       </div>
     </form>
     @endforeach

@@ -16,7 +16,7 @@
     <img src="{{ asset($plato->getUrlImage1Attribute()) }}" class="plato-img" alt="">
     <div class="plato-content">
       <p class="plato-price">{{ $plato->precio }}€</p>
-      <p class="plato-title">{{ $plato->nombre }} </p>
+      <p class="plato-title">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</p>
       <div class="plato-info">
         <span>{{ bcdiv($plato->calorias, '1', 0) }} <b>cal</b></span>
         <span>{{ bcdiv($plato->plato_info_nutricional->proteinas, '1', 0) }} <b>P</b></span>

@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Services\CartService;
 
 class OrderMail extends Mailable
 {
@@ -16,9 +17,15 @@ class OrderMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    public $details;
+    public $cartService;
+    public $pdf;
+
+    public function __construct($details, $pdf)
     {
-        //
+        $this->details=$details;
+        $this->pdf=$pdf;
     }
 
     /**
@@ -28,7 +35,23 @@ class OrderMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Hemos recibido tu pedido')
-            ->view('emails.orderMail');
+        $data = $this->details;
+        $pdf = $this->pdf;
+
+        if($pdf == null){
+
+            return $this->subject('Hemos recibido tu pedido')
+            ->view('emails.orderMail')
+            ->with('data', $data);
+
+        } else {
+            return $this->subject('Hemos recibido tu pedido')
+                ->view('emails.orderMail')
+                ->with('data', $data)
+                ->attachData($pdf->output(), 'mist-meals-menu.pdf', [
+                    'mime' => 'application/pdf',
+            ]);
+
+        }
     }
 }

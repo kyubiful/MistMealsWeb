@@ -52,6 +52,7 @@ class User extends Authenticatable
         'invoice_region',
         'invoice_province',
         'invoice_city',
+        'invoice_nif',
         'phone'
     ];
 

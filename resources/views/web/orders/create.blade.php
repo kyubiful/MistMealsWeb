@@ -14,31 +14,31 @@
       <h1>Detalles del pedido</h1>
       <div class="order-form-content">
         <div class="order-inp-1">
-          <p>Nombre</p> <input class="order-inp" type="text" name="name" id="" value="{{ $user->name }}" required>
+          <p>Nombre</p> <input class="order-inp" type="text" name="name" id="" placeholder="Nombre" value="{{ $user->name }}" required>
         </div>
         <div class="order-inp-1">
-          <p>Apellidos</p> <input class="order-inp" type="text" name="surname" id="" value="{{ $user->surname }}" required>
+          <p>Apellidos</p> <input class="order-inp" type="text" name="surname" id="" placeholder="Apellidos" value="{{ $user->surname }}" required>
         </div>
         <div class="order-inp-2">
-          <p>Dirección</p> <input class="order-inp" type="text" name="address" id="" value="{{ $user->address }}" required>
+          <p>Dirección</p> <input class="order-inp" type="text" name="address" id="" placeholder="Dirección" value="{{ $user->address }}" required>
         </div>
         <div class="order-inp-3">
-          <p>Número</p> <input class="order-inp" type="text" name="address_number" id="" value="{{ $user->address_number }}" required>
+          <p>Número</p> <input class="order-inp" type="text" name="address_number" placeholder="Número" id="" value="{{ $user->address_number }}" required>
         </div>
         <div class="order-inp-3">
-          <p>Piso</p> <input class="order-inp" type="text" name="address_letter" id="" value="{{ $user->address_letter }}">
+          <p>Piso</p> <input class="order-inp" type="text" name="address_letter" id="" placeholder="Piso" value="{{ $user->address_letter }}">
         </div>
         <div class="order-inp-4">
-          <p>Código postal</p> <input class="order-inp" type="text" name="cp" id="" value="{{ $user->cp }}" required>
+          <p>Código postal</p> <input class="order-inp" type="text" name="cp" id="" placeholder="Código Postal" value="{{ $user->cp }}" required>
         </div>
         <div class="order-inp-1">
-          <p>Teléfono</p> <input class="order-inp" type="text" name="phone" id="" value="{{ $user->phone }}" required>
+          <p>Teléfono</p> <input class="order-inp" type="text" name="phone" id="" placeholder="Teléfono" value="{{ $user->phone }}" required>
         </div>
         <div class="order-inp-1">
-          <p>Provincia</p> <input class="order-inp" type="text" name="province" id="" value="{{ $user->province }}" required>
+          <p>Provincia</p> <input class="order-inp" type="text" name="province" id="" placeholder="Provincia" value="{{ $user->province }}" required>
         </div>
         <div class="order-inp-1">
-          <p>Ciudad</p> <input class="order-inp" type="text" name="city" id="" value="{{ $user->city }}" required>
+          <p>Ciudad</p> <input class="order-inp" type="text" name="city" id="" placeholder="Ciudad" value="{{ $user->city }}" required>
         </div>
       </div>
 
@@ -50,25 +50,25 @@
           <h1>Detalles de facturación</h1>
           <div class="order-form-content">
             <div class="order-inp-2">
-              <p>Dirección</p> <input class="order-inp" type="text" name="invoice_address" id="invoice_address" value="{{ $user->invoice_address }}">
+              <p>Dirección</p> <input class="order-inp" type="text" name="invoice_address" id="invoice_address" placeholder="Dirección" value="{{ $user->invoice_address }}">
             </div>
             <div class="order-inp-3">
-              <p>Número</p> <input class="order-inp" type="text" name="invoice_address_number" id="invoice_address_number" value="{{ $user->invoice_address_number }}">
+              <p>Número</p> <input class="order-inp" type="text" name="invoice_address_number" id="invoice_address_number" placeholder="Número" value="{{ $user->invoice_address_number }}">
             </div>
             <div class="order-inp-3">
-              <p>Piso</p> <input class="order-inp" type="text" name="invoice_address_letter" id="invoice_address_letter" value="{{ $user->invoice_address_letter }}">
+              <p>Piso</p> <input class="order-inp" type="text" name="invoice_address_letter" id="invoice_address_letter" placeholder="Piso" value="{{ $user->invoice_address_letter }}">
             </div>
             <div class="order-inp-4">
-              <p>Código postal</p> <input class="order-inp" type="text" name="invoice_cp" id="invoice_cp" value="{{ $user->invoice_cp }}">
+              <p>Código postal</p> <input class="order-inp" type="text" name="invoice_cp" id="invoice_cp" placeholder="Código Postal" value="{{ $user->invoice_cp }}">
             </div>
             <div class="order-inp-1">
-              <p>Región</p> <input class="order-inp" type="text" name="invoice_region" id="invoice_region" value="{{ $user->invoice_region }}">
+              <p>NIF</p> <input class="order-inp" type="text" name="invoice_nif" id="invoice_region" placeholder="NIF" value="{{ $user->invoice_nif }}">
             </div>
             <div class="order-inp-1">
-              <p>Provincia</p> <input class="order-inp" type="text" name="invoice_province" id="invoice_province" value="{{ $user->invoice_province }}">
+              <p>Provincia</p> <input class="order-inp" type="text" name="invoice_province" id="invoice_province" placeholder="Provincia" value="{{ $user->invoice_province }}">
             </div>
             <div class="order-inp-1">
-              <p>Ciudad</p> <input class="order-inp" type="text" name="invoice_city" id="invoice_city" value="{{ $user->invoice_city }}">
+              <p>Ciudad</p> <input class="order-inp" type="text" name="invoice_city" id="invoice_city" placeholder="Ciudad" value="{{ $user->invoice_city }}">
             </div>
           </div>
         </div>
@@ -77,23 +77,23 @@
       <table>
         <thead>
           <tr>
+            <th>Cantidad</th>
             <th>Plato</th>
             <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Total</th>
+            <th>Subtotal</th>
           </tr>
         </thead>
         @foreach($cart->products as $i => $plato)
         <tbody>
           <tr>
+            <td>
+              {{ $plato->pivot->quantity }}
+            </td>
             <td class="order-product-name">
               {{ $plato->nombre }}
             </td>
             <td>
               {{ $plato->precio }}
-            </td>
-            <td>
-              {{ $plato->pivot->quantity }}
             </td>
             <td>
               <strong>

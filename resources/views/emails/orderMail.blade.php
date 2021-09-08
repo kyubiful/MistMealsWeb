@@ -589,7 +589,6 @@
     }
   </style>
 </head>
-
 <body style="height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;">
   <span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">¡Gracias por tu compra!</span>
   <center>
@@ -658,7 +657,39 @@
 
                                 <p style="text-align: center;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;"><span style="color:#FBF1E0"><span style="font-family:core sans c,helvetica neue,helvetica,arial,verdana,sans-serif">¡Gracias por tu compra!<br>
                                       <br>
-                                      Si tienes cualquier duda sobre tu pedido, o necesitas ayuda con un cambio o devolución pincha <a href="https://www.mistmeals.com/contacto" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">aquí</a>.</span></span></p>
+                                      <table style="margin: 0 auto; border: none; margin-bottom: 20px;">
+                                        <thead style="background-color: #533fb8; color: #F9F2E1;">
+                                          <tr>
+                                            <th style="padding: 10px; font-size:20px">Cantidad</th>
+                                            <th style="padding: 10px; font-size:20px" colspan="2">Nombre</th> 
+                                            <th style="padding: 10px; font-size:20px">Total</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody style="background-color: #f9f2e1;">
+                                      @foreach($data->products as $i => $plato)
+                                      
+                                          <tr>
+                                            <td style="padding: 10px; font-size:15px; color: black;">{{ $plato->pivot->quantity }}</td>
+                                            <td style="padding: 10px; font-size:15px; color: black;" colspan="2">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</td>
+                                            <td style="padding: 10px; font-size:15px; color: black;">{{ $plato->total }}€</td>
+                                          </tr>
+                                          
+                                      @endforeach
+                                          <tr>
+                                            <td style="background-color: black; height: 20px"></td>
+                                            <td style="background-color: black;" colspan="2"></td>
+                                            <td style="background-color: black;"></td>
+                                          </tr>
+                                          <tr>
+                                            <td style="background-color: black;"></td>
+                                            <td style="background-color: black; width: 180px;"></td>
+                                            <td style="background-color: #533fb8; color: #F9F2E1; padding: 10px;"><b>Total</b></td>
+                                            <td style="padding: 10px; font-size:15px; color: black;"><b>{{ $data->total }}€</b></td>
+                                          </tr>
+                                        </tbody>
+
+                                      </table>
+                                      <p style="color:white;">Si tienes cualquier duda sobre tu pedido, o necesitas ayuda con un cambio o devolución pincha <a href="https://www.mistmeals.com/contacto" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">aquí</a>.</p></span></span></p>
                               </td>
                             </tr>
                           </tbody>

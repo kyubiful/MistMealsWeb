@@ -174,8 +174,8 @@
                         </div>
                         <div class="col-lg-6 col-sm-12">
                             <div class="single_contact_form">
-                                <label for="invoice_region" style="float: left;">Región</label>
-                                <input type="text" name="invoice_region" id="invoice_region" class="form-control cu_input" placeholder="Región" min="18" max="80" step="1" value="{{ $user->invoice_region }}" style="background-color: black; color: #F9F2E1; border-color: #F9F2E1;">
+                                <label for="invoice_nif" style="float: left;">NIF</label>
+                                <input type="text" name="invoice_nif" id="invoice_nif" class="form-control cu_input" placeholder="NIF" min="18" max="80" step="1" value="{{ $user->invoice_nif }}" style="background-color: black; color: #F9F2E1; border-color: #F9F2E1;">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12">

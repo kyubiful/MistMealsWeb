@@ -57,7 +57,7 @@
             <p>Código postal</p> <input class="order-inp" type="text" name="invoice_cp" id="" value="{{ $user->invoice_cp }}" disabled>
           </div>
           <div class="order-inp-1">
-            <p>Región</p> <input class="order-inp" type="text" name="invoice_region" id="" value="{{ $user->invoice_region }}" disabled>
+            <p>NIF</p> <input class="order-inp" type="text" name="invoice_nif" id="" value="{{ $user->invoice_nif }}" disabled>
           </div>
           <div class="order-inp-1">
             <p>Provincia</p> <input class="order-inp" type="text" name="invoice_province" id="" value="{{ $user->invoice_province }}" disabled>
@@ -71,23 +71,23 @@
       <table>
         <thead>
           <tr>
+            <th>Cantidad</th>
             <th>Plato</th>
             <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Total</th>
+            <th>Subtotal</th>
           </tr>
         </thead>
         @foreach($order->products as $i => $plato)
         <tbody>
           <tr>
+            <td>
+              {{ $plato->pivot->quantity }}
+            </td>
             <td class="order-product-name">
               {{ $plato->nombre }}
             </td>
             <td>
               {{ $plato->precio }}
-            </td>
-            <td>
-              {{ $plato->pivot->quantity }}
             </td>
             <td>
               <strong>
