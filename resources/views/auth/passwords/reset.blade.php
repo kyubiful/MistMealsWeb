@@ -51,7 +51,7 @@
                                 </button>
 
                                 <div class="text-center mt-4 font-weight-light">
-                                        ¿Tienes cuenta? <a href="{{ route('login') }}"
+                                        ¿Tienes cuenta? <a href="{{ route('web.user.login') }}"
                                             class="new-password-link">Inicia sesión</a>
                                 </div>
                             </div>

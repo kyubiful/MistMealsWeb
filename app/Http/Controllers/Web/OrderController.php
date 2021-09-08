@@ -56,6 +56,7 @@ class OrderController extends Controller
         $user->address_letter = $request->address_letter;
         $user->region = $request->region;
         $user->province = $request->province;
+        $user->phone = $request->phone;
 
         $user->invoice_address = $request->invoice_address;
         $user->invoice_address_number = $request->invoice_address_number;

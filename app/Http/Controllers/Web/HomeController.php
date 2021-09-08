@@ -22,15 +22,18 @@ class HomeController extends Controller
         if (auth()->check()) {
             $user = User::findOrFail(auth()->user()->id);
             if (in_array($user->cp, $availableCP)) {
-                $cookie = Cookie::make('popupCp', 3, 7 * 24 * 60);
-                return response(view('web.home.index', compact('objetivo')))->cookie($cookie);
-            } else {
-                Cookie::queue(Cookie::make('popupCp', 1, 7 * 24 * 60));
+                // $cookie = Cookie::make('popupCp', 3, 7 * 24 * 60);
                 return view('web.home.index', compact('objetivo'));
+                // return response(view('web.home.index', compact('objetivo')))->cookie($cookie);
+            } else {
+                // Cookie::queue(Cookie::make('popupCp', 1, 7 * 24 * 60));
+                return view('web.home.index', compact('objetivo'))->with('popupCp', 1);
+                // return view('web.home.index', compact('objetivo'));
             }
         }
-        Cookie::queue(Cookie::make('popupCp', 1, 7 * 24 * 60));
-        return view('web.home.index', compact('objetivo'));
+        //Cookie::queue(Cookie::make('popupCp', 1, 7 * 24 * 60));
+        return view('web.home.index', compact('objetivo'))->with('popupCp', 1);
+        // return view('web.home.index', compact('objetivo'));
     }
 
     public function endHomePopup()

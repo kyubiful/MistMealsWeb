@@ -1428,11 +1428,22 @@ function getCookie(name) {
   return null;
 }
 
-if(window.location.pathname == '/' && document.querySelector('.home-popup-btn')!=null){
+if(window.location.pathname == '/'){
+    if(document.querySelector('.home-popup-btn')!=null){
     const popupBtn = document.querySelector('.home-popup-btn');
     const popup = document.querySelector('.home-popup-container');
     popupBtn.addEventListener('click', () => {
         popup.style.display = 'none';
+    });
+}
+    const popupBtn2 = document.querySelector('.home-popup-btn2');
+    const footerModal = document.querySelector('.footer-popup-background');
+    const homePopup = document.querySelector('.home-popup-container2');
+    footerModal.addEventListener('click', ()=>{
+        homePopup.classList.toggle('home-popup-hidden'); 
+    });
+    popupBtn2.addEventListener('click', () => {
+        homePopup.classList.toggle('home-popup-hidden'); 
     });
 }
 
@@ -1536,3 +1547,5 @@ if(popupMsg!=null){
        popupMsg.classList.toggle('fade'); 
     }, 5000);
 }
+
+// global

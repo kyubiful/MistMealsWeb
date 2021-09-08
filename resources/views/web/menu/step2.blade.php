@@ -46,7 +46,7 @@
         <div class="menu-step2-plates-count-container">
           <div class="menu-step2-plates-count-content">
            @inject('cartService','App\Services\CartService')
-           <p>Selecciona 5 platos mínimo ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
+           <p>Selecciona 5 platos para poder realizar el pedido ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
            <button class="step2-btn-submit" type="submit">Añadir al carrito</button>
           </div>
         </div>
@@ -85,6 +85,7 @@
                   <div class="right-dish">
                     <div class="dish-text">
                       <!-- <p class="title">COMIDA</p> -->
+                      <p class="dish-price">{{ $lunch[$i]->precio}}€</p>
                       <p class="name">{{ $lunch[$i]->nombre }} ({{ $lunch[$i]->plato_peso->valor }})</p>
                     </div>
                     <div class="dish-info">
@@ -113,6 +114,7 @@
                   <div class="right-dish">
                     <div class="dish-text">
                       <!-- <p class="title">CENA</p> -->
+                      <p class="dish-price">{{ $dinner[$i]->precio }}€</p>
                       <p class="name">{{ $dinner[$i]->nombre }} ({{ $dinner[$i]->plato_peso->valor }})</p>
                     </div>
                     <div class="dish-info">

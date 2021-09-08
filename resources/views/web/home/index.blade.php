@@ -2,12 +2,13 @@
 @section('content')
 
 @if(!auth()->check())
-@if(Cookie::get('popupCp') < 3 AND Cookie::get('popupCp')> 0 AND Cookie::get('popupCpEnd')!='true' ) <section class="home-popup-container">
+@if(!empty($popupCp) AND $popupCp < 4 AND Cookie::get('popupCpEnd') == false)
+ <section class="home-popup-container">
     <div class="home-popup-content">
       <button class="home-popup-btn">X</button>
       <h2>¡BIENVENID@S!</h2>
       <p>Introduce tu código postal para verificar que repartimos en tu zona de entrega</p>
-      @if(Cookie::get('popupCp') == 1)
+      @if($popupCp == 1 AND !session()->has('popupCp2'))
       <form method="POST" action="{{route('web.verifyCP')}}" class="home-popup-form">
         @csrf
         <input type="number" name="cp" id="" placeholder="00000">
@@ -15,14 +16,14 @@
       </form>
       <p style="font-size: 10px;">*no enviamos a islas, Ceuta y Melilla</p>
       @endif
-      @if(Cookie::get('popupCp')==2 AND Cookie::get('cp_result')==true)
+      @if(session()->has('popupCp2') AND session()->get('popupCp2')==2)
       <p style="font-size: 13px; color:#FF810C; margin-top: 5px;">¡Llegamos hasta allí!</p>
       <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
         @csrf
         <input type="submit" value="Visitar la web">
       </form>
       @endif
-      @if(Cookie::get('popupCp')==2 AND Cookie::get('cp_result')==false)
+      @if(session()->has('popupCp2') AND session()->get('popupCp2')==3)
       <p style="font-size: 13px; color:#FF810C; margin-top: 5px;">¡Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)</p>
       <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
         @csrf
@@ -33,6 +34,20 @@
   </section>
   @endif
   @endif
+
+ <section class="home-popup-container2 home-popup-hidden">
+    <div class="home-popup-content">
+      <button class="home-popup-btn2">X</button>
+      <h2>¡BIENVENID@S!</h2>
+      <p>Introduce tu código postal para verificar que repartimos en tu zona de entrega</p>
+      <form method="POST" action="{{route('web.verifyCP')}}" class="home-popup-form">
+        @csrf
+        <input type="number" name="cp" id="" placeholder="00000">
+        <button type="submit">Verificar</button>
+      </form>
+      <p style="font-size: 10px;">*no enviamos a islas, Ceuta y Melilla</p>
+    </div>
+  </section>
 
   <section class="profile_info style_1 home-make-diet-container" style="background-color: #000000; padding-top: 80px;">
     <div class="container-fluid">

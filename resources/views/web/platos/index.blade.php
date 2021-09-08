@@ -7,7 +7,7 @@
 <div class="platos-count-container">
   <div class="platos-count-content">
     @inject('cartService','App\Services\CartService')
-    <p>Selecciona 5 platos mínimo ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
+    <p>Selecciona 5 platos para poder realizar el pedido ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
   </div>
 </div>
 <div class="platos-container">
@@ -15,6 +15,7 @@
   <div class="plato-container">
     <img src="{{ asset($plato->getUrlImage1Attribute()) }}" class="plato-img" alt="">
     <div class="plato-content">
+      <p class="plato-price">{{ $plato->precio }}€</p>
       <p class="plato-title">{{ $plato->nombre }} </p>
       <div class="plato-info">
         <span>{{ bcdiv($plato->calorias, '1', 0) }} <b>cal</b></span>

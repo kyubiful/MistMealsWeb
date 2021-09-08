@@ -1319,9 +1319,23 @@ body.menu-step2 #accordion .left-dish {
 body.menu-step2 #accordion .right-dish {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   height: 100%;
   width: 300px;
+}
+
+
+body.menu-step2 #accordion .right-dish .dish-text .dish-price {
+  font-size: 24px;
+  font-family: TuskerGrotesk65 !important;
+}
+
+body.menu-step2 #accordion .right-dish .dish-info {
+  margin-bottom: 10px;
+}
+
+body.menu-step2 #accordion .right-dish .dish-info span b{
+  color: #ff0033;
 }
 
 body.menu-step2 #accordion .dish-title .title {
@@ -1332,9 +1346,8 @@ body.menu-step2 #accordion .dish-title .title {
 
 body.menu-step2 #accordion .dish-text .name {
   font-size: 20px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  margin-left: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   font-family: TuskerGrotesk35 !important;
 }
 
@@ -1410,7 +1423,23 @@ body.menu-step2 #accordion .card-body .container {
   opacity: 0;
 }
 
+
+.home-popup-container2.home-popup-hidden{
+  display: none;
+}
+
 .home-popup-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-popup-container2 {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -1457,6 +1486,16 @@ body.menu-step2 #accordion .card-body .container {
 }
 
 .home-popup-btn {
+  background: none;
+  border: none;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.home-popup-btn2 {
   background: none;
   border: none;
   color: white;
@@ -1905,6 +1944,13 @@ body .platos-count-content p{
   padding-bottom: 30px;
 }
 
+.plato-content p.plato-price {
+  text-align: center !important;
+  font-size: 27px;
+  font-family: TuskerGrotesk65 !important;
+  margin-bottom: 10px;
+}
+
 .plato-title {
   font-size: 17px;
   font-family: TuskerGrotesk65 !important;
@@ -1916,7 +1962,6 @@ body .platos-count-content p{
 
 .plato-info {
   font-size: 14px;
-  margin-top: 20px;
   color: #f9f2e1;
 }
 
@@ -2267,21 +2312,21 @@ body .platos-count-content p{
   margin-top: 90px;
 }
 
-.reset-password-btn{
+.new-password-btn{
   background-color: #533fb8;
   border: none;
 }
 
-.reset-password-btn:hover{
+.new-password-btn:hover{
   background-color: #F9F2E1;
   color: #533fb8;
 }
 
-.reset-password-link{
+.new-password-link{
   color:#533fb8 !important;
 }
 
-.reset-password-link:hover{
+.new-password-link:hover{
   color: #F9F2E1 !important;
 }
 /* Nueva contraseña */
@@ -2779,6 +2824,36 @@ body .platos-count-content p{
   }
 
   /* menu/dishes */
+
+  body.menu-step2 #accordion .right-dish {
+    font-size: 18px;
+    margin-bottom:0px;
+    height: 168px;
+  }
+
+  body.menu-step2 #accordion .right-dish .dish-price{
+    font-size: 18px;
+    margin-bottom:0px;
+  }
+
+  body.menu-step2 #accordion .right-dish .name{
+    font-size: 14px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+
+  body.menu-step2 #accordion .right-dish .dish-info{
+    font-size: 12px;
+  }
+
+  body.menu-step2 .step2-checkbox-container{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  body.menu-step2 .step2-checkbox-container label{
+    font-size: 14px;
+  }
 
   body .menu-step2-plates-count-container{
     padding: 10px;

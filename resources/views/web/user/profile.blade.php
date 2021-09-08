@@ -131,8 +131,8 @@
                         </div>
                         <div class="col-lg-6 col-sm-12">
                             <div class="single_contact_form">
-                                <label for="region" style="float: left;">Región</label>
-                                <input type="text" name="region" id="region" class="form-control cu_input" placeholder="Región" min="18" max="80" step="1" value="{{ $user->region }}" style="background-color: black; color: #F9F2E1; border-color: #F9F2E1;">
+                                <label for="region" style="float: left;">Teléfono</label>
+                                <input type="text" name="phone" id="phone" class="form-control cu_input" placeholder="Región" min="18" max="80" step="1" value="{{ $user->phone }}" style="background-color: black; color: #F9F2E1; border-color: #F9F2E1;">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12">

@@ -98,6 +98,7 @@ class RedsysController extends Controller
                     'contactAddress' => $user->address,
                     'contactCity' => $user->city,
                     'contactCp' => $user->cp,
+                    'notes' => 'Telefono de contacto: '.$user->phone,
                     'date' => time(),
                     'items' => '',
                     'applyContactDefaults' => False

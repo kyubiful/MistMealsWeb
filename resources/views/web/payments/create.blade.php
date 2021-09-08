@@ -33,7 +33,7 @@
           <p>Código postal</p> <input class="order-inp" type="text" name="cp" id="" value="{{ $user->cp }}" disabled>
         </div>
         <div class="order-inp-1">
-          <p>Región</p> <input class="order-inp" type="text" name="region" id="" value="{{ $user->region }}" disabled>
+          <p>Teléfono</p> <input class="order-inp" type="text" name="phone" id="" value="{{ $user->phone }}" disabled>
         </div>
         <div class="order-inp-1">
           <p>Provincia</p> <input class="order-inp" type="text" name="province" id="" value="{{ $user->province }}" disabled>
