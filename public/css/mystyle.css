@@ -2312,21 +2312,21 @@ body .platos-count-content p{
   margin-top: 90px;
 }
 
-.new-password-btn{
+.reset-password-btn{
   background-color: #533fb8;
   border: none;
 }
 
-.new-password-btn:hover{
+.reset-password-btn:hover{
   background-color: #F9F2E1;
   color: #533fb8;
 }
 
-.new-password-link{
+.reset-password-link{
   color:#533fb8 !important;
 }
 
-.new-password-link:hover{
+.reset-password-link:hover{
   color: #F9F2E1 !important;
 }
 /* Nueva contraseña */
@@ -2336,8 +2336,8 @@ body .platos-count-content p{
 }
 
 .new-password-btn{
-  background-color: #533fb8;
-  border: none;
+  background-color: #533fb8 !important;
+  border: none !important;
 }
 
 .new-password-btn:hover{
