@@ -240,13 +240,13 @@
     <table>
         <tr>
             <td></td>
-            <td class="table-title">LUNES</td>
-            <td class="table-title">MARTES</td>
-            <td class="table-title">MIERCOLES</td>
-            <td class="table-title">JUEVES</td>
-            <td class="table-title">VIERNES</td>
-            <td class="table-title">SABADO</td>
-            <td class="table-title">DOMINGO</td>
+            <td class="table-title">Día 1</td>
+            <td class="table-title">Día 2</td>
+            <td class="table-title">Día 3</td>
+            <td class="table-title">Día 4</td>
+            <td class="table-title">Día 5</td>
+            <td class="table-title">Día 6</td>
+            <td class="table-title">Día 7</td>
         </tr>
         <tr>
             <td class="table-title">COMIDA</td>
