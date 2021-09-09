@@ -15,7 +15,7 @@
     <div class="contact-form">
         <div class="c3">
             <div class="contact_form_iner">
-                {!! Form::open(['method' => 'POST', 'route' => ['web.contacto.store'], 'id' => 'contacto_form', 'class' => 'contact_form'])!!}
+                {!! Form::open(['method' => 'POST', 'route' => ['web.contacto.send'], 'id' => 'contacto_form', 'class' => 'contact_form'])!!}
                 <div>
                     @if (!auth()->check())
                     <div>
@@ -57,6 +57,26 @@
 @include('web.layout.newsletter')
 @endsection
 
+@if(session()->has('message'))
+<div class="home-msg-container">
+    @if(!session()->has('error'))
+    <div class="home-msg-title">
+        <h2><b>¡GRACIAS!</b></h2>
+    </div>
+    <div class="home-msg">
+        <p>{{ session()->get('message')}}</p>
+    </div>
+    @endif
+    @if(session()->has('error'))
+    <div class="home-msg-title">
+        <h2><b>¡ERROR!</b></h2>
+    </div>
+    <div class="home-msg">
+        <p>{{ session()->get('message')}}</p>
+    </div>
+    @endif
+</div>
+@endif
 @push('custom-scripts')
 <script src="https://www.google.com/recaptcha/api.js?render=6LeNaqwaAAAAAMX7jdqCJ95neE44LikadkhwQZ8L"></script>
 @endpush

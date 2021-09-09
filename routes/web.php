@@ -38,7 +38,7 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::get('/menu/pdf', 'MenuController@pdfMenu')->name('menu.pdf');
 
   Route::get('/contacto', 'ContactoController@index')->name('contacto');
-  Route::post('/contacto', 'ContactoController@store')->name('contacto.store');
+  Route::post('/contacto', 'ContactoController@send')->name('contacto.send');
 
   Route::get('/aviso-legal', 'CondicionesController@avisolegal')->name('avisolegal');
   Route::get('/politica-cookies', 'CondicionesController@cookies')->name('politicacookies');

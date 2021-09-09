@@ -42,4 +42,14 @@
   @endif
 </div>
 @include('web.layout.newsletter')
+  @if(session()->has('message'))
+  <div class="home-msg-container">
+    <div class="home-msg-title">
+      <h2><b>¡ERROR!</b></h2>
+    </div>
+    <div class="home-msg">
+      <p>{{ session()->get('message') }}</p>
+    </div>
+  </div>
+  @endif
 @endsection

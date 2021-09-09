@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use App\Models\Contacto;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactoController extends Controller
 {
@@ -16,33 +18,29 @@ class ContactoController extends Controller
         return view('web.contacto.index');
     }
 
-    public function store(Request $request)
+    public function send(Request $request)
     {
-        // Check exist with same email or user
-        if (auth()->check() && !User::findOrFail(auth()->user()->id)->isAdmin()) {
-
-            $request->merge([
-                'mensaje_user_id' => auth()->user()->id,
-                'email' => auth()->user()->email,
-                'nombre' => auth()->user()->name,
-            ]);
-
+        if((auth()->check())){
+            $user = User::findOrFail(auth()->user()->id);
+            $name = $user->name;
+            $email = $user->email;
+            $content = $request->descripcion;
+        }else{
+            $name = $request->nombre;
+            $email = $request->email;
+            $content = $request->descripcion;
         }
 
-        if (Contacto::where('email', $request->email)->exists()) {
-
-            return response()->json(array(
-                'status' => 500,
-                'message' => 'Ya has enviado una sugerencia antes!'
-            ));
-
+        $mail = [
+            'nombre' => $name,
+            'content' => $content,
+        ];
+        try{
+            Mail::to('hola@mistmeals.com')->send(new ContactMail($mail));
+            return redirect()->back()->with('message', 'El mensaje ha sido enviado correctamente');
+        } catch(\Exception $e){
+            return redirect()->back()->with('message', 'Error a la hora de enviar el mensaje')->with('error', 'true');
         }
 
-        $sugerencia = Contacto::create($request->all());
-
-        return response()->json(array(
-            'status' => 200,
-            'message' => 'Mensaje enviado!'
-        ));
     }
 }
