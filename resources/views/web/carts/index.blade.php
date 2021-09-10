@@ -33,10 +33,13 @@
         <p class="cart-price-total"><b><span>TOTAL</span><span>{{ $cart->total }}€</span></b></p>
       </div>
       @inject('cartService','App\Services\CartService')
-      @if($cartService->countProducts() < 5) <a class="mist_btn_disable" href="#">Pedido mínimo de 5 platos</a>
-        @else
-        <a class="mist_btn" href="{{ route('web.orders.create') }}">Tramitar pedido</a>
-        @endif
+      @if($cartService->countProducts() < 5) 
+      <a class="mist_btn_disable" href="#">Pedido mínimo de 5 platos</a>
+      @elseif($cartService->countProducts() > 8)
+      <a class="mist_btn_disable" href="#">Pedido máximo de 8 platos</a>
+      @else
+      <a class="mist_btn" href="{{ route('web.orders.create') }}">Tramitar pedido</a>
+      @endif
     </div>
   </div>
   @endif
