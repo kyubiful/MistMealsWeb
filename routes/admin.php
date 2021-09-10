@@ -19,7 +19,7 @@ Route::group(['middleware' => ['auth'], 'as' => 'admin.', 'prefix' => 'admin'], 
     Route::get('edit/{id}', 'Admin\PlatoController@edit')->name('plato.edit');
     Route::put('update/{id}', 'Admin\PlatoController@update')->name('plato.update');
     Route::delete('destroy/{id}', 'Admin\PlatoController@destroy')->name('plato.destroy');
-    Route::get('/plate/{id}/pdf', 'Admin\Etiquetacontroller@PDFEtiqueta')->name('plato.pdf');
+    Route::get('/plate/{id}/pdf', 'Admin\EtiquetaController@PDFEtiqueta')->name('plato.pdf');
   });
 
   Route::group(['prefix' => 'menu'], function () {
