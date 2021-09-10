@@ -32,7 +32,8 @@ class ContactoController extends Controller
         }
 
         $mail = [
-            'nombre' => $name,
+            'name' => $name,
+            'email' => $email,
             'content' => $content,
         ];
         try{
