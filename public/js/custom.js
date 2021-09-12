@@ -1283,7 +1283,7 @@ if(window.location.pathname=='/menu/config/1' || window.location.pathname=='/men
     const carouselControlNext = document.querySelector('.menu-step1 .carousel-control-next');
     const carouselControlPrev = document.querySelector('.menu-step1 .carousel-control-prev');
 
-    for(let i=0; i<carouselIndicators.length; i++){
+    for(let i=0; i< carouselIndicators.length ; i++){
       carouselIndicators[i].addEventListener('click', () =>{
         setTimeout(()=>{
           if(carouselIndicators[3].className == 'active'){
@@ -1411,11 +1411,11 @@ if(window.location.pathname=='/menu/dishes'){
 function getCookie(name) {
   // Split cookie string and get all individual name=value pairs in an array
   var cookieArr = document.cookie.split(";");
-  
+
   // Loop through the array elements
   for(var i = 0; i < cookieArr.length; i++) {
       var cookiePair = cookieArr[i].split("=");
-      
+
       /* Removing whitespace at the beginning of the cookie name
       and compare it with the given string */
       if(name == cookiePair[0].trim()) {
@@ -1423,7 +1423,7 @@ function getCookie(name) {
           return decodeURIComponent(cookiePair[1]);
       }
   }
-  
+
   // Return null if not found
   return null;
 }
@@ -1440,10 +1440,10 @@ if(window.location.pathname == '/'){
     const footerModal = document.querySelector('.footer-popup-background');
     const homePopup = document.querySelector('.home-popup-container2');
     footerModal.addEventListener('click', ()=>{
-        homePopup.classList.toggle('home-popup-hidden'); 
+        homePopup.classList.toggle('home-popup-hidden');
     });
     popupBtn2.addEventListener('click', () => {
-        homePopup.classList.toggle('home-popup-hidden'); 
+        homePopup.classList.toggle('home-popup-hidden');
     });
 }
 
@@ -1520,11 +1520,11 @@ if(window.location.pathname=='/platos'){
   const hideModalBtn = document.querySelector('.plates-modal-hide');
   if(hideModalBtn != null){
     hideModalBtn.addEventListener('click', () => {
-      document.querySelector('.plates-modal').style.display = 'none';
+      document.querySelector('.plates-modal').classList.remove('active');
       document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
       document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     });
-    
+
     const cartModalBtn = document.querySelector('.plates-modal-cart-btn');
     cartModalBtn.addEventListener('click', () => {
       document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
@@ -1544,7 +1544,7 @@ if(window.location.pathname=='/platos'){
 let popupMsg = document.querySelector('.home-msg-container');
 if(popupMsg!=null){
     setTimeout(() => {
-       popupMsg.classList.toggle('fade'); 
+       popupMsg.classList.toggle('fade');
     }, 5000);
 }
 

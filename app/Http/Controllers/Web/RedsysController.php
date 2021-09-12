@@ -77,6 +77,7 @@ class RedsysController extends Controller
                 $invoiceURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice';
                 $payedURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
                 $getPdfUrl = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
+                $updateContactURL = 'https://api.holded.com/api/invoicing/v1/contacts/';
 
                 $items = array();
                 $amount = 0;
@@ -84,10 +85,10 @@ class RedsysController extends Controller
                 for ($i = 0; $i < $cart->products->count(); $i++) {
                     $product = $cart->products[$i];
                     $item = array(
-                        'name' => $product->nombre,
+                        'name' => $product->nombre. '-' .$product->plato_peso->valor,
                         'units' => $product->pivot->quantity,
-                        'subtotal' => $product->precio / 1.21,
-                        'tax' => 21
+                        'subtotal' => $product->precio / 1.10,
+                        'tax' => 10
                     );
 
                     array_push($items, $item);
@@ -137,7 +138,7 @@ class RedsysController extends Controller
                 //     $res2 = $pdf->getBody()->getContents();
 
                 //     $invoicePdf = PDF::loadHTML($res2)->setPaper('a4', 'landscape');
-                    
+
                 //     try {
                 //         Mail::to(auth()->user()->email)->send(new OrderMail($cart, $invoicePdf));
                 //     } catch (\Exception $e) {
@@ -151,7 +152,7 @@ class RedsysController extends Controller
                         'contactCode' => $user->nif ?? $user->id + 10,
                         'contactName' => $user->name,
                         'contactEmail' => $user->email,
-                        'contactAddress' => $user->address,
+                        'contactAddress' => $user->address.' '.$user->address_number.' '.$user->address_letter,
                         'contactCity' => $user->city,
                         'contactCp' => $user->cp,
                         'notes' => 'Telefono de contacto: '.$user->phone,
@@ -160,9 +161,33 @@ class RedsysController extends Controller
                         'applyContactDefaults' => False
                     );
 
+                $holdedClient = array(
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'type' => 'client',
+                    'isperson' => 'true',
+                    'billAddress' => array(
+                        'address' => $user->invoice_address,
+                        'city' => $user->invoice_city,
+                        'postalCode' => $user->invoice_cp,
+                        'province' => $user->invoice_province,
+                    ),
+                    'shippingAddresses' => array(
+                        array(
+                            'address' => $user->address,
+                            'city' => $user->city,
+                            'postalCode' => $user->cp,
+                            'province' => $user->province
+                        )
+                    )
+                );
+
+                $holdedClient= json_encode($holdedClient);
+
                     $holdedArray['items'] = $items;
                     $holdedArray = json_encode($holdedArray);
 
+                    // $client->post($updateContactURL.$user->id, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
                     $client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
                     $res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
                     $res = json_decode($res->getBody()->getContents());

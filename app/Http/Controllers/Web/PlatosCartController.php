@@ -44,7 +44,16 @@ class PlatosCartController extends Controller
         $totalPrice = $infoPrice * $plateQuantity;
 
         $cookie = $this->cartService->makeCookie($cart);
-        return redirect()->back()->cookie($cookie)->with('itemName',$infoName)->with('infoPrice', $totalPrice)->with('itemQuantity', $plateQuantity);
+
+        return response()->json([
+            'status' => 500,
+            'message' => 'test',
+            'infoPrice' => $infoPrice,
+            'infoName' => $infoName,
+            'itemQuantity' => $plateQuantity
+        ])->withCookie($cookie);
+
+        // return redirect()->back()->cookie($cookie)->with('itemName',$infoName)->with('infoPrice', $totalPrice)->with('itemQuantity', $plateQuantity);
     }
 
     /**

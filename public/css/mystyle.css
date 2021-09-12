@@ -720,8 +720,8 @@ body .menu-step2-plates-count-content{
 }
 
 body .menu-step2-plates-count-content p{
-  color: black; 
-  font-family: TuskerGrotesk35 !important; 
+  color: black;
+  font-family: TuskerGrotesk35 !important;
   font-size: 23px;
   letter-spacing: 0.02em;
 }
@@ -1854,8 +1854,8 @@ body .platos-count-content{
 }
 
 body .platos-count-content p{
-  color: black; 
-  font-family: TuskerGrotesk35 !important; 
+  color: black;
+  font-family: TuskerGrotesk35 !important;
   font-size: 23px;
   letter-spacing: 0.02em;
 }
@@ -1909,10 +1909,10 @@ body .platos-count-content p{
   -webkit-appearance: none;
 }
 
-.plate-quantity-display::-webkit-inner-spin-button, 
-.plate-quantity-display::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+.plate-quantity-display::-webkit-inner-spin-button,
+.plate-quantity-display::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .plate-btn-less{
@@ -1988,6 +1988,12 @@ body .platos-count-content p{
   padding: 10px 20px 30px 40px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 4;
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.plates-modal.active{
+  opacity: 1;
 }
 
 .plates-modal-hide {
@@ -2198,11 +2204,11 @@ body .platos-count-content p{
 .order-form .order-inp-4 {
   width: 21%;
   margin-left: 1%;
-  margin-right: 1%; 
+  margin-right: 1%;
   margin-bottom: 20px;
 }
 
-.order-form .order-inp{ 
+.order-form .order-inp{
   background-color: #000000;
   border: 1px solid #f9f2e1;
   color: #f9f2e1;
@@ -2871,11 +2877,11 @@ body .platos-count-content p{
     width: 98%;
     justify-content: space-evenly;
   }
-  
+
   .menu-step2-plates-count-content p{
     font-size: 20px !important;
   }
-  
+
   .menu-step2-plates-count-content button{
     font-size: 19px !important;
     width: 100% !important;
@@ -3479,7 +3485,7 @@ body .platos-count-content p{
   .cart-price-content .mist_btn{
     margin: 0 auto;
   }
-  
+
   .cart-cod-desc{
     width: 100%;
     display:flex;
@@ -3538,7 +3544,7 @@ body .platos-count-content p{
 .order-form .order-inp-4 {
   width: 98%;
   margin-left: 1%;
-  margin-right: 1%; 
+  margin-right: 1%;
   margin-bottom: 20px;
 }
 

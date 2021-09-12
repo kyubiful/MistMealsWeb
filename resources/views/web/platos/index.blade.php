@@ -24,11 +24,11 @@
         <span>{{ bcdiv($plato->plato_info_nutricional->grasas, '1', 0) }} <b>G</b></span>
         <span>{{ bcdiv($plato->plato_info_nutricional->fibra, '1', 0) }} <b>F</b></span>
       </div>
-      <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}">
+      <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}" class="plate_form" name="plate_form_{{$i}}">
         @csrf
         <div class="plate-quantity-container">
           <button type="button" class="plate-btn-less">-</button>
-          <input type="number" name="plateQuantity" class="plate-quantity-display" id="plateQuantity" value="1" min="0">
+          <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
           <button type="button" class="plate-btn-more">+</button>
         </div>
         <button class="mist_btn plato-btn" type="submit">Añadir</button>
@@ -36,10 +36,10 @@
     </div>
   </div>
   @endforeach
+  </div>
 </div>
 
 {{ $platos->links() }}
-@if(session()->has('itemName') AND session()->has('infoPrice') AND session()->has('itemQuantity'))
 <div class="plates-modal">
   <div>
     <button class="plates-modal-hide">X</button>
@@ -48,14 +48,13 @@
     <h3>Añadido al carrito</h3>
   </div>
   <div>
-    <p class="plates-modal-info-name">{{session()->get('itemQuantity')}}x {{session()->get('itemName')}}</p>
-    <p class="plates-modal-info-price"><b>{{session()->get('infoPrice')}}€</b></p>
+    <p class="plates-modal-info-name"></p>
+    <p class="plates-modal-info-price"><b></b></p>
   </div>
   <div class="plates-buttons">
     <a class="plates-modal-cart-btn" href="{{route('web.carts.index')}}">VER CARRITO</a>
   </div>
 </div>
-@endif
 
 @include('web.layout.newsletter')
 @endsection
