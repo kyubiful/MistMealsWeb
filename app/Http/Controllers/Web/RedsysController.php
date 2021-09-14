@@ -78,6 +78,7 @@ class RedsysController extends Controller
                 $payedURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
                 $getPdfUrl = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
                 $updateContactURL = 'https://api.holded.com/api/invoicing/v1/contacts/';
+                $createContactURL = 'https://api.holded.com/api/invoicing/v1/contacts';
 
                 $items = array();
                 $amount = 0;
@@ -148,61 +149,66 @@ class RedsysController extends Controller
                 //         ));
                 //     }
                 // } else {
-                    $holdedArray = array(
-                        'contactCode' => $user->nif ?? $user->id + 10,
-                        'contactName' => $user->name,
-                        'contactEmail' => $user->email,
-                        'contactAddress' => $user->address.' '.$user->address_number.' '.$user->address_letter,
-                        'contactCity' => $user->city,
-                        'contactCp' => $user->cp,
-                        'notes' => 'Telefono de contacto: '.$user->phone,
-                        'date' => time(),
-                        'items' => '',
-                        'applyContactDefaults' => False
-                    );
+
+                $holdedArray = array(
+                    'contactCode' => $user->id + 10,
+                    'shippingAddress' => $user->address.' '.$user->address_number.' '.$user->address_letter,
+                    'shippingCity' => $user->city,
+                    'shippingCp' => $user->cp,
+                    'shippingProvince' => $user->province,
+                    'notes' => 'Telefono de contacto: '.$user->phone,
+                    'date' => time(),
+                    'items' => '',
+                    'applyContactDefaults' => False
+                );
 
                 $holdedClient = array(
                     'name' => $user->name,
                     'email' => $user->email,
                     'type' => 'client',
                     'isperson' => 'true',
+                    'code' => $user->id + 10,
                     'billAddress' => array(
-                        'address' => $user->invoice_address,
+                        'address' => $user->invoice_address.' '.$user->invoice_address_number.' '.$user->invoice_address_letter,
                         'city' => $user->invoice_city,
                         'postalCode' => $user->invoice_cp,
                         'province' => $user->invoice_province,
-                    ),
-                    'shippingAddresses' => array(
-                        array(
-                            'address' => $user->address,
-                            'city' => $user->city,
-                            'postalCode' => $user->cp,
-                            'province' => $user->province
-                        )
                     )
                 );
 
                 $holdedClient= json_encode($holdedClient);
+                // $res = $client->post($createContactURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
+                // $res = json_decode($res->getBody()->getContents());
+                // dd($res->id, $user);
 
-                    $holdedArray['items'] = $items;
-                    $holdedArray = json_encode($holdedArray);
-
-                    // $client->post($updateContactURL.$user->id, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
-                    $client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
-                    $res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                if($user->holded_id == null){
+                    $res = $client->post($createContactURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
                     $res = json_decode($res->getBody()->getContents());
-                    $invoiceId = $res->id;
-                    $payJSON = json_encode(['date' => time(), 'amount' => $cart->total]);
-                    $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => config('holded.key')], 'body' => $payJSON]);
+                    $user->holded_id = $res->id;
+                    $user->save();
+                }elseif($user->holded_id != null){
+                    $client->put($updateContactURL.$user->holded_id, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
+                }
 
-                    try {
-                        Mail::to(auth()->user()->email)->send(new OrderMail($cart, null));
-                    } catch (\Exception $e) {
-                        return response()->json(array(
-                            'status' => 500,
-                            'message' => $e->getMessage()
-                        ));
-                    }
+
+                $holdedArray['items'] = $items;
+                $holdedArray = json_encode($holdedArray);
+
+                $client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                $res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                $res = json_decode($res->getBody()->getContents());
+                $invoiceId = $res->id;
+                $payJSON = json_encode(['date' => time(), 'amount' => $cart->total]);
+                $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => config('holded.key')], 'body' => $payJSON]);
+
+                try {
+                    Mail::to(auth()->user()->email)->send(new OrderMail($cart, null));
+                } catch (\Exception $e) {
+                    return response()->json(array(
+                        'status' => 500,
+                        'message' => $e->getMessage()
+                    ));
+                }
 
                 // }
 

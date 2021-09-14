@@ -41,12 +41,18 @@ for(let i = 0; i < plates.length; i++){
                     }
                 } else if (data.status == 500) {
                     // Spinner OFF
-                    button[i].innerHTML = data.message;
-                    button[i].disabled = false;
+                    button[i].innerHTML = '';
+                    button[i].disabled = true;
                     modal.classList.add('active');
+                    button[i].classList.add('active');
                     modalName.innerHTML = data.itemQuantity+'x '+data.infoName;
                     modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
                     menuCartNumber.innerHTML = parseInt(menuCartNumber.innerHTML)+parseInt(data.itemQuantity);
+                    setTimeout(() => {
+                        button[i].classList.remove('active');
+                        button[i].disabled = false;
+                        button[i].innerHTML = 'Añadir'
+                    }, 1500);
                 }
             },
             error: function (a, b, c) {

@@ -1492,6 +1492,23 @@ if(window.location.pathname == '/orders/create'){
 }
 
 if(window.location.pathname=='/platos'){
+
+    const containerL = document.querySelectorAll('.plato-container-l');
+    const containersL = document.querySelector('.platos-container-l');
+    const sizeBtn = document.querySelectorAll('.plato-peso-switch');
+
+    for(let i=0; i<sizeBtn.length; i++){
+        sizeBtn[i].addEventListener('click', ()=>{
+            sizeBtn[i].classList.toggle('active');
+            containerL[i].classList.toggle('active');
+            if(sizeBtn[i].classList[1]=='active'){
+                sizeBtn[i].innerHTML = 'L';
+            }else{
+                sizeBtn[i].innerHTML = 'M';
+            }
+        })
+    }
+
   const buttons = document.querySelectorAll('button');
   for(let i=0;i<buttons.length;i++){
     buttons[i].addEventListener('click', ()=>{
