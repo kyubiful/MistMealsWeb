@@ -1937,8 +1937,8 @@ body .platos-count-content p{
 
 .plato-container {
   width: 208px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
   background-color: black;
 }
 
@@ -1955,8 +1955,8 @@ body .platos-count-content p{
 
 .plato-container-l{
   width: 208px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
   background-color: black;
   opacity: 0;
   z-index: -1;
