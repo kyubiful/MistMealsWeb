@@ -3526,7 +3526,18 @@ body .platos-count-content p{
     margin-bottom: 20px;
   }
 
+  .platos-container-l{
+    padding: 0px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   .plato-container{
+    width: 40%;
+  }
+
+  .plato-container-l{
     width: 40%;
   }
 
