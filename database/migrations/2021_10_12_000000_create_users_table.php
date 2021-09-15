@@ -44,7 +44,6 @@ class CreateUsersTable extends Migration
             $table->decimal('altura')->nullable();
             $table->integer('edad')->nullable();
             $table->integer('tmb')->nullable();
-            $table->string('phone')->nullable();
             $table->integer('calorias_consumidas')->nullable();
             $table->integer('calorias_propuestas')->nullable();
             $table->foreignId('sexo_id')->nullable()->constrained('sexo');
