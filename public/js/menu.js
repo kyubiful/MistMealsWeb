@@ -18,15 +18,15 @@ if(path == '/usuario/signup' || path == '/menu/dishes'){
 } else {
   window.addEventListener('scroll', () => {
     let scroll = document.documentElement.scrollTop;
-    
+
     if(scroll>100 && i == 0){
       nav.classList.toggle('black');
       i++;
-    }else if(scroll<100 && i == 1){
+    }else if(scroll <100 && i == 1){
       nav.classList.toggle('black');
       i--;
     }
-  
+
   })
   if(document.documentElement.scrollTop>100 && i == 0){
     nav.classList.toggle('black');

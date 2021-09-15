@@ -1,5 +1,11 @@
 @extends('web.layout.master')
 @section('content')
+<div class="preloader-wrapper" id="preloader-wrapper">
+  <div class="percentage-wrapper">
+    <div class="loadbar-percent"></div>
+    <div id="percent"></div>
+  </div>
+</div>
 <section class="signupform subscribe_form_section profile_info style_1" style="background-color: #000000; height: 900px; padding-top: 80px;">
     <div class="container">
         <div class="row justify-content-center align-items-center">
@@ -50,7 +56,7 @@
 
                     <div class="col-lg-12">
                         <div class="single_contact_form signup-btn">
-                            <button type="submit" class="mist_btn animate_btn">Crear cuenta</button>
+                            <button type="submit" class="mist_btn_signup animate_btn">Crear cuenta</button>
                         </div>
                     </div>
                 </div>

@@ -45,9 +45,13 @@
         @csrf
         <div class="menu-step2-plates-count-container">
           <div class="menu-step2-plates-count-content">
-           @inject('cartService','App\Services\CartService')
-           <p>Selecciona 5 platos para poder realizar el pedido ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
-           <button class="step2-btn-submit" type="submit">Añadir al carrito</button>
+            <div>
+              <p style="font-size: 26px;">Platos seleccionados (<span class="platos-count-number"> 14 </span>/ 8 )</p>
+              <p style="font-size: 15px; font-family: coresansc65 !important;">Selecciona mínimo 5 platos*</p>
+            </div>
+            <div>
+              <button class="step2-btn-submit" type="submit">Añadir al carrito</button>
+            </div>
           </div>
         </div>
         @foreach($lunch as $i => $el)

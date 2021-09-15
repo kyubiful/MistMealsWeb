@@ -163,7 +163,7 @@ class RedsysController extends Controller
                 );
 
                 $holdedClient = array(
-                    'name' => $user->name,
+                    'name' => $user->name.'-'.$user->surname,
                     'email' => $user->email,
                     'type' => 'client',
                     'isperson' => 'true',

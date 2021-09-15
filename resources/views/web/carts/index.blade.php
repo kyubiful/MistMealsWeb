@@ -34,13 +34,17 @@
       </div>
       @inject('cartService','App\Services\CartService')
       @if($cartService->countProducts() < 5)
-      <a class="mist_btn_disable" href="#">Pedido mínimo de 5 platos</a>
+      <a style="margin: auto;" class="mist_btn_disable" href="#">Tramitar pedido</a>
+      <p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>
       @elseif($cartService->countProducts() > 8)
-      <a class="mist_btn_disable" href="#">Pedido máximo de 8 platos</a>
+      <a style="margin: auto;" class="mist_btn_disable" href="#">Tramitar pedido</a>
+      <p style="color: red; text-align: center;">*Pedido máximo de 8 platos</p>
       @else
-      <a class="mist_btn" href="{{ route('web.orders.create') }}">Tramitar pedido</a>
+      <a style="margin: auto;" class="mist_btn" href="{{ route('web.orders.create') }}">Tramitar pedido</a>
       @endif
-      <a href="{{ url()->previous() }}">test</a>
+      @if(session('lunch')!==null AND session('dinner')!==null)
+      <a class="mist_btn" style="margin: auto; margin-top: 75px;" href="{{ url('/menu/dishes') }}">Volver al menú</a>
+      @endif
     </div>
   </div>
   @endif

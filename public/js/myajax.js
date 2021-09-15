@@ -1,9 +1,10 @@
 let plates = document.querySelectorAll('.plate_form');
 let button = document.querySelectorAll('.plato-btn');
-let modal = document.querySelector('.plates-modal');
-let modalName = document.querySelector('.plates-modal-info-name');
-let modalPrice = document.querySelector('.plates-modal-info-price');
+// let modal = document.querySelector('.plates-modal');
+// let modalName = document.querySelector('.plates-modal-info-name');
+// let modalPrice = document.querySelector('.plates-modal-info-price');
 let menuCartNumber = document.querySelector('.menu-cart-btn p');
+let numberPlates = document.querySelector('.platos-count-content .platos-count-number');
 
 for(let i = 0; i < plates.length; i++){
 
@@ -17,7 +18,7 @@ for(let i = 0; i < plates.length; i++){
         let method = form.getAttribute('method');
         let action = form.getAttribute('action');
 
-        modal.classList.remove('active');
+        // modal.classList.remove('active');
 
         // Spinner ON
 
@@ -43,11 +44,14 @@ for(let i = 0; i < plates.length; i++){
                     // Spinner OFF
                     button[i].innerHTML = '';
                     button[i].disabled = true;
-                    modal.classList.add('active');
+                    // modal.classList.add('active');
                     button[i].classList.add('active');
-                    modalName.innerHTML = data.itemQuantity+'x '+data.infoName;
-                    modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
+                    // modalName.innerHTML = data.itemQuantity+'x '+data.infoName;
+                    // modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
                     menuCartNumber.innerHTML = parseInt(menuCartNumber.innerHTML)+parseInt(data.itemQuantity);
+                    if(parseInt(menuCartNumber.innerHTML) <= 8){
+                        numberPlates.innerHTML = menuCartNumber.innerHTML;
+                    }
                     setTimeout(() => {
                         button[i].classList.remove('active');
                         button[i].disabled = false;

@@ -1,5 +1,11 @@
 @extends('web.layout.master')
 @section('content')
+<div class="preloader-wrapper" id="preloader-wrapper">
+  <div class="percentage-wrapper">
+    <div class="loadbar-percent"></div>
+    <div id="percent"></div>
+  </div>
+</div>
 
 <section class="breadcrumb_part blog_breadcrumb_style_1 service_breadcrumb_2 profile-submenu" style="background-color: #009167; margin-top: 92px; height: 213px;">
     <div class="container">

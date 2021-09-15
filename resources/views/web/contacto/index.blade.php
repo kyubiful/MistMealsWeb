@@ -1,5 +1,11 @@
 @extends('web.layout.master')
 @section('content')
+<div class="preloader-wrapper" id="preloader-wrapper">
+  <div class="percentage-wrapper">
+    <div class="loadbar-percent"></div>
+    <div id="percent"></div>
+  </div>
+</div>
 <section class="position-relative contact-form-ext">
     <div class="contact-info">
         <div class="c2">

@@ -1234,6 +1234,7 @@
 
 if(window.location.pathname=='/menu/config/1' || window.location.pathname=='/menu/config/2' || window.location.pathname=='/menu/config/3'){
 
+    const range = document.querySelectorAll('input[type="range"]');
     const step1WeightMore = document.querySelector('.step1-weight-more');
     const step1WeightLess = document.querySelector('.step1-weight-less');
     const step1HeightMore = document.querySelector('.step1-height-more');
@@ -1242,6 +1243,20 @@ if(window.location.pathname=='/menu/config/1' || window.location.pathname=='/men
     const formWeight = document.querySelector('#slide-weight')
     const heightValue = document.querySelector('#range-value-height');
     const formHeight = document.querySelector('#slide-height');
+
+    for(let i = 0; i < range.length; i++){
+        range[i].addEventListener('click', (e)=>{
+            e.preventDefault();
+        });
+
+        range[i].addEventListener('mouseover', (e)=>{
+            e.preventDefault();
+        });
+
+        range[i].addEventListener('mouseup', (e)=>{
+            e.preventDefault();
+        });
+    }
 
     step1WeightMore.addEventListener('click', () => {
         if(weightValue.innerHTML < 120 && weightValue.innerHTML >= 40){
@@ -1379,7 +1394,27 @@ if(window.location.pathname=='/menu/dishes'){
     const dishCollapse = document.querySelectorAll('.collapse');
     const card = document.querySelectorAll('.menu-step2 .card .card-header .btn');
     const modalTitle = document.querySelectorAll('.modal-header div');
-    console.log(modalTitle);
+
+    const platesNumber = document.querySelector('.platos-count-number');
+    const dishCheckbox = document.querySelectorAll('.step2-checkbox');
+
+    let dishesCount = 0;
+
+    for(let i=0; i<dishCheckbox.length; i++){
+        if(dishCheckbox[i].checked==true){
+            dishesCount++;
+        }
+        dishCheckbox[i].addEventListener('click', () => {
+            if(dishCheckbox[i].checked == true){
+                dishesCount++;
+            } else {
+                dishesCount--;
+            }
+            platesNumber.innerHTML = dishesCount;
+        });
+    }
+
+    platesNumber.innerHTML = dishesCount;
 
     for(let i=0; i<modalTitle.length; i++){
         if(window.innerWidth<991){
@@ -1477,7 +1512,6 @@ if(window.location.pathname == '/orders/create'){
                 invoice_province.required = true;
                 invoice_city.required = true;
                 invoice_count=1;
-                console.log('activa');
             } else if(invoice_count == 1){
                 invoice_address.required = false;
                 invoice_address_number.required = false;
@@ -1486,7 +1520,6 @@ if(window.location.pathname == '/orders/create'){
                 invoice_province.required = false;
                 invoice_city.required = false;
                 invoice_count=0;
-                console.log('desactiva');
             }
     });
 }
@@ -1509,13 +1542,6 @@ if(window.location.pathname=='/platos'){
         })
     }
 
-  const buttons = document.querySelectorAll('button');
-  for(let i=0;i<buttons.length;i++){
-    buttons[i].addEventListener('click', ()=>{
-      document.cookie = 'pageHeight='+window.scrollY;
-    })
-  }
-
   const plateBtnMore = document.querySelectorAll('.plate-btn-more');
   const plateBtnLess = document.querySelectorAll('.plate-btn-less');
   const plateQuantitiyDisplay = document.querySelectorAll('.plate-quantity-display');
@@ -1532,23 +1558,21 @@ if(window.location.pathname=='/platos'){
       })
   }
 
-  window.scrollTo(0, parseInt(getCookie('pageHeight')));
+  // const hideModalBtn = document.querySelector('.plates-modal-hide');
+  // if(hideModalBtn != null){
+  //   hideModalBtn.addEventListener('click', () => {
+  //     document.querySelector('.plates-modal').classList.remove('active');
+  //     document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  //     document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  //   });
 
-  const hideModalBtn = document.querySelector('.plates-modal-hide');
-  if(hideModalBtn != null){
-    hideModalBtn.addEventListener('click', () => {
-      document.querySelector('.plates-modal').classList.remove('active');
-      document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-      document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    });
-
-    const cartModalBtn = document.querySelector('.plates-modal-cart-btn');
-    cartModalBtn.addEventListener('click', () => {
-      document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-      document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-      document.cookie = "pageHeight=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    });
-  }
+  //   const cartModalBtn = document.querySelector('.plates-modal-cart-btn');
+  //   cartModalBtn.addEventListener('click', () => {
+  //     document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  //     document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  //     document.cookie = "pageHeight=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  //   });
+  // }
 }
 
 

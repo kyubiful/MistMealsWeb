@@ -21,12 +21,6 @@
 </head>
 
 <body class="{{ isset($bodyclass) ? $bodyclass : '' }}">
-    <div class="preloader-wrapper" id="preloader-wrapper">
-        <div class="percentage-wrapper">
-            <div class="loadbar-percent"></div>
-            <div id="percent"></div>
-        </div>
-    </div>
 
     <div class="footer-popup-background">
         <div class="footer-popup-container">

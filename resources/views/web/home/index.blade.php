@@ -1,10 +1,13 @@
 @extends('web.layout.master')
 @section('content')
+<div class="preloader-wrapper" id="preloader-wrapper">
+  <div class="percentage-wrapper">
+    <div class="loadbar-percent"></div>
+    <div id="percent"></div>
+  </div>
+</div>
 {{session()->get('popupCp2')}}
 {{session()->get('popupCp')}}
-@if(!empty($popupCp))
-{{$popupCp}}
-@endif
 @if(!empty($popupCp) AND $popupCp < 4 AND Cookie::get('popupCpEnd') == false)
  <section class="home-popup-container">
     <div class="home-popup-content">
@@ -152,7 +155,7 @@
       </div>
       <div class="row mt-5">
         <div class="col-sm-12 wow fadeInDown" data-wow-delay=".4s">
-          <a href="{{ route('web.menu') }}" class="mist_btn animate_btn text-uppercase d-lg-block mx-auto">Crea tu plan</a>
+          <a href="{{ route('web.menu') }}" class="mist_btn_home1 animate_btn text-uppercase d-lg-block mx-auto">Crea tu plan</a>
         </div>
       </div>
     </div>
@@ -204,7 +207,7 @@
           <div class="section_tittle style_2 text-left wow fadeInDown" data-wow-delay=".3s">
             <h2>Tu opinión cuenta</h2>
             <div class="description home-opinion-text">Estamos haciendo un estudio sobre hábitos alimenticios y nos encantaría contar con tus respuestas y que entre todos podamos cambiar la forma en que nos alimentamos cada día.</div>
-            <a href="{{ route('web.contacto') }}" class="mist_btn animate_btn d-lg-block">Ir a la encuesta</a>
+            <a href="{{ route('web.contacto') }}" class="mist_btn_home2 animate_btn d-lg-block">Ir a la encuesta</a>
           </div>
         </div>
         <div class="col-sm-6"></div>

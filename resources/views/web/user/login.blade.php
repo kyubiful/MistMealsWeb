@@ -1,5 +1,11 @@
 @extends('web.layout.master')
 @section('content')
+<div class="preloader-wrapper" id="preloader-wrapper">
+  <div class="percentage-wrapper">
+    <div class="loadbar-percent"></div>
+    <div id="percent"></div>
+  </div>
+</div>
 <section class="loginform subscribe_form_section login-form-container-ext">
     <div class="container">
         <div class="row justify-content-center align-items-center login-form-container">

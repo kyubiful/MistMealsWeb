@@ -14,7 +14,7 @@
       </div>
       <div class="col-sm-7 col-lg-7 menu-form-step">
         <div class="about_section_content">
-          <div id="carouselExampleIndicators" class="vertical carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
+          <div id="carouselExampleIndicators" class="vertical carousel slide" data-ride="carousel" data-interval="false" data-wrap="false" data-touch="false">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">1</li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1">2</li>
@@ -109,6 +109,10 @@
   // Sex and training
   $(document).ready(function() {
 
+    $('.carousel').carousel({
+      touch: false
+    });
+
     $(".sex-field").on('click', function() {
       let $that = $(this);
 
@@ -123,34 +127,35 @@
       $that.addClass('active');
     });
 
-  });
+    // Slide
+    let slideW = document.getElementById("slide-weight");
+    let valueW = document.getElementById("range-value-weight");
 
-  // Slide
-  let slideW = document.getElementById("slide-weight");
-  let valueW = document.getElementById("range-value-weight");
-  valueW.innerHTML = slideW.value;
-  if (parseFloat(valueW.innerHTML) % 1 == 0) {
-    valueW.innerHTML = slideW.value + '.0';
-  } else {
     valueW.innerHTML = slideW.value;
-  }
 
-  slideW.oninput = function() {
-    if ((this.value % 1) == 0) {
-      console.log(this.value);
-      valueW.innerHTML = this.value + '.0';
+    if (parseFloat(valueW.innerHTML) % 1 == 0) {
+      valueW.innerHTML = slideW.value + '.0';
     } else {
-      valueW.innerHTML = this.value;
+      valueW.innerHTML = slideW.value;
     }
-  }
 
-  let slideH = document.getElementById("slide-height");
-  let valueH = document.getElementById("range-value-height");
-  valueH.innerHTML = slideH.value;
+    slideW.oninput = function(e) {
+      if ((this.value % 1) == 0) {
+        valueW.innerHTML = this.value + '.0';
+      } else {
+        valueW.innerHTML = this.value;
+      }
+    }
 
-  slideH.oninput = function() {
-    valueH.innerHTML = this.value;
-  }
+    let slideH = document.getElementById("slide-height");
+    let valueH = document.getElementById("range-value-height");
+    valueH.innerHTML = slideH.value;
+
+    slideH.oninput = function() {
+      valueH.innerHTML = this.value;
+    }
+
+  }); 
 
   $('#contactForm1').submit(function(e) {
 

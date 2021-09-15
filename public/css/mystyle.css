@@ -99,7 +99,7 @@ p {
 
 .cu_btn.animate_btn:hover {
   border: none;
-  color: #533fb8 !important;
+  color: #009167 !important;
 }
 
 .cu_btn.btn_2:hover {
@@ -115,6 +115,10 @@ p {
 
 .portfolio_grid_style.grid_style_1 .single_portfolio_part:hover:after {
   background-color: rgba(249, 242, 225, 0.9);
+}
+
+.menu-cart-btn-mobile{
+  display: none;
 }
 
 .social_icon a:hover,
@@ -149,7 +153,7 @@ p {
 }
 
 .cu_btn.animate_btn {
-  background-color: #533fb8;
+  background-color: #009167;
   border: none;
   padding-bottom: 20px;
 }
@@ -355,6 +359,56 @@ p {
   margin-top: 0;
 }
 
+.mist_btn_signup {
+  background: url("../img/mist-button.png") no-repeat;
+  width: 203px;
+  height: 49px;
+  background-size: contain;
+  display: block;
+  border: none;
+  color: #f9f2e1;
+  text-align: center;
+  line-height: 49px;
+}
+
+.mist_btn_signup:hover {
+  opacity: 0.8;
+}
+
+.mist_btn_home1 {
+  background: url("../img/home/btn_1.png") no-repeat;
+  width: 203px;
+  height: 49px;
+  background-size: contain;
+  display: block;
+  border: none;
+  color: #f9f2e1;
+  text-align: center;
+  line-height: 49px;
+}
+
+.mist_btn_home1:hover {
+  opacity: 0.8;
+  color: #f9f2e1;
+}
+
+.mist_btn_home2 {
+  background: url("../img/home/btn_2.png") no-repeat;
+  width: 300px;
+  height: 46px;
+  background-size: contain;
+  display: block;
+  border: none;
+  color: #009167;
+  text-align: center;
+  line-height: 49px;
+}
+
+.mist_btn_home2:hover {
+  opacity: 0.8;
+  color: #009167;
+}
+
 .mist_btn {
   background: url("../img/mist-button.png") no-repeat;
   width: 203px;
@@ -394,6 +448,7 @@ p {
   line-height: 49px;
   cursor: none;
   margin: auto;
+  opacity: 0.6;
 }
 
 .mist_btn_disable:hover {
@@ -2057,10 +2112,12 @@ body .platos-count-content p{
   z-index: 4;
   opacity: 0;
   transition: all 1s ease;
+  display: none;
 }
 
 .plates-modal.active{
   opacity: 1;
+  display: block;
 }
 
 .plates-modal-hide {
@@ -2097,6 +2154,18 @@ body .platos-count-content p{
 
 .plates-modal-cart-btn:hover {
   color: #f9f2e1;
+}
+
+.plates-modal-cart-btn-top {
+  background: #533fb8;
+  padding: 12px 50px;
+  color: #f9f2e1;
+  font-size: 13px;
+}
+
+.plates-modal-cart-btn-top:hover {
+  color: #f9f2e1;
+  opacity: 0.8;
 }
 
 .platos-info-modal .modal-content .modal-header{
@@ -2207,6 +2276,8 @@ body .platos-count-content p{
 .cart-product-content-product span {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .cart-product-name {
@@ -2258,9 +2329,9 @@ body .platos-count-content p{
 }
 
 .cart-cod-desc input[type="submit"] {
-  background-color: #533fb8;
+  background-color: #009167;
   color: #f9f2e1;
-  border: 1px solid #533fb8;
+  border: 1px solid #009167;
   padding-bottom: 12px;
   padding-top: 15px;
   width: 100px;
@@ -2269,7 +2340,7 @@ body .platos-count-content p{
 
 .cart-cod-desc input[type="submit"]:hover {
   background-color: #f9f2e1;
-  color: #533fb8;
+  color: #009167;
   border: 1px solid #f9f2e1;
 }
 
@@ -2545,8 +2616,9 @@ body .platos-count-content p{
 
   nav {
     height: 56px;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #000000;
+    padding: 0 20px;
   }
 
   .menu .session {
@@ -2608,6 +2680,38 @@ body .platos-count-content p{
   .menu li a {
     display: flex;
     justify-content: center;
+  }
+
+  .menu-cart-btn{
+    display: none !important;
+  }
+
+  .menu-cart-btn-mobile{
+    display: flex;
+    justify-content: center;
+    padding-right: 70px;
+    align-items: center;
+  }
+
+  .menu-cart-btn-mobile img{
+    width: 22px;
+    height: 20px;
+  }
+
+  .menu-cart-btn-mobile p{
+    background-color: #FF810C;
+    color: #f9f2e1;
+    border-radius: 100px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    align-content: center;
+    padding-top: 1px;
+    margin-left: -10px;
+    margin-top: -14px;
   }
 
   .menu.active {
@@ -3546,6 +3650,21 @@ body .platos-count-content p{
   .plato-btn{
     width: 100% !important;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 49px;
+    max-width: 203px;
+  }
+
+  .plato-btn.active{
+    width: 100% !important;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 49px;
+    max-width: 203px;
   }
 
   .plates-modal{
@@ -3553,6 +3672,7 @@ body .platos-count-content p{
     left: 5%;
     bottom: 30px;
     top: auto;
+    display: hidden;
   }
 
   .plato-content .mist_btn:focus{
@@ -3564,6 +3684,24 @@ body .platos-count-content p{
 
   .plato-title{
     height: auto;
+  }
+
+  .platos-info-modal .modal-content .modal-header h3{
+    font-size: 22px;
+  }
+
+  .platos-info-modal .modal-content .modal-header .close{
+    margin: 0px;
+    padding: 0px;
+    margin-left: -15px;
+  }
+
+  .plate-modal-zero{
+    width: 0px;
+  }
+
+  .platos-info-modal .product_description_iner .nav-link{
+    margin-right: 2%;
   }
 
   /* Cart Mobil */

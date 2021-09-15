@@ -1,13 +1,25 @@
 @extends('web.layout.master')
 @section('content')
+<div class="preloader-wrapper" id="preloader-wrapper">
+  <div class="percentage-wrapper">
+    <div class="loadbar-percent"></div>
+    <div id="percent"></div>
+  </div>
+</div>
 <div class="platos-top-background">
   <p class="platos-top-title">PLATOS</p>
 </div>
 <div class="platos-top-label"></div>
 <div class="platos-count-container">
   <div class="platos-count-content">
-    @inject('cartService','App\Services\CartService')
-    <p>Selecciona 5 platos para poder realizar el pedido ( @if($cartService->countProducts()>5)5 @else {{$cartService->countProducts()}} @endif/ 5 )</p>
+    <div>
+      @inject('cartService','App\Services\CartService')
+      <p style="font-size: 26px;">Platos seleccionados (<span class="platos-count-number">@if($cartService->countProducts()>8)5 @else {{$cartService->countProducts()}} @endif</span>/ 8 )</p>
+      <p style="font-size: 15px; font-family: coresansc65 !important;">Selecciona mínimo 5 platos*</p>
+    </div>
+    <div>
+      <a class="plates-modal-cart-btn-top" href="{{route('web.carts.index')}}">VER CARRITO</a>
+    </div>
   </div>
 </div>
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
@@ -76,7 +88,7 @@
 </div>
 
 {{ $platos->links() }}
-<div class="plates-modal">
+<!-- <div class="plates-modal">
   <div>
     <button class="plates-modal-hide">X</button>
   </div>
@@ -90,14 +102,14 @@
   <div class="plates-buttons">
     <a class="plates-modal-cart-btn" href="{{route('web.carts.index')}}">VER CARRITO</a>
   </div>
-</div>
+</div> -->
 
   @foreach($platos as $i => $el)
   <div id="modal-dish-{{ $i }}" class="platos-info-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header" style="border: none">
-          <div class="col-lg-6"></div>
+          <div class="col-lg-6 plate-modal-zero"></div>
           <h3 class="col-lg-5 col-sm-11">{{ $el->nombre }}</h3>
           <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
         </div>

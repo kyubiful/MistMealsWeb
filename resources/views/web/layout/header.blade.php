@@ -4,6 +4,11 @@
         <a href="/">
             <img class="logo" src="/img/mistmeals_logo_white.png" srcset="/img/mistmeals_logo_white.png 2x" alt="logo">
         </a>
+
+            <div>
+                @inject('cartService','App\Services\CartService')
+                <a class="menu-cart-btn-mobile" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/icon/cart.png" style="margin-top: -5px;"><p>{{ $cartService->countProducts() }}</p></a>
+            </div>
         <ul class="menu">
             <li><a href="{{ route('web.menu') }}" class="menu-i">Meal Plan</a></li>
             <li><a href="{{ route('web.platos') }}" class="menu-i">Platos</a></li>

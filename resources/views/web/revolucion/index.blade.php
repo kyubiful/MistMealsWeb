@@ -1,5 +1,11 @@
 @extends('web.layout.master')
 @section('content')
+<div class="preloader-wrapper" id="preloader-wrapper">
+  <div class="percentage-wrapper">
+    <div class="loadbar-percent"></div>
+    <div id="percent"></div>
+  </div>
+</div>
 <section class="revolution_header profile_info style_1">
     <div class="label-skin mp-mobile-hidden"></div>
     <div class="container-fluid">

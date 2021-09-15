@@ -1,5 +1,11 @@
 @extends('web.layout.master')
 @section('content')
+<div class="preloader-wrapper" id="preloader-wrapper">
+  <div class="percentage-wrapper">
+    <div class="loadbar-percent"></div>
+    <div id="percent"></div>
+  </div>
+</div>
 <section class="mealplan_header breadcrumb_part blog_breadcrumb_style_1 service_breadcrumb_2">
     <div class="container">
         <div class="row justify-content-center">
@@ -32,6 +38,7 @@
                         <img class="mp-image-mobile" src="img/mealplan/targett_2.png" alt="Control de calorías">
                     </a>
                     <p class="subtitle negative-margin">Control de calorías</p>
+                    <a class="mist_btn_home1" style="margin: auto; margin-top: 10px; margin-bottom: 10px;" href="{{ route('web.menu.step1', 2) }}"> Seleccionar </a>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 1) }}">
@@ -41,6 +48,7 @@
                         <img class="mp-image-mobile" src="img/mealplan/targett_1.png" alt="Mejora de rendimiento">
                     </a>
                     <p class="subtitle">Mejora de rendimiento</p>
+                    <a class="mist_btn_home1" style="margin:auto; margin-top: 10px; margin-bottom: 10px;" href="{{ route('web.menu.step1', 1) }}"> Seleccionar </a>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 3) }}">
@@ -50,6 +58,7 @@
                         <img class="mp-image-mobile" src="img/mealplan/targett_3.png" alt="Ganancia muscular">
                     </a>
                     <p class="subtitle negative-margin">Ganancia muscular</p>
+                    <a class="mist_btn_home1" style="margin: auto; margin-top: 10px; margin-bottom: 10px;" href="{{ route('web.menu.step1', 3) }}"> Seleccionar </a>
                 </div>
             </div>
         </div>
