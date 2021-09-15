@@ -97,13 +97,25 @@
           </tr>
         </tbody>
         @endforeach
-      </table> 
+      </table>
+      @if(Cookie::get('descuento')!=null)
+      <table class="order-paymenat-discount-table">
+        <tr>
+          <td style="background-color: #533fb8; color: #F9F2E1;">
+            <b>Descuento</b>
+          </td>
+          <td style="">
+            {{-($order->total)*((100-Cookie::get('descuento'))/100)}}€
+          </td>
+        </tr>
+      </table>
+      @endif
       </div>
     </form>
   </div>
   <div class="order-continue">
   <a href="{{url()->previous()}}">Volver</a>
-    <h4>Total: {{ $order->total }}€</h4>
+    <h4>Total: @if(Cookie::get('descuento')==null){{ $order->total }}€ @else {{$order->total*((100-Cookie::get('descuento'))/100)}}€ @endif</h4>
     {!! \App\Http\Controllers\Web\RedsysController::index($amount) !!}
   </div>
   @endif

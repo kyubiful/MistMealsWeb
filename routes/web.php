@@ -47,6 +47,8 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::get('/platos', 'PlatosController@index')->name('platos');
   Route::resource('/platos.carts', 'PlatosCartController')->only(['store', 'destroy']);
   Route::resource('/carts', 'CartController')->only(['index']);
+  Route::post('carts/discount', 'CartController@verifyDiscountCode')->name('cart.discount');
+  Route::get('carts/discount/remove', 'Cartcontroller@removeDiscountCookie')->name('cart.discount.remove');
   Route::resource('/orders', 'OrderController')->only(['create', 'store']);
   Route::resource('/orders.payments', 'OrderPaymentController')->only(['create', 'store']);
 

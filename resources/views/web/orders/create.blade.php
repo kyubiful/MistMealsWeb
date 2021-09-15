@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <p>      
+      <p>
           <input type="checkbox" name="invoice_check" id="invoice_check" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><label for="invoice_check" class="invoice-check-label"> Necesito factura</label>
       </p>
       <div class="collapse" id="collapseExample">
@@ -104,10 +104,22 @@
         </tbody>
         @endforeach
       </table>
+      @if(Cookie::get('descuento')!=null)
+      <table class="order-paymenat-discount-table">
+        <tr>
+          <td style="background-color: #533fb8; color: #F9F2E1;">
+            <b>Descuento</b>
+          </td>
+          <td style="">
+            {{-($cart->total)*((100-Cookie::get('descuento'))/100)}}€
+          </td>
+        </tr>
+      </table>
+      @endif
       </div>
       <div class="order-continue">
         <a href="{{url()->previous()}}">Volver</a>
-        <h4>Total: {{ $cart->total }}€</h4>
+        <h4>Total: @if(Cookie::get('descuento')==null){{ $cart->total }}€ @else {{$cart->total*((100-Cookie::get('descuento'))/100)}}€ @endif</h4>
         <button type="submit">Continuar pago</button>
       </div>
     </form>

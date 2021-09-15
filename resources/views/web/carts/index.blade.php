@@ -23,14 +23,22 @@
     <div class="cart-price-content">
       <div>
         <div class="cart-cod-desc">
-          <input type="text" placeholder="Código descuento"><input type="submit" value="Aplicar">
+          <form method="POST" action="{{ route('web.cart.discount') }}">
+            @csrf
+            <input type="text" name="discount_name" placeholder="Código descuento">
+            <input type="submit" value="Aplicar">
+          </form>
+          @if(Cookie::get('descuento')!=null)
+          <p>Descuento aplicado: {{Cookie::get('descuento')}}% <a style="color: white;" href="{{route('web.cart.discount.remove')}}">X</a></p>
+          @endif
+          {{Session()->get('discountMessageError')}}
         </div>
         <div class="cart-price-subtotal-content">
           <p class="cart-price-subtotal"><span>Subtotal</span><span>{{$cart->total}}€</span></p>
-          <p class="cart-price-subtotal"><span>Descuento</span><span>0€</span></p>
+          <p class="cart-price-subtotal"><span>Descuento</span><span>-@if(Cookie::get('descuento')==null)0€ @else {{(Cookie::get('descuento')*$cart->total)/100}}€ @endif</span></p>
           <p class="cart-price-subtotal"><span><del>Gastos de envío</del></span><span><del>4,15€</del></span></p> <!-- implementar gastos de envío -->
         </div>
-        <p class="cart-price-total"><b><span>TOTAL</span><span>{{ $cart->total }}€</span></b></p>
+        <p class="cart-price-total"><b><span>TOTAL</span><span>@if(Cookie::get('descuento')==null){{ $cart->total }}€ @else {{($cart->total)*((100-Cookie::get('descuento'))/100)}}€ @endif</span></b></p>
       </div>
       @inject('cartService','App\Services\CartService')
       @if($cartService->countProducts() < 5)

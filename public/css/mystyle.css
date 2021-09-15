@@ -890,6 +890,12 @@ body.menu-step2 .right-dish input[type="checkbox"]{
   padding-top: 20px;
 }
 
+.order-paymenat-discount-table{
+  width: 20% !important;
+  margin-left: auto;
+  margin-right: 0px;
+}
+
 body.signupform .signupform.subscribe_form_section .section_tittle h2,
 .loginform .section_tittle {
   text-align: left;
@@ -3746,6 +3752,7 @@ body .platos-count-content p{
   .cart-cod-desc{
     width: 100%;
     display:flex;
+    flex-direction: column;
     justify-content: center;
   }
 
@@ -3823,6 +3830,11 @@ body .platos-count-content p{
 
   .menu-step2-plates-count-content{
     flex-direction: column;
+  }
+
+  .order-paymenat-discount-table{
+    width: 100%;
+    margin: auto;
   }
 
   @media (min-width: 576px) {
