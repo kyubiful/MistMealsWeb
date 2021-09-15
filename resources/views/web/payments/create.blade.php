@@ -105,7 +105,7 @@
             <b>Descuento</b>
           </td>
           <td style="">
-            {{-($order->total)*((100-Cookie::get('descuento'))/100)}}€
+            {{-($order->total)*((Cookie::get('descuento'))/100)}}€
           </td>
         </tr>
       </table>
@@ -114,7 +114,7 @@
     </form>
   </div>
   <div class="order-continue">
-  <a href="{{url()->previous()}}">Volver</a>
+  <a href="{{ route('web.orders.create') }}">Volver</a>
     <h4>Total: @if(Cookie::get('descuento')==null){{ $order->total }}€ @else {{$order->total*((100-Cookie::get('descuento'))/100)}}€ @endif</h4>
     {!! \App\Http\Controllers\Web\RedsysController::index($amount) !!}
   </div>

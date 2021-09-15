@@ -111,14 +111,14 @@
             <b>Descuento</b>
           </td>
           <td style="">
-            {{-($cart->total)*((100-Cookie::get('descuento'))/100)}}€
+            {{-($cart->total)*((Cookie::get('descuento'))/100)}}€
           </td>
         </tr>
       </table>
       @endif
       </div>
       <div class="order-continue">
-        <a href="{{url()->previous()}}">Volver</a>
+        <a href="{{ route('web.carts.index') }}">Volver</a>
         <h4>Total: @if(Cookie::get('descuento')==null){{ $cart->total }}€ @else {{$cart->total*((100-Cookie::get('descuento'))/100)}}€ @endif</h4>
         <button type="submit">Continuar pago</button>
       </div>
