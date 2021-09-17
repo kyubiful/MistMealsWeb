@@ -10,7 +10,7 @@
 </head>
 
 <body style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
-    <section style="width: 80%; margin: 0 auto;"> 
+    <section style="width: 80%; margin: 0 auto;">
         <div>
             <p style="text-align: center;"><img style="width: 500px;" src="img/otros/MistMealsLogoEtoqieta.png" alt=""></p>
         </div>
@@ -81,13 +81,14 @@
             <p style="text-align: center;"><b>Elaborado por FUNDACIÓN JUAN XXIII</b></p>
             <p style="text-align: center; margin-top: -10px; margin-bottom: 30px;">Avd. Gran Vía del Este, no1 28032 Madrid NoRGS 26.11456/M</p>
         </div>
-        <table style="width: 100%;">
+        <table style="width: 100%; margin-top: 20px;">
             <tr>
                 <td style="width: 50%; text-align: center;">Lote</td>
                 <td style="width: 50%; text-align: center;">Consumir antes del</td>
             </tr>
         </table>
         <div style="position: absolute; bottom: 0px;">
+            <p style="text-align: center;">Conservar entre 3ºC y 5ºC</p>
             <p style="text-align: center;">Plato envasado en atmósfera protectora</p>
         </div>
     </section>

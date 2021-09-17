@@ -37,7 +37,6 @@ class OrderPaymentController extends Controller
     $user = User::findOrFail(auth()->user()->id);
     $cart = $this->cartService->getFromCookie();
 
-
     if($request->cookie('descuento')==null){
       return view('web.payments.create')->with(['order' => $order, 'amount' => $cart->total, 'user' => $user]);
     } else{

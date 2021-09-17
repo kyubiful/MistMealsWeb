@@ -38,7 +38,7 @@ class OrderController extends Controller
             return redirect()->back()->with('message','Debe tener 5 platos en el carrito para poder realizar el pedido');
         } else if($numberProducts>8){
             return redirect()->back()->with('message','Durante el periodo de test solo puede realizar como máximo un pedido de 8 platos');
-        } else{ 
+        } else{
             return view('web.orders.create')->with(['cart' => $cart, 'user' => $user]);
         }
     }
@@ -51,7 +51,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $user = $request->user();
         $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
 
@@ -99,7 +99,7 @@ class OrderController extends Controller
             );
 
         $order->products()->attach($cartProductsWithQuantity->toArray());
-        $orderCookie = cookie('order_id', $order->id, 60*24*30,'/','www.mistmeals.com');
+        $orderCookie = cookie('order_id', $order->id, 60*24*30,'/',env('APP_URL'));
 
         return redirect()->route('web.orders.payments.create', ['order' => $order->id])->cookie($orderCookie);
     }

@@ -33,7 +33,7 @@ class RedsysController extends Controller
             $key = config('redsys.key');
             $merchantcode = config('redsys.merchantcode');
             $user = User::findOrFail(auth()->user()->id);
-	    $titular = $user->name.' '.$user->surname;
+	          $titular = $user->name.' '.$user->surname;
 
             Redsys::setAmount($amount);
             Redsys::setOrder(time());
@@ -73,7 +73,7 @@ class RedsysController extends Controller
 
                 $user = User::findOrFail(auth()->user()->id);
                 $cart = $this->cartService->getFromCookie();
-                $order = Order::findOrFail($request->cookie('order_id'));
+                // $order = Order::findOrFail($request->cookie('order_id'));
                 $client = new Client();
                 $salesorderURL = 'https://api.holded.com/api/invoicing/v1/documents/salesorder';
                 $invoiceURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice';
@@ -81,7 +81,7 @@ class RedsysController extends Controller
                 $getPdfUrl = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
                 $updateContactURL = 'https://api.holded.com/api/invoicing/v1/contacts/';
                 $createContactURL = 'https://api.holded.com/api/invoicing/v1/contacts';
-		$discount = 0;
+		            $discount = 0;
 
 		if($request->cookie('descuento')!=null)
 		{
@@ -98,8 +98,8 @@ class RedsysController extends Controller
                         'name' => $product->nombre. '-' .$product->plato_peso->valor,
                         'units' => $product->pivot->quantity,
                         'subtotal' => $product->precio / 1.10,
-			'tax' => 10,
-			'discount' => $discount
+			                  'tax' => 10,
+			                  'discount' => $discount
                     );
 
                     array_push($items, $item);
@@ -191,12 +191,16 @@ class RedsysController extends Controller
                 // $res = json_decode($res->getBody()->getContents());
                 // dd($res->id, $user);
 
-		
+
                 // if($user->holded_id == null){
+                try{
                     $res = $client->post($createContactURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
                     $res = json_decode($res->getBody()->getContents());
                     $user->holded_id = $res->id;
                     $user->save();
+                } catch(Exception $e){
+                    dd('Error a la hora de crear el usuario');
+                }
                 // }elseif($user->holded_id != null){
 		//	$client->put($updateContactURL.$user->holded_id, ['headers' => ['key' => config('holded.key'), 'Accept' => 'application/json', 'Content-Type' => 'application/json'], 'body' => $holdedClient]);
                 //}
@@ -204,16 +208,32 @@ class RedsysController extends Controller
                 $holdedArray['items'] = $items;
                 $holdedArray = json_encode($holdedArray);
 
-                $client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
-                $res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                try{
+                    $client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                } catch(Exception $e){
+                    dd('Error a la hora de crear el pedido');
+                }
+
+                try{
+                    $res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
+                } catch(Exception $e){
+                    dd('Error a la hora de crear la factura');
+                }
+
                 $res = json_decode($res->getBody()->getContents());
                 $invoiceId = $res->id;
                 $payJSON = json_encode(['date' => time(), 'amount' => $cart->total]);
-                $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => config('holded.key')], 'body' => $payJSON]);
+
+                try{
+                    $client->post($payedURL . $invoiceId . '/pay', ['headers' => ['key' => config('holded.key')], 'body' => $payJSON]);
+                } catch(Exception $e){
+                    dd('Error a la hora de poner el pedido como pagado');
+                }
 
                 try {
                     Mail::to(auth()->user()->email)->send(new OrderMail($cart, null));
                 } catch (\Exception $e) {
+                    dd('Error a la hora de enviar el correo de confirmación del pedido');
                     return response()->json(array(
                         'status' => 500,
                         'message' => $e->getMessage()
@@ -240,6 +260,7 @@ class RedsysController extends Controller
                 return redirect('/')->with('message', 'error');
             }
         } catch (Exception $e) {
+            dd('Error fuera del try principal');
             return redirect('/')->with('message', 'error');
         }
     }
