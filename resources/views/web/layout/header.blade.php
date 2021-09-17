@@ -7,7 +7,7 @@
 
             <div>
                 @inject('cartService','App\Services\CartService')
-                <a class="menu-cart-btn-mobile" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/icon/cart.png" style="margin-top: -5px;"><p>{{ $cartService->countProducts() }}</p></a>
+                <a class="menu-cart-btn-mobile" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/Icon/cart.png" style="margin-top: -5px;"><p>{{ $cartService->countProducts() }}</p></a>
             </div>
         <ul class="menu">
             <li><a href="{{ route('web.menu') }}" class="menu-i">Meal Plan</a></li>
@@ -43,7 +43,7 @@
             </li>
             <li>
                 @inject('cartService','App\Services\CartService')
-                <a class="menu-cart-btn" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/icon/cart.png" style="margin-top: -5px;"><p>{{ $cartService->countProducts() }}</p></a>
+                <a class="menu-cart-btn" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/Icon/cart.png" style="margin-top: -5px;"><p>{{ $cartService->countProducts() }}</p></a>
             </li>
             @if(auth()->check() && \App\Models\User::findOrFail(auth()->user()->id)->isAdmin())
             <li><a href="{{ route('admin.home') }}" class="menu-i"><img style="width: 20px; height: 20px; margin-top: -5px;" src="/img/menu/settings.png" alt=""></a></li>

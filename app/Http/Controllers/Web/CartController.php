@@ -39,7 +39,7 @@ class CartController extends Controller
         {
             //dd($discount == $availableDiscounts[$i]->name,$availableDiscounts[$i]->start < $time,$availableDiscounts[$i]->end > $time);
             if($discount == $availableDiscounts[$i]->name AND $availableDiscounts[$i]->start < $time AND $availableDiscounts[$i]->end > $time AND $availableDiscounts[$i]->active == 1){
-                $cookie = cookie('descuento', $availableDiscounts[$i]->value, 60 * 60);
+                $cookie = cookie('descuento', $availableDiscounts[$i]->value, 60);
                 return redirect()->back()->withCookie($cookie)->with('discountMessageSuccess', 'Código correcto');
             }
         }

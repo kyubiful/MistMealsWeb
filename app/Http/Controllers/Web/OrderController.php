@@ -99,7 +99,7 @@ class OrderController extends Controller
             );
 
         $order->products()->attach($cartProductsWithQuantity->toArray());
-        $orderCookie = cookie('order_id', $order->id, 60*24*30);
+        $orderCookie = cookie('order_id', $order->id, 60*24*30,'/','www.mistmeals.com');
 
         return redirect()->route('web.orders.payments.create', ['order' => $order->id])->cookie($orderCookie);
     }

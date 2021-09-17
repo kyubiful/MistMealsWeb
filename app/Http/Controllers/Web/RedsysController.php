@@ -32,6 +32,8 @@ class RedsysController extends Controller
         try {
             $key = config('redsys.key');
             $merchantcode = config('redsys.merchantcode');
+            $user = User::findOrFail(auth()->user()->id);
+	    $titular = $user->name.' '.$user->surname;
 
             Redsys::setAmount($amount);
             Redsys::setOrder(time());
@@ -45,9 +47,9 @@ class RedsysController extends Controller
             Redsys::setUrlKo(config('redsys.url_ko')); //Url KO
             Redsys::setVersion('HMAC_SHA256_V1');
             Redsys::setTradeName('Mist Meals S.L.');
-            Redsys::setTitular('MistMeals');
+            Redsys::setTitular($titular);
             Redsys::setProductDescription('Platos MistMeals');
-            Redsys::setEnviroment('test'); //Entorno test
+            Redsys::setEnviroment(config('redsys.enviroment')); //Entorno test
 
             $signature = Redsys::generateMerchantSignature($key);
             Redsys::setMerchantSignature($signature);
@@ -79,6 +81,13 @@ class RedsysController extends Controller
                 $getPdfUrl = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
                 $updateContactURL = 'https://api.holded.com/api/invoicing/v1/contacts/';
                 $createContactURL = 'https://api.holded.com/api/invoicing/v1/contacts';
+		$discount = 0;
+
+		if($request->cookie('descuento')!=null)
+		{
+			$discount = (int)$request->cookie('descuento');
+		}
+
 
                 $items = array();
                 $amount = 0;
@@ -89,7 +98,8 @@ class RedsysController extends Controller
                         'name' => $product->nombre. '-' .$product->plato_peso->valor,
                         'units' => $product->pivot->quantity,
                         'subtotal' => $product->precio / 1.10,
-                        'tax' => 10
+			'tax' => 10,
+			'discount' => $discount
                     );
 
                     array_push($items, $item);
@@ -163,7 +173,7 @@ class RedsysController extends Controller
                 );
 
                 $holdedClient = array(
-                    'name' => $user->name.'-'.$user->surname,
+                    'name' => $user->name.' '.$user->surname,
                     'email' => $user->email,
                     'type' => 'client',
                     'isperson' => 'true',
@@ -176,20 +186,20 @@ class RedsysController extends Controller
                     )
                 );
 
-                $holdedClient= json_encode($holdedClient);
+                $holdedClient=json_encode($holdedClient);
                 // $res = $client->post($createContactURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
                 // $res = json_decode($res->getBody()->getContents());
                 // dd($res->id, $user);
 
-                if($user->holded_id == null){
+		
+                // if($user->holded_id == null){
                     $res = $client->post($createContactURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
                     $res = json_decode($res->getBody()->getContents());
                     $user->holded_id = $res->id;
                     $user->save();
-                }elseif($user->holded_id != null){
-                    $client->put($updateContactURL.$user->holded_id, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
-                }
-
+                // }elseif($user->holded_id != null){
+		//	$client->put($updateContactURL.$user->holded_id, ['headers' => ['key' => config('holded.key'), 'Accept' => 'application/json', 'Content-Type' => 'application/json'], 'body' => $holdedClient]);
+                //}
 
                 $holdedArray['items'] = $items;
                 $holdedArray = json_encode($holdedArray);
