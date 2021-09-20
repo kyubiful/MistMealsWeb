@@ -21,7 +21,7 @@
             <p><b>INGREDIENTES </b> {{ $ingredientes }}</p>
             <p><b>ALÉRGENOS: </b> @foreach($alergenos as $alergeno) {{ $alergeno }} @endforeach</p>
             <p><b>MODO DE PREPARACIÓN: </b> {{ $receta }}</p>
-            <p style="text-align: right;">Peso Neto: <b style="font-size: 24px;"> {{ $peso }}g</b></p>
+            <p style="text-align: right;">Peso Neto Aproximado: <b style="font-size: 24px;"> {{ $peso }}g</b></p>
         </div>
         <div style="margin-top: -50px;">
             <p><b>INFORMACIÓN NUTRICIONAL</b></p>
