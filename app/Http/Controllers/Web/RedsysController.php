@@ -25,6 +25,7 @@ class RedsysController extends Controller
     public function __construct(CartService $cartService)
     {
         $this->cartService = $cartService;
+	$this->middleware('user.auth');
     }
 
     public static function index($amount)
@@ -63,7 +64,6 @@ class RedsysController extends Controller
 
     public function comprobar(Request $request)
     {
-
         try {
             $key = config('redsys.key');
             $parameters = Redsys::getMerchantParameters($request->input('Ds_MerchantParameters'));
@@ -73,7 +73,7 @@ class RedsysController extends Controller
 
                 $user = User::findOrFail(auth()->user()->id);
                 $cart = $this->cartService->getFromCookie();
-                // $order = Order::findOrFail($request->cookie('order_id'));
+                $order = Order::findOrFail($request->cookie('order_id'));
                 $client = new Client();
                 $salesorderURL = 'https://api.holded.com/api/invoicing/v1/documents/salesorder';
                 $invoiceURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice';
@@ -81,13 +81,11 @@ class RedsysController extends Controller
                 $getPdfUrl = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
                 $updateContactURL = 'https://api.holded.com/api/invoicing/v1/contacts/';
                 $createContactURL = 'https://api.holded.com/api/invoicing/v1/contacts';
-		            $discount = 0;
-
+		$discount = 0;
 		if($request->cookie('descuento')!=null)
 		{
 			$discount = (int)$request->cookie('descuento');
 		}
-
 
                 $items = array();
                 $amount = 0;
@@ -159,7 +157,7 @@ class RedsysController extends Controller
                 //         ));
                 //     }
                 // } else {
-
+		
                 $holdedArray = array(
                     'contactCode' => $user->id + 10,
                     'shippingAddress' => $user->address.' '.$user->address_number.' '.$user->address_letter,
@@ -260,7 +258,7 @@ class RedsysController extends Controller
                 return redirect('/')->with('message', 'error');
             }
         } catch (Exception $e) {
-            dd('Error fuera del try principal');
+            dd('Error fuera del try principal', $e);
             return redirect('/')->with('message', 'error');
         }
     }
