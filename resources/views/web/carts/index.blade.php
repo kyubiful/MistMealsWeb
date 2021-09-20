@@ -38,7 +38,7 @@
           <p class="cart-price-subtotal"><span>Descuento</span><span>@if(Cookie::get('descuento')==null)0€ @else -{{round(((Cookie::get('descuento')*$cart->total)/100),2)}}€ @endif</span></p>
           <p class="cart-price-subtotal"><span><del>Gastos de envío</del></span><span><del>4.15€</del></span></p> <!-- implementar gastos de envío -->
         </div>
-        <p class="cart-price-total"><b><span>TOTAL</span><span>@if(Cookie::get('descuento')==null){{ round($cart->total,2) }}€ @else {{round(($cart->total)*((100-Cookie::get('descuento'))/100),2)}}€ @endif</span></b></p>
+        <p class="cart-price-total"><b><span>TOTAL</span><span>@if(Cookie::get('descuento')==null){{ round($cart->total,2) }}€ @else {{round(($cart->total*(100-Cookie::get('descuento'))/100),2)}}€ @endif</span></b></p>
       </div>
       @inject('cartService','App\Services\CartService')
       @if($cartService->countProducts() < 5)

@@ -97,7 +97,7 @@ class RedsysController extends Controller
                     $item = array(
                         'name' => $product->nombre. '-' .$product->plato_peso->valor,
                         'units' => $product->pivot->quantity,
-                        'subtotal' => $product->precio / 1.10,
+                        'subtotal' => $product->precio * 0.9,
 			                  'tax' => 10,
 			                  'discount' => $discount
                     );
