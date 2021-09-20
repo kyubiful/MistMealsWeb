@@ -21,6 +21,7 @@ class Plato extends Model
     'plato_peso_id',
     'imagen_1',
     'imagen_2',
+    'peso',
     'active'
   ];
 

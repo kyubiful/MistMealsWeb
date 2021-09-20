@@ -15,7 +15,7 @@
             <p style="text-align: center;"><img style="width: 500px;" src="img/otros/MistMealsLogoEtoqieta.png" alt=""></p>
         </div>
         <div style="border-bottom: 3px solid black;">
-            <h1 style="font-size: 30px; text-align: center; margin-top: -20px;">{{ $nombre }}</h1>
+            <h1 style="font-size: 30px; text-align: center; margin-top: -20px;">{{ $nombre }} - {{ $plato_peso }}</h1>
         </div>
         <div>
             <p><b>INGREDIENTES </b> {{ $ingredientes }}</p>
@@ -36,43 +36,43 @@
                     </tr>
                     <tr>
                         <td style="border-bottom: 2px solid black; padding: 5px;">Valor Energético:</td>
-                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $energia_cien }} Kcal</td>
                         <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $energia }} Kcal</td>
+                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $energia_peso }} Kcal</td>
                     </tr>
                     <tr>
                         <td style="border-bottom: 2px solid black; padding: 5px;">Grasas:</td>
-                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $grasas_cien }} g</td>
                         <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $grasas }} g</td>
+                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $grasas_peso }} g</td>
                     </tr>
                     <tr>
                         <td style="border-bottom: 2px solid black; padding: 5px;">de las cuales saturadas:</td>
-                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $saturadas_cien }} g</td>
                         <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $saturadas }} g</td>
+                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $saturadas_peso }} g</td>
                     </tr>
                     <tr>
                         <td style="border-bottom: 2px solid black; padding: 5px;">Carbohidratos:</td>
-                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $carbohidratos_cien }} g</td>
                         <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $carbohidratos }} g</td>
+                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $carbohidratos_peso }} g</td>
                     </tr>
                     <tr>
                         <td style="border-bottom: 2px solid black; padding: 5px;">de los cuales azúcares:</td>
-                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $azucares_cien }} g</td>
                         <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $azucares }} g</td>
+                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $azucares_peso }} g</td>
                     </tr>
                     <tr>
                         <td style="border-bottom: 2px solid black; padding: 5px;">Proteínas:</td>
-                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $proteinas_cien }} g</td>
                         <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $proteinas }} g</td>
+                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $proteinas_peso }} g</td>
                     </tr>
                     <tr>
                         <td style="border-bottom: 2px solid black; padding: 5px;">Sal:</td>
-                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $sales_cien }} g</td>
                         <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $sales }} g</td>
+                        <td style="border-bottom: 2px solid black; padding: 5px; text-align: right;">{{ $sales_peso }} g</td>
                     </tr>
                     <tr>
                         <td style="padding: 5px;">Fibra:</td>
-                        <td style="padding: 5px; text-align: right;">{{ $fibra_cien }} g</td>
                         <td style="padding: 5px; text-align: right;">{{ $fibra }} g</td>
+                        <td style="padding: 5px; text-align: right;">{{ $fibra_peso }} g</td>
                     </tr>
                 </tbody>
             </table>

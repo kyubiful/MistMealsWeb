@@ -1528,17 +1528,23 @@ if(window.location.pathname=='/platos'){
 
     const containerL = document.querySelectorAll('.plato-container-l');
     const containersL = document.querySelector('.platos-container-l');
-    const sizeBtn = document.querySelectorAll('.plato-peso-switch');
 
-    for(let i=0; i<sizeBtn.length; i++){
-        sizeBtn[i].addEventListener('click', ()=>{
-            sizeBtn[i].classList.toggle('active');
+    const sizeBtnM = document.querySelectorAll('.plato-peso-switch-m');
+    const sizeBtnL = document.querySelectorAll('.plato-peso-switch-l');
+
+    for(let i=0; i<sizeBtnM.length; i++){
+        sizeBtnM[i].addEventListener('click', () => {
+            sizeBtnM[i].classList.toggle('active');
+            sizeBtnL[i].classList.toggle('active');
             containerL[i].classList.toggle('active');
-            if(sizeBtn[i].classList[1]=='active'){
-                sizeBtn[i].innerHTML = 'L';
-            }else{
-                sizeBtn[i].innerHTML = 'M';
-            }
+        })
+    }
+
+    for(let i=0; i<sizeBtnL.length; i++){
+        sizeBtnL[i].addEventListener('click', () => {
+            sizeBtnM[i].classList.toggle('active');
+            sizeBtnL[i].classList.toggle('active');
+            containerL[i].classList.toggle('active');
         })
     }
 

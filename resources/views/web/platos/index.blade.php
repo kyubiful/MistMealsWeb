@@ -14,8 +14,8 @@
   <div class="platos-count-content">
     <div>
       @inject('cartService','App\Services\CartService')
-      <p style="font-size: 26px;">Platos seleccionados (<span class="platos-count-number">@if($cartService->countProducts()>8)5 @else {{$cartService->countProducts()}} @endif</span>/ 8 )</p>
-      <p style="font-size: 15px; font-family: coresansc65 !important;">Selecciona mínimo 5 platos*</p>
+      <p>Platos seleccionados (<span class="platos-count-number">@if($cartService->countProducts()>8)5 @else {{$cartService->countProducts()}} @endif</span>/ 8 )</p>
+      <p style="font-size: 13px; font-family: coresansc65 !important;">Selecciona mínimo 5 platos*</p>
     </div>
     <div>
       <a class="plates-modal-cart-btn-top" href="{{route('web.carts.index')}}">VER CARRITO</a>
@@ -27,14 +27,12 @@
   @foreach($platos as $i => $plato)
   @if($plato->plato_peso->valor == 'M')
   <div class="plato-container">
-    <div class="plato-peso-btn">
-      <label class="plato-peso-switch">M</label>
-    </div>
     <img src="{{ asset($plato->getUrlImage1Attribute()) }}" class="plato-img" data-toggle="modal" data-target="#modal-dish-{{$i}}" alt="">
     <div class="plato-content">
       <p class="plato-price">{{ $plato->precio }}€</p>
       <p class="plato-title">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</p>
       <div class="plato-info">
+        <span class="plate-info-btn" data-toggle="modal" data-target="#modal-dish-{{$i}}">?</span>
         <span>{{ bcdiv($plato->calorias, '1', 0) }} <b>cal</b></span>
         <span>{{ bcdiv($plato->plato_info_nutricional->proteinas, '1', 0) }} <b>P</b></span>
         <span>{{ bcdiv($plato->plato_info_nutricional->carbohidratos, '1', 0)}} <b>C</b></span>
@@ -44,9 +42,19 @@
       <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}" class="plate_form" name="plate_form_{{$i}}">
         @csrf
         <div class="plate-quantity-container">
-          <button type="button" class="plate-btn-less">-</button>
-          <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
-          <button type="button" class="plate-btn-more">+</button>
+          <p>Cantidad</p>
+          <div>
+            <button type="button" class="plate-btn-less">-</button>
+            <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
+            <button type="button" class="plate-btn-more">+</button>
+          </div>
+        </div>
+        <div class="plato-peso-switch-content">
+          <p>Peso</p>
+          <div class="plato-peso-switch-container">
+            <label class="plato-peso-switch-m active">M</label>
+            <label class="plato-peso-switch-l">L</label>
+          </div>
         </div>
         <button class="mist_btn plato-btn" type="submit">Añadir</button>
       </form>
@@ -64,6 +72,7 @@
       <p class="plato-price">{{ $plato->precio }}€</p>
       <p class="plato-title">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</p>
       <div class="plato-info">
+        <span class="plate-info-btn" data-toggle="modal" data-target="#modal-dish-{{$i}}">?</span>
         <span>{{ bcdiv($plato->calorias, '1', 0) }} <b>cal</b></span>
         <span>{{ bcdiv($plato->plato_info_nutricional->proteinas, '1', 0) }} <b>P</b></span>
         <span>{{ bcdiv($plato->plato_info_nutricional->carbohidratos, '1', 0)}} <b>C</b></span>
@@ -73,9 +82,19 @@
       <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}" class="plate_form" name="plate_form_{{$i}}">
         @csrf
         <div class="plate-quantity-container">
-          <button type="button" class="plate-btn-less">-</button>
-          <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
-          <button type="button" class="plate-btn-more">+</button>
+          <p>Cantidad</p>
+          <div>
+            <button type="button" class="plate-btn-less">-</button>
+            <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
+            <button type="button" class="plate-btn-more">+</button>
+          </div>
+        </div>
+        <div class="plato-peso-switch-content-fake">
+          <p>Peso</p>
+          <div class="plato-peso-switch-container-fake">
+            <label class="plato-peso-switch-m-fake">M</label>
+            <label class="plato-peso-switch-l-fake">L</label>
+          </div>
         </div>
         <button class="mist_btn plato-btn" type="submit">Añadir</button>
       </form>

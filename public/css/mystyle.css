@@ -1908,7 +1908,7 @@ body .platos-count-container{
 }
 
 body .platos-count-content{
-  width: 80%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -1960,6 +1960,7 @@ body .platos-count-content p{
 .plate-quantity-container{
   display: flex;
   margin-top: 15px;
+  justify-content: space-between;
 }
 
 .plate-quantity-display{
@@ -1976,24 +1977,26 @@ body .platos-count-content p{
 
 .plate-btn-less{
   border: none;
-  background-color: #533fb8;
+  background-color: black;
+  border: 1px solid #533fb8;
   color: #F9F2E1;
   transition: all 0.3s ease;
 }
 .plate-btn-less:hover{
-  background-color: #F9F2E1;
-  color: #533fb8;
+  background-color: #533fb8;
+  color: #F9F2E1;
 }
 
 .plate-btn-more{
   border: none;
-  background-color: #533fb8;
+  background-color: black;
+  border: 1px solid #533fb8;
   color: #F9F2E1;
   transition: all 0.3s ease;
 }
 .plate-btn-more:hover{
-  background-color: #F9F2E1;
-  color: #533fb8;
+  background-color: #533fb8;
+  color: #F9F2E1;
 }
 
 .plato-container {
@@ -2055,12 +2058,111 @@ body .platos-count-content p{
   color: #f9f2e1;
 }
 
+.plato-peso-switch-content{
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.plato-peso-switch-container{
+  display: flex;
+  z-index: 5;
+}
+
+.plato-peso-switch-m{
+  background-color: black;
+  color: #f9f2e1;
+  width: 25px;
+  height: 25px;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.plato-peso-switch-m.active{
+  background-color: #533fb8;
+  color: #f9f2e1;
+}
+
+.plato-peso-switch-l{
+  background-color: black;
+  color: #f9f2e1;
+  width: 25px;
+  height: 25px;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.plato-peso-switch-l.active{
+  background-color: #533fb8;
+  color: #f9f2e1;
+}
+
+.plato-peso-switch-content-fake{
+  display: flex;
+  justify-content: space-between;
+}
+
+.plato-peso-switch-container-fake{
+  display: flex;
+}
+
+.plato-peso-switch-m-fake{
+  background-color: black;
+  color: #f9f2e1;
+  width: 25px;
+  height: 25px;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.plato-peso-switch-l-fake{
+  background-color: black;
+  color: #f9f2e1;
+  width: 25px;
+  height: 25px;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 /* fin intento */
 
 .plato-img {
   width: 208px;
   padding-bottom: 30px;
-  cursor: pointer;
+  cursor: help;
+}
+
+.plate-info-btn{
+  font-size: 10px;
+  border-radius: 50%;
+  background-color: #FFCF00;
+  width: 15px;
+  color: black;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'TuskerGrotesk65';
+}
+
+.plato-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .plato-content p.plato-price {
@@ -2082,6 +2184,13 @@ body .platos-count-content p{
 .plato-info {
   font-size: 14px;
   color: #f9f2e1;
+  display: flex;
+  align-items: baseline;
+  cursor: help;
+}
+
+.plato-info span{
+  margin-left: 5px;
 }
 
 .plato-info b {
@@ -2163,10 +2272,14 @@ body .platos-count-content p{
 }
 
 .plates-modal-cart-btn-top {
+  display: flex;
   background: #533fb8;
-  padding: 12px 50px;
   color: #f9f2e1;
+  height: 40px;
+  width: 140px;
   font-size: 13px;
+  justify-content: center;
+  align-items: center;
 }
 
 .plates-modal-cart-btn-top:hover {
@@ -3649,8 +3762,20 @@ body .platos-count-content p{
     width: 40%;
   }
 
+  .plato-info span{
+    margin-left: 3px;
+  }
+
   .plato-img{
     width: 100%;
+  }
+
+  .plate-quantity-display{
+    width: 30px;
+  }
+
+  body .platos-count-content p{
+    font-size: 16px;
   }
 
   .plato-btn{
