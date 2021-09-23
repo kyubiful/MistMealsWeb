@@ -3982,17 +3982,17 @@ width: 470px;
   }
 
   .plate-quantity-display{
-    width: 20px;
+    width: 24px !important;
   }
 
   .plate-btn-less{
-    width: 20px;
-    height: 24px;
+    width: 24px !important;
+    height: 24px !important;
   }
 
   .plate-btn-more{
-    width: 20px;
-    height: 24px;
+    width: 24px !important;
+    height: 24px !important;
   }
 
   body .platos-count-content p{
