@@ -61,11 +61,11 @@
               <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{ $i }}" aria-expanded="false" aria-controls="collapse{{ $i }}">
                 <div class="day-title">Día <b>{{ $i+1 }}</b></div>
                 <div class="day-info">
-                  <span class="menu2-span-130">{{ round($lunch[$i]->calorias*$lunch[$i]->peso + $dinner[$i]->calorias*$dinner[$i]->peso, 0) }} <b>Calorías</b></span>
-                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->proteinas*$lunch[$i]->peso + $dinner[$i]->plato_info_nutricional->proteinas*$dinner[$i]->peso }} <b>Proteinas</b></span>
-                  <span class="menu2-span-190">{{ $lunch[$i]->plato_info_nutricional->carbohidratos*$lunch[$i]->peso + $dinner[$i]->plato_info_nutricional->carbohidratos*$dinner[$i]->peso }} <b>Carbohidratos</b></span>
-                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->grasas*$lunch[$i]->peso + $dinner[$i]->plato_info_nutricional->grasas*$dinner[$i]->peso }} <b>Grasas</b></span>
-                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->fibra*$lunch[$i]->peso + $dinner[$i]->plato_info_nutricional->fibra*$dinner[$i]->peso }} <b>Fibra</b></span>
+                  <span class="menu2-span-130">{{ round($lunch[$i]->calorias*($lunch[$i]->peso/100) + $dinner[$i]->calorias*($dinner[$i]->peso/100), 0) }} <b>Calorías</b></span>
+                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->proteinas*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->proteinas*($dinner[$i]->peso/100) }} <b>Proteinas</b></span>
+                  <span class="menu2-span-190">{{ $lunch[$i]->plato_info_nutricional->carbohidratos*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->carbohidratos*($dinner[$i]->peso/100) }} <b>Carbohidratos</b></span>
+                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->grasas*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->grasas*($dinner[$i]->peso/100) }} <b>Grasas</b></span>
+                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->fibra*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->fibra*($dinner[$i]->peso/100) }} <b>Fibra</b></span>
                   <div class="open-carousel-img-container">
                     <div class="open-carousel-img"></div>
                   </div>
@@ -93,11 +93,11 @@
                       <p class="name">{{ $lunch[$i]->nombre }} - {{ $lunch[$i]->plato_peso->valor }}</p>
                     </div>
                     <div class="dish-info">
-                      <span>{{ round($lunch[$i]->calorias*$lunch[$i]->peso, 0) }} <b>CAL</b></span>
-                      <span>{{ $lunch[$i]->plato_info_nutricional->proteinas*$lunch[$i]->peso }} <b>P</b></span>
-                      <span>{{ $lunch[$i]->plato_info_nutricional->carbohidratos*$lunch[$i]->peso }} <b>C</b></span>
-                      <span>{{ $lunch[$i]->plato_info_nutricional->grasas*$lunch[$i]->peso }} <b>G</b></span>
-                      <span>{{ $lunch[$i]->plato_info_nutricional->fibra*$lunch[$i]->peso }} <b>F</b></span>
+                      <span>{{ round($lunch[$i]->calorias*($lunch[$i]->peso/100), 0) }} <b>CAL</b></span>
+                      <span>{{ $lunch[$i]->plato_info_nutricional->proteinas*($lunch[$i]->peso/100) }} <b>P</b></span>
+                      <span>{{ $lunch[$i]->plato_info_nutricional->carbohidratos*($lunch[$i]->peso/100) }} <b>C</b></span>
+                      <span>{{ $lunch[$i]->plato_info_nutricional->grasas*($lunch[$i]->peso/100) }} <b>G</b></span>
+                      <span>{{ $lunch[$i]->plato_info_nutricional->fibra*($lunch[$i]->peso/100) }} <b>F</b></span>
                     </div>
                     <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$lunch[$i]->id]) }}">
                       @csrf
@@ -128,11 +128,11 @@
                       <p class="name">{{ $dinner[$i]->nombre }} - {{ $dinner[$i]->plato_peso->valor }}</p>
                     </div>
                     <div class="dish-info">
-                      <span>{{ round($dinner[$i]->calorias*$dinner[$i]->peso, 0) }} <b>CAL</b></span>
-                      <span>{{ $dinner[$i]->plato_info_nutricional->proteinas*$dinner[$i]->peso }} <b>P</b></span>
-                      <span>{{ $dinner[$i]->plato_info_nutricional->carbohidratos*$dinner[$i]->peso }} <b>C</b></span>
-                      <span>{{ $dinner[$i]->plato_info_nutricional->grasas*$dinner[$i]->peso }} <b>G</b></span>
-                      <span>{{ $dinner[$i]->plato_info_nutricional->fibra*$dinner[$i]->peso }} <b>F</b></span>
+                      <span>{{ round($dinner[$i]->calorias*($dinner[$i]->peso/100), 0) }} <b>CAL</b></span>
+                      <span>{{ $dinner[$i]->plato_info_nutricional->proteinas*($dinner[$i]->peso/100) }} <b>P</b></span>
+                      <span>{{ $dinner[$i]->plato_info_nutricional->carbohidratos*($dinner[$i]->peso/100) }} <b>C</b></span>
+                      <span>{{ $dinner[$i]->plato_info_nutricional->grasas*($dinner[$i]->peso/100) }} <b>G</b></span>
+                      <span>{{ $dinner[$i]->plato_info_nutricional->fibra*($dinner[$i]->peso/100) }} <b>F</b></span>
                     </div>
                     <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$lunch[$i]->id]) }}">
                       @csrf
