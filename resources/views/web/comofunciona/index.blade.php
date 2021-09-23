@@ -13,7 +13,7 @@
         <p>Si hacemos las cosas, hagámoslas bien. ¡Es el momento de apostar por ti, por tus derechos y por tu planeta! Algo tan sencillo como cambiar nuestra rutina y apostar por un cuerpo sano, un consumo de alimentos responsable y de calidad.
 Nosotros te lo ponemos fácil: Te contamos como hacer tu pedido en 4 sencillos pasos:</p>
       </div>
-      <img src="img/comofunciona/frame.png"/>
+      <img src="img/comofunciona/Frame.png"/>
     </div>
   </div>
 <section class="values comofunciona-values" style="background-color: #009167;">

@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class comoFuncionaController extends Controller
 {
     function index(){
-        return view('web.comoFunciona.index');
+        return view('web.comofunciona.index');
     }
 }
