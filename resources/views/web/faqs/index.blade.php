@@ -48,7 +48,8 @@
   </div>
 </div>
 <div>
-  <img class="faqs-img" src="/img/faqs/antioxidants.png"/>
+  <img class="faqs-img mp-mobile-hidden" src="/img/faqs/antioxidants.png"/>
+  <img class="faqs-img mp-desktop-hidden" src="/img/faqs/antioxidantsmobile.png" style="margin-top: -165px; transform: rotate(0deg); right: 0px;"/>
 </div>
 @include('web.layout.newsletter')
 @endsection
