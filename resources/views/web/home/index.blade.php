@@ -80,29 +80,17 @@
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li> -->
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     </ol>
     <div class="carousel-inner">
-      <!-- <div class="carousel-item active">
+      <div class="carousel-item mp-mobile-hidden active">
         <section>
-          <div class="embed-responsive embed-responsive-16by9" style="margin-top: 80px; height: 827px; disply: flex;">
-              <video class="embed-responsive-item" src="video/MistMeals_Escenas_V6.mov" autoplay loop muted style="height:450px; margin-top: 160px;"></video>
-          </div>
-          <div style="position: absolute; top: 370px;display: flex; flex-direction: column; justify-content: center;align-items: center;width: 100%;">
-            <div class="frame-1 wow fadeInLeftBig animated" data-wow-duration="2s" style="margin-bottom: 20px;">
-              <img src="img/home/EATIVISMa-3.png"/>
-              <img src="img/home/EATIVISMa-4.png"/>
-              <img src="img/home/EATIVISMa-5.png"/>
-            </div>
-            <div class="frame-2 wow fadeInRightBig animated" data-wow-duration="2s" style="margin-top: 20px;">
-              <img src="img/home/EATIVISMa.png"/>
-              <img src="img/home/EATIVISMa-1.png"/>
-              <img src="img/home/EATIVISMa-2.png"/>
-            </div>
+          <div class="embed-responsive embed-responsive-16by9" style="margin-top: 90px; height: 827px; display: flex;">
+              <video class="embed-responsive-item" src="video/MistMeals4K.mp4" autoplay loop muted style="width: 100%;"></video>
           </div>
         </section>
-      </div> -->
-      <div class="carousel-item active">
+      </div>
+      <div class="carousel-item">
         <section class="profile_info style_1 home-make-diet-container" style="background-color: #000000; padding-top: 80px;">
           <div class="container-fluid">
             <div class="row justify-content-center align-items-center home-make-flex">
@@ -125,10 +113,10 @@
       <div class="row justify-content-center flex-column align-items-center position-relative">
         <div class="frame-text">
           <div class="frame-1 wow animated fadeInLeftBig" data-wow-duration="2s">
-            <img src="img/home/eativism.png">
+            <img src="img/home/eativism.png" style="width: 100vw;">
           </div>
           <div class="frame-2 wow fadeInRightBig" data-wow-duration="2s">
-            <img src="img/home/meativism.png">
+            <img src="img/home/meativism.png" style="width: 100vw;">
           </div>
         </div>
         <div class="planet position-relative" style="top: -40px;">
@@ -148,31 +136,31 @@
 
   <section class="home-comofunciona-container">
     <div class="home-comofunciona-image frame-1 wow fadeInLeftBig animated" data-wow-duration="2s">
-      <img src="img/home/como_funciona.png" class="mp-mobile-hidden"/>
+      <img src="img/home/como_funciona.png" class="mp-mobile-hidden" style="width: 100vw;"/>
     </div>
     <div class="home-comofunciona-content">
       <div class="home-comofunciona-content-inner">
         <div class="home-comofunciona-content-inner2">
           <div>
             <h3>1. elige tu objetivo</h3>
-            <p class="text">conoce  nuestros menús semanales y selecciona el que mejor se adapte a ti: control de calorías, mejora de rendimiento o ganancia muscular.</p>
+            <p class="text">Conoce  nuestros menús semanales y selecciona el que mejor se adapte a ti: control de calorías, mejora de rendimiento o ganancia muscular.</p>
           </div>
-          <p class="subtext"><i>* estamos trabajando para añadir nuevos planes y objetivos, si ninguno de ellos no encaja contigo, puedes comprar nuestros platos de manera individual.</i></p>
+          <p class="subtext"><i>* Estamos trabajando para añadir nuevos planes y objetivos, si ninguno de ellos no encaja contigo, puedes comprar nuestros platos de manera individual.</i></p>
         </div>
         <div class="home-comofunciona-content-inner2">
           <div>
             <h3>2. configura tu meal plan</h3>
-            <p class="text">rellena tus datos (edad, peso, frecuencia de deporte...) y descubre las comidas y cenas que proponemos para tu semana, basado en las calorías y nutrientes que tu cuerpo necesita. modifícalo a tu gusto y añade los platos al carrito.</p>
+            <p class="text">Rellena tus datos (edad, peso, frecuencia de deporte...) y descubre las comidas y cenas que proponemos para tu semana, basado en las calorías y nutrientes que tu cuerpo necesita. modifícalo a tu gusto y añade los platos al carrito.</p>
           </div>
-          <p class="subtext"><i>* nuestros platos han sido pensados por nutricionistas, pero nuestros planes no proporcionan asesoramiento nutricional.</i></p>
+          <p class="subtext"><i>* Nuestros platos han sido pensados por nutricionistas, pero nuestros planes no proporcionan asesoramiento nutricional.</i></p>
         </div>
         <div class="home-comofunciona-content-inner2">
           <div>
             <h3>3. completa tu pedido</h3>
-            <p class="text">para evitar el desperdicio de alimentos al máximo necesitamos recibir tu pedido antes del domingo. así, hacemos la compra y los preparamos de lunes a miércoles para que los recibas en casa el jueves, recién hechos ;)
+            <p class="text">Para evitar el desperdicio de alimentos al máximo necesitamos recibir tu pedido antes del domingo. así, hacemos la compra y los preparamos de lunes a miércoles para que los recibas en casa el jueves, recién hechos ;)
               <br>¡sigue los pasos para completar tu pedido y disfruta!</p>
           </div>
-          <p class="subtext"><i>* se  mantendrán frescos en su envase en la nevera hasta el siguiente viernes.</i></p>
+          <p class="subtext"><i>* Se  mantendrán frescos en su envase en la nevera hasta el siguiente viernes.</i></p>
         </div>
       </div>
     </div>
@@ -227,7 +215,7 @@
 
   <section class="home-sostenibilidad-container">
     <div class="home-sostenibilidad-image frame-1 wow fadeInRightBig animated" data-wow-duration="2s">
-      <img src="img/home/sostenibilidad.png"/>
+      <img src="img/home/sostenibilidad.png" style="width: 100vw;"/>
     </div>
     <div class="home-sostenibilidad-content">
       <p class="home-sostenibilidad-content-title mp-mobile-hidden">Desde MistMeals nos subimos al carro de la sostenibilidad con las acciones que están en nuestra mano:</p>

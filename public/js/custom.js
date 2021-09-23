@@ -446,6 +446,7 @@
             navText: ["<img src='img/icon/left_icon.svg' alt='#'>", "<img src='img/icon/right_icon.svg' alt='#'>"],
             dots: false,
             autoplay: true,
+            autoplayTimeout: 10000,
             autoplayHoverPause: true,
             smartSpeed: 500,
             margin: 20,
@@ -1464,6 +1465,29 @@ if(window.location.pathname == '/'){
     popupBtn2.addEventListener('click', () => {
         homePopup.classList.toggle('home-popup-hidden');
     });
+
+    const carouselItem = document.querySelectorAll('.carousel-item');
+    const carouselDot = document.querySelectorAll('.carousel-indicators li');
+
+    if(window.innerWidth<991){
+        carouselItem[0].classList.remove('active');
+        carouselItem[1].classList.add('active')
+        carouselDot[1].classList.add('mp-mobile-hidden');
+    }
+
+    window.addEventListener('resize', () => {
+    if(window.innerWidth<991){
+        carouselItem[0].classList.remove('active');
+        carouselItem[1].classList.add('active')
+        carouselDot[1].classList.add('mp-mobile-hidden');
+    } else{
+        carouselItem[0].classList.add('active');
+        carouselItem[1].classList.remove('active')
+        carouselDot[1].classList.remove('mp-mobile-hidden');
+
+    }
+
+    })
 }
 
 if(window.location.pathname == '/orders/create'){
