@@ -134,12 +134,12 @@
                       <span>{{ round($dinner[$i]->plato_info_nutricional->grasas*($dinner[$i]->peso/100), 1) }} <b>G</b></span>
                       <span>{{ round($dinner[$i]->plato_info_nutricional->fibra*($dinner[$i]->peso/100), 1) }} <b>F</b></span>
                     </div>
-                    <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$lunch[$i]->id]) }}">
+                    <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$dinner[$i]->id]) }}">
                       @csrf
                       <input type="hidden" name="plateQuantity" value="1"/>
                       <button class="plato-menu-btn" type="submit"><span>+</span>Añadir</button>
                     </form>
-                    <form method="POST" class="plate_form_menu_remove" action="{{ route('web.platos.carts.remove', [$lunch[$i]->id]) }}">
+                    <form method="POST" class="plate_form_menu_remove" action="{{ route('web.platos.carts.remove', [$dinner[$i]->id]) }}">
                       @csrf
                       <input type="hidden" name="plateQuantity" value="1"/>
                       <button class="plato-menu-btn-remove" type="submit"><span>-</span>Quitar</button>

@@ -41,7 +41,7 @@
         <p class="cart-price-total"><b><span>TOTAL</span><span>@if(Cookie::get('descuento')==null){{ round($cart->total,2) }}€ @else {{round(($cart->total*(100-Cookie::get('descuento'))/100),2)}}€ @endif</span></b></p>
       </div>
       <div>
-        <p style="margin-bottom: 30px;color: #FFCF00; font-size: 13px; font-family: 'CoreSansC35' !important; width: 333px; line-height: 18px;">*Recordarte que para conservar mejor el alimento y evitar desperdicios, necesitamos recibir los pedidos antes del día 00/00/2021 para que te llegue el día 00/00/00.</p>
+        <p style="margin-bottom: 30px;color: #FFCF00; font-size: 13px; font-family: 'CoreSansC35' !important; width: 333px; line-height: 18px;">*Recordarte que para conservar mejor el alimento y evitar desperdicios, necesitamos recibir los pedidos antes de las 23:59h del Domingo. Te llegarán los platos el jueves de la semana siguiente.</p>
       </div>
       @inject('cartService','App\Services\CartService')
       @if($cartService->countProducts() < 5)
