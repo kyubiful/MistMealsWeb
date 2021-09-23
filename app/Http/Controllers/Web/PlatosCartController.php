@@ -56,6 +56,47 @@ class PlatosCartController extends Controller
         // return redirect()->back()->cookie($cookie)->with('itemName',$infoName)->with('infoPrice', $totalPrice)->with('itemQuantity', $plateQuantity);
     }
 
+    public function remove(Request $request, Plato $plato)
+    {
+        $plateQuantity = $request->plateQuantity;
+        if($plateQuantity<0){
+            return redirect()->back()->with('message','<0');
+        }
+
+        $cart = $this->cartService->getFromCookieOrCreate();
+
+        $quantity = $cart->products()->find($plato->id)->pivot->quantity ?? 0;
+
+        if($quantity-(int)$plateQuantity <= 0){
+            $cart->products()->detach($plato->id);
+            $cookie = $this->cartService->makeCookie($cart);
+
+            return response()->json([
+                'status' => 500,
+                'message' => 'test',
+                'itemQuantity' => $plateQuantity
+            ])->withCookie($cookie);
+        }
+
+        $cart->products()->syncWithoutDetaching([
+            $plato->id => ['quantity' => $quantity - (int)$plateQuantity],
+        ]);
+
+        $infoName = $cart->products()->find($plato->id)->nombre;
+        $infoPrice = $cart->products()->find($plato->id)->precio;
+        $totalPrice = $infoPrice * $plateQuantity;
+
+        $cookie = $this->cartService->makeCookie($cart);
+
+        return response()->json([
+            'status' => 500,
+            'message' => 'test',
+            'itemQuantity' => $plateQuantity
+        ])->withCookie($cookie);
+
+        // return redirect()->back()->cookie($cookie)->with('itemName',$infoName)->with('infoPrice', $totalPrice)->with('itemQuantity', $plateQuantity);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

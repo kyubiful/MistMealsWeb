@@ -72,26 +72,54 @@
       <form method="POST" action="{{route('web.verifyCP')}}" class="home-popup-form">
         @csrf
         <input type="number" name="cp" id="" placeholder="00000">
-        <button type="submit">Verificar</button>
       </form>
       <p style="font-size: 10px;">*no enviamos a islas, Ceuta y Melilla</p>
     </div>
   </section>
 
-  <section class="profile_info style_1 home-make-diet-container" style="background-color: #000000; padding-top: 80px;">
-    <div class="container-fluid">
-      <div class="row justify-content-center align-items-center home-make-flex">
-        <div class="wow zoomIn" style="z-index: 2;" data-wow-delay=".3s">
-          <img class="mvw-100 home-mist-img" src="img/home/mist-home-header.png">
-        </div>
-        <div class="wow fadeIn" style="z-index: 3;" data-wow-delay=".3s">
-          <img class="mvw-100 home-make-diet-img" src="img/home/mist-home-header-claim.png">
-          <div class="description home-description-text">Hemos inventado el “Eativism”, un movimiento que cuestiona la forma en la que comemos.</div>
-          <a href="{{ route('web.menu') }}" class="mist_btn animate_btn d-lg-block home-make-diet-btn">Crea tu plan de comidas</a>
-        </div>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li> -->
+    </ol>
+    <div class="carousel-inner">
+      <!-- <div class="carousel-item active">
+        <section>
+          <div class="embed-responsive embed-responsive-16by9" style="margin-top: 80px; height: 827px; disply: flex;">
+              <video class="embed-responsive-item" src="video/MistMeals_Escenas_V6.mov" autoplay loop muted style="height:450px; margin-top: 160px;"></video>
+          </div>
+          <div style="position: absolute; top: 370px;display: flex; flex-direction: column; justify-content: center;align-items: center;width: 100%;">
+            <div class="frame-1 wow fadeInLeftBig animated" data-wow-duration="2s" style="margin-bottom: 20px;">
+              <img src="img/home/EATIVISMa-3.png"/>
+              <img src="img/home/EATIVISMa-4.png"/>
+              <img src="img/home/EATIVISMa-5.png"/>
+            </div>
+            <div class="frame-2 wow fadeInRightBig animated" data-wow-duration="2s" style="margin-top: 20px;">
+              <img src="img/home/EATIVISMa.png"/>
+              <img src="img/home/EATIVISMa-1.png"/>
+              <img src="img/home/EATIVISMa-2.png"/>
+            </div>
+          </div>
+        </section>
+      </div> -->
+      <div class="carousel-item active">
+        <section class="profile_info style_1 home-make-diet-container" style="background-color: #000000; padding-top: 80px;">
+          <div class="container-fluid">
+            <div class="row justify-content-center align-items-center home-make-flex">
+              <div class="wow zoomIn" style="z-index: 2;" data-wow-delay=".3s">
+                <img class="mvw-100 home-mist-img" src="img/home/mist-home-header.png">
+              </div>
+              <div class="wow fadeIn" style="z-index: 3;" data-wow-delay=".3s">
+                <img class="mvw-100 home-make-diet-img" src="img/home/mist-home-header-claim.png">
+                <div class="description home-description-text">Hemos inventado el “Eativism”, un movimiento que cuestiona la forma en la que comemos.</div>
+                <a href="{{ route('web.menu') }}" class="mist_btn animate_btn d-lg-block home-make-diet-btn">Crea tu plan de comidas</a>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
-  </section>
+  </div>
   <section class="py-20" style="margin-top: 40px">
     <div class="container-fluid">
       <div class="row justify-content-center flex-column align-items-center position-relative">
@@ -111,8 +139,40 @@
             Hemos inventado el “Eativism”, un movimiento que cuestiona la forma en la que comemos, cómo producimos los alimentos y todas las consecuencias negativas que esto provoca en nuestro organismo y en el planeta.
           </div>
         </div>
-        <div class="antioxidant"">
-        <img src=" img/home/antioxidant.png">
+        <div class="antioxidant">
+        <img src="img/home/antioxidant.png">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-comofunciona-container">
+    <div class="home-comofunciona-image frame-1 wow fadeInLeftBig animated" data-wow-duration="2s">
+      <img src="img/home/como_funciona.png" class="mp-mobile-hidden"/>
+    </div>
+    <div class="home-comofunciona-content">
+      <div class="home-comofunciona-content-inner">
+        <div class="home-comofunciona-content-inner2">
+          <div>
+            <h3>1. elige tu objetivo</h3>
+            <p class="text">conoce  nuestros menús semanales y selecciona el que mejor se adapte a ti: control de calorías, mejora de rendimiento o ganancia muscular.</p>
+          </div>
+          <p class="subtext"><i>* estamos trabajando para añadir nuevos planes y objetivos, si ninguno de ellos no encaja contigo, puedes comprar nuestros platos de manera individual.</i></p>
+        </div>
+        <div class="home-comofunciona-content-inner2">
+          <div>
+            <h3>2. configura tu meal plan</h3>
+            <p class="text">rellena tus datos (edad, peso, frecuencia de deporte...) y descubre las comidas y cenas que proponemos para tu semana, basado en las calorías y nutrientes que tu cuerpo necesita. modifícalo a tu gusto y añade los platos al carrito.</p>
+          </div>
+          <p class="subtext"><i>* nuestros platos han sido pensados por nutricionistas, pero nuestros planes no proporcionan asesoramiento nutricional.</i></p>
+        </div>
+        <div class="home-comofunciona-content-inner2">
+          <div>
+            <h3>3. completa tu pedido</h3>
+            <p class="text">para evitar el desperdicio de alimentos al máximo necesitamos recibir tu pedido antes del domingo. así, hacemos la compra y los preparamos de lunes a miércoles para que los recibas en casa el jueves, recién hechos ;)
+              <br>¡sigue los pasos para completar tu pedido y disfruta!</p>
+          </div>
+          <p class="subtext"><i>* se  mantendrán frescos en su envase en la nevera hasta el siguiente viernes.</i></p>
         </div>
       </div>
     </div>
@@ -134,6 +194,7 @@
             <img class="mp-mobile-hidden" src="img/home/target_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
             <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
             <p class="subtitle negative-margin">{{ $objetivo[1]->nombre }}</p>
+            <!-- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p> -->
           </div>
         </div>
 
@@ -142,6 +203,7 @@
             <img class="mp-mobile-hidden" src="img/home/target_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
             <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
             <p class="subtitle">{{ $objetivo[0]->nombre }}</p>
+            <!-- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p> -->
           </div>
         </div>
 
@@ -150,12 +212,45 @@
             <img class="mp-mobile-hidden" src="img/home/target_{{ 2 + 1 }}.png" alt="{{ $objetivo[2]->name }}">
             <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 2 + 1 }}.png" alt="{{ $objetivo[2]->name }}">
             <p class="subtitle negative-margin">{{ $objetivo[2]->nombre }}</p>
+            <!-- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p> -->
           </div>
         </div>
       </div>
       <div class="row mt-5">
         <div class="col-sm-12 wow fadeInDown" data-wow-delay=".4s">
           <a href="{{ route('web.menu') }}" class="mist_btn_home1 animate_btn text-uppercase d-lg-block mx-auto">Crea tu plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="home-sostenibilidad-container">
+    <div class="home-sostenibilidad-image frame-1 wow fadeInRightBig animated" data-wow-duration="2s">
+      <img src="img/home/sostenibilidad.png"/>
+    </div>
+    <div class="home-sostenibilidad-content">
+      <p class="home-sostenibilidad-content-title mp-mobile-hidden">Desde MistMeals nos subimos al carro de la sostenibilidad con las acciones que están en nuestra mano:</p>
+    </div>
+    <div class="home-sostenibilidad-container-inner">
+      <div class="home-sostenibilidad-container-inner2">
+        <div style="width: 300px;">
+          <div>
+            <h3>INGREDIENTES FRESCOS Y DE PROXIMIDAD</h3>
+            <p>Compramos los ingredientes tras recibir los pedidos cada semana para evitar el desperdicio y utilizamos productos de temporada y de producción local.</p>
+          </div>
+        </div>
+        <div style="width: 300px;">
+          <div>
+            <h3>TRABAJAMOS POR LA INCLUSIÓN</h3>
+            <p>Todos nuestros platos se preparan en la Fundación Juan XXIII, que lleva más de 50 años trabajando para la inclusión sociolaboral de personas con discapacidad intelectual.</p>
+          </div>
+        </div>
+        <div style="width: 300px;">
+          <div>
+            <h3>PACKAGING ZERO PLÁSTICO</h3>
+            <p>Nuestros envases son 100% compostables y el resto de elementos de nuestro packaging no contienen plástico.</p>
+          </div>
         </div>
       </div>
     </div>

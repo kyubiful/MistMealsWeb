@@ -39,21 +39,21 @@
     </div>
   </section>
 
+  <div class="platos-count-container">
+    <div class="platos-count-content">
+      <div>
+        @inject('cartService','App\Services\CartService')
+        <p>Platos seleccionados (<span class="platos-count-number">{{$cartService->countProducts()}}</span>)</p>
+        <p style="font-size: 13px; font-family: coresansc65 !important;">Selecciona mínimo 5 platos*</p>
+      </div>
+      <div>
+        <a class="plates-modal-cart-btn-top" href="{{route('web.carts.index')}}">IR AL CARRITO</a>
+      </div>
+    </div>
+  </div>
+
   <section>
     <div id="accordion">
-      <form method="POST" action="{{ route('web.menu.addtocart') }}">
-        @csrf
-        <div class="menu-step2-plates-count-container">
-          <div class="menu-step2-plates-count-content">
-            <div>
-              <p style="font-size: 26px;">Platos seleccionados (<span class="platos-count-number"> 14 </span>/ 8 )</p>
-              <p style="font-size: 15px; font-family: coresansc65 !important;">Selecciona mínimo 5 platos*</p>
-            </div>
-            <div>
-              <button class="step2-btn-submit" type="submit">Añadir al carrito</button>
-            </div>
-          </div>
-        </div>
         @foreach($lunch as $i => $el)
         <div class="card">
           <div class="card-header" id="heading{{ $i }}">
@@ -61,11 +61,11 @@
               <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{ $i }}" aria-expanded="false" aria-controls="collapse{{ $i }}">
                 <div class="day-title">Día <b>{{ $i+1 }}</b></div>
                 <div class="day-info">
-                  <span class="menu2-span-130">{{ round($lunch[$i]->calorias + $dinner[$i]->calorias, 0) }} <b>Calorías</b></span>
-                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->proteinas + $dinner[$i]->plato_info_nutricional->proteinas }} <b>Proteinas</b></span>
-                  <span class="menu2-span-190">{{ $lunch[$i]->plato_info_nutricional->carbohidratos + $dinner[$i]->plato_info_nutricional->carbohidratos }} <b>Carbohidratos</b></span>
-                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->grasas + $dinner[$i]->plato_info_nutricional->grasas }} <b>Grasas</b></span>
-                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->fibra + $dinner[$i]->plato_info_nutricional->fibra }} <b>Fibra</b></span>
+                  <span class="menu2-span-130">{{ round($lunch[$i]->calorias*$lunch[$i]->peso + $dinner[$i]->calorias*$dinner[$i]->peso, 0) }} <b>Calorías</b></span>
+                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->proteinas*$lunch[$i]->peso + $dinner[$i]->plato_info_nutricional->proteinas*$dinner[$i]->peso }} <b>Proteinas</b></span>
+                  <span class="menu2-span-190">{{ $lunch[$i]->plato_info_nutricional->carbohidratos*$lunch[$i]->peso + $dinner[$i]->plato_info_nutricional->carbohidratos*$dinner[$i]->peso }} <b>Carbohidratos</b></span>
+                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->grasas*$lunch[$i]->peso + $dinner[$i]->plato_info_nutricional->grasas*$dinner[$i]->peso }} <b>Grasas</b></span>
+                  <span class="menu2-span-130">{{ $lunch[$i]->plato_info_nutricional->fibra*$lunch[$i]->peso + $dinner[$i]->plato_info_nutricional->fibra*$dinner[$i]->peso }} <b>Fibra</b></span>
                   <div class="open-carousel-img-container">
                     <div class="open-carousel-img"></div>
                   </div>
@@ -93,16 +93,22 @@
                       <p class="name">{{ $lunch[$i]->nombre }} - {{ $lunch[$i]->plato_peso->valor }}</p>
                     </div>
                     <div class="dish-info">
-                      <span>{{ round($lunch[$i]->calorias, 0) }} <b>CAL</b></span>
-                      <span>{{ $lunch[$i]->plato_info_nutricional->proteinas }} <b>P</b></span>
-                      <span>{{ $lunch[$i]->plato_info_nutricional->carbohidratos }} <b>C</b></span>
-                      <span>{{ $lunch[$i]->plato_info_nutricional->grasas }} <b>G</b></span>
-                      <span>{{ $lunch[$i]->plato_info_nutricional->fibra }} <b>F</b></span>
+                      <span>{{ round($lunch[$i]->calorias*$lunch[$i]->peso, 0) }} <b>CAL</b></span>
+                      <span>{{ $lunch[$i]->plato_info_nutricional->proteinas*$lunch[$i]->peso }} <b>P</b></span>
+                      <span>{{ $lunch[$i]->plato_info_nutricional->carbohidratos*$lunch[$i]->peso }} <b>C</b></span>
+                      <span>{{ $lunch[$i]->plato_info_nutricional->grasas*$lunch[$i]->peso }} <b>G</b></span>
+                      <span>{{ $lunch[$i]->plato_info_nutricional->fibra*$lunch[$i]->peso }} <b>F</b></span>
                     </div>
-                    <div class="step2-checkbox-container">
-                      <input type="checkbox" class="step2-checkbox" name="id[]" id="step2-checkbox-{{$lunch[$i]->id}}" value="{{$lunch[$i]->id}}" checked>
-                      <label for="{{$lunch[$i]->id}}">Seleccionar </label>
-                    </div>
+                    <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$lunch[$i]->id]) }}">
+                      @csrf
+                      <input type="hidden" name="plateQuantity" value="1"/>
+                      <button class="plato-menu-btn" type="submit"><span>+</span>Añadir</button>
+                    </form>
+                    <form method="POST" class="plate_form_menu_remove" action="{{ route('web.platos.carts.remove', [$lunch[$i]->id]) }}">
+                      @csrf
+                      <input type="hidden" name="plateQuantity" value="1"/>
+                      <button class="plato-menu-btn-remove" type="submit"><span>-</span>Quitar</button>
+                    </form>
                   </div>
                 </div>
                 <div class="day-dinner">
@@ -122,16 +128,22 @@
                       <p class="name">{{ $dinner[$i]->nombre }} - {{ $dinner[$i]->plato_peso->valor }}</p>
                     </div>
                     <div class="dish-info">
-                      <span>{{ round($dinner[$i]->calorias, 0) }} <b>CAL</b></span>
-                      <span>{{ $dinner[$i]->plato_info_nutricional->proteinas }} <b>P</b></span>
-                      <span>{{ $dinner[$i]->plato_info_nutricional->carbohidratos }} <b>C</b></span>
-                      <span>{{ $dinner[$i]->plato_info_nutricional->grasas }} <b>G</b></span>
-                      <span>{{ $dinner[$i]->plato_info_nutricional->fibra }} <b>F</b></span>
+                      <span>{{ round($dinner[$i]->calorias*$dinner[$i]->peso, 0) }} <b>CAL</b></span>
+                      <span>{{ $dinner[$i]->plato_info_nutricional->proteinas*$dinner[$i]->peso }} <b>P</b></span>
+                      <span>{{ $dinner[$i]->plato_info_nutricional->carbohidratos*$dinner[$i]->peso }} <b>C</b></span>
+                      <span>{{ $dinner[$i]->plato_info_nutricional->grasas*$dinner[$i]->peso }} <b>G</b></span>
+                      <span>{{ $dinner[$i]->plato_info_nutricional->fibra*$dinner[$i]->peso }} <b>F</b></span>
                     </div>
-                    <div class="step2-checkbox-container">
-                      <input type="checkbox" class="step2-checkbox" name="id[]" id="step2-checkbox-{{$dinner[$i]->id}}" value="{{$dinner[$i]->id}}" checked>
-                      <label for="step2-checkbox-{{$dinner[$i]->id}}">Seleccionar </label>
-                    </div>
+                    <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$lunch[$i]->id]) }}">
+                      @csrf
+                      <input type="hidden" name="plateQuantity" value="1"/>
+                      <button class="plato-menu-btn" type="submit"><span>+</span>Añadir</button>
+                    </form>
+                    <form method="POST" class="plate_form_menu_remove" action="{{ route('web.platos.carts.remove', [$lunch[$i]->id]) }}">
+                      @csrf
+                      <input type="hidden" name="plateQuantity" value="1"/>
+                      <button class="plato-menu-btn-remove" type="submit"><span>-</span>Quitar</button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -140,7 +152,6 @@
         </div>
 
         @endforeach
-      </form>
     </div>
   </section>
 
@@ -199,9 +210,8 @@
                                 <!-- <h5>@lang('admin.page.plato.serving')</h5> -->
                                 <h5></h5>
                                 <!-- <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p> -->
-                                <!-- <p>@lang('admin.page.plato.per_100')</p> -->
+                                <p>@lang('admin.page.plato.per_100')</p>
                                 <p>Por plato</p>
-
                               </div>
                               <!-- <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.energy')</h5>
@@ -212,16 +222,19 @@
                                 <h5>@lang('admin.page.plato.info_nutritional.calories')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->calorias / 100) * $el->plato_peso->peso, 1) }} Cal</p> -->
                                 <p>{{ round($el->plato_info_nutricional->calorias, 1) }} Cal</p>
+                                <p>{{ round($el->plato_info_nutricional->calorias, 1)* ($el->peso/100) }} Cal</p>
                               </div>
                               <div class="single_additional_info">
                                 <h5>@lang('admin.page.plato.info_nutritional.protein')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->proteinas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                 <p>{{ round($el->plato_info_nutricional->proteinas, 1) }}g</p>
+                                <p>{{ round($el->plato_info_nutricional->proteinas, 1)* ($el->peso/100) }}g</p>
                               </div>
                               <div class="single_additional_info">
                                 <h5>@lang('admin.page.plato.info_nutritional.fats')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->grasas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                 <p>{{ round($el->plato_info_nutricional->grasas, 1) }}g</p>
+                                <p>{{ round($el->plato_info_nutricional->grasas, 1)* ($el->peso/100) }}g</p>
                               </div>
                               <!-- <div class="single_additional_info">
                                                                         <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.satured')</h5>
@@ -232,6 +245,7 @@
                                 <h5>@lang('admin.page.plato.info_nutritional.carbo')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->carbohidratos / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                 <p>{{ round($el->plato_info_nutricional->carbohidratos, 1) }}g</p>
+                                <p>{{ round($el->plato_info_nutricional->carbohidratos, 1)* ($el->peso/100) }}g</p>
                               </div>
                               <!-- <div class="single_additional_info">
                                                                         <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.sugars')</h5>
@@ -242,6 +256,7 @@
                                 <h5>@lang('admin.page.plato.info_nutritional.fibre')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->fibra / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                 <p>{{ round($el->plato_info_nutricional->fibra, 1) }}g</p>
+                                <p>{{ round($el->plato_info_nutricional->fibra, 1)* ($el->peso/100) }}g</p>
                               </div>
                               <!-- <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.sodium')</h5>
@@ -256,8 +271,8 @@
                         <div class="row justify-content-center">
                           <div class="col-lg-12 dish-ingredients-text">
                             <p><b>Ingredientes:</b> {{ $el->ingredientes }}</p>
-                            <!-- <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
-                                                                <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p> -->
+                            <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
+                                                                <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p>
                           </div>
                         </div>
                       </div>
@@ -335,7 +350,7 @@
                                 <!-- <h5>@lang('admin.page.plato.serving')</h5> -->
                                 <h5></h5>
                                 <!-- <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p> -->
-                                <!-- <p>@lang('admin.page.plato.per_100')</p> -->
+                                <p>@lang('admin.page.plato.per_100')</p>
                                 <p>Por plato</p>
                               </div>
                               <!-- <div class="single_additional_info">
@@ -347,16 +362,19 @@
                                 <h5>@lang('admin.page.plato.info_nutritional.calories')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->calorias / 100) * $el->plato_peso->peso, 1) }} Cal</p> -->
                                 <p>{{ round($el->plato_info_nutricional->calorias, 1) }} Cal</p>
+                                <p>{{ round($el->plato_info_nutricional->calorias, 1)* ($el->peso/100) }} Cal</p>
                               </div>
                               <div class="single_additional_info">
                                 <h5>@lang('admin.page.plato.info_nutritional.protein')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->proteinas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                 <p>{{ round($el->plato_info_nutricional->proteinas, 1) }}g</p>
+                                <p>{{ round($el->plato_info_nutricional->proteinas, 1) * ($el->peso/100) }}g</p>
                               </div>
                               <div class="single_additional_info">
                                 <h5>@lang('admin.page.plato.info_nutritional.fats')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->grasas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                 <p>{{ round($el->plato_info_nutricional->grasas, 1) }}g</p>
+                                <p>{{ round($el->plato_info_nutricional->grasas, 1) * ($el->peso/100) }}g</p>
                               </div>
                               <!-- <div class="single_additional_info">
                                                                         <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.satured')</h5>
@@ -367,6 +385,7 @@
                                 <h5>@lang('admin.page.plato.info_nutritional.carbo')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->carbohidratos / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                 <p>{{ round($el->plato_info_nutricional->carbohidratos, 1) }}g</p>
+                                <p>{{ round($el->plato_info_nutricional->carbohidratos, 1) * ($el->peso/100) }}g</p>
                               </div>
                               <!-- <div class="single_additional_info">
                                                                         <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.sugars')</h5>
@@ -377,6 +396,7 @@
                                 <h5>@lang('admin.page.plato.info_nutritional.fibre')</h5>
                                 <!-- <p>{{ round(($el->plato_info_nutricional->fibra / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                                 <p>{{ round($el->plato_info_nutricional->fibra, 1) }}g</p>
+                                <p>{{ round($el->plato_info_nutricional->fibra, 1) * ($el->peso/100) }}g</p>
                               </div>
                               <!-- <div class="single_additional_info">
                                                                         <h5>@lang('admin.page.plato.info_nutritional.sodium')</h5>
@@ -391,8 +411,8 @@
                         <div class="row justify-content-center">
                           <div class="col-lg-12 dish-ingredients-text">
                             <p><b>Ingredientes:</b> {{ $el->ingredientes }}</p>
-                            <!-- <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
-                                                                <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p> -->
+                            <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
+                            <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p>
                           </div>
                         </div>
                       </div>

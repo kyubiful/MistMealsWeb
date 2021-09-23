@@ -1400,22 +1400,6 @@ if(window.location.pathname=='/menu/dishes'){
 
     let dishesCount = 0;
 
-    for(let i=0; i<dishCheckbox.length; i++){
-        if(dishCheckbox[i].checked==true){
-            dishesCount++;
-        }
-        dishCheckbox[i].addEventListener('click', () => {
-            if(dishCheckbox[i].checked == true){
-                dishesCount++;
-            } else {
-                dishesCount--;
-            }
-            platesNumber.innerHTML = dishesCount;
-        });
-    }
-
-    platesNumber.innerHTML = dishesCount;
-
     for(let i=0; i<modalTitle.length; i++){
         if(window.innerWidth<991){
             modalTitle[i].className='';

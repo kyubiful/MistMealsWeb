@@ -1,10 +1,10 @@
-let plates = document.querySelectorAll('.plate_form');
-let button = document.querySelectorAll('.plato-btn');
+const plates = document.querySelectorAll('.plate_form');
+const button = document.querySelectorAll('.plato-btn');
 // let modal = document.querySelector('.plates-modal');
 // let modalName = document.querySelector('.plates-modal-info-name');
 // let modalPrice = document.querySelector('.plates-modal-info-price');
-let menuCartNumber = document.querySelector('.menu-cart-btn p');
-let numberPlates = document.querySelector('.platos-count-content .platos-count-number');
+const menuCartNumber = document.querySelector('.menu-cart-btn p');
+const numberPlates = document.querySelector('.platos-count-content .platos-count-number');
 
 for(let i = 0; i < plates.length; i++){
 
@@ -49,9 +49,7 @@ for(let i = 0; i < plates.length; i++){
                     // modalName.innerHTML = data.itemQuantity+'x '+data.infoName;
                     // modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
                     menuCartNumber.innerHTML = parseInt(menuCartNumber.innerHTML)+parseInt(data.itemQuantity);
-                    if(parseInt(menuCartNumber.innerHTML) <= 8){
-                        numberPlates.innerHTML = menuCartNumber.innerHTML;
-                    }
+                    numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
                     setTimeout(() => {
                         button[i].classList.remove('active');
                         button[i].disabled = false;
@@ -63,6 +61,132 @@ for(let i = 0; i < plates.length; i++){
                 // Spinner OFF
                 button[i].innerHTML = 'Error!';
                 button[i].disabled = false;
+            }
+        });
+
+    });
+}
+
+
+const plates_menu = document.querySelectorAll('.plate_form_menu');
+const button_menu = document.querySelectorAll('.plato-menu-btn');
+const plates_menu_remove = document.querySelectorAll('.plate_form_menu_remove');
+const button_menu_remove = document.querySelectorAll('.plato-menu-btn-remove');
+
+
+
+for(let i = 0; i < plates_menu.length; i++){
+
+    plates_menu[i].addEventListener('submit', (e) => {
+
+        e.preventDefault();
+
+        let form = plates_menu[i];
+
+        let fd = new FormData(form);
+        let method = form.getAttribute('method');
+        let action = form.getAttribute('action');
+
+        // modal.classList.remove('active');
+
+        // Spinner ON
+
+        button_menu[i].disabled = true;
+        button_menu[i].innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span> Cargando...';
+
+
+        $.ajax({
+            data: fd,
+            method: method,
+            url: action,
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data.status == 200) {
+                    if (data.link != undefined) {
+                        window.location.href = data.link;
+                    } else {
+                        button_menu.innerHTML = data.message;
+                    }
+                } else if (data.status == 500) {
+                    // Spinner OFF
+                    button_menu[i].disabled = true;
+                    // modal.classList.add('active');
+                    button_menu_remove[i].classList.add('active');
+                    // modalName.innerHTML = data.itemQuantity+'x '+data.infoName;
+                    // modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
+                    menuCartNumber.innerHTML = parseInt(menuCartNumber.innerHTML)+parseInt(data.itemQuantity);
+                    numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
+                    setTimeout(() => {
+                        button_menu[i].disabled = false;
+                        button_menu[i].innerHTML = '<span>+</span> Añadir';
+                    }, 500);
+                }
+            },
+            error: function (a, b, c) {
+                // Spinner OFF
+                button_menu[i].innerHTML = 'Error!';
+                button_menu[i].disabled = false;
+            }
+        });
+
+    });
+}
+
+for(let i = 0; i < plates_menu_remove.length; i++){
+
+    plates_menu_remove[i].addEventListener('submit', (e) => {
+
+        e.preventDefault();
+
+        let form = plates_menu_remove[i];
+
+        let fd = new FormData(form);
+        let method = form.getAttribute('method');
+        let action = form.getAttribute('action');
+
+        // modal.classList.remove('active');
+
+        // Spinner ON
+
+        button_menu_remove[i].disabled = true;
+        button_menu_remove[i].innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span> Cargando...';
+
+
+        $.ajax({
+            data: fd,
+            method: method,
+            url: action,
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data.status == 200) {
+                    if (data.link != undefined) {
+                        window.location.href = data.link;
+                    } else {
+                        button_menu.innerHTML = data.message;
+                    }
+                } else if (data.status == 500) {
+                    // Spinner OFF
+                    button_menu_remove[i].disabled = true;
+                    // modal.classList.add('active');
+                    button_menu_remove[i].classList.remove('active');
+                    // modalName.innerHTML = data.itemQuantity+'x '+data.infoName;
+                    // modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
+                    menuCartNumber.innerHTML = parseInt(menuCartNumber.innerHTML)-parseInt(data.itemQuantity);
+                    numberPlates.innerHTML = parseInt(numberPlates.innerHTML)-parseInt(data.itemQuantity);
+                    setTimeout(() => {
+                        button_menu_remove[i].disabled = false;
+                        button_menu_remove[i].innerHTML = '<span>-</span> Quitar';
+                    }, 500);
+                }
+            },
+            error: function (a, b, c) {
+                // Spinner OFF
+                button_menu_remove[i].innerHTML = 'Error!';
+                button_menu_remove[i].disabled = false;
             }
         });
 

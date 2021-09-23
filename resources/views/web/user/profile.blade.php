@@ -10,12 +10,15 @@
 <section class="breadcrumb_part blog_breadcrumb_style_1 service_breadcrumb_2 profile-submenu" style="background-color: #009167; margin-top: 92px; height: 213px;">
     <div class="container">
         <div class="row justify-content-start">
-            <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner" style="width: 100%;">
                 <h2 class="hi-name">Hola {{$user->name}}</h2>
-                <div class="breadcrumb_iner_link justify-content-start" style="margin-top: 20px;">
+                <div class="breadcrumb_iner_link justify-content-between" style="margin-top: 20px;">
+                    <div>
                     <a href="{{ route('web.user.profile') }}" style="text-transform: uppercase; font-family: CoreSansC35 !important; font-size: 18px; border-bottom: 1px solid;">Mi perfil</a>
                     <span>-</span>
                     <a style="text-transform: uppercase; font-family: CoreSansC35 !important; font-size: 18px;">Pedidos</a>
+                    </div>
+                    <a href="{{ route('web.user.logout') }}" title="Cerrar sesión" class="menu-i" style="color: #FF810C;">CERRAR SESIÓN</a>
                 </div>
             </div>
         </div>

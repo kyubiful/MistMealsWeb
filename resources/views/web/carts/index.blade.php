@@ -40,13 +40,13 @@
         </div>
         <p class="cart-price-total"><b><span>TOTAL</span><span>@if(Cookie::get('descuento')==null){{ round($cart->total,2) }}€ @else {{round(($cart->total*(100-Cookie::get('descuento'))/100),2)}}€ @endif</span></b></p>
       </div>
+      <div>
+        <p style="margin-bottom: 30px;color: #FFCF00; font-size: 13px; font-family: 'CoreSansC35' !important; width: 333px; line-height: 18px;">*Recordarte que para conservar mejor el alimento y evitar desperdicios, necesitamos recibir los pedidos antes del día 00/00/2021 para que te llegue el día 00/00/00.</p>
+      </div>
       @inject('cartService','App\Services\CartService')
       @if($cartService->countProducts() < 5)
       <a style="margin: auto;" class="mist_btn_disable" href="#">Tramitar pedido</a>
       <p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>
-      @elseif($cartService->countProducts() > 8)
-      <a style="margin: auto;" class="mist_btn_disable" href="#">Tramitar pedido</a>
-      <p style="color: red; text-align: center;">*Pedido máximo de 8 platos</p>
       @else
       <a style="margin: auto;" class="mist_btn" href="{{ route('web.orders.create') }}">Tramitar pedido</a>
       @endif

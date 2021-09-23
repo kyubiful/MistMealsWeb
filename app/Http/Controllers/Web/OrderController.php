@@ -36,8 +36,6 @@ class OrderController extends Controller
 
         if($numberProducts<5){
             return redirect()->back()->with('message','Debe tener 5 platos en el carrito para poder realizar el pedido');
-        } else if($numberProducts>8){
-            return redirect()->back()->with('message','Durante el periodo de test solo puede realizar como máximo un pedido de 8 platos');
         } else{
             return view('web.orders.create')->with(['cart' => $cart, 'user' => $user]);
         }
