@@ -145,7 +145,7 @@
             <h3>1. elige tu objetivo</h3>
             <p class="text">Conoce  nuestros menús semanales y selecciona el que mejor se adapte a ti: control de calorías, mejora de rendimiento o ganancia muscular.</p>
           </div>
-          <p class="subtext"><i>* Estamos trabajando para añadir nuevos planes y objetivos, si ninguno de ellos no encaja contigo, puedes comprar nuestros platos de manera individual.</i></p>
+          <p class="subtext"><i>* Estamos trabajando para añadir nuevos planes y objetivos, si ninguno de ellos encaja contigo, puedes comprar nuestros platos de manera individual.</i></p>
         </div>
         <div class="home-comofunciona-content-inner2">
           <div>
