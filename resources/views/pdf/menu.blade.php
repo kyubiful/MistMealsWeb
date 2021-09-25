@@ -269,7 +269,7 @@
         <tr>
             <td class="table-title">TOTAL KCAL</td>
             @foreach($lunch as $i => $el)
-                <td class="table-result">{{ round( $lunch[$i]->calorias*$lunch[$i]->peso +  $dinner[$i]->calorias*($dinner[$i]->peso/100), 0 ) }}</td>
+                <td class="table-result">{{ round( $lunch[$i]->calorias*($lunch[$i]->peso/100) +  $dinner[$i]->calorias*($dinner[$i]->peso/100), 0 ) }}</td>
             @endforeach
         </tr>
         <tr>
