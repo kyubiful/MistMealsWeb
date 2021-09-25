@@ -269,13 +269,13 @@
         <tr>
             <td class="table-title">TOTAL KCAL</td>
             @foreach($lunch as $i => $el)
-                <td class="table-result">{{ round( $lunch[$i]->calorias +  $dinner[$i]->calorias, 0 ) }}</td>
+                <td class="table-result">{{ round( $lunch[$i]->calorias*$lunch[$i]->peso +  $dinner[$i]->calorias*$dinner[$i]->peso, 0 ) }}</td>
             @endforeach
         </tr>
         <tr>
             <td class="table-title">RESTO*</td>
             @foreach($lunch as $i => $el)
-                <td class="table-result">{{ round( $user->calorias_propuestas - ($lunch[$i]->calorias +  $dinner[$i]->calorias), 0 ) }}</td>
+                <td class="table-result">{{ round( $user->calorias_propuestas - ($lunch[$i]->calorias*$lunch[$i]->peso +  $dinner[$i]->calorias*$dinner[$i]->peso), 0 ) }}</td>
             @endforeach
         </tr>
     </table>

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Services\CartService;
+use Illuminate\Http\Request;
 
 class OrderMail extends Mailable
 {
@@ -33,21 +34,28 @@ class OrderMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(Request $request)
     {
         $data = $this->details;
+        $discount = (int)$request->cookie('descuento');
+
+        if($discount == null){
+            $discount = 100;
+        }
         $pdf = $this->pdf;
 
         if($pdf == null){
 
             return $this->subject('Hemos recibido tu pedido')
             ->view('emails.orderMail')
+            ->with('discount', $discount)
             ->with('data', $data);
 
         } else {
             return $this->subject('Hemos recibido tu pedido')
                 ->view('emails.orderMail')
                 ->with('data', $data)
+                ->with('discount', $discount)
                 ->attachData($pdf->output(), 'mist-meals-menu.pdf', [
                     'mime' => 'application/pdf',
             ]);

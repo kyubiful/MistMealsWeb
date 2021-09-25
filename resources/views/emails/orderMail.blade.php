@@ -661,19 +661,19 @@
                                         <thead style="background-color: #533fb8; color: #F9F2E1;">
                                           <tr>
                                             <th style="padding: 10px; font-size:20px">Cantidad</th>
-                                            <th style="padding: 10px; font-size:20px" colspan="2">Nombre</th> 
+                                            <th style="padding: 10px; font-size:20px" colspan="2">Nombre</th>
                                             <th style="padding: 10px; font-size:20px">Total</th>
                                           </tr>
                                         </thead>
                                         <tbody style="background-color: #f9f2e1;">
                                       @foreach($data->products as $i => $plato)
-                                      
+
                                           <tr>
                                             <td style="padding: 10px; font-size:15px; color: black;">{{ $plato->pivot->quantity }}</td>
                                             <td style="padding: 10px; font-size:15px; color: black;" colspan="2">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</td>
-                                            <td style="padding: 10px; font-size:15px; color: black;">{{ $plato->total }}€</td>
+                                            <td style="padding: 10px; font-size:15px; color: black;">{{ $plato->total*((100-$discount)/100) }}€</td>
                                           </tr>
-                                          
+
                                       @endforeach
                                           <tr>
                                             <td style="background-color: black; height: 20px"></td>
@@ -684,7 +684,7 @@
                                             <td style="background-color: black;"></td>
                                             <td style="background-color: black; width: 180px;"></td>
                                             <td style="background-color: #533fb8; color: #F9F2E1; padding: 10px;"><b>Total</b></td>
-                                            <td style="padding: 10px; font-size:15px; color: black;"><b>{{ $data->total }}€</b></td>
+                                            <td style="padding: 10px; font-size:15px; color: black;"><b>{{ $data->total*((100-$discount)/100)}}€</b></td>
                                           </tr>
                                         </tbody>
 
