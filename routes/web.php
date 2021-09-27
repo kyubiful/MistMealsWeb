@@ -60,7 +60,7 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::post('/tpv', 'RedsysController@index')->name('tpv');
 
   Route::get('/redsys/notification', 'RedsysController@comprobar');
-  Route::post('redsys/notification', 'RedsysController@comprobar');
+  Route::post('/redsys/notification', 'RedsysController@comprobar');
 
   Route::post('/mailchimp/subscribe', 'MailChimpController@store')->name('mailchimp.store');
 
