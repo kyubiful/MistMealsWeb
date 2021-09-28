@@ -254,13 +254,13 @@ class RedsysController extends Controller
 				Order::whereId($order_id)->update(['status' => 'pagado']);
 
 				$this->cartService->deleteCookie();
-				return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('id');
+				return redirect('/')->with('message', 'success')->withoutCookie('order_id');
 			} else {
-				return redirect('/')->with('message', 'error')->withoutCookie('id');
+				return redirect('/')->with('message', 'error');
 			}
 		} catch (Exception $e) {
 			dd('Error fuera del try principal', $e);
-			return redirect('/')->with('message', 'error')->withoutCookie('id');
+			return redirect('/')->with('message', 'error');
 		}
 	}
 }
