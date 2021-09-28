@@ -65,11 +65,6 @@ class RedsysController extends Controller
 
 	public function comprobar(Request $request)
 	{
-		if(!auth()->check()){
-			$user = User::findOrFail($request->cookie('id'));
-		}else{
-			$user = User::findOrFail(auth()->user()->id);
-		}
 
 		try {
 			$key = config('redsys.key');
@@ -77,7 +72,8 @@ class RedsysController extends Controller
 			$DsResponse = $parameters['Ds_Response'];
 			$DsResponse += 0;
 			if (Redsys::check($key, $request->input()) && $DsResponse <= 99) {
-
+				
+				$user = User::findOrFail($request->cookie('id'));
 				$cart = $this->cartService->getFromCookie();
 				// $order = Order::findOrFail($request->cookie('order_id'));
 				$client = new Client();
