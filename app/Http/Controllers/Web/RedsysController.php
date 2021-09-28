@@ -79,13 +79,13 @@ class RedsysController extends Controller
 			if (Redsys::check($key, $request->input()) && $DsResponse <= 99) {
 
 				$cart = $this->cartService->getFromCookie();
-				$order = Order::findOrFail($request->cookie('order_id'));
+				// $order = Order::findOrFail($request->cookie('order_id'));
 				$client = new Client();
 				$salesorderURL = 'https://api.holded.com/api/invoicing/v1/documents/salesorder';
 				$invoiceURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice';
 				$payedURL = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
-				$getPdfUrl = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
-				$updateContactURL = 'https://api.holded.com/api/invoicing/v1/contacts/';
+				// $getPdfUrl = 'https://api.holded.com/api/invoicing/v1/documents/invoice/';
+				// $updateContactURL = 'https://api.holded.com/api/invoicing/v1/contacts/';
 				$createContactURL = 'https://api.holded.com/api/invoicing/v1/contacts';
 				$discount = 0;
 				if ($request->cookie('descuento') != null) {
@@ -234,7 +234,7 @@ class RedsysController extends Controller
 				}
 
 				try {
-					Mail::to(auth()->user()->email)->send(new OrderMail($cart, null));
+					Mail::to($user->email)->send(new OrderMail($cart, null));
 				} catch (\Exception $e) {
 					dd('Error a la hora de enviar el correo de confirmación del pedido');
 					return response()->json(array(
