@@ -37,6 +37,8 @@ class RedsysController extends Controller
 			$user = User::findOrFail(auth()->user()->id);
 			$titular = $user->name . ' ' . $user->surname;
 
+			Cookie::make('id', auth()->user()->id,60*24*30,'/',env('APP_URL'));
+
 			Redsys::setAmount($amount);
 			Redsys::setOrder(time());
 			Redsys::setMerchantcode($merchantcode); //Reemplazar por el código que proporciona el banco
@@ -65,7 +67,14 @@ class RedsysController extends Controller
 
 	public function comprobar(Request $request)
 	{
-		dd(auth()->user()->id);
+		if(!auth()->check()){
+			$user = User::findOrFail($request->cookie('id'));
+		}else{
+			$user = User::findOrFail(auth()->user()->id);
+		}
+
+		Cookie::forget('id');
+
 		try {
 			$key = config('redsys.key');
 			$parameters = Redsys::getMerchantParameters($request->input('Ds_MerchantParameters'));
@@ -73,7 +82,6 @@ class RedsysController extends Controller
 			$DsResponse += 0;
 			if (Redsys::check($key, $request->input()) && $DsResponse <= 99) {
 
-				$user = User::findOrFail(auth()->user()->id);
 				$cart = $this->cartService->getFromCookie();
 				$order = Order::findOrFail($request->cookie('order_id'));
 				$client = new Client();
