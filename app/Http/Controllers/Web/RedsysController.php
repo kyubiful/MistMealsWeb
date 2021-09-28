@@ -37,8 +37,6 @@ class RedsysController extends Controller
 			$user = User::findOrFail(auth()->user()->id);
 			$titular = $user->name . ' ' . $user->surname;
 
-			Cookie::make('id', auth()->user()->id,60*24*30,'/',env('APP_URL'));
-
 			Redsys::setAmount($amount);
 			Redsys::setOrder(time());
 			Redsys::setMerchantcode($merchantcode); //Reemplazar por el código que proporciona el banco

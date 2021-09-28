@@ -98,7 +98,8 @@ class OrderController extends Controller
 
         $order->products()->attach($cartProductsWithQuantity->toArray());
         $orderCookie = cookie('order_id', $order->id, 60*24*30,'/',env('APP_URL'));
+        $userId = cookie('id', auth()->user()->id,60*24*30,'/',env('APP_URL'));
 
-        return redirect()->route('web.orders.payments.create', ['order' => $order->id])->cookie($orderCookie);
+        return redirect()->route('web.orders.payments.create', ['order' => $order->id])->cookie($orderCookie)->cookie($userId);;
     }
 }
