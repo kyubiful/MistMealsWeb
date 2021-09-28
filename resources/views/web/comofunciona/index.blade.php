@@ -35,7 +35,7 @@ Nosotros te lo ponemos fácil: Te contamos como hacer tu pedido en 4 sencillos p
                                 <h4>PASO 1,</h4>
                                 <h2>ELIGE TU OBJETIVO</h2>
                                 <p class="subtitle">
-                                    Conoce  nuestros menús semanales y selecciona el que mejor se adapte a ti: Control de calorías, mejora de rendimiento o ganancia muscular.<br>
+                                    Conoce  nuestros menús semanales y selecciona el que mejor se adapte a ti: Control de calorías, come rico y saludable o ganancia muscular.<br>
                                     * Estamos trabajando para añadir nuevos planes y objetivos, si ninguno de ellos encaja contigo, puedes comprar nuestros platos de manera individual en la pestaña “platos”.
                                 </p>
                             </div>
@@ -71,7 +71,7 @@ Nosotros te lo ponemos fácil: Te contamos como hacer tu pedido en 4 sencillos p
                         <h4 class="comofunciona-pasos">PASO 1,</h4>
                         <h2>ELIGE TU OBJETIVO</h2>
                         <p class="valor-text">
-                            Conoce  nuestros menús semanales y selecciona el que mejor se adapte a ti: Control de calorías, mejora de rendimiento o ganancia muscular.<br>
+                            Conoce  nuestros menús semanales y selecciona el que mejor se adapte a ti: Control de calorías, come rico y saludable o ganancia muscular.<br>
                             * Estamos trabajando para añadir nuevos planes y objetivos, si ninguno de ellos encaja contigo, puedes comprar nuestros platos de manera individual en la pestaña “platos”.
                         </p>
                     </div>

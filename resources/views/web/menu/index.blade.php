@@ -44,10 +44,10 @@
             <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 1) }}">
                 <div class="single_services_part style_2 mb-0">
                     <a href="{{ route('web.menu.step1', 1) }}">
-                        <img class="mp-image-desktop" src="img/home/target_1.png" alt="Mejora de rendimiento">
-                        <img class="mp-image-mobile" src="img/mealplan/targett_1.png" alt="Mejora de rendimiento">
+                        <img class="mp-image-desktop" src="img/home/target_1.png" alt="Come rico y saludable">
+                        <img class="mp-image-mobile" src="img/mealplan/targett_1.png" alt="Come rico y saludable">
                     </a>
-                    <p class="subtitle">Mejora de rendimiento</p>
+                    <p class="subtitle">Come rico y saludable</p>
                     <a class="mist_btn_home1" style="margin:auto; margin-top: 10px; margin-bottom: 10px;" href="{{ route('web.menu.step1', 1) }}"> Seleccionar </a>
                 </div>
             </div>
