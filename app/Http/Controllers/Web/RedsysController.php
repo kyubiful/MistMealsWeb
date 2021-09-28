@@ -71,8 +71,6 @@ class RedsysController extends Controller
 			$user = User::findOrFail(auth()->user()->id);
 		}
 
-		Cookie::forget('id');
-
 		try {
 			$key = config('redsys.key');
 			$parameters = Redsys::getMerchantParameters($request->input('Ds_MerchantParameters'));
@@ -260,13 +258,13 @@ class RedsysController extends Controller
 				Order::whereId($order_id)->update(['status' => 'pagado']);
 
 				$this->cartService->deleteCookie();
-				return redirect('/')->with('message', 'success')->withoutCookie('order_id');
+				return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('id');
 			} else {
-				return redirect('/')->with('message', 'error');
+				return redirect('/')->with('message', 'error')->withoutCookie('id');
 			}
 		} catch (Exception $e) {
 			dd('Error fuera del try principal', $e);
-			return redirect('/')->with('message', 'error');
+			return redirect('/')->with('message', 'error')->withoutCookie('id');
 		}
 	}
 }
