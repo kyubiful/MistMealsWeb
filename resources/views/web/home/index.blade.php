@@ -182,7 +182,7 @@
             <img class="mp-mobile-hidden" src="img/home/target_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
             <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 1 + 1 }}.png" alt="{{ $objetivo[1]->name }}">
             <p class="subtitle negative-margin">{{ $objetivo[1]->nombre }}</p>
-            <!-- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p> -->
+            <p style="width: 90%; margin: auto; margin-bottom: 40px; margin-top:20px;">Di adiós a las "Dietas milagro" con las que bajas de peso rápido pero perdiendo masa muscular y agua. Este es tu plan si quieres conseguirlo de una manera saludable</p>
           </div>
         </div>
 
@@ -191,7 +191,7 @@
             <img class="mp-mobile-hidden" src="img/home/target_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
             <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 0 + 1 }}.png" alt="{{ $objetivo[0]->name }}">
             <p class="subtitle">{{ $objetivo[0]->nombre }}</p>
-            <!-- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p> -->
+            <p style="width: 90%; margin: auto; margin-bottom: 40px; margin-top:20px;">¿Quieres comer sano y rico pero no tienes ningún objetivo concreto además de cuidarte? Este es tu plan</p>
           </div>
         </div>
 
@@ -200,7 +200,7 @@
             <img class="mp-mobile-hidden" src="img/home/target_{{ 2 + 1 }}.png" alt="{{ $objetivo[2]->name }}">
             <img class="mp-desktop-hidden" src="img/mealplan/targett_{{ 2 + 1 }}.png" alt="{{ $objetivo[2]->name }}">
             <p class="subtitle negative-margin">{{ $objetivo[2]->nombre }}</p>
-            <!-- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p> -->
+            <p style="width: 90%; margin: auto; margin-bottom: 40px; margin-top:20px;">Si quieres ganar masa muscular pero hacerlo sin que tu salud se vea afectada, tenemos un plan que no solo se basa en proteínas, sino que tiene en cuenta el resto de nutrientes</p>
           </div>
         </div>
       </div>
