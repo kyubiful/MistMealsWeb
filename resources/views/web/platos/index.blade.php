@@ -27,7 +27,7 @@
   @foreach($platos as $i => $plato)
   @if($plato->plato_peso->valor == 'M')
   <div class="plato-container">
-    <img src="{{ asset($plato->getUrlImage1Attribute()) }}" class="plato-img" data-toggle="modal" data-target="#modal-dish-{{$i}}" alt="">
+    <img src="{{ asset('/'.$plato->getUrlImage1Attribute()) }}" class="plato-img" data-toggle="modal" data-target="#modal-dish-{{$i}}" alt="">
     <div class="plato-content">
       <p class="plato-price">{{ $plato->precio }}€</p>
       <p class="plato-title">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</p>
@@ -67,7 +67,7 @@
   @foreach($platos as $i => $plato)
   @if($plato->plato_peso->valor == 'L')
   <div class="plato-container-l">
-    <img src="{{ asset($plato->getUrlImage1Attribute()) }}" class="plato-img" data-toggle="modal" data-target="#modal-dish-{{$i}}" alt="">
+    <img src="{{ asset('/'.$plato->getUrlImage1Attribute()) }}" class="plato-img" data-toggle="modal" data-target="#modal-dish-{{$i}}" alt="">
     <div class="plato-content">
       <p class="plato-price">{{ $plato->precio }}€</p>
       <p class="plato-title">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</p>
@@ -141,10 +141,10 @@
                     <div id="dish-lunch-carousel-{{ $i }}" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false" data-keyboard="true">
                       <div class="carousel-inner dish-carousel-menu">
                         <div class="carousel-item active">
-                          <img class="w-100 d-block" src="{{ asset(asset($el->getUrlImage1Attribute())) }}" alt="{{ $el->nombre }}_1">
+                          <img class="w-100 d-block" src="{{ asset('/'.$el->getUrlImage1Attribute()) }}" alt="{{ $el->nombre }}_1">
                         </div>
                         <div class="carousel-item">
-                          <img class="w-100 d-block" src="{{ asset($el->getUrlImage2Attribute()) }}" alt="{{ $el->nombre }}_2">
+                          <img class="w-100 d-block" src="{{ asset('/'.$el->getUrlImage2Attribute()) }}" alt="{{ $el->nombre }}_2">
                         </div>
                       </div>
                       <a class="carousel-control-prev" href="#dish-lunch-carousel-{{ $i }}" role="button" data-slide="prev">
