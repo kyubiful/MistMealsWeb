@@ -25,7 +25,7 @@ class RedsysController extends Controller
 	public function __construct(CartService $cartService)
 	{
 		$this->cartService = $cartService;
-		// $this->middleware('user.auth');
+		$this->middleware('user.auth');
 	}
 
 	public static function index($amount)
