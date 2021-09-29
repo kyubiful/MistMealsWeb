@@ -68,6 +68,7 @@ class Plato extends Model
   public function getUrlImage1Attribute()
   {
     if ($this->imagen_1 && existsResource($this->getFolder() . $this->imagen_1)) {
+      dd(getUrlResource($this->getFolder() . $this->imagen_1));
       return getUrlResource($this->getFolder() . $this->imagen_1);
     }
 
