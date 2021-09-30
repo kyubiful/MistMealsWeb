@@ -116,7 +116,11 @@
   <div class="order-continue">
   <a href="{{ route('web.orders.create') }}">Volver</a>
     <h4>Total: @if(Cookie::get('descuento')==null){{ round($order->total,2) }}€ @else {{round(($order->total*((100-Cookie::get('descuento'))/100)),2)}}€ @endif</h4>
+    @if(Cookie::get('descuento_type') != 'free')
     {!! \App\Http\Controllers\Web\RedsysController::index($amount) !!}
+    @else
+    <a class="payment-btn-submit" id="btn_submit" name="btn_submit" href="{{route('web.holded.free')}}">Realizar pedido</a>
+    @endif
   </div>
   @endif
 </div>

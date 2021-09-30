@@ -32,11 +32,12 @@ class CartController extends Controller
     public function verifyDiscountCode(Request $request)
     {
         $discount = $request->discount_name;
-        $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active','unique')->where('name', $discount)->first();
+        $discountCode = DB::table('discount_code')->select('name', 'value', 'tipo', 'start', 'end', 'active','unique')->where('name', $discount)->first();
         $time = Carbon::now()->toDateTimeString();
 
-        $cookieValue = cookie('descuento', $discountCode->value, 60);
-        $cookieName = cookie('descuento_name', $discountCode->name, 60);
+        $cookieDiscountValue = cookie('descuento', $discountCode->value, 60);
+        $cookieDiscountName = cookie('descuento_name', $discountCode->name, 60);
+        $cookieDiscountType = cookie('descuento_type', $discountCode->tipo, 60);
 
         if($discountCode==null OR ($discountCode->start > $time OR $discountCode->end < $time OR $discountCode->active == 0))
         { 
@@ -57,16 +58,16 @@ class CartController extends Controller
                   return redirect()->back()->with('discountMessageError', 'Código usado anteriormente');
                 }
               }
-              return redirect()->back()->withCookie($cookieValue)->withCookie($cookieName)->with('discountMessageSuccess', 'Código correcto');
+              return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
 
             }else{
-              return redirect()->back()->withCookie($cookieValue)->withCookie($cookieName)->with('discountMessageSuccess', 'Código correcto');
+              return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
             }
           }else{
-            return redirect()->back()->withCookie($cookieValue)->withCookie($cookieName)->with('discountMessageSuccess', 'Código correcto'); 
+            return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto'); 
           }
         }else{
-          return redirect()->back()->withCookie($cookieValue)->withCookie($cookieName)->with('discountMessageSuccess', 'Código correcto');
+          return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
         }
 
         // for($i=0; $i<count($availableDiscounts); $i++)
@@ -81,6 +82,6 @@ class CartController extends Controller
 
     public function removeDiscountCookie()
     {
-        return redirect()->back()->withoutCookie('descuento');
+        return redirect()->back()->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
     }
 }

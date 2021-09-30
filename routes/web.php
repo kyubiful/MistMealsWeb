@@ -61,6 +61,8 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
 
   Route::get('/redsys/notification', 'RedsysController@comprobar');
   Route::post('/redsys/notification', 'RedsysController@comprobar');
+  Route::get('/holded/discount', 'RedsysController@free')->name('holded.free');
+  Route::post('/holded/discount', 'RedsysController@free')->name('holded.free');
 
   Route::post('/mailchimp/subscribe', 'MailChimpController@store')->name('mailchimp.store');
 

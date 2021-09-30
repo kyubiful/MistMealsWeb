@@ -43,7 +43,7 @@ class OrderController extends Controller
         if (count($user->discountCodes) > 0) {
           foreach ($user->discountCodes as $userDiscountCode) {
             if ($userDiscountCode->name == $discountCode->name) {
-              return redirect()->back()->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name');
+              return redirect()->back()->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
             }
           }
         }

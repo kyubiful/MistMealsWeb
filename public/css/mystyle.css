@@ -2711,7 +2711,7 @@ body .platos-count-content p{
 
 .payment-btn-submit {
   background-color: #533fb8;
-  color: #f9f2e1;
+  color: #f9f2e1 !important;
   border: 1px solid #533fb8;
   padding-left: 25px;
   padding-right: 25px;
@@ -2722,7 +2722,7 @@ body .platos-count-content p{
 
 .payment-btn-submit:hover {
   background-color: #f9f2e1;
-  color: #533fb8;
+  color: #533fb8 !important;
   border: 1px solid #533fb8;
 }
 
