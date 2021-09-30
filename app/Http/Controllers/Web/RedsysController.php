@@ -15,6 +15,7 @@ use App\Models\Payment;
 use Barryvdh\DomPDF\Facade as PDF;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class RedsysController extends Controller
@@ -73,7 +74,10 @@ class RedsysController extends Controller
 			$DsResponse += 0;
 			if (Redsys::check($key, $request->input()) && $DsResponse <= 99) {
 				
-				$user = User::findOrFail($request->cookie('id'));
+    		$descuentoName = $request->cookie('descuento_name');
+    		$discountCode = DB::table('discount_code')->where('name', $descuentoName)->first();
+
+				$user = User::findOrFail(auth()->user()->id);
 				$cart = $this->cartService->getFromCookie();
 				// $order = Order::findOrFail($request->cookie('order_id'));
 				$client = new Client();
@@ -251,10 +255,14 @@ class RedsysController extends Controller
 
 				$payment->save();
 
+				if($discountCode->unique==1){
+					$user->discountCodes()->attach($discountCode->id);
+				}
+
 				Order::whereId($order_id)->update(['status' => 'pagado']);
 
 				$this->cartService->deleteCookie();
-				return redirect('/')->with('message', 'success')->withoutCookie('order_id');
+				return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name');
 			} else {
 				return redirect('/')->with('message', 'error');
 			}

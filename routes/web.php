@@ -68,8 +68,8 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
     return view('web.revolucion.index');
   })->name('revolucion');
 
-  Route::get('/faqs', 'faqsController@index')->name('faqs');
-  Route::get('/como-funciona', 'comoFuncionaController@index')->name('comofunciona');
+  Route::get('/faqs', 'FaqsController@index')->name('faqs');
+  Route::get('/como-funciona', 'ComoFuncionaController@index')->name('comofunciona');
 });
 
 Auth::routes();

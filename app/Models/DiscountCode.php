@@ -19,4 +19,9 @@ class DiscountCode extends Model
         'end',
         'active'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
