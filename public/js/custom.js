@@ -1466,28 +1466,46 @@ if(window.location.pathname == '/'){
         homePopup.classList.toggle('home-popup-hidden');
     });
 
-    const carouselItem = document.querySelectorAll('.carousel-item');
-    const carouselDot = document.querySelectorAll('.carousel-indicators li');
+    const volumeOnIcon = document.querySelector('.home-volume-on');
+    const volumeOffIcon = document.querySelector('.home-volume-off');
+    const homeVideo = document.querySelector('video');
+    console.log(homeVideo);
 
-    if(window.innerWidth<991){
-        carouselItem[0].classList.remove('active');
-        carouselItem[1].classList.add('active')
-        carouselDot[1].classList.add('mp-mobile-hidden');
-    }
+    volumeOffIcon.addEventListener('click', ()=>{
+        homeVideo.muted = false;
+        volumeOnIcon.style.display = 'block';
+        volumeOffIcon.style.display = 'none';
+    })
 
-    window.addEventListener('resize', () => {
-    if(window.innerWidth<991){
-        carouselItem[0].classList.remove('active');
-        carouselItem[1].classList.add('active')
-        carouselDot[1].classList.add('mp-mobile-hidden');
-    } else{
-        carouselItem[0].classList.add('active');
-        carouselItem[1].classList.remove('active')
-        carouselDot[1].classList.remove('mp-mobile-hidden');
-
-    }
+    volumeOnIcon.addEventListener('click', ()=>{
+        homeVideo.muted = true;
+        volumeOffIcon.style.display = 'block';
+        volumeOnIcon.style.display = 'none';
 
     })
+
+    // const carouselItem = document.querySelectorAll('.carousel-item');
+    // const carouselDot = document.querySelectorAll('.carousel-indicators li');
+
+    // if(window.innerWidth<991){
+    //     carouselItem[0].classList.remove('active');
+    //     carouselItem[1].classList.add('active')
+    //     carouselDot[1].classList.add('mp-mobile-hidden');
+    // }
+
+    // window.addEventListener('resize', () => {
+    // if(window.innerWidth<991){
+    //     carouselItem[0].classList.remove('active');
+    //     carouselItem[1].classList.add('active')
+    //     carouselDot[1].classList.add('mp-mobile-hidden');
+    // } else{
+    //     carouselItem[0].classList.add('active');
+    //     carouselItem[1].classList.remove('active')
+    //     carouselDot[1].classList.remove('mp-mobile-hidden');
+
+    // }
+
+    // })
 }
 
 if(window.location.pathname == '/orders/create'){

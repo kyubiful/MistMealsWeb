@@ -6,22 +6,43 @@
     <div id="percent"></div>
   </div>
 </div>
-{{session()->get('popupCp2')}}
-{{session()->get('popupCp')}}
-@if(!empty($popupCp) AND $popupCp < 4 AND Cookie::get('popupCpEnd') == false)
- <section class="home-popup-container">
+@if(!empty($popupCp) AND $popupCp < 4 AND Cookie::get('popupCpEnd')==false) <section class="home-popup-container">
+  <div class="home-popup-content">
+    <button class="home-popup-btn">X</button>
+    <h2>¡BIENVENID@S!</h2>
+    <p>Introduce tu código postal para verificar que repartimos en tu zona de entrega</p>
+    @if($popupCp == 1 AND !session()->has('popupCp2'))
+    <form method="POST" action="{{route('web.verifyCP')}}" class="home-popup-form">
+      @csrf
+      <input type="number" name="cp" id="" placeholder="00000">
+      <button type="submit">Verificar</button>
+    </form>
+    <p style="font-size: 10px;">*no enviamos a islas, Ceuta y Melilla</p>
+    @endif
+    @if(session()->has('popupCp2') AND session()->get('popupCp2')==2)
+    <p style="font-size: 13px; margin-top: 5px;">¡Llegamos hasta allí!</p>
+    <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
+      @csrf
+      <input type="submit" value="Visitar la web">
+    </form>
+    @endif
+    @if(session()->has('popupCp2') AND session()->get('popupCp2')==3)
+    <p style="font-size: 13px; line-height: inherit; margin-bottom:10px; margin-top: 5px;">¡Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)</p>
+    <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
+      @csrf
+      <input type="submit" value="Visitar la web">
+    </form>
+    @endif
+  </div>
+  </section>
+  @endif
+
+  @if(session()->has('popupCp2') AND session()->get('popupCp2')==2 AND Cookie::get('popupCpEnd') == false)
+  <section class="home-popup-container">
     <div class="home-popup-content">
       <button class="home-popup-btn">X</button>
       <h2>¡BIENVENID@S!</h2>
       <p>Introduce tu código postal para verificar que repartimos en tu zona de entrega</p>
-      @if($popupCp == 1 AND !session()->has('popupCp2'))
-      <form method="POST" action="{{route('web.verifyCP')}}" class="home-popup-form">
-        @csrf
-        <input type="number" name="cp" id="" placeholder="00000">
-        <button type="submit">Verificar</button>
-      </form>
-      <p style="font-size: 10px;">*no enviamos a islas, Ceuta y Melilla</p>
-      @endif
       @if(session()->has('popupCp2') AND session()->get('popupCp2')==2)
       <p style="font-size: 13px; margin-top: 5px;">¡Llegamos hasta allí!</p>
       <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
@@ -40,31 +61,7 @@
   </section>
   @endif
 
-@if(session()->has('popupCp2') AND session()->get('popupCp2')==2 AND Cookie::get('popupCpEnd') == false)
- <section class="home-popup-container">
-    <div class="home-popup-content">
-      <button class="home-popup-btn">X</button>
-      <h2>¡BIENVENID@S!</h2>
-      <p>Introduce tu código postal para verificar que repartimos en tu zona de entrega</p>
-      @if(session()->has('popupCp2') AND session()->get('popupCp2')==2)
-      <p style="font-size: 13px; margin-top: 5px;">¡Llegamos hasta allí!</p>
-      <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
-        @csrf
-        <input type="submit" value="Visitar la web">
-      </form>
-      @endif
-      @if(session()->has('popupCp2') AND session()->get('popupCp2')==3)
-      <p style="font-size: 13px; line-height: inherit; margin-bottom:10px; margin-top: 5px;">¡Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)</p>
-      <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
-        @csrf
-        <input type="submit" value="Visitar la web">
-      </form>
-      @endif
-    </div>
-  </section>
-  @endif
-
- <section class="home-popup-container2 home-popup-hidden">
+  <section class="home-popup-container2 home-popup-hidden">
     <div class="home-popup-content">
       <button class="home-popup-btn2">X</button>
       <h2>¡BIENVENID@S!</h2>
@@ -83,10 +80,13 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item mp-mobile-hidden active">
+      <div class="carousel-item active">
         <section>
-          <div class="embed-responsive embed-responsive-16by9" style="margin-top: 90px; height: 827px; display: flex;">
-              <video class="embed-responsive-item" src="video/MistMeals4K.mp4" autoplay loop muted style="width: 100%;"></video>
+          <div class="embed-responsive embed-responsive-16by9" style="margin-top: 90px; height: 100%; display: flex;">
+            <img src="img/icon/volume-off.png" alt="" class="home-volume-off">
+            <img src="img/icon/volume-on.png" alt="" class="home-volume-on">
+            <video class="embed-responsive-item mp-mobile-hidden" src="video/MistMeals4K.mp4" autoplay loop muted style="width: 100%;"></video>
+            <video class="embed-responsive-item mp-desktop-hidden" src="video/MistMeals720.mp4" autoplay loop muted style="width: 100%;"></video>
           </div>
         </section>
       </div>
@@ -128,7 +128,7 @@
           </div>
         </div>
         <div class="antioxidant">
-        <img src="img/home/antioxidant.png">
+          <img src="img/home/antioxidant.png">
         </div>
       </div>
     </div>
@@ -136,14 +136,14 @@
 
   <section class="home-comofunciona-container">
     <div class="home-comofunciona-image frame-1 wow fadeInLeftBig animated" data-wow-duration="2s">
-      <img src="img/home/como_funciona.png" class="mp-mobile-hidden" style="width: 100vw;"/>
+      <img src="img/home/como_funciona.png" class="mp-mobile-hidden" style="width: 100vw;" />
     </div>
     <div class="home-comofunciona-content">
       <div class="home-comofunciona-content-inner">
         <div class="home-comofunciona-content-inner2">
           <div>
             <h3>1. elige tu objetivo</h3>
-            <p class="text">Conoce  nuestros menús semanales y selecciona el que mejor se adapte a ti: control de calorías, come rico y saludable o ganancia muscular.</p>
+            <p class="text">Conoce nuestros menús semanales y selecciona el que mejor se adapte a ti: control de calorías, come rico y saludable o ganancia muscular.</p>
           </div>
           <p class="subtext"><i>* Estamos trabajando para añadir nuevos planes y objetivos, si ninguno de ellos encaja contigo, puedes comprar nuestros platos de manera individual.</i></p>
         </div>
@@ -158,9 +158,10 @@
           <div>
             <h3>3. completa tu pedido</h3>
             <p class="text">Para evitar el desperdicio de alimentos al máximo necesitamos recibir tu pedido antes del domingo. así, hacemos la compra y los preparamos de lunes a miércoles para que los recibas en casa el jueves, recién hechos ;)
-              <br>¡sigue los pasos para completar tu pedido y disfruta!</p>
+              <br>¡sigue los pasos para completar tu pedido y disfruta!
+            </p>
           </div>
-          <p class="subtext"><i>* Se  mantendrán frescos en su envase en la nevera hasta el siguiente viernes.</i></p>
+          <p class="subtext"><i>* Se mantendrán frescos en su envase en la nevera hasta el siguiente viernes.</i></p>
         </div>
       </div>
     </div>
@@ -215,7 +216,7 @@
 
   <section class="home-sostenibilidad-container">
     <div class="home-sostenibilidad-image frame-1 wow fadeInRightBig animated" data-wow-duration="2s">
-      <img src="img/home/sostenibilidad.png" style="width: 100vw;"/>
+      <img src="img/home/sostenibilidad.png" style="width: 100vw;" />
     </div>
     <div class="home-sostenibilidad-content">
       <p class="home-sostenibilidad-content-title mp-mobile-hidden">Desde MistMeals nos subimos al carro de la sostenibilidad con las acciones que están en nuestra mano:</p>
