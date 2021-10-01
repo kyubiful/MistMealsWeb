@@ -22,6 +22,16 @@ Route::group(['middleware' => ['auth'], 'as' => 'admin.', 'prefix' => 'admin'], 
     Route::get('/plate/{id}/pdf', 'Admin\EtiquetaController@PDFEtiqueta')->name('plato.pdf');
   });
 
+  Route::group(['prefix' => 'discount'], function () {
+    Route::get('', 'Admin\DiscountController@index')->name('discount');
+    Route::get('data', 'Admin\DiscountController@data')->name('discount.data');
+    Route::get('create', 'Admin\DiscountController@create')->name('discount.create');
+    Route::post('create', 'Admin\DiscountController@store')->name('discount.store');
+    Route::get('edit/{id}', 'Admin\DiscountController@edit')->name('discount.edit');
+    Route::put('update/{id}', 'Admin\DiscountController@update')->name('discount.update');
+    Route::delete('destroy/{id}', 'Admin\DiscountController@destroy')->name('discount.destroy');
+  });
+
   Route::group(['prefix' => 'menu'], function () {
     Route::get('', 'Admin\MenuController@index')->name('menu');
     Route::get('data', 'Admin\MenuController@data')->name('menu.data');
@@ -50,7 +60,6 @@ Route::group(['middleware' => ['auth'], 'as' => 'admin.', 'prefix' => 'admin'], 
     Route::put('update/{id}', 'Admin\SugerenciaController@update')->name('sugerencia.update');
     Route::delete('destroy/{id}', 'Admin\SugerenciaController@destroy')->name('sugerencia.destroy');
   });
-
 
 
 

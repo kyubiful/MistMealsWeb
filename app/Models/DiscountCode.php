@@ -17,7 +17,9 @@ class DiscountCode extends Model
         'tipo',
         'start',
         'end',
-        'active'
+        'active',
+        'unique',
+        'uses'
     ];
 
     public function users()

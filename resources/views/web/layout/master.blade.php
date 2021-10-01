@@ -18,6 +18,18 @@
     <link rel="stylesheet" href="{{ asset( '/css/mystyle.css' )}}" />
     <link rel="stylesheet" href="{{ asset( '/assets/fonts/feather-font/css/iconfont.css' )}}" />
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="34854152-12a2-4249-a54d-2ca0c3f03667" data-blockingmode="auto" type="text/javascript"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09ME74NCTN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-09ME74NCTN');
+    </script>
 </head>
 
 <body class="{{ isset($bodyclass) ? $bodyclass : '' }}">
