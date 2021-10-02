@@ -43,7 +43,7 @@
         @csrf
         <div class="plate-quantity-container">
           <p>Cantidad</p>
-          <div>
+          <div style="display: flex; align-content: center; align-items: center; flex-direction: row; width: 80px; justify-content: space-evenly;">
             <button type="button" class="plate-btn-less">-</button>
             <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
             <button type="button" class="plate-btn-more">+</button>
@@ -83,7 +83,7 @@
         @csrf
         <div class="plate-quantity-container">
           <p>Cantidad</p>
-          <div>
+          <div style="display: flex; align-content: center; align-items: center; flex-direction: row; width: 80px; justify-content: space-evenly;">
             <button type="button" class="plate-btn-less">-</button>
             <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
             <button type="button" class="plate-btn-more">+</button>

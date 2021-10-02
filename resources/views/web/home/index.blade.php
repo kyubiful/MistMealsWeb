@@ -82,11 +82,10 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <section>
-          <div class="embed-responsive embed-responsive-16by9" style="margin-top: 90px; height: 100%; display: flex;">
+          <div class="embed-responsive embed-responsive-16by9" style="margin-top: 100px;">
             <img src="img/icon/volume-off.png" alt="" class="home-volume-off">
             <img src="img/icon/volume-on.png" alt="" class="home-volume-on">
-            <video class="embed-responsive-item mp-mobile-hidden" src="video/MistMeals4K.mp4" autoplay loop muted style="width: 100%;"></video>
-            <video class="embed-responsive-item mp-desktop-hidden" src="video/MistMeals720.mp4" autoplay loop muted style="width: 100%;"></video>
+            <video class="embed-responsive-item" loop></video>
           </div>
         </section>
       </div>

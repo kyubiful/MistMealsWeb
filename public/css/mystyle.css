@@ -18,6 +18,12 @@
   src: url("../fonts/TuskerGrotesk-6500Medium.ttf") format("truetype");
 }
 
+input, button{
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
 .CookieDeclaration {
   display: none;
 }
@@ -1525,7 +1531,7 @@ body.menu-step2 #accordion .card-body .container {
   width: 50px;
   height: 50px;
   top: 40px;
-  right: 45px;
+  right: 40px;
   cursor: pointer;
 }
 
@@ -4091,6 +4097,14 @@ body .platos-count-content p {
     display: hidden;
   }
 
+  .plate-quantity-container p {
+    font-size: 13px;
+  }
+
+  .plato-peso-switch-content p {
+    font-size: 13px;
+  }
+
   .plato-content .mist_btn:focus {
     background-size: cover;
   }
@@ -4347,17 +4361,11 @@ body .platos-count-content p {
   }
 
   .home-volume-on {
-    width: 25px;
-    height: 25px;
-    top: 20px;
-    right: 20px;
+    display: none;
   }
 
   .home-volume-off {
-    width: 25px;
-    height: 25px;
-    top: 20px;
-    right: 20px;
+    display: none;
   }
 
   body.menu-step2 button.plato-menu-btn {
