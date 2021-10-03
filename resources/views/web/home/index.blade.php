@@ -85,7 +85,7 @@
           <div class="embed-responsive embed-responsive-16by9" style="margin-top: 100px;">
             <img src="img/icon/volume-off.png" alt="" class="home-volume-off">
             <img src="img/icon/volume-on.png" alt="" class="home-volume-on">
-            <video class="embed-responsive-item" src="video/MistMeals720.mp4" loop></video>
+            <video class="embed-responsive-item" loop></video>
           </div>
         </section>
       </div>
