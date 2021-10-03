@@ -2142,6 +2142,8 @@ body .platos-count-content p {
   border: 1px solid #533fb8;
   color: #f9f2e1;
   transition: all 0.3s ease;
+  width: 24px;
+  height: 24px;
 }
 .plate-btn-less:hover {
   background-color: #533fb8;
@@ -2155,6 +2157,8 @@ body .platos-count-content p {
   border: 1px solid #533fb8;
   color: #f9f2e1;
   transition: all 0.3s ease;
+  width: 24px;
+  height: 24px;
 }
 .plate-btn-more:hover {
   background-color: #533fb8;
