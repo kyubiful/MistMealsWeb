@@ -1550,7 +1550,7 @@ if (window.location.pathname == "/") {
     homeVideoContainer.style.width = "100%";
     homeVideoContainer.style.marginLeft = "auto";
   } else {
-    homeVideo.src = "video/MistMeals4k.mp4";
+    homeVideo.src = "video/MistMeals4K.mp4";
     homeVideo.autoplay = true;
     homeVideo.muted = true;
     homeVideo.controls = false;
@@ -1568,8 +1568,8 @@ if (window.location.pathname == "/") {
         homeVideoContainer.style.marginLeft = "auto";
       }
     } else {
-      if (!homeVideo.src.includes("video/MistMeals4k.mp4")) {
-        homeVideo.src = "video/MistMeals4k.mp4";
+      if (!homeVideo.src.includes("video/MistMeals4K.mp4")) {
+        homeVideo.src = "video/MistMeals4K.mp4";
         homeVideo.autoplay = true;
         homeVideo.muted = true;
         homeVideo.controls = false;
