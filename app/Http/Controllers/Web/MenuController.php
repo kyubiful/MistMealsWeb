@@ -109,13 +109,10 @@ class MenuController extends Controller
 
         if ($lunch == null && $dinner == null) {
 
-            $dishesArr = Helper::calculateDishes($user->calorias_propuestas);
+            $dishes = Helper::calculateDishes($user->calorias_propuestas);
 
-            $ids_ordered1 = implode(',', $dishesArr[0]);
-            $ids_ordered2 = implode(',', $dishesArr[1]);
-
-            $lunch = Plato::with('plato_alergeno', 'plato_etiqueta', 'plato_peso', 'plato_info_nutricional')->whereIn('id', $dishesArr[0])->orderByRaw("FIELD(id, $ids_ordered1)")->get();
-            $dinner = Plato::with('plato_alergeno', 'plato_etiqueta', 'plato_peso', 'plato_info_nutricional')->whereIn('id', $dishesArr[1])->orderByRaw("FIELD(id, $ids_ordered2)")->get();
+            $lunch =  $dishes[0];
+            $dinner = $dishes[1];
 
             session(['lunch' => $lunch]);
             session(['dinner' => $dinner]);
