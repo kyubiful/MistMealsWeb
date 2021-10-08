@@ -69,6 +69,7 @@
       <form method="POST" action="{{route('web.verifyCP')}}" class="home-popup-form">
         @csrf
         <input type="number" name="cp" id="" placeholder="00000">
+        <button type="submit">Verificar</button>
       </form>
       <p style="font-size: 10px;">*no enviamos a islas, Ceuta y Melilla</p>
     </div>

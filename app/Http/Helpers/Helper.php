@@ -129,7 +129,7 @@ class Helper
           $randomDishes = $dishes->shuffle();
           $j = 0;
         }
-        if ($i < 7) {
+        if ($i%2==0) {
           array_push($lunch, $randomDishes[$j]);
           unset($randomDishes[$j]);
           $j++;
@@ -172,8 +172,8 @@ class Helper
       }
     }
     if ($caloriasDiariasTotales > 1400 and $caloriasDiariasTotales < 1550) {
-      $dinnerDishes = Plato::where('codigo', 'like', '%2B%')->get();
-      $lunchDishes = Plato::where('codigo', 'like', '%1A%')->get();
+      $dinnerDishes = Plato::where('codigo', 'like', '%1A%')->get();
+      $lunchDishes = Plato::where('codigo', 'like', '%2B%')->get();
 
       $randomDinnerDishes = $dinnerDishes->shuffle();
       $randomLunchDishes = $lunchDishes->shuffle();
