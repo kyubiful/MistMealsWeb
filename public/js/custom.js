@@ -1531,11 +1531,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -1561,11 +1561,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -1597,11 +1597,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -1627,11 +1627,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -1663,11 +1663,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -1693,11 +1693,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -1729,11 +1729,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -1759,11 +1759,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -1795,11 +1795,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -1825,11 +1825,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -1861,11 +1861,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -1891,11 +1891,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -1927,11 +1927,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -1957,11 +1957,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -2000,11 +2000,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -2030,11 +2030,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -2066,11 +2066,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -2096,11 +2096,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -2132,11 +2132,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -2162,11 +2162,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -2198,11 +2198,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -2228,11 +2228,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -2264,11 +2264,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -2294,11 +2294,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -2330,11 +2330,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -2360,11 +2360,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
@@ -2396,11 +2396,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
 
@@ -2426,11 +2426,11 @@ if (window.location.pathname == "/menu/dishes") {
             let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
             let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
 
-            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
-            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
-            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
+            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
+            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
+            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
           })
         }
       }
