@@ -92,7 +92,7 @@ for(let i = 0; i < plates_menu.length; i++){
         // Spinner ON
 
         button_menu[i].disabled = true;
-        button_menu[i].innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span> Cargando...';
+        button_menu[i].innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span> <p class="mp-mobile-hidden">Cargando...</p>';
 
 
         $.ajax({
@@ -120,7 +120,7 @@ for(let i = 0; i < plates_menu.length; i++){
                     numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
                     setTimeout(() => {
                         button_menu[i].disabled = false;
-                        button_menu[i].innerHTML = '<span>+</span> Añadir';
+                        button_menu[i].innerHTML = '<span>+</span> <p class="mp-mobile-hidden">Añadir</p>';
                     }, 500);
                 }
             },
@@ -151,7 +151,7 @@ for(let i = 0; i < plates_menu_remove.length; i++){
         // Spinner ON
 
         button_menu_remove[i].disabled = true;
-        button_menu_remove[i].innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span> Cargando...';
+        button_menu_remove[i].innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span> <p class="mp-mobile-hidden">Cargando...</p>';
 
 
         $.ajax({
@@ -179,7 +179,7 @@ for(let i = 0; i < plates_menu_remove.length; i++){
                     numberPlates.innerHTML = parseInt(numberPlates.innerHTML)-parseInt(data.itemQuantity);
                     setTimeout(() => {
                         button_menu_remove[i].disabled = false;
-                        button_menu_remove[i].innerHTML = '<span>-</span> Quitar';
+                        button_menu_remove[i].innerHTML = '<span>-</span> <p class="mp-mobile-hidden">Quitar</p>';
                     }, 500);
                 }
             },

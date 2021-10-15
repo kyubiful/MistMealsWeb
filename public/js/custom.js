@@ -1521,6 +1521,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-1');
+            const proteinas = document.querySelector('#day-info-proteinas-1');
+            const hidratos = document.querySelector('#day-info-hidratos-1');
+            const grasas = document.querySelector('#day-info-grasas-1');
+            const fibra = document.querySelector('#day-info-fibra-1');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1536,6 +1551,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-1');
+            const proteinas = document.querySelector('#day-info-proteinas-1');
+            const hidratos = document.querySelector('#day-info-hidratos-1');
+            const grasas = document.querySelector('#day-info-grasas-1');
+            const fibra = document.querySelector('#day-info-fibra-1');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1557,6 +1587,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-2');
+            const proteinas = document.querySelector('#day-info-proteinas-2');
+            const hidratos = document.querySelector('#day-info-hidratos-2');
+            const grasas = document.querySelector('#day-info-grasas-2');
+            const fibra = document.querySelector('#day-info-fibra-2');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1572,6 +1617,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-2');
+            const proteinas = document.querySelector('#day-info-proteinas-2');
+            const hidratos = document.querySelector('#day-info-hidratos-2');
+            const grasas = document.querySelector('#day-info-grasas-2');
+            const fibra = document.querySelector('#day-info-fibra-2');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1593,6 +1653,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-3');
+            const proteinas = document.querySelector('#day-info-proteinas-3');
+            const hidratos = document.querySelector('#day-info-hidratos-3');
+            const grasas = document.querySelector('#day-info-grasas-3');
+            const fibra = document.querySelector('#day-info-fibra-3');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1608,6 +1683,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-3');
+            const proteinas = document.querySelector('#day-info-proteinas-3');
+            const hidratos = document.querySelector('#day-info-hidratos-3');
+            const grasas = document.querySelector('#day-info-grasas-3');
+            const fibra = document.querySelector('#day-info-fibra-3');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1629,6 +1719,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-4');
+            const proteinas = document.querySelector('#day-info-proteinas-4');
+            const hidratos = document.querySelector('#day-info-hidratos-4');
+            const grasas = document.querySelector('#day-info-grasas-4');
+            const fibra = document.querySelector('#day-info-fibra-4');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1644,6 +1749,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-4');
+            const proteinas = document.querySelector('#day-info-proteinas-4');
+            const hidratos = document.querySelector('#day-info-hidratos-4');
+            const grasas = document.querySelector('#day-info-grasas-4');
+            const fibra = document.querySelector('#day-info-fibra-4');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1665,6 +1785,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-5');
+            const proteinas = document.querySelector('#day-info-proteinas-5');
+            const hidratos = document.querySelector('#day-info-hidratos-5');
+            const grasas = document.querySelector('#day-info-grasas-5');
+            const fibra = document.querySelector('#day-info-fibra-5');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1680,6 +1815,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-5');
+            const proteinas = document.querySelector('#day-info-proteinas-5');
+            const hidratos = document.querySelector('#day-info-hidratos-5');
+            const grasas = document.querySelector('#day-info-grasas-5');
+            const fibra = document.querySelector('#day-info-fibra-5');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1701,6 +1851,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-6');
+            const proteinas = document.querySelector('#day-info-proteinas-6');
+            const hidratos = document.querySelector('#day-info-hidratos-6');
+            const grasas = document.querySelector('#day-info-grasas-6');
+            const fibra = document.querySelector('#day-info-fibra-6');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1716,6 +1881,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-6');
+            const proteinas = document.querySelector('#day-info-proteinas-6');
+            const hidratos = document.querySelector('#day-info-hidratos-6');
+            const grasas = document.querySelector('#day-info-grasas-6');
+            const fibra = document.querySelector('#day-info-fibra-6');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1737,6 +1917,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-7');
+            const proteinas = document.querySelector('#day-info-proteinas-7');
+            const hidratos = document.querySelector('#day-info-hidratos-7');
+            const grasas = document.querySelector('#day-info-grasas-7');
+            const fibra = document.querySelector('#day-info-fibra-7');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1752,6 +1947,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             lunches[currentPosition-1].classList.toggle('active');
             lunches[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-7');
+            const proteinas = document.querySelector('#day-info-proteinas-7');
+            const hidratos = document.querySelector('#day-info-hidratos-7');
+            const grasas = document.querySelector('#day-info-grasas-7');
+            const fibra = document.querySelector('#day-info-fibra-7');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1780,6 +1990,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-1');
+            const proteinas = document.querySelector('#day-info-proteinas-1');
+            const hidratos = document.querySelector('#day-info-hidratos-1');
+            const grasas = document.querySelector('#day-info-grasas-1');
+            const fibra = document.querySelector('#day-info-fibra-1');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1795,6 +2020,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-1');
+            const proteinas = document.querySelector('#day-info-proteinas-1');
+            const hidratos = document.querySelector('#day-info-hidratos-1');
+            const grasas = document.querySelector('#day-info-grasas-1');
+            const fibra = document.querySelector('#day-info-fibra-1');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1816,6 +2056,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-2');
+            const proteinas = document.querySelector('#day-info-proteinas-2');
+            const hidratos = document.querySelector('#day-info-hidratos-2');
+            const grasas = document.querySelector('#day-info-grasas-2');
+            const fibra = document.querySelector('#day-info-fibra-2');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1831,6 +2086,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-2');
+            const proteinas = document.querySelector('#day-info-proteinas-2');
+            const hidratos = document.querySelector('#day-info-hidratos-2');
+            const grasas = document.querySelector('#day-info-grasas-2');
+            const fibra = document.querySelector('#day-info-fibra-2');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1852,6 +2122,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-3');
+            const proteinas = document.querySelector('#day-info-proteinas-3');
+            const hidratos = document.querySelector('#day-info-hidratos-3');
+            const grasas = document.querySelector('#day-info-grasas-3');
+            const fibra = document.querySelector('#day-info-fibra-3');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1867,6 +2152,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-3');
+            const proteinas = document.querySelector('#day-info-proteinas-3');
+            const hidratos = document.querySelector('#day-info-hidratos-3');
+            const grasas = document.querySelector('#day-info-grasas-3');
+            const fibra = document.querySelector('#day-info-fibra-3');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1888,6 +2188,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-4');
+            const proteinas = document.querySelector('#day-info-proteinas-4');
+            const hidratos = document.querySelector('#day-info-hidratos-4');
+            const grasas = document.querySelector('#day-info-grasas-4');
+            const fibra = document.querySelector('#day-info-fibra-4');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1903,6 +2218,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-4');
+            const proteinas = document.querySelector('#day-info-proteinas-4');
+            const hidratos = document.querySelector('#day-info-hidratos-4');
+            const grasas = document.querySelector('#day-info-grasas-4');
+            const fibra = document.querySelector('#day-info-fibra-4');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1924,6 +2254,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-5');
+            const proteinas = document.querySelector('#day-info-proteinas-5');
+            const hidratos = document.querySelector('#day-info-hidratos-5');
+            const grasas = document.querySelector('#day-info-grasas-5');
+            const fibra = document.querySelector('#day-info-fibra-5');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1939,6 +2284,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-5');
+            const proteinas = document.querySelector('#day-info-proteinas-5');
+            const hidratos = document.querySelector('#day-info-hidratos-5');
+            const grasas = document.querySelector('#day-info-grasas-5');
+            const fibra = document.querySelector('#day-info-fibra-5');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1960,6 +2320,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-6');
+            const proteinas = document.querySelector('#day-info-proteinas-6');
+            const hidratos = document.querySelector('#day-info-hidratos-6');
+            const grasas = document.querySelector('#day-info-grasas-6');
+            const fibra = document.querySelector('#day-info-fibra-6');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -1975,6 +2350,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-6');
+            const proteinas = document.querySelector('#day-info-proteinas-6');
+            const hidratos = document.querySelector('#day-info-hidratos-6');
+            const grasas = document.querySelector('#day-info-grasas-6');
+            const fibra = document.querySelector('#day-info-fibra-6');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }
@@ -1996,6 +2386,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-7');
+            const proteinas = document.querySelector('#day-info-proteinas-7');
+            const hidratos = document.querySelector('#day-info-hidratos-7');
+            const grasas = document.querySelector('#day-info-grasas-7');
+            const fibra = document.querySelector('#day-info-fibra-7');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
 
@@ -2011,6 +2416,21 @@ if (window.location.pathname == "/menu/dishes") {
 
             dinners[currentPosition-1].classList.toggle('active');
             dinners[value-1].classList.toggle('active');
+
+            const cal = document.querySelector('#day-info-cal-7');
+            const proteinas = document.querySelector('#day-info-proteinas-7');
+            const hidratos = document.querySelector('#day-info-hidratos-7');
+            const grasas = document.querySelector('#day-info-grasas-7');
+            const fibra = document.querySelector('#day-info-fibra-7');
+            
+            let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
+            let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
+
+            cal.innerHTML = Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)+' <b>Calorías</b>';
+            proteinas.innerHTML = Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)+' <b>Proteinas</b>';
+            hidratos.innerHTML = Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)+' <b>Carbohidratos</b>';
+            grasas.innerHTML = Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)+' <b>Grasas</b>';
+            fibra.innerHTML = Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)+' <b>Fibra</b>';
           })
         }
       }

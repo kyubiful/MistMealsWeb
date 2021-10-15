@@ -1453,6 +1453,18 @@ body.menu-step2 #accordion .right-dish .menu-buttons button {
 
 body.menu-step2 #accordion .right-dish .dish-info {
   margin-bottom: 10px;
+  display: flex;
+}
+
+body.menu-step2 #accordion .right-dish .dish-info span {
+  display: flex;
+  margin-right: 10px;
+  align-items: baseline;
+}
+
+body.menu-step2 #accordion .right-dish .dish-info span p {
+  font-size: 16px;
+  margin-right: 2px;
 }
 
 body.menu-step2 #accordion .right-dish .dish-info span b {
@@ -1532,6 +1544,13 @@ body.menu-step2 #target-3 #accordion .card-body {
 
 body.menu-step2 #accordion .card-body .container {
   display: flex;
+}
+
+body.menu-step2 #accordion .card-body .container .slider-container {
+  height: 221px;
+  min-width: 465px;
+  max-width: 555px;
+  width: 50%;
 }
 
 .home-volume-on {
@@ -3562,6 +3581,11 @@ body .platos-count-content p {
     align-items: center;
   }
 
+  body.menu-step2 #accordion .card-body .container .slider-container {
+    max-width: 100%;
+    min-width: 100%;
+  }
+
   body.menu-step2 #accordion .card-body {
     padding: 25px 0;
   }
@@ -4392,14 +4416,24 @@ body .platos-count-content p {
     display: none;
   }
 
+  body.menu-step2 #accordion .right-dish .dish-info span p {
+    font-size: 12px;
+  }
+
   body.menu-step2 button.plato-menu-btn {
+    width: 61px !important;
     flex-direction: row !important;
     align-items: center !important;
   }
 
   body.menu-step2 button.plato-menu-btn-remove {
+    width: 61px !important;
     flex-direction: row !important;
     align-items: center !important;
+  }
+
+  body.menu-step2 #accordion .right-dish .menu-buttons{
+    justify-content: space-around;
   }
 
   .menu-separation {
