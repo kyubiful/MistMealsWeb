@@ -1440,6 +1440,17 @@ body.menu-step2 #accordion .right-dish .dish-text .dish-price {
   font-family: TuskerGrotesk65 !important;
 }
 
+body.menu-step2 #accordion .right-dish .menu-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+body.menu-step2 #accordion .right-dish .menu-buttons button {
+  width: auto;
+  height: auto;
+  border: none;
+}
+
 body.menu-step2 #accordion .right-dish .dish-info {
   margin-bottom: 10px;
 }
@@ -1463,14 +1474,23 @@ body.menu-step2 #accordion .dish-text .name {
 
 body.menu-step2 #accordion .day-lunch,
 body.menu-step2 #accordion .day-dinner {
-  display: flex;
+  position: absolute;
+  display: none;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   -ms-flex: 0 0 50%;
   flex: 0 0 50%;
   max-width: 50%;
+  width: 555px;
   padding: 0px 20px;
+  opacity: 0;
+}
+
+body.menu-step2 #accordion .day-lunch.active,
+body.menu-step2 #accordion .day-dinner.active {
+  display: flex;
+  opacity: 1;
 }
 
 body.menu-step2 #accordion .left-dish {

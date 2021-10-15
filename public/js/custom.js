@@ -1498,6 +1498,524 @@ if (window.location.pathname == "/menu/dishes") {
       }
     });
   }
+
+  const sliders = document.querySelectorAll(".slider-container");
+
+  for (let i = 0; i < sliders.length; i++) {
+    if (i % 2 == 0) {
+      if (i == 0) {
+        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-1");
+        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-1");
+        const lunches = document.querySelectorAll("#day-lunch-1");
+        let value;
+
+        for(let x = 0; x < nextBtnLunch.length; x++){
+          nextBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-1.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnLunch.length; x++){
+          backBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-1.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 2) {
+        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-2");
+        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-2");
+        const lunches = document.querySelectorAll("#day-lunch-2");
+        let value;
+
+        for(let x = 0; x < nextBtnLunch.length; x++){
+          nextBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-2.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnLunch.length; x++){
+          backBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-2.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 4) {
+        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-3");
+        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-3");
+        const lunches = document.querySelectorAll("#day-lunch-3");
+        let value;
+
+        for(let x = 0; x < nextBtnLunch.length; x++){
+          nextBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-3.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnLunch.length; x++){
+          backBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-3.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 6) {
+        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-4");
+        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-4");
+        const lunches = document.querySelectorAll("#day-lunch-4");
+        let value;
+
+        for(let x = 0; x < nextBtnLunch.length; x++){
+          nextBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-4.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnLunch.length; x++){
+          backBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-4.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 8) {
+        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-5");
+        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-5");
+        const lunches = document.querySelectorAll("#day-lunch-5");
+        let value;
+
+        for(let x = 0; x < nextBtnLunch.length; x++){
+          nextBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-5.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnLunch.length; x++){
+          backBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-5.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 10) {
+        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-6");
+        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-6");
+        const lunches = document.querySelectorAll("#day-lunch-6");
+        let value;
+
+        for(let x = 0; x < nextBtnLunch.length; x++){
+          nextBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-6.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnLunch.length; x++){
+          backBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-6.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 12) {
+        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-7");
+        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-7");
+        const lunches = document.querySelectorAll("#day-lunch-7");
+        let value;
+
+        for(let x = 0; x < nextBtnLunch.length; x++){
+          nextBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-7.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnLunch.length; x++){
+          backBtnLunch[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-lunch-7.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== lunches.length+1){
+              value = value === 0 ? lunches.length : 1;
+            }
+
+            lunches[currentPosition-1].classList.toggle('active');
+            lunches[value-1].classList.toggle('active');
+          })
+        }
+      }
+    } else {
+      const nextBtnDinner = document.querySelectorAll(
+        ".menu-next-btn-dinner-" + (i + 1)
+      );
+      const backBtnDinner = document.querySelectorAll(
+        ".menu-back-btn-dinner-" + (i + 1)
+      );
+      if (i == 1) {
+        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-1");
+        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-1");
+        const dinners = document.querySelectorAll("#day-dinner-1");
+        let value;
+
+        for(let x = 0; x < nextBtnDinner.length; x++){
+          nextBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-1.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnDinner.length; x++){
+          backBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-1.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 3) {
+        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-2");
+        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-2");
+        const dinners = document.querySelectorAll("#day-dinner-2");
+        let value;
+
+        for(let x = 0; x < nextBtnDinner.length; x++){
+          nextBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-2.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnDinner.length; x++){
+          backBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-2.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 5) {
+        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-3");
+        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-3");
+        const dinners = document.querySelectorAll("#day-dinner-3");
+        let value;
+
+        for(let x = 0; x < nextBtnDinner.length; x++){
+          nextBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-3.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnDinner.length; x++){
+          backBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-3.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 7) {
+        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-4");
+        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-4");
+        const dinners = document.querySelectorAll("#day-dinner-4");
+        let value;
+
+        for(let x = 0; x < nextBtnDinner.length; x++){
+          nextBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-4.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnDinner.length; x++){
+          backBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-4.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 9) {
+        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-5");
+        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-5");
+        const dinners = document.querySelectorAll("#day-dinner-5");
+        let value;
+
+        for(let x = 0; x < nextBtnDinner.length; x++){
+          nextBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-5.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnDinner.length; x++){
+          backBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-5.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 11) {
+        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-6");
+        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-6");
+        const dinners = document.querySelectorAll("#day-dinner-6");
+        let value;
+
+        for(let x = 0; x < nextBtnDinner.length; x++){
+          nextBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-6.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnDinner.length; x++){
+          backBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-6.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+      }
+      if (i == 13) {
+        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-7");
+        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-7");
+        const dinners = document.querySelectorAll("#day-dinner-7");
+        let value;
+
+        for(let x = 0; x < nextBtnDinner.length; x++){
+          nextBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-7.active').dataset.id);
+            value= currentPosition;
+            value-=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+
+        for(let x = 0; x < backBtnDinner.length; x++){
+          backBtnDinner[x].addEventListener('click', ()=> {
+            const currentPosition = Number(document.querySelector('#day-dinner-7.active').dataset.id);
+            value= currentPosition;
+            value+=1;
+
+            if(value === 0 || value== dinners.length+1){
+              value = value === 0 ? dinners.length : 1;
+            }
+
+            dinners[currentPosition-1].classList.toggle('active');
+            dinners[value-1].classList.toggle('active');
+          })
+        }
+      }
+    }
+  }
 }
 
 function getCookie(name) {

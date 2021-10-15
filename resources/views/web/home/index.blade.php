@@ -6,7 +6,7 @@
     <div id="percent"></div>
   </div>
 </div>
-@if(!empty($popupCp) AND $popupCp < 4 AND Cookie::get('popupCpEnd')==false) <section class="home-popup-container">
+<!-- @if(!empty($popupCp) AND $popupCp < 4 AND Cookie::get('popupCpEnd')==false) <section class="home-popup-container">
   <div class="home-popup-content">
     <button class="home-popup-btn">X</button>
     <h2>¡BIENVENID@S!</h2>
@@ -35,7 +35,7 @@
     @endif
   </div>
   </section>
-  @endif
+  @endif -->
 
   @if(session()->has('popupCp2') AND session()->get('popupCp2')==2 AND Cookie::get('popupCpEnd') == false)
   <section class="home-popup-container">

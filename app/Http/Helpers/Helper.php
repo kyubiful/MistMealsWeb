@@ -120,8 +120,10 @@ class Helper
     $lunch = [];
     $dinner = [];
 
-    if ($caloriasDiariasTotales > 1851 and $caloriasDiariasTotales < 3800) {
+    if ($caloriasDiariasTotales > 1851) {
       $dishes = Plato::where('codigo', 'like', '%2B%')->get();
+      $lunchDishes = $dishes;
+      $dinnerDishes = $dishes;
       $randomDishes = $dishes->shuffle();
       $j = 0;
       for ($i = 0; $i < 14; $i++) {
@@ -142,8 +144,8 @@ class Helper
     }
 
     if ($caloriasDiariasTotales > 1551 and $caloriasDiariasTotales < 1850) {
-      $dinnerDishes = Plato::where('codigo', 'like', '%2B%')->get();
-      $lunchDishes = Plato::where('codigo', 'like', '%1B%')->get();
+      $dinnerDishes = Plato::where('codigo', 'like', '%1B%')->get();
+      $lunchDishes = Plato::where('codigo', 'like', '%2B%')->get();
 
       $randomDinnerDishes = $dinnerDishes->shuffle();
       $randomLunchDishes = $lunchDishes->shuffle();
@@ -201,39 +203,9 @@ class Helper
       $k++;
       }
     }
-    if ($caloriasDiariasTotales > 1151 and $caloriasDiariasTotales < 1399) {
-      $dinnerDishes = Plato::where('codigo', 'like', '%1B%')->get();
-      $lunchDishes = Plato::where('codigo', 'like', '%2A%')->get();
-
-      $randomDinnerDishes = $dinnerDishes->shuffle();
-      $randomLunchDishes = $lunchDishes->shuffle();
-
-      $j = 0;
-      $k = 0;
-
-      for ($i = 0; $i < 7; $i++) {
-        if (count($randomDinnerDishes) == 0) {
-          $randomDinnerDishes = $dinnerDishes->shuffle();
-      $j = 0;
-        }
-        array_push($dinner, $randomDinnerDishes[$j]);
-        unset($randomDinnerDishes[$j]);
-      $j++;
-      }
-
-      for ($i = 0; $i < 7; $i++) {
-        if (count($randomLunchDishes) == 0) {
-          $randomLunchDishes = $lunchDishes->shuffle();
-      $k = 0;
-        }
-        array_push($lunch, $randomLunchDishes[$k]);
-        unset($randomLunchDishes[$k]);
-      $k++;
-      }
-    }
-    if ($caloriasDiariasTotales > 1000 and $caloriasDiariasTotales < 1150) {
+    if ($caloriasDiariasTotales < 1399) {
       $dinnerDishes = Plato::where('codigo', 'like', '%2A%')->get();
-      $lunchDishes = Plato::where('codigo', 'like', '%1A%')->get();
+      $lunchDishes = Plato::where('codigo', 'like', '%1B%')->get();
 
       $randomDinnerDishes = $dinnerDishes->shuffle();
       $randomLunchDishes = $lunchDishes->shuffle();
@@ -264,7 +236,9 @@ class Helper
 
     return [
       $lunch,
-      $dinner
+      $dinner,
+      $lunchDishes,
+      $dinnerDishes,
     ];
 
   }

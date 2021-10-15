@@ -106,6 +106,8 @@ class MenuController extends Controller
         $user = User::findOrFail($userId);
         $lunch = session('lunch');
         $dinner = session('dinner');
+        $lunchDishes = session('lunchDishes');
+        $dinnerDishes = session('dinnerDishes');
 
         if ($lunch == null && $dinner == null) {
 
@@ -113,16 +115,20 @@ class MenuController extends Controller
 
             $lunch =  $dishes[0];
             $dinner = $dishes[1];
+            $lunchDishes = $dishes[2];
+            $dinnerDishes = $dishes[3];
 
             session(['lunch' => $lunch]);
             session(['dinner' => $dinner]);
+            session(['lunchDishes' => $lunchDishes]);
+            session(['dinnerDishes' => $dinnerDishes]);
         }
 
         $semana = ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5', 'Día 6', 'Día 7'];
 
         $bodyclass = "menu-step2";
 
-        return view('web.menu.step2', compact('user', 'lunch', 'dinner', 'semana', 'bodyclass'));
+        return view('web.menu.step2', compact('user', 'lunch', 'dinner', 'lunchDishes', 'dinnerDishes', 'semana', 'bodyclass'));
     }
 
     public function addToCart(Request $request)

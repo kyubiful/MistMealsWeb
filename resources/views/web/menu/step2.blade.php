@@ -54,110 +54,147 @@
 
   <section>
     <div id="accordion">
-        @foreach($lunch as $i => $el)
-        <div class="card">
-          <div class="card-header" id="heading{{ $i }}">
-            <h5 class="mb-0">
-              <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{ $i }}" aria-expanded="false" aria-controls="collapse{{ $i }}">
-                <div class="day-title">Día <b>{{ $i+1 }}</b></div>
-                <div class="day-info">
-                  <span class="menu2-span-130">{{ round($lunch[$i]->calorias*($lunch[$i]->peso/100) + $dinner[$i]->calorias*($dinner[$i]->peso/100), 0) }} <b>Calorías</b></span>
-                  <span class="menu2-span-130">{{ round($lunch[$i]->plato_info_nutricional->proteinas*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->proteinas*($dinner[$i]->peso/100), 1) }} <b>Proteinas</b></span>
-                  <span class="menu2-span-190">{{ round($lunch[$i]->plato_info_nutricional->carbohidratos*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->carbohidratos*($dinner[$i]->peso/100), 1) }} <b>Carbohidratos</b></span>
-                  <span class="menu2-span-130">{{ round($lunch[$i]->plato_info_nutricional->grasas*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->grasas*($dinner[$i]->peso/100), 1) }} <b>Grasas</b></span>
-                  <span class="menu2-span-130">{{ round($lunch[$i]->plato_info_nutricional->fibra*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->fibra*($dinner[$i]->peso/100), 1) }} <b>Fibra</b></span>
-                  <div class="open-carousel-img-container">
-                    <div class="open-carousel-img"></div>
-                  </div>
+      @foreach($lunch as $i => $el)
+      <div class="card">
+        <div class="card-header" id="heading{{ $i }}">
+          <h5 class="mb-0">
+            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{ $i }}" aria-expanded="false" aria-controls="collapse{{ $i }}">
+              <div class="day-title">Día <b>{{ $i+1 }}</b></div>
+              <div class="day-info">
+                <span class="menu2-span-130">{{ round($lunch[$i]->calorias*($lunch[$i]->peso/100) + $dinner[$i]->calorias*($dinner[$i]->peso/100), 0) }} <b>Calorías</b></span>
+                <span class="menu2-span-130">{{ round($lunch[$i]->plato_info_nutricional->proteinas*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->proteinas*($dinner[$i]->peso/100), 1) }} <b>Proteinas</b></span>
+                <span class="menu2-span-190">{{ round($lunch[$i]->plato_info_nutricional->carbohidratos*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->carbohidratos*($dinner[$i]->peso/100), 1) }} <b>Carbohidratos</b></span>
+                <span class="menu2-span-130">{{ round($lunch[$i]->plato_info_nutricional->grasas*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->grasas*($dinner[$i]->peso/100), 1) }} <b>Grasas</b></span>
+                <span class="menu2-span-130">{{ round($lunch[$i]->plato_info_nutricional->fibra*($lunch[$i]->peso/100) + $dinner[$i]->plato_info_nutricional->fibra*($dinner[$i]->peso/100), 1) }} <b>Fibra</b></span>
+                <div class="open-carousel-img-container">
+                  <div class="open-carousel-img"></div>
                 </div>
-              </button>
-            </h5>
-          </div>
-          <div id="collapse{{ $i }}" class="collapse" aria-labelledby="heading{{ $i }}" data-parent="#accordion">
-            <div class="card-body">
-              <div class="container">
-                <div class="day-lunch">
+              </div>
+            </button>
+          </h5>
+        </div>
+        <div id="collapse{{ $i }}" class="collapse" aria-labelledby="heading{{ $i }}" data-parent="#accordion">
+          <div class="card-body">
+            <div class="container">
+              <div class="slider-container" style="height:221px; min-width: 465px; max-width: 555px; width: 50%;">
+                @foreach($lunchDishes as $x => $dishes)
+                  @if($lunch[$i]->id == $lunchDishes[$x]->id)
+                <div class="day-lunch active" id="day-lunch-{{$i+1}}" data-id="{{$x+1}}">
+                  @else
+                <div class="day-lunch" id="day-lunch-{{$i+1}}" data-id="{{$x+1}}">
+                  @endif
                   <div class="left-dish">
                     <div class="dish-title">
                       <p class="title">COMIDA</p>
-                      <!-- <p class="name">{{ $lunch[$i]->nombre }}</p> -->
+                      <!-- <p class="name">{{ $dishes->nombre }}</p> -->
                     </div>
                     <div class="dish-photo">
-                      <img src="{{ asset($lunch[$i]->getUrlImage1Attribute()) }}" alt="{{ $lunch[$i]->nombre }}" data-toggle="modal" data-target="#modal-dish-lunch-{{ $i }}">
+                      <img src="{{ asset($dishes->getUrlImage1Attribute()) }}" alt="{{ $dishes->nombre }}" data-toggle="modal" data-target="#modal-dish-lunch-{{ $x }}">
                     </div>
                   </div>
                   <div class="right-dish">
                     <div class="dish-text">
                       <!-- <p class="title">COMIDA</p> -->
-                      <p class="dish-price">{{ $lunch[$i]->precio}}€</p>
-                      <p class="name">{{ $lunch[$i]->nombre }} - {{ $lunch[$i]->plato_peso->valor }}</p>
+                      <p class="dish-price">{{ $dishes->precio}}€</p>
+                      <p class="name">{{ $dishes->nombre }} - {{ $dishes->plato_peso->valor }}</p>
                     </div>
                     <div class="dish-info">
-                      <span>{{ round($lunch[$i]->calorias*($lunch[$i]->peso/100), 0) }} <b>CAL</b></span>
-                      <span>{{ round($lunch[$i]->plato_info_nutricional->proteinas*($lunch[$i]->peso/100), 1) }} <b>P</b></span>
-                      <span>{{ round($lunch[$i]->plato_info_nutricional->carbohidratos*($lunch[$i]->peso/100), 1) }} <b>C</b></span>
-                      <span>{{ round($lunch[$i]->plato_info_nutricional->grasas*($lunch[$i]->peso/100), 1) }} <b>G</b></span>
-                      <span>{{ round($lunch[$i]->plato_info_nutricional->fibra*($lunch[$i]->peso/100), 1) }} <b>F</b></span>
+                      <span>{{ round($dishes->calorias*($dishes->peso/100), 0) }} <b>CAL</b></span>
+                      <span>{{ round($dishes->plato_info_nutricional->proteinas*($dishes->peso/100), 1) }} <b>P</b></span>
+                      <span>{{ round($dishes->plato_info_nutricional->carbohidratos*($dishes->peso/100), 1) }} <b>C</b></span>
+                      <span>{{ round($dishes->plato_info_nutricional->grasas*($dishes->peso/100), 1) }} <b>G</b></span>
+                      <span>{{ round($dishes->plato_info_nutricional->fibra*($dishes->peso/100), 1) }} <b>F</b></span>
                     </div>
-                    <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$lunch[$i]->id]) }}">
-                      @csrf
-                      <input type="hidden" name="plateQuantity" value="1"/>
-                      <button class="plato-menu-btn" type="submit"><span>+</span>Añadir</button>
-                    </form>
-                    <form method="POST" class="plate_form_menu_remove" action="{{ route('web.platos.carts.remove', [$lunch[$i]->id]) }}">
-                      @csrf
-                      <input type="hidden" name="plateQuantity" value="1"/>
-                      <button class="plato-menu-btn-remove" type="submit"><span>-</span>Quitar</button>
-                    </form>
+
+                    <div class="menu-buttons">
+                      <button class="menu-next-btn-lunch-{{$i+1}}"><img class="menu-next-img" src="/img/menu/nextback.svg"></button>
+                      <button class="menu-back-btn-lunch-{{$i+1}}"><img class="menu-back-img" style="transform: rotate(180deg);" src="/img/menu/nextback.svg"></button>
+                      <div>
+                        <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$dishes->id]) }}">
+                          @csrf
+                          <input type="hidden" name="plateQuantity" value="1" />
+                          <button class="plato-menu-btn" type="submit"><span>+</span>Añadir</button>
+                        </form>
+                        <form method="POST" class="plate_form_menu_remove" action="{{ route('web.platos.carts.remove', [$dishes->id]) }}">
+                          @csrf
+                          <input type="hidden" name="plateQuantity" value="1" />
+                          <button class="plato-menu-btn-remove" type="submit"><span>-</span>Quitar</button>
+                        </form>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
-                <div class="day-dinner">
+
+                @endforeach
+
+              </div>
+
+              <div class="slider-container" style="height: 221px; min-width: 465px; max-width: 555px; width: 50%;">
+                @foreach($dinnerDishes as $y => $dishes)
+
+                @if($dinner[$i]->id == $dinnerDishes[$y]->id)
+                <div class="day-dinner active" id="day-dinner-{{$i+1}}" data-id="{{$y+1}}">
+                  @else
+                  <div class="day-dinner" id="day-dinner-{{$i+1}}" data-id="{{$y+1}}">
+                  @endif
                   <div class="left-dish">
                     <div class="dish-title">
                       <p class="title">CENA</p>
-                      <!-- <p class="name">{{ $dinner[$i]->nombre }}</p> -->
+                      <!-- <p class="name">{{ $dishes->nombre }}</p> -->
                     </div>
                     <div class="dish-photo">
-                      <img src="{{ asset($dinner[$i]->getUrlImage1Attribute()) }}" alt="{{ $dinner[$i]->nombre }}" data-toggle="modal" data-target="#modal-dish-dinner-{{ $i }}">
+                      <img src="{{ asset($dishes->getUrlImage1Attribute()) }}" alt="{{ $dishes->nombre }}" data-toggle="modal" data-target="#modal-dish-dinner-{{ $y }}">
                     </div>
                   </div>
                   <div class="right-dish">
                     <div class="dish-text">
                       <!-- <p class="title">CENA</p> -->
-                      <p class="dish-price">{{ $dinner[$i]->precio }}€</p>
-                      <p class="name">{{ $dinner[$i]->nombre }} - {{ $dinner[$i]->plato_peso->valor }}</p>
+                      <p class="dish-price">{{ $dishes->precio }}€</p>
+                      <p class="name">{{ $dishes->nombre }} - {{ $dishes->plato_peso->valor }}</p>
                     </div>
                     <div class="dish-info">
-                      <span>{{ round($dinner[$i]->calorias*($dinner[$i]->peso/100), 0) }} <b>CAL</b></span>
-                      <span>{{ round($dinner[$i]->plato_info_nutricional->proteinas*($dinner[$i]->peso/100), 1) }} <b>P</b></span>
-                      <span>{{ round($dinner[$i]->plato_info_nutricional->carbohidratos*($dinner[$i]->peso/100), 1) }} <b>C</b></span>
-                      <span>{{ round($dinner[$i]->plato_info_nutricional->grasas*($dinner[$i]->peso/100), 1) }} <b>G</b></span>
-                      <span>{{ round($dinner[$i]->plato_info_nutricional->fibra*($dinner[$i]->peso/100), 1) }} <b>F</b></span>
+                      <span>{{ round($dishes->calorias*($dishes->peso/100), 0) }} <b>CAL</b></span>
+                      <span>{{ round($dishes->plato_info_nutricional->proteinas*($dishes->peso/100), 1) }} <b>P</b></span>
+                      <span>{{ round($dishes->plato_info_nutricional->carbohidratos*($dishes->peso/100), 1) }} <b>C</b></span>
+                      <span>{{ round($dishes->plato_info_nutricional->grasas*($dishes->peso/100), 1) }} <b>G</b></span>
+                      <span>{{ round($dishes->plato_info_nutricional->fibra*($dishes->peso/100), 1) }} <b>F</b></span>
                     </div>
-                    <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$dinner[$i]->id]) }}">
-                      @csrf
-                      <input type="hidden" name="plateQuantity" value="1"/>
-                      <button class="plato-menu-btn" type="submit"><span>+</span>Añadir</button>
-                    </form>
-                    <form method="POST" class="plate_form_menu_remove" action="{{ route('web.platos.carts.remove', [$dinner[$i]->id]) }}">
-                      @csrf
-                      <input type="hidden" name="plateQuantity" value="1"/>
-                      <button class="plato-menu-btn-remove" type="submit"><span>-</span>Quitar</button>
-                    </form>
+
+                    <div class="menu-buttons">
+                      <button class="menu-next-btn-dinner-{{$i+1}}"><img class="menu-next-img" src="/img/menu/nextback.svg" alt="" srcset=""></button>
+                      <button class="menu-back-btn-dinner-{{$i+1}}"><img class="menu-back-img" style="transform: rotate(180deg);" src="/img/menu/nextback.svg" alt="" srcset=""></button>
+                      <div>
+                        <form method="POST" class="plate_form_menu" action="{{ route('web.platos.carts.store', [$dishes->id]) }}">
+                          @csrf
+                          <input type="hidden" name="plateQuantity" value="1" />
+                          <button class="plato-menu-btn" type="submit"><span>+</span>Añadir</button>
+                        </form>
+                        <form method="POST" class="plate_form_menu_remove" action="{{ route('web.platos.carts.remove', [$dishes->id]) }}">
+                          @csrf
+                          <input type="hidden" name="plateQuantity" value="1" />
+                          <button class="plato-menu-btn-remove" type="submit"><span>-</span>Quitar</button>
+                        </form>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
+
+                @endforeach
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        @endforeach
+      @endforeach
     </div>
   </section>
 
   @include('web.layout.newsletter')
 
-  @foreach($lunch as $i => $el)
+  @foreach($lunchDishes as $i => $el)
   <div id="modal-dish-lunch-{{ $i }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
@@ -272,7 +309,7 @@
                           <div class="col-lg-12 dish-ingredients-text">
                             <p><b>Ingredientes:</b> {{ $el->ingredientes }}</p>
                             <p><b>Contiene:</b> {{ $el->plato_alergeno->count() ? implode(", ", $el->plato_alergeno->pluck('nombre')->all()) : '-' }}</p>
-                                                                <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p>
+                            <p><b>Etiquetas:</b> {{ $el->plato_etiqueta->count() ? implode(", ", $el->plato_etiqueta->pluck('nombre')->all()) : '-' }}</p>
                           </div>
                         </div>
                       </div>
@@ -297,7 +334,7 @@
   </div>
   @endforeach
 
-  @foreach($dinner as $i => $el)
+  @foreach($dinnerDishes as $i => $el)
   <div id="modal-dish-dinner-{{ $i }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
