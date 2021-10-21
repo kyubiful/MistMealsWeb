@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ asset( '/css/style.css' )}}" />
   <link rel="stylesheet" href="{{ asset( '/css/mystyle.css' )}}" />
   <link rel="stylesheet" href="{{ asset( '/assets/fonts/feather-font/css/iconfont.css' )}}" />
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="34854152-12a2-4249-a54d-2ca0c3f03667" data-blockingmode="auto" type="text/javascript"></script>
+  <!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="34854152-12a2-4249-a54d-2ca0c3f03667" data-blockingmode="auto" type="text/javascript"></script> -->
   <!-- Facebook Pixel Code -->
   <script>
     ! function(f, b, e, v, n, t, s) {
