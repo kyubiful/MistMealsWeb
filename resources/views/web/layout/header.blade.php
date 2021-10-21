@@ -55,7 +55,7 @@
             <li><a href="{{ route('admin.home') }}" class="menu-i"><img style="width: 20px; height: 20px; margin-top: -5px;" src="/img/menu/settings.png" alt=""></a></li>
             @endif
         </ul>
-        <img class="menu-btn" src="/img/mmenu.png">
+        <img class="mistmeals-general-menu-btn" src="/img/mmenu.png">
 
 </img>
     </nav>
