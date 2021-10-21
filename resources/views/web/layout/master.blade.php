@@ -78,6 +78,7 @@
   @include('web.layout.modal')
   @include('web.layout.footer')
 
+  <script src="{{ asset( '/js/menu.js' )}}"></script>
   <script id="CookieDeclaration" src="https://consent.cookiebot.com/34854152-12a2-4249-a54d-2ca0c3f03667/cd.js" type="text/javascript" async></script>
   <script src="{{ asset( '/js/jquery-3.5.1.min.js' )}}"></script>
   <script src="{{ asset( '/js/popper.min.js' )}}"></script>
@@ -93,7 +94,6 @@
   <script src="{{ asset( '/vendors/niceselect/js/jquery.nice-select.min.js' )}}"></script>
   <script src="{{ asset( '/js/custom.js' )}}"></script>
   <script src="{{ asset( '/js/myajax.js' )}}"></script>
-  <script src="{{ asset( '/js/menu.js' )}}"></script>
   @stack('custom-scripts')
 
 </body>
