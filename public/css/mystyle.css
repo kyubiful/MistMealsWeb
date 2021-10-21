@@ -1955,8 +1955,8 @@ nav {
 }
 
 .menu-btn {
-  background: url("../img/mmenu.png") no-repeat;
-  background-size: contain;
+  /* background: url("../img/mmenu.png") no-repeat;
+  background-size: contain; */
   width: 31px;
   height: 20px;
   cursor: pointer;
