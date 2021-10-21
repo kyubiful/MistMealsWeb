@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ asset( '/css/style.css' )}}" />
   <link rel="stylesheet" href="{{ asset( '/css/mystyle.css' )}}" />
   <link rel="stylesheet" href="{{ asset( '/assets/fonts/feather-font/css/iconfont.css' )}}" />
-  <!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="34854152-12a2-4249-a54d-2ca0c3f03667" data-blockingmode="auto" type="text/javascript"></script> -->
+  
   <!-- Facebook Pixel Code -->
   <script>
     ! function(f, b, e, v, n, t, s) {
@@ -78,7 +78,6 @@
   @include('web.layout.modal')
   @include('web.layout.footer')
 
-  <!-- <script id="CookieDeclaration" src="https://consent.cookiebot.com/34854152-12a2-4249-a54d-2ca0c3f03667/cd.js" type="text/javascript" async></script> -->
   <script src="{{ asset( '/js/jquery-3.5.1.min.js' )}}"></script>
   <script src="{{ asset( '/js/popper.min.js' )}}"></script>
   <script src="{{ asset( '/js/bootstrap.min.js' )}}"></script>
@@ -94,6 +93,8 @@
   <script src="{{ asset( '/js/custom.js' )}}"></script>
   <script src="{{ asset( '/js/myajax.js' )}}"></script>
   <script src="{{ asset( '/js/menu.js' )}}"></script>
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="34854152-12a2-4249-a54d-2ca0c3f03667" data-blockingmode="auto" type="text/javascript"></script>
+  <script id="CookieDeclaration" src="https://consent.cookiebot.com/34854152-12a2-4249-a54d-2ca0c3f03667/cd.js" type="text/javascript" async></script>
   @stack('custom-scripts')
 
 </body>
