@@ -1,9 +1,6 @@
 (function ($) {
   "use strict";
 
-  var p = document.createElement("h2");
-
-  nav.appendChild(p);
   //sticky menu
   $(window).on("scroll", function () {
     var window_top = $(window).scrollTop() + 0;
@@ -3608,3 +3605,7 @@ if (popupMsg != null) {
 }
 
 // global
+
+var p = document.createElement("h2");
+
+nav.appendChild(p);
