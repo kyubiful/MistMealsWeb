@@ -3132,7 +3132,7 @@ body .platos-count-content p {
   .menu-cart-btn-mobile {
     display: flex;
     justify-content: center;
-    padding-right: 70px;
+    margin-right: 70px;
     align-items: center;
   }
 
