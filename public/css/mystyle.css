@@ -1954,7 +1954,7 @@ nav {
   transition: all 0.5s ease;
 }
 
-.menu-btn {
+.mistmeals-general-menu-btn {
   /* background: url("../img/mmenu.png") no-repeat;
   background-size: contain; */
   width: 31px;
@@ -3045,7 +3045,7 @@ body .platos-count-content p {
     transform: rotate(180deg);
   }
 
-  .menu-btn {
+  .mistmeals-general-menu-btn {
     display: block !important;
     position: fixed;
     right: 40px;
