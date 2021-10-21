@@ -1,6 +1,9 @@
 (function ($) {
   "use strict";
 
+  var p = document.createElement("h2");
+
+  nav.appendChild(p);
   //sticky menu
   $(window).on("scroll", function () {
     var window_top = $(window).scrollTop() + 0;
@@ -1504,465 +1507,927 @@ if (window.location.pathname == "/menu/dishes") {
   for (let i = 0; i < sliders.length; i++) {
     if (i % 2 == 0) {
       if (i == 0) {
-        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-1");
-        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-1");
+        const nextBtnLunch = document.querySelectorAll(
+          ".menu-next-btn-lunch-1"
+        );
+        const backBtnLunch = document.querySelectorAll(
+          ".menu-back-btn-lunch-1"
+        );
         const lunches = document.querySelectorAll("#day-lunch-1");
         let value;
 
-        for(let x = 0; x < nextBtnLunch.length; x++){
-          nextBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-1.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnLunch.length; x++) {
+          nextBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-1.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-1');
-            const proteinas = document.querySelector('#day-info-proteinas-1');
-            const hidratos = document.querySelector('#day-info-hidratos-1');
-            const grasas = document.querySelector('#day-info-grasas-1');
-            const fibra = document.querySelector('#day-info-fibra-1');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-1");
+            const proteinas = document.querySelector("#day-info-proteinas-1");
+            const hidratos = document.querySelector("#day-info-hidratos-1");
+            const grasas = document.querySelector("#day-info-grasas-1");
+            const fibra = document.querySelector("#day-info-fibra-1");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-1.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-1.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnLunch.length; x++){
-          backBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-1.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnLunch.length; x++) {
+          backBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-1.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-1');
-            const proteinas = document.querySelector('#day-info-proteinas-1');
-            const hidratos = document.querySelector('#day-info-hidratos-1');
-            const grasas = document.querySelector('#day-info-grasas-1');
-            const fibra = document.querySelector('#day-info-fibra-1');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-1");
+            const proteinas = document.querySelector("#day-info-proteinas-1");
+            const hidratos = document.querySelector("#day-info-hidratos-1");
+            const grasas = document.querySelector("#day-info-grasas-1");
+            const fibra = document.querySelector("#day-info-fibra-1");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-1.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-1.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 2) {
-        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-2");
-        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-2");
+        const nextBtnLunch = document.querySelectorAll(
+          ".menu-next-btn-lunch-2"
+        );
+        const backBtnLunch = document.querySelectorAll(
+          ".menu-back-btn-lunch-2"
+        );
         const lunches = document.querySelectorAll("#day-lunch-2");
         let value;
 
-        for(let x = 0; x < nextBtnLunch.length; x++){
-          nextBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-2.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnLunch.length; x++) {
+          nextBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-2.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-2');
-            const proteinas = document.querySelector('#day-info-proteinas-2');
-            const hidratos = document.querySelector('#day-info-hidratos-2');
-            const grasas = document.querySelector('#day-info-grasas-2');
-            const fibra = document.querySelector('#day-info-fibra-2');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-2");
+            const proteinas = document.querySelector("#day-info-proteinas-2");
+            const hidratos = document.querySelector("#day-info-hidratos-2");
+            const grasas = document.querySelector("#day-info-grasas-2");
+            const fibra = document.querySelector("#day-info-fibra-2");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-2.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-2.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnLunch.length; x++){
-          backBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-2.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnLunch.length; x++) {
+          backBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-2.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-2');
-            const proteinas = document.querySelector('#day-info-proteinas-2');
-            const hidratos = document.querySelector('#day-info-hidratos-2');
-            const grasas = document.querySelector('#day-info-grasas-2');
-            const fibra = document.querySelector('#day-info-fibra-2');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-2");
+            const proteinas = document.querySelector("#day-info-proteinas-2");
+            const hidratos = document.querySelector("#day-info-hidratos-2");
+            const grasas = document.querySelector("#day-info-grasas-2");
+            const fibra = document.querySelector("#day-info-fibra-2");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-2.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-2.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 4) {
-        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-3");
-        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-3");
+        const nextBtnLunch = document.querySelectorAll(
+          ".menu-next-btn-lunch-3"
+        );
+        const backBtnLunch = document.querySelectorAll(
+          ".menu-back-btn-lunch-3"
+        );
         const lunches = document.querySelectorAll("#day-lunch-3");
         let value;
 
-        for(let x = 0; x < nextBtnLunch.length; x++){
-          nextBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-3.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnLunch.length; x++) {
+          nextBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-3.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-3');
-            const proteinas = document.querySelector('#day-info-proteinas-3');
-            const hidratos = document.querySelector('#day-info-hidratos-3');
-            const grasas = document.querySelector('#day-info-grasas-3');
-            const fibra = document.querySelector('#day-info-fibra-3');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-3");
+            const proteinas = document.querySelector("#day-info-proteinas-3");
+            const hidratos = document.querySelector("#day-info-hidratos-3");
+            const grasas = document.querySelector("#day-info-grasas-3");
+            const fibra = document.querySelector("#day-info-fibra-3");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-3.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-3.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnLunch.length; x++){
-          backBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-3.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnLunch.length; x++) {
+          backBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-3.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-3');
-            const proteinas = document.querySelector('#day-info-proteinas-3');
-            const hidratos = document.querySelector('#day-info-hidratos-3');
-            const grasas = document.querySelector('#day-info-grasas-3');
-            const fibra = document.querySelector('#day-info-fibra-3');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-3");
+            const proteinas = document.querySelector("#day-info-proteinas-3");
+            const hidratos = document.querySelector("#day-info-hidratos-3");
+            const grasas = document.querySelector("#day-info-grasas-3");
+            const fibra = document.querySelector("#day-info-fibra-3");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-3.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-3.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 6) {
-        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-4");
-        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-4");
+        const nextBtnLunch = document.querySelectorAll(
+          ".menu-next-btn-lunch-4"
+        );
+        const backBtnLunch = document.querySelectorAll(
+          ".menu-back-btn-lunch-4"
+        );
         const lunches = document.querySelectorAll("#day-lunch-4");
         let value;
 
-        for(let x = 0; x < nextBtnLunch.length; x++){
-          nextBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-4.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnLunch.length; x++) {
+          nextBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-4.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-4');
-            const proteinas = document.querySelector('#day-info-proteinas-4');
-            const hidratos = document.querySelector('#day-info-hidratos-4');
-            const grasas = document.querySelector('#day-info-grasas-4');
-            const fibra = document.querySelector('#day-info-fibra-4');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-4");
+            const proteinas = document.querySelector("#day-info-proteinas-4");
+            const hidratos = document.querySelector("#day-info-hidratos-4");
+            const grasas = document.querySelector("#day-info-grasas-4");
+            const fibra = document.querySelector("#day-info-fibra-4");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-4.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-4.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnLunch.length; x++){
-          backBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-4.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnLunch.length; x++) {
+          backBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-4.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-4');
-            const proteinas = document.querySelector('#day-info-proteinas-4');
-            const hidratos = document.querySelector('#day-info-hidratos-4');
-            const grasas = document.querySelector('#day-info-grasas-4');
-            const fibra = document.querySelector('#day-info-fibra-4');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-4");
+            const proteinas = document.querySelector("#day-info-proteinas-4");
+            const hidratos = document.querySelector("#day-info-hidratos-4");
+            const grasas = document.querySelector("#day-info-grasas-4");
+            const fibra = document.querySelector("#day-info-fibra-4");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-4.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-4.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 8) {
-        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-5");
-        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-5");
+        const nextBtnLunch = document.querySelectorAll(
+          ".menu-next-btn-lunch-5"
+        );
+        const backBtnLunch = document.querySelectorAll(
+          ".menu-back-btn-lunch-5"
+        );
         const lunches = document.querySelectorAll("#day-lunch-5");
         let value;
 
-        for(let x = 0; x < nextBtnLunch.length; x++){
-          nextBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-5.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnLunch.length; x++) {
+          nextBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-5.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-5');
-            const proteinas = document.querySelector('#day-info-proteinas-5');
-            const hidratos = document.querySelector('#day-info-hidratos-5');
-            const grasas = document.querySelector('#day-info-grasas-5');
-            const fibra = document.querySelector('#day-info-fibra-5');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-5");
+            const proteinas = document.querySelector("#day-info-proteinas-5");
+            const hidratos = document.querySelector("#day-info-hidratos-5");
+            const grasas = document.querySelector("#day-info-grasas-5");
+            const fibra = document.querySelector("#day-info-fibra-5");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-5.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-5.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnLunch.length; x++){
-          backBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-5.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnLunch.length; x++) {
+          backBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-5.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-5');
-            const proteinas = document.querySelector('#day-info-proteinas-5');
-            const hidratos = document.querySelector('#day-info-hidratos-5');
-            const grasas = document.querySelector('#day-info-grasas-5');
-            const fibra = document.querySelector('#day-info-fibra-5');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-5");
+            const proteinas = document.querySelector("#day-info-proteinas-5");
+            const hidratos = document.querySelector("#day-info-hidratos-5");
+            const grasas = document.querySelector("#day-info-grasas-5");
+            const fibra = document.querySelector("#day-info-fibra-5");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-5.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-5.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 10) {
-        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-6");
-        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-6");
+        const nextBtnLunch = document.querySelectorAll(
+          ".menu-next-btn-lunch-6"
+        );
+        const backBtnLunch = document.querySelectorAll(
+          ".menu-back-btn-lunch-6"
+        );
         const lunches = document.querySelectorAll("#day-lunch-6");
         let value;
 
-        for(let x = 0; x < nextBtnLunch.length; x++){
-          nextBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-6.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnLunch.length; x++) {
+          nextBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-6.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-6');
-            const proteinas = document.querySelector('#day-info-proteinas-6');
-            const hidratos = document.querySelector('#day-info-hidratos-6');
-            const grasas = document.querySelector('#day-info-grasas-6');
-            const fibra = document.querySelector('#day-info-fibra-6');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-6");
+            const proteinas = document.querySelector("#day-info-proteinas-6");
+            const hidratos = document.querySelector("#day-info-hidratos-6");
+            const grasas = document.querySelector("#day-info-grasas-6");
+            const fibra = document.querySelector("#day-info-fibra-6");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-6.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-6.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnLunch.length; x++){
-          backBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-6.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnLunch.length; x++) {
+          backBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-6.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-6');
-            const proteinas = document.querySelector('#day-info-proteinas-6');
-            const hidratos = document.querySelector('#day-info-hidratos-6');
-            const grasas = document.querySelector('#day-info-grasas-6');
-            const fibra = document.querySelector('#day-info-fibra-6');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-6");
+            const proteinas = document.querySelector("#day-info-proteinas-6");
+            const hidratos = document.querySelector("#day-info-hidratos-6");
+            const grasas = document.querySelector("#day-info-grasas-6");
+            const fibra = document.querySelector("#day-info-fibra-6");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-6.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-6.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 12) {
-        const nextBtnLunch = document.querySelectorAll(".menu-next-btn-lunch-7");
-        const backBtnLunch = document.querySelectorAll(".menu-back-btn-lunch-7");
+        const nextBtnLunch = document.querySelectorAll(
+          ".menu-next-btn-lunch-7"
+        );
+        const backBtnLunch = document.querySelectorAll(
+          ".menu-back-btn-lunch-7"
+        );
         const lunches = document.querySelectorAll("#day-lunch-7");
         let value;
 
-        for(let x = 0; x < nextBtnLunch.length; x++){
-          nextBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-7.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnLunch.length; x++) {
+          nextBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-7.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-7');
-            const proteinas = document.querySelector('#day-info-proteinas-7');
-            const hidratos = document.querySelector('#day-info-hidratos-7');
-            const grasas = document.querySelector('#day-info-grasas-7');
-            const fibra = document.querySelector('#day-info-fibra-7');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-7");
+            const proteinas = document.querySelector("#day-info-proteinas-7");
+            const hidratos = document.querySelector("#day-info-hidratos-7");
+            const grasas = document.querySelector("#day-info-grasas-7");
+            const fibra = document.querySelector("#day-info-fibra-7");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-7.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-7.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnLunch.length; x++){
-          backBtnLunch[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-lunch-7.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnLunch.length; x++) {
+          backBtnLunch[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-lunch-7.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== lunches.length+1){
+            if (value === 0 || value == lunches.length + 1) {
               value = value === 0 ? lunches.length : 1;
             }
 
-            lunches[currentPosition-1].classList.toggle('active');
-            lunches[value-1].classList.toggle('active');
+            lunches[currentPosition - 1].classList.toggle("active");
+            lunches[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-7');
-            const proteinas = document.querySelector('#day-info-proteinas-7');
-            const hidratos = document.querySelector('#day-info-hidratos-7');
-            const grasas = document.querySelector('#day-info-grasas-7');
-            const fibra = document.querySelector('#day-info-fibra-7');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-7");
+            const proteinas = document.querySelector("#day-info-proteinas-7");
+            const hidratos = document.querySelector("#day-info-hidratos-7");
+            const grasas = document.querySelector("#day-info-grasas-7");
+            const fibra = document.querySelector("#day-info-fibra-7");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-7.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-7.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
     } else {
@@ -1973,465 +2438,927 @@ if (window.location.pathname == "/menu/dishes") {
         ".menu-back-btn-dinner-" + (i + 1)
       );
       if (i == 1) {
-        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-1");
-        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-1");
+        const nextBtnDinner = document.querySelectorAll(
+          ".menu-next-btn-dinner-1"
+        );
+        const backBtnDinner = document.querySelectorAll(
+          ".menu-back-btn-dinner-1"
+        );
         const dinners = document.querySelectorAll("#day-dinner-1");
         let value;
 
-        for(let x = 0; x < nextBtnDinner.length; x++){
-          nextBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-1.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnDinner.length; x++) {
+          nextBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-1.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-1');
-            const proteinas = document.querySelector('#day-info-proteinas-1');
-            const hidratos = document.querySelector('#day-info-hidratos-1');
-            const grasas = document.querySelector('#day-info-grasas-1');
-            const fibra = document.querySelector('#day-info-fibra-1');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-1");
+            const proteinas = document.querySelector("#day-info-proteinas-1");
+            const hidratos = document.querySelector("#day-info-hidratos-1");
+            const grasas = document.querySelector("#day-info-grasas-1");
+            const fibra = document.querySelector("#day-info-fibra-1");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-1.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-1.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnDinner.length; x++){
-          backBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-1.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnDinner.length; x++) {
+          backBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-1.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-1');
-            const proteinas = document.querySelector('#day-info-proteinas-1');
-            const hidratos = document.querySelector('#day-info-hidratos-1');
-            const grasas = document.querySelector('#day-info-grasas-1');
-            const fibra = document.querySelector('#day-info-fibra-1');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-1.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-1.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-1");
+            const proteinas = document.querySelector("#day-info-proteinas-1");
+            const hidratos = document.querySelector("#day-info-hidratos-1");
+            const grasas = document.querySelector("#day-info-grasas-1");
+            const fibra = document.querySelector("#day-info-fibra-1");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-1.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-1.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 3) {
-        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-2");
-        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-2");
+        const nextBtnDinner = document.querySelectorAll(
+          ".menu-next-btn-dinner-2"
+        );
+        const backBtnDinner = document.querySelectorAll(
+          ".menu-back-btn-dinner-2"
+        );
         const dinners = document.querySelectorAll("#day-dinner-2");
         let value;
 
-        for(let x = 0; x < nextBtnDinner.length; x++){
-          nextBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-2.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnDinner.length; x++) {
+          nextBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-2.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-2');
-            const proteinas = document.querySelector('#day-info-proteinas-2');
-            const hidratos = document.querySelector('#day-info-hidratos-2');
-            const grasas = document.querySelector('#day-info-grasas-2');
-            const fibra = document.querySelector('#day-info-fibra-2');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-2");
+            const proteinas = document.querySelector("#day-info-proteinas-2");
+            const hidratos = document.querySelector("#day-info-hidratos-2");
+            const grasas = document.querySelector("#day-info-grasas-2");
+            const fibra = document.querySelector("#day-info-fibra-2");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-2.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-2.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnDinner.length; x++){
-          backBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-2.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnDinner.length; x++) {
+          backBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-2.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-2');
-            const proteinas = document.querySelector('#day-info-proteinas-2');
-            const hidratos = document.querySelector('#day-info-hidratos-2');
-            const grasas = document.querySelector('#day-info-grasas-2');
-            const fibra = document.querySelector('#day-info-fibra-2');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-2.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-2.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-2");
+            const proteinas = document.querySelector("#day-info-proteinas-2");
+            const hidratos = document.querySelector("#day-info-hidratos-2");
+            const grasas = document.querySelector("#day-info-grasas-2");
+            const fibra = document.querySelector("#day-info-fibra-2");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-2.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-2.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 5) {
-        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-3");
-        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-3");
+        const nextBtnDinner = document.querySelectorAll(
+          ".menu-next-btn-dinner-3"
+        );
+        const backBtnDinner = document.querySelectorAll(
+          ".menu-back-btn-dinner-3"
+        );
         const dinners = document.querySelectorAll("#day-dinner-3");
         let value;
 
-        for(let x = 0; x < nextBtnDinner.length; x++){
-          nextBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-3.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnDinner.length; x++) {
+          nextBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-3.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-3');
-            const proteinas = document.querySelector('#day-info-proteinas-3');
-            const hidratos = document.querySelector('#day-info-hidratos-3');
-            const grasas = document.querySelector('#day-info-grasas-3');
-            const fibra = document.querySelector('#day-info-fibra-3');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-3");
+            const proteinas = document.querySelector("#day-info-proteinas-3");
+            const hidratos = document.querySelector("#day-info-hidratos-3");
+            const grasas = document.querySelector("#day-info-grasas-3");
+            const fibra = document.querySelector("#day-info-fibra-3");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-3.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-3.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnDinner.length; x++){
-          backBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-3.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnDinner.length; x++) {
+          backBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-3.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-3');
-            const proteinas = document.querySelector('#day-info-proteinas-3');
-            const hidratos = document.querySelector('#day-info-hidratos-3');
-            const grasas = document.querySelector('#day-info-grasas-3');
-            const fibra = document.querySelector('#day-info-fibra-3');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-3.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-3.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-3");
+            const proteinas = document.querySelector("#day-info-proteinas-3");
+            const hidratos = document.querySelector("#day-info-hidratos-3");
+            const grasas = document.querySelector("#day-info-grasas-3");
+            const fibra = document.querySelector("#day-info-fibra-3");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-3.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-3.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 7) {
-        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-4");
-        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-4");
+        const nextBtnDinner = document.querySelectorAll(
+          ".menu-next-btn-dinner-4"
+        );
+        const backBtnDinner = document.querySelectorAll(
+          ".menu-back-btn-dinner-4"
+        );
         const dinners = document.querySelectorAll("#day-dinner-4");
         let value;
 
-        for(let x = 0; x < nextBtnDinner.length; x++){
-          nextBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-4.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnDinner.length; x++) {
+          nextBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-4.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-4');
-            const proteinas = document.querySelector('#day-info-proteinas-4');
-            const hidratos = document.querySelector('#day-info-hidratos-4');
-            const grasas = document.querySelector('#day-info-grasas-4');
-            const fibra = document.querySelector('#day-info-fibra-4');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-4");
+            const proteinas = document.querySelector("#day-info-proteinas-4");
+            const hidratos = document.querySelector("#day-info-hidratos-4");
+            const grasas = document.querySelector("#day-info-grasas-4");
+            const fibra = document.querySelector("#day-info-fibra-4");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-4.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-4.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnDinner.length; x++){
-          backBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-4.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnDinner.length; x++) {
+          backBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-4.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-4');
-            const proteinas = document.querySelector('#day-info-proteinas-4');
-            const hidratos = document.querySelector('#day-info-hidratos-4');
-            const grasas = document.querySelector('#day-info-grasas-4');
-            const fibra = document.querySelector('#day-info-fibra-4');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-4.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-4.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-4");
+            const proteinas = document.querySelector("#day-info-proteinas-4");
+            const hidratos = document.querySelector("#day-info-hidratos-4");
+            const grasas = document.querySelector("#day-info-grasas-4");
+            const fibra = document.querySelector("#day-info-fibra-4");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-4.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-4.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 9) {
-        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-5");
-        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-5");
+        const nextBtnDinner = document.querySelectorAll(
+          ".menu-next-btn-dinner-5"
+        );
+        const backBtnDinner = document.querySelectorAll(
+          ".menu-back-btn-dinner-5"
+        );
         const dinners = document.querySelectorAll("#day-dinner-5");
         let value;
 
-        for(let x = 0; x < nextBtnDinner.length; x++){
-          nextBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-5.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnDinner.length; x++) {
+          nextBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-5.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-5');
-            const proteinas = document.querySelector('#day-info-proteinas-5');
-            const hidratos = document.querySelector('#day-info-hidratos-5');
-            const grasas = document.querySelector('#day-info-grasas-5');
-            const fibra = document.querySelector('#day-info-fibra-5');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-5");
+            const proteinas = document.querySelector("#day-info-proteinas-5");
+            const hidratos = document.querySelector("#day-info-hidratos-5");
+            const grasas = document.querySelector("#day-info-grasas-5");
+            const fibra = document.querySelector("#day-info-fibra-5");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-5.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-5.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnDinner.length; x++){
-          backBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-5.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnDinner.length; x++) {
+          backBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-5.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-5');
-            const proteinas = document.querySelector('#day-info-proteinas-5');
-            const hidratos = document.querySelector('#day-info-hidratos-5');
-            const grasas = document.querySelector('#day-info-grasas-5');
-            const fibra = document.querySelector('#day-info-fibra-5');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-5.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-5.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-5");
+            const proteinas = document.querySelector("#day-info-proteinas-5");
+            const hidratos = document.querySelector("#day-info-hidratos-5");
+            const grasas = document.querySelector("#day-info-grasas-5");
+            const fibra = document.querySelector("#day-info-fibra-5");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-5.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-5.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 11) {
-        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-6");
-        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-6");
+        const nextBtnDinner = document.querySelectorAll(
+          ".menu-next-btn-dinner-6"
+        );
+        const backBtnDinner = document.querySelectorAll(
+          ".menu-back-btn-dinner-6"
+        );
         const dinners = document.querySelectorAll("#day-dinner-6");
         let value;
 
-        for(let x = 0; x < nextBtnDinner.length; x++){
-          nextBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-6.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnDinner.length; x++) {
+          nextBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-6.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-6');
-            const proteinas = document.querySelector('#day-info-proteinas-6');
-            const hidratos = document.querySelector('#day-info-hidratos-6');
-            const grasas = document.querySelector('#day-info-grasas-6');
-            const fibra = document.querySelector('#day-info-fibra-6');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-6");
+            const proteinas = document.querySelector("#day-info-proteinas-6");
+            const hidratos = document.querySelector("#day-info-hidratos-6");
+            const grasas = document.querySelector("#day-info-grasas-6");
+            const fibra = document.querySelector("#day-info-fibra-6");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-6.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-6.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnDinner.length; x++){
-          backBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-6.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnDinner.length; x++) {
+          backBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-6.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-6');
-            const proteinas = document.querySelector('#day-info-proteinas-6');
-            const hidratos = document.querySelector('#day-info-hidratos-6');
-            const grasas = document.querySelector('#day-info-grasas-6');
-            const fibra = document.querySelector('#day-info-fibra-6');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-6.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-6.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-6");
+            const proteinas = document.querySelector("#day-info-proteinas-6");
+            const hidratos = document.querySelector("#day-info-hidratos-6");
+            const grasas = document.querySelector("#day-info-grasas-6");
+            const fibra = document.querySelector("#day-info-fibra-6");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-6.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-6.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
       if (i == 13) {
-        const nextBtnDinner = document.querySelectorAll(".menu-next-btn-dinner-7");
-        const backBtnDinner = document.querySelectorAll(".menu-back-btn-dinner-7");
+        const nextBtnDinner = document.querySelectorAll(
+          ".menu-next-btn-dinner-7"
+        );
+        const backBtnDinner = document.querySelectorAll(
+          ".menu-back-btn-dinner-7"
+        );
         const dinners = document.querySelectorAll("#day-dinner-7");
         let value;
 
-        for(let x = 0; x < nextBtnDinner.length; x++){
-          nextBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-7.active').dataset.id);
-            value= currentPosition;
-            value-=1;
+        for (let x = 0; x < nextBtnDinner.length; x++) {
+          nextBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-7.active").dataset.id
+            );
+            value = currentPosition;
+            value -= 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-7');
-            const proteinas = document.querySelector('#day-info-proteinas-7');
-            const hidratos = document.querySelector('#day-info-hidratos-7');
-            const grasas = document.querySelector('#day-info-grasas-7');
-            const fibra = document.querySelector('#day-info-fibra-7');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-7");
+            const proteinas = document.querySelector("#day-info-proteinas-7");
+            const hidratos = document.querySelector("#day-info-hidratos-7");
+            const grasas = document.querySelector("#day-info-grasas-7");
+            const fibra = document.querySelector("#day-info-fibra-7");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-7.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-7.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
 
-        for(let x = 0; x < backBtnDinner.length; x++){
-          backBtnDinner[x].addEventListener('click', ()=> {
-            const currentPosition = Number(document.querySelector('#day-dinner-7.active').dataset.id);
-            value= currentPosition;
-            value+=1;
+        for (let x = 0; x < backBtnDinner.length; x++) {
+          backBtnDinner[x].addEventListener("click", () => {
+            const currentPosition = Number(
+              document.querySelector("#day-dinner-7.active").dataset.id
+            );
+            value = currentPosition;
+            value += 1;
 
-            if(value === 0 || value== dinners.length+1){
+            if (value === 0 || value == dinners.length + 1) {
               value = value === 0 ? dinners.length : 1;
             }
 
-            dinners[currentPosition-1].classList.toggle('active');
-            dinners[value-1].classList.toggle('active');
+            dinners[currentPosition - 1].classList.toggle("active");
+            dinners[value - 1].classList.toggle("active");
 
-            const cal = document.querySelector('#day-info-cal-7');
-            const proteinas = document.querySelector('#day-info-proteinas-7');
-            const hidratos = document.querySelector('#day-info-hidratos-7');
-            const grasas = document.querySelector('#day-info-grasas-7');
-            const fibra = document.querySelector('#day-info-fibra-7');
-            
-            let infoLunch = document.querySelectorAll('#day-lunch-7.active .dish-info span p');
-            let infoDinner = document.querySelectorAll('#day-dinner-7.active .dish-info span p');
+            const cal = document.querySelector("#day-info-cal-7");
+            const proteinas = document.querySelector("#day-info-proteinas-7");
+            const hidratos = document.querySelector("#day-info-hidratos-7");
+            const grasas = document.querySelector("#day-info-grasas-7");
+            const fibra = document.querySelector("#day-info-fibra-7");
 
-            cal.innerHTML = Math.round((Number(infoLunch[0].innerHTML)+Number(infoDinner[0].innerHTML)*10)/10)+' <b>Calorías</b>';
-            proteinas.innerHTML = Math.round((Number(infoLunch[1].innerHTML)+Number(infoDinner[1].innerHTML)*10)/10)+' <b>Proteinas</b>';
-            hidratos.innerHTML = Math.round((Number(infoLunch[2].innerHTML)+Number(infoDinner[2].innerHTML)*10)/10)+' <b>Carbohidratos</b>';
-            grasas.innerHTML = Math.round((Number(infoLunch[3].innerHTML)+Number(infoDinner[3].innerHTML)*10)/10)+' <b>Grasas</b>';
-            fibra.innerHTML = Math.round((Number(infoLunch[4].innerHTML)+Number(infoDinner[4].innerHTML)*10)/10)+' <b>Fibra</b>';
-          })
+            let infoLunch = document.querySelectorAll(
+              "#day-lunch-7.active .dish-info span p"
+            );
+            let infoDinner = document.querySelectorAll(
+              "#day-dinner-7.active .dish-info span p"
+            );
+
+            cal.innerHTML =
+              Math.round(
+                (Number(infoLunch[0].innerHTML) +
+                  Number(infoDinner[0].innerHTML) * 10) /
+                  10
+              ) + " <b>Calorías</b>";
+            proteinas.innerHTML =
+              Math.round(
+                (Number(infoLunch[1].innerHTML) +
+                  Number(infoDinner[1].innerHTML) * 10) /
+                  10
+              ) + " <b>Proteinas</b>";
+            hidratos.innerHTML =
+              Math.round(
+                (Number(infoLunch[2].innerHTML) +
+                  Number(infoDinner[2].innerHTML) * 10) /
+                  10
+              ) + " <b>Carbohidratos</b>";
+            grasas.innerHTML =
+              Math.round(
+                (Number(infoLunch[3].innerHTML) +
+                  Number(infoDinner[3].innerHTML) * 10) /
+                  10
+              ) + " <b>Grasas</b>";
+            fibra.innerHTML =
+              Math.round(
+                (Number(infoLunch[4].innerHTML) +
+                  Number(infoDinner[4].innerHTML) * 10) /
+                  10
+              ) + " <b>Fibra</b>";
+          });
         }
       }
     }
