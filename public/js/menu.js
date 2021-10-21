@@ -1,5 +1,5 @@
 const menu = document.querySelector('.menu');
-const btn = document.querySelector('.mistmeals-general-menu-btn');
+const btn = document.querySelector('.mistmeals-general-btn-function');
 const nav = document.querySelector('nav');
 let i = 0;
 let path = window.location.pathname;
