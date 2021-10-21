@@ -3605,7 +3605,3 @@ if (popupMsg != null) {
 }
 
 // global
-
-var p = document.createElement("h2");
-
-nav.appendChild(p);
