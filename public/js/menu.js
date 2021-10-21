@@ -4,8 +4,11 @@ const nav = document.querySelector('nav');
 let i = 0;
 let path = window.location.pathname;
 
+var p = document.createElement("h2");
+
 btn.addEventListener('click', () => {
   menu.classList.toggle('active')
+  nav.appendChild(p);
 })
 
 // window.addEventListener('resize', () => {
