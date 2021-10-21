@@ -1,38 +1,38 @@
-const menu = document.querySelector('.menu');
-const btn = document.querySelector('.mistmeals-general-menu-btn');
-const nav = document.querySelector('nav');
+const menu = document.querySelector(".menu");
+const btn = document.querySelector(".mistmeals-general-menu-btn");
+const nav = document.querySelector("nav");
 let i = 0;
 let path = window.location.pathname;
 
 var p = document.createElement("h2");
 
-btn.addEventListener('click', () => {
-  menu.classList.toggle('active')
-  nav.appendChild(p);
-})
+nav.appendChild(p);
+
+btn.addEventListener("click", () => {
+  menu.classList.toggle("active");
+});
 
 // window.addEventListener('resize', () => {
 //   let widthOutput = window.innerWidth;
 //   console.log(widthOutput);
 // })
 
-if(path == '/usuario/signup' || path == '/menu/dishes'){
-  nav.classList.toggle('black');
+if (path == "/usuario/signup" || path == "/menu/dishes") {
+  nav.classList.toggle("black");
 } else {
-  window.addEventListener('scroll', () => {
+  window.addEventListener("scroll", () => {
     let scroll = document.documentElement.scrollTop;
 
-    if(scroll>100 && i == 0){
-      nav.classList.toggle('black');
+    if (scroll > 100 && i == 0) {
+      nav.classList.toggle("black");
       i++;
-    }else if(scroll <100 && i == 1){
-      nav.classList.toggle('black');
+    } else if (scroll < 100 && i == 1) {
+      nav.classList.toggle("black");
       i--;
     }
-
-  })
-  if(document.documentElement.scrollTop>100 && i == 0){
-    nav.classList.toggle('black');
-    i=1;
+  });
+  if (document.documentElement.scrollTop > 100 && i == 0) {
+    nav.classList.toggle("black");
+    i = 1;
   }
 }
