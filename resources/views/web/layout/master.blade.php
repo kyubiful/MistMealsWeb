@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width" />
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <meta name="facebook-domain-verification" countext="pnlx8uo5qdzjh5cdbx2066ux55ujk7"/>
+  <meta name="facebook-domain-verification" content="pnlx8uo5qdzjh5cdbx2066ux55ujk7" />
   <title>@lang('global.project.title')</title>
   <link rel="icon" href="{{ asset( '/img/favicon_mistmeals.png' )}}" type="image/png">
   <link rel="stylesheet" href="{{ asset( '/css/bootstrap.min.css' )}}" />
