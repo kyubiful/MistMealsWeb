@@ -35,14 +35,14 @@ class CartController extends Controller
         $discountCode = DB::table('discount_code')->select('name', 'value', 'tipo', 'start', 'end', 'active','unique')->where('name', $discount)->first();
         $time = Carbon::now()->toDateTimeString();
 
-        $cookieDiscountValue = cookie('descuento', $discountCode->value, 60);
-        $cookieDiscountName = cookie('descuento_name', $discountCode->name, 60);
-        $cookieDiscountType = cookie('descuento_type', $discountCode->tipo, 60);
-
         if($discountCode==null OR ($discountCode->start > $time OR $discountCode->end < $time OR $discountCode->active == 0))
         { 
           return redirect()->back()->with('discountMessageError', 'Código no válido');
         }
+
+        $cookieDiscountValue = cookie('descuento', $discountCode->value, 60);
+        $cookieDiscountName = cookie('descuento_name', $discountCode->name, 60);
+        $cookieDiscountType = cookie('descuento_type', $discountCode->tipo, 60);
 
         if($discountCode->unique==1)
         {
