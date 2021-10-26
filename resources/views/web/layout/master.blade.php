@@ -18,10 +18,10 @@
   <link rel="stylesheet" href="{{ asset( '/css/style.css' )}}" />
   <link rel="stylesheet" href="{{ asset( '/css/mystyle.css' )}}" />
   <link rel="stylesheet" href="{{ asset( '/assets/fonts/feather-font/css/iconfont.css' )}}" />
-  
+
   <!-- Facebook Pixel Code -->
   <script>
-    ! function(f, b, e, v, n, t, s) {
+    !function(f, b, e, v, n, t, s) {
       if (f.fbq) return;
       n = f.fbq = function() {
         n.callMethod ?
@@ -37,10 +37,14 @@
       t.src = v;
       s = b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '211073511093947');
     fbq('track', 'PageView');
+    fbq('track', 'ADD_PAYMENT_INFO');
+    fbq('track', 'ADD_TO_CART');
+    fbq('track', 'PURCHASE');
+    fbq('track', 'SUBSCRIBE');
+    fbq('track', 'VIEW_CONTENT');
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=211073511093947&ev=PageView&noscript=1" /></noscript>
   <!-- End Facebook Pixel Code -->
