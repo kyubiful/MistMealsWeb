@@ -2,12 +2,12 @@
 <header>
   <nav class="">
     <a href="/">
-      <img class="logo" src="/img/mistmeals_logo_white.png" srcset="/img/mistmeals_logo_white.png 2x" alt="logo">
+      <img class="logo" src="/img/menu/mistmeals_logo_white.svg" srcset="/img/menu/mistmeals_logo_white.svg 2x" alt="logo">
     </a>
 
     <div>
       @inject('cartService','App\Services\CartService')
-      <a class="menu-cart-btn-mobile" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/Icon/cart.png" style="margin-top: -5px;">
+      <a class="menu-cart-btn-mobile" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/Icon/cart.svg" style="margin-top: -5px;">
         <p>{{ $cartService->countProducts() }}</p>
       </a>
     </div>
@@ -16,13 +16,14 @@
       <li><a href="{{ route('web.platos') }}" class="menu-i">Platos</a></li>
       <li><a href="{{ route('web.comofunciona') }}" class="menu-i">Cómo funciona</a></li>
       <li><a href="{{ route('web.revolucion') }}" class="menu-i">La Revolución</a></li>
+      <li><a href="https://www.blog.mistmeals.com" class="menu-i">Blog</a></li>
       <li class="menu-separation"><a href="{{ route('web.contacto') }}" class="menu-i">Contacto</a></li>
       <!-- <li class="mp-desktop-hidden"><a href="{{ route('web.faqs') }}" class="menu-i">FAQs</a></li> -->
       @if (!auth()->check())
 
       <li class="session">
         <a href="{{ route('web.user.login') }}">
-          <img style="width: 24px; height: 24px;" src="/img/menu/Icon/User.png" />
+          <img style="width: 24px; height: 24px;" src="/img/menu/Icon/User.svg" />
           <p class="mp-desktop-hidden">INICIA SESIÓN</p>
         </a>
       </li>
@@ -51,7 +52,7 @@
       @endif
       <li>
         @inject('cartService','App\Services\CartService')
-        <a class="menu-cart-btn" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/Icon/cart.png" style="margin-top: -5px;">
+        <a class="menu-cart-btn" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/Icon/cart.svg" style="margin-top: -5px;">
           <p>{{ $cartService->countProducts() }}</p>
         </a>
       </li>
