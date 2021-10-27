@@ -6,36 +6,19 @@
     <div id="percent"></div>
   </div>
 </div>
-<!-- @if(!empty($popupCp) AND $popupCp < 4 AND Cookie::get('popupCpEnd')==false) <section class="home-popup-container">
+  @if(Cookie::get('newsletterpopup')!=1) <section class="home-popup-container">
   <div class="home-popup-content">
     <button class="home-popup-btn">X</button>
     <h2>¡BIENVENID@S!</h2>
-    <p>Introduce tu código postal para verificar que repartimos en tu zona de entrega</p>
-    @if($popupCp == 1 AND !session()->has('popupCp2'))
-    <form method="POST" action="{{route('web.verifyCP')}}" class="home-popup-form">
+    <p style="width: 80%; text-align: center; margin: auto;">Suscribete a nuestra Newsletter y consigue un 10% de descuento en tu primer pedido</p>
+    <form action="{{route('web.mailchimp.store')}}" method="post" style="display: flex; width: 80%; margin: auto;">
       @csrf
-      <input type="number" name="cp" id="" placeholder="00000">
-      <button type="submit">Verificar</button>
+      <input type="email" class="form-control cu_input" name="email" id="mce-EMAIL" placeholder="Déjanos tu email" required>
+      <button type="submit" class="cu_btn animate_btn text-white" style="background-color: #FF810C;">Suscríbete</button>
     </form>
-    <p style="font-size: 10px;">*no enviamos a islas, Ceuta y Melilla</p>
-    @endif
-    @if(session()->has('popupCp2') AND session()->get('popupCp2')==2)
-    <p style="font-size: 13px; margin-top: 5px;">¡Llegamos hasta allí!</p>
-    <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
-      @csrf
-      <input type="submit" value="Visitar la web">
-    </form>
-    @endif
-    @if(session()->has('popupCp2') AND session()->get('popupCp2')==3)
-    <p style="font-size: 13px; line-height: inherit; margin-bottom:10px; margin-top: 5px;">¡Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)</p>
-    <form action="{{route('web.endHomePopup')}}" method="get" class="home-popup-form-btn">
-      @csrf
-      <input type="submit" value="Visitar la web">
-    </form>
-    @endif
   </div>
   </section>
-  @endif -->
+  @endif
 
   @if(session()->has('popupCp2') AND session()->get('popupCp2')==2 AND Cookie::get('popupCpEnd') == false)
   <section class="home-popup-container">

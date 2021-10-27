@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Newsletter\NewsletterFacade as Newsletter;
 use App\Mail\NewsletterMail;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 
 class MailChimpController extends Controller
@@ -29,6 +30,8 @@ class MailChimpController extends Controller
             'message' => 'Enviado'
         ));
 
-        return redirect()->back()->with('message', 'newsletter');
+        $cookie = Cookie::make('newsletterpopup', 1, 7*24*60);
+
+        return redirect()->back()->with('message', 'newsletter')->withCookie($cookie);
     }
 }
