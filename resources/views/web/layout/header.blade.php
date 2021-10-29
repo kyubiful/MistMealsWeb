@@ -33,7 +33,7 @@
       <li class="session">
         <a href="{{ route('web.user.profile') }}">
           {!! \App\Models\User::findOrFail(auth()->user()->id)->name !!}
-          <img style="width: 24px; height: 24px;" src="/img/menu/Icon/User.png" />
+          <img style="width: 24px; height: 24px;" src="/img/menu/Icon/User.svg" />
         </a>
       </li>
       <li class="logout">
@@ -42,7 +42,7 @@
       @elseif(auth()->check() && \App\Models\User::findOrFail(auth()->user()->id)->isAdmin())
       <li class="session">
         <a href="{{ route('web.user.profile') }}" style="color: #F9F2E1;">
-          <img style="width: 24px; height: 24px;" src="/img/menu/Icon/User.png" />
+          <img style="width: 24px; height: 24px;" src="/img/menu/Icon/User.svg" />
           {!! \App\Models\User::findOrFail(auth()->user()->id)->name !!}
         </a>
       </li>

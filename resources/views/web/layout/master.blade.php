@@ -42,9 +42,12 @@
     fbq('track', 'PageView');
     fbq('track', 'AddPaymentInfo');
     fbq('track', 'AddToCart');
-    fbq('track', 'Purchase');
     fbq('track', 'Subscribe');
     fbq('track', 'ViewContent');
+    fbq('track', 'Purchase', {
+      value: '{{ total_price | money_without_currency }}',
+      'currency':'EUR' currency: 'EUR'
+    });
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=211073511093947&ev=PageView&noscript=1" /></noscript>
   <!-- End Facebook Pixel Code -->
