@@ -181,7 +181,7 @@ class RedsysController extends Controller
 
 		$payment->save();
 
-		if ($discountCode->unique == 1) 
+		if ($discountCode->unique == 1)
 		{
 			$user->discountCodes()->attach($discountCode->id);
 		}
@@ -385,7 +385,7 @@ class RedsysController extends Controller
 
 				$payment->save();
 
-				if ($discountCode->unique == 1) {
+				if ($discountCode!=null AND $discountCode->unique == 1) {
 					$user->discountCodes()->attach($discountCode->id);
 				}
 				$discountCode->uses = $discountCode->uses + 1;
