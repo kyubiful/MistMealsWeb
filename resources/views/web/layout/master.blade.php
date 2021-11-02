@@ -48,6 +48,7 @@
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=211073511093947&ev=PageView&noscript=1" /></noscript>
   <!-- End Facebook Pixel Code -->
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-09ME74NCTN"></script>
   <script>
@@ -60,6 +61,7 @@
 
     gtag('config', 'G-09ME74NCTN');
   </script>
+
 </head>
 
 <body class="{{ isset($bodyclass) ? $bodyclass : '' }}">

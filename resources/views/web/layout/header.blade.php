@@ -18,7 +18,6 @@
       <li><a href="{{ route('web.revolucion') }}" class="menu-i">La Revolución</a></li>
       <li><a href="https://www.blog.mistmeals.com" class="menu-i">Blog</a></li>
       <li class="menu-separation"><a href="{{ route('web.contacto') }}" class="menu-i">Contacto</a></li>
-      <!-- <li class="mp-desktop-hidden"><a href="{{ route('web.faqs') }}" class="menu-i">FAQs</a></li> -->
       @if (!auth()->check())
 
       <li class="session">

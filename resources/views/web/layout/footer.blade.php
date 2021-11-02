@@ -15,7 +15,7 @@
                         <li><a style="font-size: 15px;" href="{{ route('web.menu') }}">Meal Plan</a></li>
                         <li><a style="font-size: 15px;" href="#">Manifiesto</a></li>
                         <li><a style="font-size: 15px;" href="{{ route('web.comofunciona') }}">Cómo funciona</a></li>
-                        <!-- <li><a style="font-size: 15px;" href="{{ route('web.faqs') }}">FAQs</a></li> -->
+                        <li><a style="font-size: 15px;" href="{{ route('web.faqs') }}">FAQs</a></li>
                     </ul>
                 </div>
             </div>
