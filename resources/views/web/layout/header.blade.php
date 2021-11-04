@@ -1,10 +1,10 @@
 <div class="offcanvas_overlay"></div>
 <header>
   <nav class="">
+    <img class="mistmeals-general-menu-btn" src="/img/mmenu.png">
     <a href="/">
       <img class="logo" src="/img/menu/mistmeals_logo_white.svg" srcset="/img/menu/mistmeals_logo_white.svg 2x" alt="logo">
     </a>
-
     <div>
       @inject('cartService','App\Services\CartService')
       <a class="menu-cart-btn-mobile" href="{{ route('web.carts.index') }}" class="menu-i"><img src="/img/menu/Icon/cart.svg" style="margin-top: -5px;">
@@ -60,6 +60,5 @@
       <li><a href="{{ route('admin.home') }}" class="menu-i"><img style="width: 20px; height: 20px; margin-top: -5px;" src="/img/menu/settings.png" alt=""></a></li>
       @endif
     </ul>
-    <img class="mistmeals-general-menu-btn" src="/img/mmenu.png">
   </nav>
 </header>

@@ -1900,7 +1900,7 @@ nav {
 }
 
 .logo {
-  width: 52px;
+  width: 42px;
 }
 
 .menu {
@@ -3046,8 +3046,6 @@ body .platos-count-content p {
 
   .mistmeals-general-menu-btn {
     display: block !important;
-    position: fixed;
-    right: 40px;
     z-index: 10;
   }
 
@@ -3132,7 +3130,6 @@ body .platos-count-content p {
   .menu-cart-btn-mobile {
     display: flex;
     justify-content: center;
-    margin-right: 70px;
     align-items: center;
   }
 
