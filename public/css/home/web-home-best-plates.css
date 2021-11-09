@@ -1,0 +1,41 @@
+.web-home-best-plate-title{
+    text-align: center;
+    font-family: CoreSansC35 !important;
+    font-size: 30px;
+}
+
+.web-home-best-plate-container{
+    overflow: auto;
+    width: auto;
+    white-space: nowrap;
+}
+
+.web-home-best-plate-content{
+    display: flex;
+    width: 100%;
+}
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+    .web-home-best-plate-content{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}

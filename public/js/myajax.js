@@ -4,6 +4,7 @@ const button = document.querySelectorAll('.plato-btn');
 // let modalName = document.querySelector('.plates-modal-info-name');
 // let modalPrice = document.querySelector('.plates-modal-info-price');
 const menuCartNumber = document.querySelector('.menu-cart-btn p');
+const menuCartNumberMobile = document.querySelector('.menu-cart-btn-mobile p')
 const numberPlates = document.querySelector('.platos-count-content .platos-count-number');
 
 for(let i = 0; i < plates.length; i++){
@@ -21,7 +22,7 @@ for(let i = 0; i < plates.length; i++){
         // modal.classList.remove('active');
 
         // Spinner ON
-
+        let buttonContent = button[i].innerHTML;
         button[i].disabled = true;
         button[i].innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando...';
 
@@ -49,11 +50,14 @@ for(let i = 0; i < plates.length; i++){
                     // modalName.innerHTML = data.itemQuantity+'x '+data.infoName;
                     // modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
                     menuCartNumber.innerHTML = parseInt(menuCartNumber.innerHTML)+parseInt(data.itemQuantity);
-                    numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
+                    menuCartNumberMobile.innerHTML = parseInt(menuCartNumberMobile.innerHTML)+parseInt(data.itemQuantity);
+                    if(numberPlates != null){
+                        numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
+                    }
                     setTimeout(() => {
                         button[i].classList.remove('active');
                         button[i].disabled = false;
-                        button[i].innerHTML = 'Añadir'
+                        button[i].innerHTML = buttonContent;
                     }, 1500);
                 }
             },
@@ -91,6 +95,7 @@ for(let i = 0; i < plates_menu.length; i++){
 
         // Spinner ON
 
+        let buttonContent = button_menu[i].innerHTML;
         button_menu[i].disabled = true;
         button_menu[i].innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span> <p class="mp-mobile-hidden">Cargando...</p>';
 
@@ -116,11 +121,14 @@ for(let i = 0; i < plates_menu.length; i++){
                     button_menu_remove[i].classList.add('active');
                     // modalName.innerHTML = data.itemQuantity+'x '+data.infoName;
                     // modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
+                    menuCartNumberMobile.innerHTML = parseInt(menuCartNumberMobile.innerHTML)+parseInt(data.itemQuantity);
                     menuCartNumber.innerHTML = parseInt(menuCartNumber.innerHTML)+parseInt(data.itemQuantity);
-                    numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
+                    if(numberPlates != null){
+                        numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
+                    }
                     setTimeout(() => {
                         button_menu[i].disabled = false;
-                        button_menu[i].innerHTML = '<span>+</span> <p class="mp-mobile-hidden">Añadir</p>';
+                        button_menu[i].innerHTML = buttonContent;
                     }, 500);
                 }
             },
@@ -150,6 +158,7 @@ for(let i = 0; i < plates_menu_remove.length; i++){
 
         // Spinner ON
 
+        let buttonContent = button_menu_remove[i].innerHTML;
         button_menu_remove[i].disabled = true;
         button_menu_remove[i].innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span> <p class="mp-mobile-hidden">Cargando...</p>';
 
@@ -175,11 +184,14 @@ for(let i = 0; i < plates_menu_remove.length; i++){
                     button_menu_remove[i].classList.remove('active');
                     // modalName.innerHTML = data.itemQuantity+'x '+data.infoName;
                     // modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
+                    menuCartNumberMobile.innerHTML = parseInt(menuCartNumberMobile.innerHTML)-parseInt(data.itemQuantity);
                     menuCartNumber.innerHTML = parseInt(menuCartNumber.innerHTML)-parseInt(data.itemQuantity);
-                    numberPlates.innerHTML = parseInt(numberPlates.innerHTML)-parseInt(data.itemQuantity);
+                    if(numberPlates != null){
+                        numberPlates.innerHTML = parseInt(numberPlates.innerHTML)-parseInt(data.itemQuantity);
+                    }
                     setTimeout(() => {
                         button_menu_remove[i].disabled = false;
-                        button_menu_remove[i].innerHTML = '<span>-</span> <p class="mp-mobile-hidden">Quitar</p>';
+                        button_menu_remove[i].innerHTML = buttonContent;
                     }, 500);
                 }
             },

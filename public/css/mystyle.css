@@ -1598,6 +1598,7 @@ body.menu-step2 #accordion .card-body .container .slider-container {
 }
 
 .home-popup-container {
+  top: 0;
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -2049,7 +2050,7 @@ nav {
 }
 
 .mp-desktop-hidden {
-  display: none;
+  display: none !important;
 }
 
 .home-potatoe-text {
@@ -3058,6 +3059,7 @@ body .platos-count-content p {
     justify-content: space-between;
     background-color: #000000;
     padding: 0 20px;
+    width: 100vw;
   }
 
   .menu .session {
@@ -3439,7 +3441,7 @@ body .platos-count-content p {
   }
 
   .mp-desktop-hidden {
-    display: inline;
+    display: inline !important;
   }
 
   .mp-image-desktop {
@@ -4312,6 +4314,7 @@ body .platos-count-content p {
 
   .home-comofunciona-content-inner {
     flex-direction: column;
+    align-items: center;
   }
 
   .home-comofunciona-content-inner2 {
@@ -4325,6 +4328,7 @@ body .platos-count-content p {
 
   .home-sostenibilidad-container-inner2 {
     flex-direction: column;
+    align-items: center;
   }
 
   .faqs-img {
