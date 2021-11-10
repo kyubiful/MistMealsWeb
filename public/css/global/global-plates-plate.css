@@ -81,6 +81,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 
 .global-plates-plate-weight-btn-m.active{
@@ -94,6 +95,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 
 .global-plates-plate-weight-btn-l.active{

@@ -45,8 +45,8 @@
       </div>
 
     </div>
-    <div class="row mt-5">
-      <div class="col-sm-12 wow fadeInDown" data-wow-delay=".4s">
+    <div class="mt-5">
+      <div class="wow fadeInDown" data-wow-delay=".4s">
         <a href="{{ route('web.menu') }}" class="mist_btn_home1 animate_btn text-uppercase d-lg-block mx-auto">Configura tu plan</a>
       </div>
     </div>

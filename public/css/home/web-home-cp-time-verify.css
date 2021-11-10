@@ -46,6 +46,15 @@
     width: 108px;
     font-size: 12px;
 }
+
+.web-home-cp-time-verify-message{
+    color: #009167;
+    font-family: CoreSansC35 !important;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 11px;
+    max-width: 350px;
+}
 /* Extra small devices (phones) */
 @media (min-width: 576px) {
 }
@@ -55,6 +64,27 @@
 }
 
 @media (min-width: 992px) {
+    .web-home-cp-time-verify-title{
+        font-size: 40px;
+        max-width: 660px;
+    }
+
+    .web-home-cp-time-verify-text{
+        min-width: 660px;
+        font-size: 16px;
+    }
+
+    .web-home-cp-time-verify-form-text{
+        font-size: 15px;
+    }
+
+    .web-home-cp-time-verify-form-submit{
+        font-size: 15px;
+    }
+
+    .web-home-cp-time-verify-message{
+        max-width: 660px;
+    }
 }
 
 @media (min-width: 1200px) {

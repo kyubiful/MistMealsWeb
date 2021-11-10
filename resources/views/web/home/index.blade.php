@@ -24,7 +24,7 @@
   <section class="home-popup-container">
     <div class="home-popup-content">
       <button class="home-popup-btn">X</button>
-      <h2>¡BIENVENID@S!</h2>
+ <h2>¡BIENVENID@S!</h2>
       <p>Introduce tu código postal para verificar que repartimos en tu zona de entrega</p>
       @if(session()->has('popupCp2') AND session()->get('popupCp2')==2)
       <p style="font-size: 13px; margin-top: 5px;">¡Llegamos hasta allí!</p>

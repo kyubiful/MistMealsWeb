@@ -18,8 +18,9 @@
     overflow: hidden;
     background-size: cover;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: end;
+    align-items: flex-end;
 }
 
 .home-top-banner-content-mealplan{
@@ -30,8 +31,9 @@
     overflow: hidden;
     background-size: cover;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: end;
+    align-items: flex-end;
 }
 
 .home-top-banner-content-name-box{
@@ -39,6 +41,10 @@
     height: 97px;
     border: 1px solid white;
     width: 100%;
+}
+
+.home-top-banner-content-box-title-desktop{
+    display: none;
 }
 
 .home-top-banner-content-name-box .banner-padding{

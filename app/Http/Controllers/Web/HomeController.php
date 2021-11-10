@@ -7,6 +7,7 @@ use App\Models\Objetivo;
 use App\Models\User;
 use App\Models\AvailableCP;
 use App\Models\Plato;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
@@ -42,5 +43,42 @@ class HomeController extends Controller
     {
         $cookie = Cookie::make('popupCpEnd', 'true', 7 * 24 * 60);
         return redirect()->back()->cookie($cookie);
+    }
+
+    public function getDeliveryDay(Request $request){
+
+        $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
+        $cp = $request->cp;
+        $nextThursday = new Carbon('Next Thursday');
+        $today = Carbon::now();
+
+        $todayNumber = (int)$today->format('d');
+        $nextThursdatNumber = (int)$nextThursday->format('d');
+
+        if(in_array($cp, $availableCP)){
+            if(($nextThursdatNumber - $todayNumber) <= 4){
+                $nextDelivery = $nextThursday->addWeeks(1)->formatLocalized('%A %d de %B');
+                $message = "El pedido te llegará el ".$nextDelivery;
+                return response()->json([
+                    'status' => 500,
+                    'message' => $message
+                ]);
+            } else {
+                $nextDelivery = $nextThursday->format('%A %d de %B');
+                $message = "El pedido te llegará el ".$nextDelivery;
+                return response()->json([
+                    'status' => 500,
+                    'message' => $message
+                ]);
+            }
+        } else {
+            $message = "Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)";
+            return response()->json([
+                'status' => 500,
+                'message' => $message
+            ]);
+        }
+
+
     }
 }

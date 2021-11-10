@@ -56,6 +56,7 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
 
   Route::post('/home/cpVerify', 'AvailableCPController@verifyCP')->name('verifyCP');
   Route::get('/home/endPopup', 'HomeController@endHomePopup')->name('endHomePopup');
+  Route::post('home/cpTime', 'HomeController@getDeliveryDay')->name('deliveryDayCP');
 
   Route::post('/tpv', 'RedsysController@index')->name('tpv');
 
