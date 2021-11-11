@@ -647,9 +647,12 @@ p {
 
 /* MEAL PLAN */
 .mealplan_header {
-  height: 786px !important;
-  background: url("../img/mealplan/header_bg.png") no-repeat center;
+  margin-top: 100px;
+  width: 100vw !important;
+  height: auto;
+  background: url("../img/mealplan/background_top.png") no-repeat center;
   background-color: #000000 !important;
+  background-size: cover;
 }
 
 .label-against {
@@ -2104,7 +2107,8 @@ body .platos-count-container {
   display: flex;
   justify-content: center;
   padding: 20px;
-  margin-top: 120px;
+  z-index: 8;
+  margin-top: -86px;
 }
 
 body .platos-count-content {
@@ -2126,22 +2130,28 @@ body .platos-count-content p {
   font-weight: 800;
   font-size: 110px;
   text-align: center;
-  padding-top: 390px;
+  height: 532px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .platos-top-background {
-  background: url("../img/platos/Platos_Background.png") no-repeat;
+  background: url("../img/platos/background_top.png") no-repeat;
   background-position: center;
-  width: 100%;
-  height: 824px;
+  background-size: cover;
+  width: 100vw;
+  height: auto;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
   z-index: 1;
 }
 
 .platos-top-label {
   background: url("../img/platos/label.png") no-repeat;
   background-position: center;
-  position: absolute;
-  margin-top: -33px;
+  margin-top: -55px;
   width: 100%;
   height: 141px;
   z-index: 3;
@@ -3419,8 +3429,8 @@ body .platos-count-content p {
   }
 
   .mealplan_header {
-    background-size: 200%;
-    height: 438px !important;
+    background-size: cover;
+    height: 532px !important;
     margin-top: 56px !important;
   }
 

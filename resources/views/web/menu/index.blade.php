@@ -34,7 +34,7 @@
       <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 2) }}">
         <div class="single_services_part style_2 mb-0">
           <a href="{{ route('web.menu.step1', 2) }}">
-            <img class="mp-image-desktop" src="img/home/target_2.png" alt="Control de calorías">
+            <img class="mp-image-desktop" src="img/home/focusonmenu.png" alt="Control de calorías">
             <img class="mp-image-mobile" src="img/mealplan/targett_2.png" alt="Control de calorías">
           </a>
           <p class="subtitle negative-margin">Control de calorías</p>
@@ -45,7 +45,7 @@
       <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 1) }}">
         <div class="single_services_part style_2 mb-0">
           <a href="{{ route('web.menu.step1', 1) }}">
-            <img class="mp-image-desktop" src="img/home/target_1.png" alt="Come rico y saludable">
+            <img class="mp-image-desktop" src="img/home/dobettermenu.png" alt="Come rico y saludable">
             <img class="mp-image-mobile" src="img/mealplan/targett_1.png" alt="Come rico y saludable">
           </a>
           <p class="subtitle">Come rico y saludable</p>
@@ -56,7 +56,7 @@
       <div class="col-lg-4 col-sm-6 wow fadeInDown mp-image-container" data-wow-delay="{{ sprintf('.%ss', 3 + 3) }}">
         <div class="single_services_part style_2 mb-0">
           <a href="{{ route('web.menu.step1', 3) }}">
-            <img class="mp-image-desktop" src="img/home/target_3.png" alt="Ganancia muscular">
+            <img class="mp-image-desktop" src="img/home/muscleupmenu.png" alt="Ganancia muscular">
             <img class="mp-image-mobile" src="img/mealplan/targett_3.png" alt="Ganancia muscular">
           </a>
           <p class="subtitle negative-margin">Ganancia muscular</p>

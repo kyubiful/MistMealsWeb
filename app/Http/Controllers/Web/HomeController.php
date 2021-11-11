@@ -64,7 +64,7 @@ class HomeController extends Controller
                     'message' => $message
                 ]);
             } else {
-                $nextDelivery = $nextThursday->format('%A %d de %B');
+                $nextDelivery = $nextThursday->formatLocalized('%A %d de %B');
                 $message = "El pedido te llegará el ".$nextDelivery;
                 return response()->json([
                     'status' => 500,
