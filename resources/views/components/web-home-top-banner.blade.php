@@ -68,7 +68,7 @@
                 <span class="second">XXX</span>
               </div>
               <div class="home-top-banner-content-box-mealplan-text mp-desktop-hidden">
-                Calorías diarias para lograr tu objetivo
+                Nutrientes diarios para lograr tu objetivo
               </div>
             </div>
             <img class="mp-desktop-hidden" src="img/home/go.svg"/>
@@ -89,7 +89,7 @@
                       <img class="home-top-banner-desktop-go mp-mobile-hidden" src="img/home/go.svg"/>
                     </div>
                   </div>
-                  <p class="home-top-banner-right-desktop-text">Calorías diarias para lograr tu objetivo</p>
+                  <p class="home-top-banner-right-desktop-text">Nutrientes diarios para lograr tu objetivo</p>
                 </div>
               </div>
             </div>
