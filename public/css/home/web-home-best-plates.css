@@ -6,7 +6,8 @@
 
 .web-home-best-plate-container{
     overflow: auto;
-    width: auto;
+    max-width: 730px;
+    margin: auto;
     white-space: nowrap;
 }
 

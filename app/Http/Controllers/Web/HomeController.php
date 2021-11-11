@@ -51,6 +51,30 @@ class HomeController extends Controller
         $cp = $request->cp;
         $nextThursday = new Carbon('Next Thursday');
         $today = Carbon::now();
+        $days = [
+            'Monday' => 'Lunes',
+            'Tuesday' => 'Martes',
+            'Wednesday' => 'Miércoles',
+            'Thursday' => 'Jueves',
+            'Friday' => 'Viernes',
+            'Saturday' => 'Sábado',
+            'Sunday' => 'Domingo',
+        ];
+
+        $months = [
+            'January' => 'Enero',
+            'Febrary' => 'Febrero',
+            'March' => 'Marzo',
+            'April' => 'Abril',
+            'May' => 'Mayo',
+            'June' => 'Junio',
+            'July' => 'Julio',
+            'August' => 'Agosto',
+            'September' => 'Septiembre',
+            'October' => 'Octubre',
+            'November' => 'Noviembre',
+            'December' => 'Diciembre',
+        ];
 
         $todayNumber = (int)$today->format('d');
         $nextThursdatNumber = (int)$nextThursday->format('d');
@@ -58,27 +82,29 @@ class HomeController extends Controller
         if(in_array($cp, $availableCP)){
             if(($nextThursdatNumber - $todayNumber) <= 4){
                 $nextDelivery = $nextThursday->addWeeks(1)->formatLocalized('%A %d de %B');
-                $message = "El pedido te llegará el ".$nextDelivery;
-                return response()->json([
-                    'status' => 500,
-                    'message' => $message
-                ]);
+                $messageArray = explode(' ', $nextDelivery);
+                if(array_key_exists($messageArray[0], $days) AND array_key_exists($messageArray[3], $months)){
+                    $message = "El pedido te llegará el ".$days[$messageArray[0]].' '.$messageArray[1].' de '.$months[$messageArray[3]];
+                } else {
+                    $message = "El pedido te llegará el ".$nextDelivery;
+                }
             } else {
                 $nextDelivery = $nextThursday->formatLocalized('%A %d de %B');
-                $message = "El pedido te llegará el ".$nextDelivery;
-                return response()->json([
-                    'status' => 500,
-                    'message' => $message
-                ]);
+                $messageArray = explode(' ', $nextDelivery);
+                if(array_key_exists($messageArray[0], $days) AND array_key_exists($messageArray[3], $months)){
+                    $message = "El pedido te llegará el ".$days[$messageArray[0]].' '.$messageArray[1].' de '.$months[$messageArray[3]];
+                } else {
+                    $message = "El pedido te llegará el ".$nextDelivery;
+                }
             }
         } else {
             $message = "Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)";
-            return response()->json([
-                'status' => 500,
-                'message' => $message
-            ]);
         }
 
+        return response()->json([
+            'status' => 500,
+            'message' => $message
+        ]);
 
     }
 }

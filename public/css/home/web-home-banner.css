@@ -4,13 +4,12 @@
 }
 
 .web-home-banner-container{
-    width: 100%;
-    height: 230px;
+    width: 100vw;
     overflow: hidden;
 }
 
 .web-home-banner-container img{
-    height: 230px;
+    width: 100vw;
 }
 
 /* Extra small devices (phones) */

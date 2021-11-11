@@ -62,7 +62,7 @@
             <!-- Mobile content -->
 
             <div class="home-top-banner-content-name-box-content">
-              <div class="home-top-banner-content-box-title mp-desktop-hidden">
+              <div class="home-top-banner-content-box-title mp-desktop-hidden" style="min-width: 277px">
                 <span class="first">YOUR MEAL PLAN</span>
                 <img class="dot" src="img/home/dot.svg"/>
                 <span class="second">XXX</span>

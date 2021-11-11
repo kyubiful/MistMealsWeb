@@ -6,25 +6,15 @@
     <div id="percent"></div>
   </div>
 </div>
-  @if(Cookie::get('newsletterpopup')!=1) <section class="home-popup-container">
-  <div class="home-popup-content">
-    <button class="home-popup-btn" style="margin-bottom: -10px;">X</button>
-    <h2>¡BIENVENID@S!</h2>
-    <p style="width: 80%; text-align: center; margin: auto; line-height: 1.5;">Suscribete a nuestra Newsletter y consigue un 10% de descuento en tu primer pedido</p>
-    <form action="{{route('web.mailchimp.store')}}" method="post" style="display: flex; width: 80%; margin: auto; flex-direction:column">
-      @csrf
-      <input type="email" class="form-control cu_input" name="email" id="mce-EMAIL" placeholder="Déjanos tu email" required>
-      <button type="submit" class="cu_btn animate_btn text-white" style="background-color: #FF810C;">Suscríbete</button>
-    </form>
-  </div>
-  </section>
+  @if(Cookie::get('newsletterpopup')!=1)
+    <x-web-home-popup-discount/>
   @endif
 
   @if(session()->has('popupCp2') AND session()->get('popupCp2')==2 AND Cookie::get('popupCpEnd') == false)
   <section class="home-popup-container">
     <div class="home-popup-content">
       <button class="home-popup-btn">X</button>
- <h2>¡BIENVENID@S!</h2>
+      <h2>¡BIENVENID@S!</h2>
       <p>Introduce tu código postal para verificar que repartimos en tu zona de entrega</p>
       @if(session()->has('popupCp2') AND session()->get('popupCp2')==2)
       <p style="font-size: 13px; margin-top: 5px;">¡Llegamos hasta allí!</p>
