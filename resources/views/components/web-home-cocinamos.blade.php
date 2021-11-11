@@ -6,7 +6,7 @@
 
 <section class="web-home-cocinamos-container">
   <div class="web-home-cocinamos-btn">
-    <x-global-secondary-button url="web.home" name="¿Eres empresa?"/>
+    <x-global-secondary-button url="web.contacto" name="¿Eres empresa?"/>
   </div>
   <div class="wow animated fadeInLeftBig">
     <img loading="lazy" class="web-home-cocinamos-title" src="/img/home/conocenos.svg"/>
