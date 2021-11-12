@@ -4070,6 +4070,12 @@ body .platos-count-content p {
     justify-content: flex-end;
   }
 
+  /* web faqs btn */
+
+  .web-faqs-menu-btn{
+    display: flex !important;
+  }
+
   /* Platos Mobil */
 
   .platos-top-title {
