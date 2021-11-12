@@ -47,7 +47,7 @@
         </a>
       </li>
       <li class="logout">
-        <a href="{{ route('web.user.logout') }}" title="Cerrar sesión" class="menu-i mp-desktop-hidden" style="color: #FF0033; font-size: 12px;">CERRAR SESIÓN</a>
+        <a href="{{ route('web.user.logout') }}" title="Cerrar sesión" class="menu-i mp-desktop-hidden web-faqs-menu-btn" style="color: #FF0033; font-size: 12px;">CERRAR SESIÓN</a>
       </li>
       @endif
       <li>
