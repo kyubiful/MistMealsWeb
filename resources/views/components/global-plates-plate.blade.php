@@ -37,6 +37,8 @@
         <div style="display: flex; align-content: center; align-items: center; flex-direction: row; width: 80px; justify-content: space-evenly;">
           <button type="button" class="plate-btn-less">-</button>
           <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
+          <input type="hidden" name="plate-id" class="global-plates-plate-id" value="{{$plato->id}}">
+          <input type="hidden" name="plate-price" class="global-plates-plate-price-value" value="{{$plato->precio}}">
           <button type="button" class="plate-btn-more">+</button>
         </div>
       </div>

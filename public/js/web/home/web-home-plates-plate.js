@@ -49,7 +49,6 @@ for(let i = 0; i < web_plate_quantity_display.length; i++){
   web_plate_btn_less[i].addEventListener('click', () => {
     if(parseInt(web_plate_quantity_display[i].value) > 0){
       web_plate_quantity_display[i].value = parseInt(web_plate_quantity_display[i].value) - 1
-      console.log('entra')
     }
   })
 }

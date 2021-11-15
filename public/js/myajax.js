@@ -1,3 +1,5 @@
+const {toInteger} = require("lodash");
+
 const plates = document.querySelectorAll('.plate_form');
 const button = document.querySelectorAll('.plato-btn');
 // let modal = document.querySelector('.plates-modal');
@@ -6,12 +8,21 @@ const button = document.querySelectorAll('.plato-btn');
 const menuCartNumber = document.querySelector('.menu-cart-btn p');
 const menuCartNumberMobile = document.querySelector('.menu-cart-btn-mobile p')
 const numberPlates = document.querySelector('.platos-count-content .platos-count-number');
+const plateNames = document.querySelectorAll('.global-plates-plate-name');
+const platePrices = document.querySelectorAll('.global-plates-plate-price-value');
+const plateQuantitys = document.querySelectorAll('.plate-quantity-display');
+const plateIDs = document.querySelectorAll('.global-plates-plate-id');
 
 for(let i = 0; i < plates.length; i++){
 
     plates[i].addEventListener('submit', (e) => {
 
         e.preventDefault();
+
+        let plateName = plateNames[i].innerHTML;
+        let platePrice = platePrices[i].value;
+        let plateQuantity = plateQuantitys[i].value;
+        let plateID = plateIDs[i].value;
 
         let form = plates[i];
 
@@ -54,6 +65,12 @@ for(let i = 0; i < plates.length; i++){
                     if(numberPlates != null){
                         numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
                     }
+                    fbq('track', 'AddToCart', {
+                        'content_ids': plateID,
+                        'content_name': plateName,
+                        'value' : parseInt(plateQuantity) * parseInt(platePrice),
+                        'currency': 'EUR'
+                    });
                     setTimeout(() => {
                         button[i].classList.remove('active');
                         button[i].disabled = false;
