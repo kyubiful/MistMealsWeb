@@ -1,5 +1,3 @@
-const {toInteger} = require("lodash");
-
 const plates = document.querySelectorAll('.plate_form');
 const button = document.querySelectorAll('.plato-btn');
 // let modal = document.querySelector('.plates-modal');
