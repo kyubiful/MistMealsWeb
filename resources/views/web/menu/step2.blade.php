@@ -1,6 +1,10 @@
 @extends('web.layout.master')
 @section('content')
 
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-10805779259/GT4JCLy_hYQDELu2zKAo'});
+</script>
+
 <div id="target-{{ $user->objetivo->id }}">
 
   <section class="profile_info style_1" style="background-color: #000000; height: 620px; padding-top: 80px;">

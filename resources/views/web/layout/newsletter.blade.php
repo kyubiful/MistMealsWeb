@@ -22,7 +22,7 @@
               <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bcef03a2016fd98bf6181e989_9c3cb16e3e" tabindex="-1" value=""></div>
             </div>
             <div class="col-xl-2 col-sm-4 wow fadeInDown pl-0 pad-0" data-wow-delay=".7s">
-              <button type="submit" class="cu_btn animate_btn text-white">Suscríbete</button>
+              <button type="submit" class="cu_btn animate_btn text-white newsletter-btn">Suscríbete</button>
             </div>
           </div>
           @if (!auth()->check())

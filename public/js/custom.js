@@ -3605,3 +3605,17 @@ if (popupMsg != null) {
 }
 
 // global
+
+let newsletterBtn = document.querySelector('.newsletter-btn');
+
+newsletterBtn.addEventListener('click', () => {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-10805779259/EFI4CNvl3YMDELu2zKAo',
+      'event_callback': callback
+  });
+})
