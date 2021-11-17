@@ -86,20 +86,15 @@
 
     let mistmealsSubmitBtn = document.querySelector('.mist_btn_signup')
     mistmealsSubmitBtn.addEventListener('click', () => {
-
-        function gtag_report_conversion(url) {
-          var callback = function () {
-            if (typeof(url) != 'undefined') {
-              window.location = url;
-            }
-          };
-          gtag('event', 'conversion', {
-              'send_to': 'AW-10805779259/fFWHCKeZhoQDELu2zKAo',
-              'event_callback': callback
-          });
-          return false;
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
         }
-
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-10805779259/fFWHCKeZhoQDELu2zKAo',
+          'event_callback': callback
+      });
     })
 
 </script>
