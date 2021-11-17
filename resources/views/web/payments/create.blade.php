@@ -115,7 +115,7 @@
   </div>
   <div class="order-continue">
   <a href="{{ route('web.orders.create') }}">Volver</a>
-    <h4>Total: @if(Cookie::get('descuento')==null){{ round($order->total,2) }}€ @else {{round(($order->total*((100-Cookie::get('descuento'))/100)),2)}}€ @endif</h4>
+    <h4 class="payment-amount">Total: @if(Cookie::get('descuento')==null){{ round($order->total,2) }}€ @else {{round(($order->total*((100-Cookie::get('descuento'))/100)),2)}}€ @endif</h4>
     @if(Cookie::get('descuento_type') != 'free')
     {!! \App\Http\Controllers\Web\RedsysController::index($amount) !!}
     @else
@@ -126,3 +126,34 @@
 </div>
 @include('web.layout.newsletter')
 @endsection
+@push('custom-scripts')
+
+<script type="text/javascript">
+  paymentBtnSubmit = document.querySelector('.payment-btn-submit')
+  paymentAmount = document.querySelector('.payment-amount')
+
+  console.log(paymentBtnSubmit)
+
+  let amount = paymentAmount.innerHTML
+  amount = amount.split(" ")
+  amount = parseInt(amount[1].split("€")[0])
+
+  paymentBtnSubmit.addEventListener('click', () => {
+
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-10805779259/-VV7CIHKiYQDELu2zKAo',
+        'value': amount,
+        'currency': 'EUR',
+        'transaction_id': '',
+        'event_callback': callback
+    });
+
+  })
+</script>
+
+@endpush
