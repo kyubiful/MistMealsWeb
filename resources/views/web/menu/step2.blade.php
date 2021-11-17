@@ -74,7 +74,11 @@
             </button>
           </h5>
         </div>
+        @if($i==0)
+        <div id="collapse{{ $i }}" class="collapse show" aria-labelledby="heading{{ $i }}" data-parent="#accordion">
+        @elseif($i!=0)
         <div id="collapse{{ $i }}" class="collapse" aria-labelledby="heading{{ $i }}" data-parent="#accordion">
+        @endif
           <div class="card-body">
             <div class="container">
               <div class="slider-container">
