@@ -69,6 +69,15 @@ for(let i = 0; i < plates.length; i++){
                         'value' : parseInt(plateQuantity) * parseInt(platePrice),
                         'currency': 'EUR'
                     });
+                    var callback = function () {
+                    if (typeof(url) != 'undefined') {
+                      window.location = url;
+                    }
+                    };
+                    gtag('event', 'conversion', {
+                      'send_to': 'AW-10805779259/s4FDCObp3IMDELu2zKAo',
+                      'event_callback': callback
+                    });
                     setTimeout(() => {
                         button[i].classList.remove('active');
                         button[i].disabled = false;

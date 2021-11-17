@@ -70,9 +70,12 @@
     function gtag() {
       dataLayer.push(arguments);
     }
+
     gtag('js', new Date());
 
+    gtag('config', 'AW-10805779259');
     gtag('config', 'G-09ME74NCTN');
+
   </script>
 
 </head>
