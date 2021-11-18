@@ -138,3 +138,17 @@
   @endif
 @include('web.layout.newsletter')
 @endsection
+
+@push('custom-scripts')
+
+<script type="text/javascript">
+
+gtag('event', 'conversion', {
+  'send_to': 'AW-10805779259/_5kRCIqFqoQDELu2zKAo'
+});
+
+fbq('track', 'InitiateCheckout')
+
+</script>
+
+@endpush

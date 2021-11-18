@@ -153,6 +153,11 @@
         'event_callback': callback
     });
 
+    fbq('track', 'Purchase', {
+      'value': amount,
+      'currency': 'EUR'
+    })
+
   })
 </script>
 

@@ -3609,6 +3609,9 @@ if (popupMsg != null) {
 let newsletterBtn = document.querySelector('.newsletter-btn');
 
 newsletterBtn.addEventListener('click', () => {
+
+  fbq('track', 'newsletterRegistration')
+
   var callback = function () {
     if (typeof(url) != 'undefined') {
       window.location = url;
