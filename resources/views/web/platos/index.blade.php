@@ -78,7 +78,7 @@
       </div>
       <div class="plato-content">
         <p class="plato-price">{{ $plato->precio }}€</p>
-        <p class="plato-title">{{ $plato->nombre }}</p>
+        <p class="global-plates-plate-name plato-title">{{ $plato->nombre }}</p>
         <div class="plato-info">
           <span class="plate-info-btn" data-toggle="modal" data-target="#modal-dish-{{$i}}">?</span>
           <span>{{ bcdiv($plato->calorias*$plato->peso/100, '1', 0) }} <b>cal</b></span>
