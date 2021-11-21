@@ -95,6 +95,8 @@
               <button type="button" class="plate-btn-less">-</button>
               <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
               <button type="button" class="plate-btn-more">+</button>
+              <input type="hidden" name="plate-id" class="global-plates-plate-id" value="{{$plato->id}}">
+              <input type="hidden" name="plate-price" class="global-plates-plate-price-value" value="{{$plato->precio}}">
             </div>
           </div>
           <div class="plato-peso-switch-content-fake">
