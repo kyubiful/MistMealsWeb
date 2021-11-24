@@ -1,9 +1,9 @@
 .web-blackfriday-top-banner-container{
-    margin-top: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 75px;
 }
 
 .web-blackfriday-top-banner-container .web-blackfriday-top-banner-all-text{
@@ -112,7 +112,7 @@
     .web-blackfriday-top-banner-container .top-plates-image{
         position: absolute;
         right: 0;
-        top: 100px;
+        top: 0;
         max-width: 900px;
         z-index: -1;
     }

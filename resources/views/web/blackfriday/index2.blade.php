@@ -1,4 +1,4 @@
-@extends('web.layout.master')
+@extends('web.layout.master-wo-menu')
 @section('content')
   <x-web-black-friday-top-banner/>
   <x-web-home-best-plates :platos="$platos"/>
