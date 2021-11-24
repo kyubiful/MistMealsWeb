@@ -4030,7 +4030,7 @@ body .platos-count-content p {
   }
 
   .valors-mobile {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     align-content: center;
     justify-content: space-between;

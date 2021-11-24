@@ -99,7 +99,7 @@ Nosotros te lo ponemos fácil: Te contamos como hacer tu pedido en 4 sencillos p
                             ¡Sigue los pasos para completar tu pedido y disfruta!
                         </p>
                     </div>
-            <div class="col-6 wow zoomIn revolution-stomach-fix mp-desktop-hidden" style="z-index: 2;" data-wow-delay=".3s">
+            <div class="col-6 wow zoomIn revolution-stomach-fix mp-desktop-hidden" style="z-index: 2; display: flex !important;" data-wow-delay=".3s">
                 <img class="revolution-stomach-img" src="img/comofunciona/cartel.png">
             </div>
                 </div>
