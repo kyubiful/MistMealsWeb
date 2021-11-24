@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="plato-peso-switch-content">
-            <p>Peso</p>
+            <p>Tamaño</p>
             <div class="plato-peso-switch-container">
               <label class="plato-peso-switch-m active">M</label>
               <label class="plato-peso-switch-l">L</label>
@@ -100,7 +100,7 @@
             </div>
           </div>
           <div class="plato-peso-switch-content-fake">
-            <p>Peso</p>
+            <p>Tamaño</p>
             <div class="plato-peso-switch-container-fake">
               <label class="plato-peso-switch-m-fake">M</label>
               <label class="plato-peso-switch-l-fake">L</label>

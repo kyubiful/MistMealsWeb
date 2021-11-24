@@ -139,4 +139,5 @@ Nosotros te lo ponemos fácil: Te contamos como hacer tu pedido en 4 sencillos p
 </section>
 
 @include('web.layout.newsletter')
+
 @endsection

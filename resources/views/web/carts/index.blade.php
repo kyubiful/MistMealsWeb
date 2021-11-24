@@ -28,17 +28,52 @@
             <input type="text" name="discount_name" placeholder="Código descuento">
             <input type="submit" value="Aplicar">
           </form>
-          @if(Cookie::get('descuento')!=null)
-          <p>Descuento aplicado: {{Cookie::get('descuento')}}% <a style="color: white;" href="{{route('web.cart.discount.remove')}}">X</a></p>
+          @if(Cookie::get('descuento')!=null AND Cookie::get('descuento_type')!=null)
+          <p>Descuento aplicado:
+            @if(Cookie::get('descuento_type')=='fijo')
+              {{Cookie::get('descuento')}}€
+            @else
+              {{Cookie::get('descuento')}}%
+            @endif
+            <a style="color: white;" href="{{route('web.cart.discount.remove')}}">X</a>
+          </p>
           @endif
           {{Session()->get('discountMessageError')}}
         </div>
         <div class="cart-price-subtotal-content">
           <p class="cart-price-subtotal"><span>Subtotal</span><span>{{$cart->total}}€</span></p>
-          <p class="cart-price-subtotal"><span>Descuento</span><span>@if(Cookie::get('descuento')==null)0€ @else -{{round(((Cookie::get('descuento')*$cart->total)/100),2)}}€ @endif</span></p>
+          <p class="cart-price-subtotal">
+            <span>Descuento</span>
+            <span>
+              @if(Cookie::get('descuento')!=null AND Cookie::get('descuento_type')!=null)
+                @if(Cookie::get('descuento_type')=='porcentaje') -{{round(((Cookie::get('descuento')*$cart->total)/100),2)}}€
+                @elseif(Cookie::get('descuento_type')=='fijo')-{{Cookie::get('descuento')}}€
+                @endif
+              @else
+                0€
+              @endif
+
+            </span>
+          </p>
           <p class="cart-price-subtotal"><span><del>Gastos de envío</del></span><span><del>4.15€</del></span></p> <!-- implementar gastos de envío -->
         </div>
-        <p class="cart-price-total"><b><span>TOTAL</span><span>@if(Cookie::get('descuento')==null){{ round($cart->total,2) }}€ @else {{round(($cart->total*(100-Cookie::get('descuento'))/100),2)}}€ @endif</span></b></p>
+        <p class="cart-price-total">
+          <b>
+            <span>TOTAL</span>
+            <span>
+              @if(Cookie::get('descuento')!=null AND Cookie::get('descuento_type')!=null)
+                @if(Cookie::get('descuento_type')=='porcentaje')
+                  {{round(($cart->total*(100-Cookie::get('descuento'))/100),2)}}€
+                @elseif(Cookie::get('descuento_type')=='fijo')
+                  {{round($cart->total-Cookie::get('descuento'))}}€
+                @endif
+              @else
+                {{ round($cart->total,2) }}€
+              @endif
+
+            </span>
+          </b>
+        </p>
       </div>
       <div>
         <p style="margin-bottom: 30px;color: #FFCF00; font-size: 13px; font-family: 'CoreSansC35' !important; width: 333px; line-height: 18px;">*Recordarte que para conservar mejor el alimento y evitar desperdicios, necesitamos recibir los pedidos antes de las 23:59h del Domingo. Te llegarán los platos el jueves de la semana siguiente.</p>

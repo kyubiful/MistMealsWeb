@@ -111,7 +111,10 @@
             <b>Descuento</b>
           </td>
           <td style="">
-            -{{round((($cart->total)*((Cookie::get('descuento'))/100)),2)}}€
+            @if(Cookie::get('descuento_type')=='porcentaje') -{{round((($cart->total)*((Cookie::get('descuento'))/100)),2)}}€
+            @elseif(Cookie::get('descuento_type')=='fijo') -{{Cookie::get('descuento')}}€
+            @else 0€
+            @endif
           </td>
         </tr>
       </table>
@@ -119,7 +122,15 @@
       </div>
       <div class="order-continue">
         <a href="{{ route('web.carts.index') }}">Volver</a>
-        <h4>Total: @if(Cookie::get('descuento')==null){{ round($cart->total,2) }}€ @else {{round(($cart->total*((100-Cookie::get('descuento'))/100)),2)}}€ @endif</h4>
+        <h4>Total:
+          @if(Cookie::get('descuento')==null)
+            {{ round($cart->total,2) }}€
+          @elseif(Cookie::get('descuento_type')=='porcentaje')
+            {{round(($cart->total*((100-Cookie::get('descuento'))/100)),2)}}€
+          @elseif(Cookie::get('descuento_type')=='fijo')
+            {{round($cart->total,2)-Cookie::get('descuento')}}€
+          @endif
+        </h4>
         <button type="submit">Continuar pago</button>
       </div>
     </form>

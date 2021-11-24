@@ -105,7 +105,10 @@
             <b>Descuento</b>
           </td>
           <td style="">
-            -{{round((($order->total)*((Cookie::get('descuento'))/100)),2)}}€
+            @if(Cookie::get('descuento')=='porcentaje') -{{round((($cart->total)*((Cookie::get('descuento'))/100)),2)}}€
+            @elseif(Cookie::get('descuento')=='fijo') -{{Cookie::get('descuento')}}€
+            @else 0€
+            @endif
           </td>
         </tr>
       </table>
@@ -115,8 +118,18 @@
   </div>
   <div class="order-continue">
   <a href="{{ route('web.orders.create') }}">Volver</a>
-    <h4 class="payment-amount">Total: @if(Cookie::get('descuento')==null){{ round($order->total,2) }}€ @else {{round(($order->total*((100-Cookie::get('descuento'))/100)),2)}}€ @endif</h4>
+    <h4 class="payment-amount">Total:
     @if(Cookie::get('descuento_type') != 'free')
+      @if(Cookie::get('descuento')!=null AND Cookie::get('descuento_type'!=null))
+        @if(Cookie::get('descuento_type')=='porcentaje')
+          {{round(($cart->total*((100-Cookie::get('descuento'))/100)),2)}}€
+        @elseif(Cookie::get('descuento_type')=='fijo')
+          {{round($cart->total,2)-Cookie::get('descuento')}}€
+        @endif
+      @else
+          {{ round($cart->total,2) }}€
+      @endif
+    </h4>
     {!! \App\Http\Controllers\Web\RedsysController::index($amount) !!}
     @else
     <a class="payment-btn-submit" id="btn_submit" name="btn_submit" href="{{route('web.holded.free')}}">Realizar pedido</a>
