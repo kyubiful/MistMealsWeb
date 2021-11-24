@@ -8,8 +8,12 @@ use App\Models\Plato;
 class BlackFridayController extends Controller
 {
     function index(){
-        $platos = Plato::all();
         $objetivo = Objetivo::all();
-        return view('web.blackfriday.index', compact('objetivo', 'platos'));
+        return view('web.blackfriday.index', compact('objetivo'));
+    }
+
+    function index2(){
+        $platos = Plato::all();
+        return view('web.blackfriday.index2', compact('platos'));
     }
 }

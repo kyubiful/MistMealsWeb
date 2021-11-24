@@ -53,6 +53,7 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::resource('/orders', 'OrderController')->only(['create', 'store']);
   Route::resource('/orders.payments', 'OrderPaymentController')->only(['create', 'store']);
 
+  Route::get('/blackfriday2', 'BlackFridayController@index2')->name('blackfriday2');
   Route::get('/blackfriday', 'BlackFridayController@index')->name('blackfriday');
 
   Route::post('/home/cpVerify', 'AvailableCPController@verifyCP')->name('verifyCP');

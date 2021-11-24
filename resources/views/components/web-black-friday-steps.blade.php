@@ -22,7 +22,7 @@
     </div>
   </div>
   <div style="display: flex; justify-content: center; margin-bottom: 40px;">
-    <x-global-primary-button type="link" url="/" name="Comencemos"/>
+    <x-global-primary-button type="link" url="/menu" name="Comencemos"/>
   </div>
 </section>
   <img class="web-blackfriday-steps-bottom-img" src="/img/blackfriday/Plato1.png"/>

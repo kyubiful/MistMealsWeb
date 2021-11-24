@@ -30,16 +30,14 @@ class OrderPaymentController extends Controller
   public function create(Order $order, Request $request)
   {
     $descuentoName = $request->cookie('descuento_name');
-
-    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique')->where('name', $descuentoName)->first();
-
+    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo')->where('name', $descuentoName)->first();
     $user = $request->user();
     $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
+    $user = User::findOrFail(auth()->user()->id);
+    $cart = $this->cartService->getFromCookie();
+    $amount = $cart->total;
 
-    if (in_array($user->cp, $availableCP) == false) {
-      return redirect()->back()->with('message', 'invalid cp');
-    }
-
+    if (in_array($user->cp, $availableCP) == false) return redirect()->back()->with('message', 'invalid cp');
 
     if ($discountCode != null) {
       if ($discountCode->unique == 1) {
@@ -53,14 +51,12 @@ class OrderPaymentController extends Controller
       }
     }
 
-    $user = User::findOrFail(auth()->user()->id);
-    $cart = $this->cartService->getFromCookie();
-
-    if ($request->cookie('descuento') == null) {
-      return view('web.payments.create')->with(['order' => $order, 'amount' => $cart->total, 'user' => $user]);
-    } else {
-      return view('web.payments.create')->with(['order' => $order, 'amount' => ($cart->total * ((100 - $request->cookie('descuento')) / 100)), 'user' => $user]);
+    if ($request->cookie('descuento') != null) {
+      if($request->cookie('descuento_type'=='porcentaje')) $amount = $cart->total * ((100 - $request->cookie('descuento')) / 100);
+      if($request->cookie('descuento_type'=='fijo')) $amount = $cart->total - $request->cookie('descuento');
     }
+
+    return view('web.payments.create')->with(['order' => $order, 'amount' => $amount, 'user' => $user, 'cart' => $cart]);
   }
 
   /**

@@ -30,6 +30,7 @@
                         <select name="tipo" id="" class="form-control">
                             <option value="porcentaje">Porcentaje</option>
                             <option value="free">Gratis</option>
+                            <option value="fijo">Fijo</option>
                         </select>
                     </div>
                     <div class="form-group col-1">

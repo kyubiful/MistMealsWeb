@@ -38,6 +38,11 @@
                                 @else
                                 <option value="free">Gratis</option>
                                 @endif
+                                @if($codigoDescuento->tipo == 'fijo')
+                                <option value="free" selected>Fijo</option>
+                                @else
+                                <option value="free">Fijo</option>
+                                @endif
                             </select>
                         </div>
                         <div class="form-group col-1">
