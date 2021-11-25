@@ -94,7 +94,7 @@
 @media (min-width: 992px) {
     .home-top-banner-section{
         flex-direction: row;
-        margin-top: 100px;
+        margin-top: 0px;
     }
 
     .home-top-banner-content-alacarta{

@@ -13,7 +13,7 @@ btn.addEventListener("click", () => {
 //   console.log(widthOutput);
 // })
 
-if (path == "/usuario/signup" || path == "/menu/dishes") {
+if (path == "/usuario/signup" || path == "/menu/dishes" || path == "/") {
   nav.classList.toggle("black");
 } else {
   window.addEventListener("scroll", () => {

@@ -47,6 +47,7 @@
     </div>
   </section>
 
+  <x-web-black-friday-top-banner/>
   <x-web-home-top-banner/>
   <x-web-home-cocinamos/>
   <x-web-home-best-plates :platos="$platos"/>
