@@ -111,9 +111,12 @@
             <b>Descuento</b>
           </td>
           <td style="">
-            @if(Cookie::get('descuento_type')=='porcentaje') -{{round((($cart->total)*((Cookie::get('descuento'))/100)),2)}}€
-            @elseif(Cookie::get('descuento_type')=='fijo') -{{Cookie::get('descuento')}}€
-            @else 0€
+            @if(Cookie::get('descuento_type')=='porcentaje')
+              -{{round((($cart->total)*((Cookie::get('descuento'))/100)),2)}}€
+            @elseif(Cookie::get('descuento_type')=='fijo')
+              -{{Cookie::get('descuento')}}€
+            @elseif(Cookie::get('descuento_type')=='free')
+              -{{$cart->total}}€
             @endif
           </td>
         </tr>
@@ -129,6 +132,8 @@
             {{round(($cart->total*((100-Cookie::get('descuento'))/100)),2)}}€
           @elseif(Cookie::get('descuento_type')=='fijo')
             {{round($cart->total,2)-Cookie::get('descuento')}}€
+          @elseif(Cookie::get('descuento_type')=='free')
+            0€
           @endif
         </h4>
         <button type="submit">Continuar pago</button>

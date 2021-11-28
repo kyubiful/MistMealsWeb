@@ -39,7 +39,7 @@ class OrderPaymentController extends Controller
 
     if (in_array($user->cp, $availableCP) == false) return redirect()->back()->with('message', 'invalid cp');
 
-    if ($discountCode != null) {
+    if (!is_null($discountCode)) {
       if ($discountCode->unique == 1) {
         if (count($user->discountCodes) > 0) {
           foreach ($user->discountCodes as $userDiscountCode) {
@@ -50,12 +50,14 @@ class OrderPaymentController extends Controller
         }
       }
     }
-
-    if ($request->cookie('descuento') != null) {
-      if($request->cookie('descuento_type'=='porcentaje')) $amount = $cart->total * ((100 - $request->cookie('descuento')) / 100);
-      if($request->cookie('descuento_type'=='fijo')) $amount = $cart->total - $request->cookie('descuento');
+    if (!is_null($request->cookie('descuento'))) {
+      if($request->cookie('descuento_type')=='porcentaje'){
+        $amount = $cart->total * ((100 - (int)$request->cookie('descuento')) / 100);
+      }
+      if($request->cookie('descuento_type')=='fijo'){
+        $amount = $cart->total - $request->cookie('descuento');
+      }
     }
-
     return view('web.payments.create')->with(['order' => $order, 'amount' => $amount, 'user' => $user, 'cart' => $cart]);
   }
 
