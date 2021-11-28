@@ -12,6 +12,11 @@ class BlackFridayController extends Controller
         return view('web.blackfriday.index', compact('objetivo'));
     }
 
+    function cybermonday(){
+        $objetivo = Objetivo::all();
+        return view('web.blackfriday.cybermonday', compact('objetivo'));
+    }
+
     function index2(){
         $platos = Plato::all();
         return view('web.blackfriday.index2', compact('platos'));
