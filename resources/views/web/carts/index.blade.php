@@ -82,6 +82,9 @@
       @if($cartService->countProducts() < 5)
       <a style="margin: auto;" class="mist_btn_disable" href="#">Tramitar pedido</a>
       <p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>
+      @elseif($cartService->countProducts() > 14 AND Cookie::get('descuento_type')=='free')
+      <a style="margin: auto;" class="mist_btn_disable" href="#">Tramitar pedido</a>
+      <p style="color: red; text-align: center;">*Máximo 14 platos para este código de descuento</p>
       @else
       <a style="margin: auto;" class="mist_btn" href="{{ route('web.orders.create') }}">Tramitar pedido</a>
       @endif

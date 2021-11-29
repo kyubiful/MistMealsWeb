@@ -26,6 +26,7 @@ class OrderController extends Controller
    */
   public function create(Request $request)
   {
+
     $cart = $this->cartService->getFromCookie();
     $user = User::findOrFail(auth()->user()->id);
     $descuentoName = $request->cookie('descuento_name');
@@ -51,10 +52,15 @@ class OrderController extends Controller
     }
 
     if ($numberProducts < 5) {
-      return redirect()->back()->with('message', 'Debe tener 5 platos en el carrito para poder realizar el pedido');
-    } else {
-      return view('web.orders.create')->with(['cart' => $cart, 'user' => $user]);
+      return redirect('/carts')->with('message', 'Debe tener 5 platos en el carrito para poder realizar el pedido');
     }
+
+    if($numberProducts > 14 AND $request->cookie('descuento_type') == 'free') {
+      return redirect('/carts')->with('message', 'Máximo 14 platos para este código');
+    }
+
+    return view('web.orders.create')->with(['cart' => $cart, 'user' => $user]);
+
   }
 
   /**

@@ -36,6 +36,7 @@ class OrderPaymentController extends Controller
     $user = User::findOrFail(auth()->user()->id);
     $cart = $this->cartService->getFromCookie();
     $amount = $cart->total;
+    $numberProducts = $this->cartService->countProducts();
 
     if (in_array($user->cp, $availableCP) == false) return redirect()->back()->with('message', 'invalid cp');
 
@@ -58,6 +59,15 @@ class OrderPaymentController extends Controller
         $amount = $cart->total - $request->cookie('descuento');
       }
     }
+
+    if($numberProducts < 4){
+      return redirect('/carts')->with('message', 'Debe tener 5 platos en el carrito para poder realizar el pedido');
+    }
+
+    if($request->cookie('descuento_type') == 'free' AND $numberProducts > 14){
+      return redirect('/carts')->with('message', 'Máximo 14 platos para este código');
+    }
+
     return view('web.payments.create')->with(['order' => $order, 'amount' => $amount, 'user' => $user, 'cart' => $cart]);
   }
 
