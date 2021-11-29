@@ -7,7 +7,7 @@
 .home-top-banner-section{
     display: flex;
     flex-direction: column;
-    margin-top: 0px;
+    margin-top: 75px;
 }
 
 .home-top-banner-content-alacarta{
@@ -94,7 +94,7 @@
 @media (min-width: 992px) {
     .home-top-banner-section{
         flex-direction: row;
-        margin-top: 0px;
+        margin-top: 100px;
     }
 
     .home-top-banner-content-alacarta{
