@@ -14,7 +14,7 @@
       </div>
       <div class="col-sm-7 col-lg-7 menu-form-step">
         <div class="about_section_content">
-          <div id="carouselExampleIndicators" class="vertical carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
+          <div id="carouselExampleIndicators" class="vertical carousel slide" data-ride="carousel" data-interval="false" data-wrap="false" data-touch="false">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">1</li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1">2</li>
@@ -40,21 +40,23 @@
               <div class="carousel-item">
                 <h2>¿CUÁL ES TU PESO Y ALTURA?</h2>
                 <div class="whdiv">
-                <div class="slide-wp">
-                  <label for="slide-weight">PESO</label>
-                  <span class="step1-weight-less" style="cursor: pointer;"><</span>
-                  <span class="range-text"><span id="range-value-weight" class="range-value">0</span> kg</span>
-                  <span class="step1-weight-more" style="cursor: pointer;">></span>
-                  <input type="range" class="slider-color form-range" id="slide-weight" name="peso" min="40" max="120" value={{ $user != null ? $user->peso : '80' }} step="0.1">
-                </div>
-                <div class="slide-wp mt-3">
-                  <label for="slide-height">ALTURA</label>
-                  <span class="step1-height-less" style="cursor: pointer;"><</span>
-                  <span class="range-text"><span id="range-value-height" class="range-value">0</span> m</span>
-                  <span class="step1-height-more" style="cursor: pointer;">></span>
-                  <input type="range" class="slider-color form-range" id="slide-height" name="altura" min="140" max="210" value="{{ $user != null ? $user->altura : '160' }}" step="1">
-                </div>
+                  <div class="slide-wp">
+                    <label for="slide-weight">PESO</label>
+                    <span class="step1-weight-less" style="cursor: pointer;">
+                      < </span>
+                        <span class="range-text"><span id="range-value-weight" class="range-value">0</span> kg</span>
+                        <span class="step1-weight-more" style="cursor: pointer;">></span>
+                        <input type="range" class="slider-color form-range" id="slide-weight" name="peso" min="40" max="120" value={{ $user != null ? $user->peso : '80' }} step="0.1">
                   </div>
+                  <div class="slide-wp mt-3">
+                    <label for="slide-height">ALTURA</label>
+                    <span class="step1-height-less" style="cursor: pointer;">
+                      < </span>
+                        <span class="range-text"><span id="range-value-height" class="range-value">0</span> m</span>
+                        <span class="step1-height-more" style="cursor: pointer;">></span>
+                        <input type="range" class="slider-color form-range" id="slide-height" name="altura" min="140" max="210" value="{{ $user != null ? $user->altura : '160' }}" step="1">
+                  </div>
+                </div>
               </div>
               <div class="carousel-item">
                 <h2>¿NIVEL DE EJERCICIO?</h2>
@@ -98,47 +100,7 @@
   </div>
 </section>
 
-<section class="subscribe_form_section section_padding parallaxie stay-alert-visible" style="background-color: #FF810C;">
-  <div class="container wow fadeInUp" data-wow-duration="1s">
-    <div class="row justify-content-center">
-      <div class="col-sm-10">
-        <div class="section_tittle ">
-          <div>
-            <h2 class="d-inline-flex" style="color: #F9F2E1"><span>¡Mantente alerta!</span></h2>
-          </div>
-          <div>
-            <p class="d-inline-flex description">Suscríbete a nuestra newsletter y entérate de todas las noticias en relación a nuestro movimiento, que hará que cambie la forma en la que te alimentes día a día...</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-10 col-xl-12">
-        <form action="https://mistmeals.us1.list-manage.com/subscribe/post?u=bcef03a2016fd98bf6181e989&amp;id=9c3cb16e3e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-          <div class="form-row justify-content-center">
-            <div class="col-xl-3 col-sm-4 wow fadeInDown pr-0 pad-0" data-wow-delay=".5s">
-              <input type="email" class="form-control cu_input" name="EMAIL" id="mce-EMAIL" placeholder="Déjanos tu email" required>
-              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bcef03a2016fd98bf6181e989_9c3cb16e3e" tabindex="-1" value=""></div>
-            </div>
-            <div class="col-xl-2 col-sm-4 wow fadeInDown pl-0 pad-0" data-wow-delay=".7s">
-              <button type="submit" class="cu_btn animate_btn text-white">Suscríbete</button>
-            </div>
-          </div>
-          <div class="form-row justify-content-center">
-            <div class="col-lg-4 mt-3 wow fadeInDown" data-wow-delay=".7s">
-              @if (!auth()->check())
-              <div class="custom-control custom-checkbox single_contact_form">
-                <input type="checkbox" class="custom-control-input" id="customControl" required>
-                <label class="custom-control-label" for="customControl" style="color: #F9F2E1;">Acepto la <a href="{{ route('web.politicaprivacidad') }}" target="_blank" class="base_color">política de privacidad</a> del sitio web</label>
-              </div>
-              @endif
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+@include('web.layout.newsletter')
 @endsection
 
 @push('custom-scripts')
@@ -146,6 +108,10 @@
 <script type="text/javascript">
   // Sex and training
   $(document).ready(function() {
+
+    $('.carousel').carousel({
+      touch: false
+    });
 
     $(".sex-field").on('click', function() {
       let $that = $(this);
@@ -161,34 +127,35 @@
       $that.addClass('active');
     });
 
-  });
+    // Slide
+    let slideW = document.getElementById("slide-weight");
+    let valueW = document.getElementById("range-value-weight");
 
-  // Slide
-  let slideW = document.getElementById("slide-weight");
-  let valueW = document.getElementById("range-value-weight");
-  valueW.innerHTML = slideW.value;
-  if(parseFloat(valueW.innerHTML)%1==0){
-    valueW.innerHTML = slideW.value+'.0';
-  }else{
     valueW.innerHTML = slideW.value;
-  }
 
-  slideW.oninput = function() {
-    if((this.value%1)==0){
-      console.log(this.value);
-      valueW.innerHTML = this.value+'.0';
-    }else{
-      valueW.innerHTML = this.value;
+    if (parseFloat(valueW.innerHTML) % 1 == 0) {
+      valueW.innerHTML = slideW.value + '.0';
+    } else {
+      valueW.innerHTML = slideW.value;
     }
-  }
 
-  let slideH = document.getElementById("slide-height");
-  let valueH = document.getElementById("range-value-height");
-  valueH.innerHTML = slideH.value;
+    slideW.oninput = function(e) {
+      if ((this.value % 1) == 0) {
+        valueW.innerHTML = this.value + '.0';
+      } else {
+        valueW.innerHTML = this.value;
+      }
+    }
 
-  slideH.oninput = function() {
-    valueH.innerHTML = this.value;
-  }
+    let slideH = document.getElementById("slide-height");
+    let valueH = document.getElementById("range-value-height");
+    valueH.innerHTML = slideH.value;
+
+    slideH.oninput = function() {
+      valueH.innerHTML = this.value;
+    }
+
+  }); 
 
   $('#contactForm1').submit(function(e) {
 

@@ -1,0 +1,130 @@
+.web-blackfriday-steps-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #FF810C;
+    height: 600px;
+    margin-bottom: 100px;
+    padding-top: 40px;
+}
+
+.web-blackfriday-steps-container h3{
+    font-family: TuskerGrotesk65 !important;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    max-width: 300px;
+    margin: auto;
+}
+
+.web-blackfriday-steps-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.web-blackfriday-steps-content .web-blackfriday-steps-content-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.web-blackfriday-steps-content .number{
+    text-align: center;
+    font-family: CoreSansC65 !important;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.web-blackfriday-steps-content .step-text{
+    text-align: center;
+    font-family: CoreSansC65 !important;
+    font-size: 23px;
+    max-width: 250px;
+}
+
+.web-blackfriday-steps-top-img{
+    margin-top: -88px;
+    width: 85px;
+    position: absolute;
+    margin-bottom: auto;
+    right: 0;
+}
+
+.web-blackfriday-steps-bottom-img{
+    width: 100px;
+    margin-top: -160px;
+    position: absolute;
+    margin-bottom: auto;
+    left: 0;
+}
+
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+    .web-blackfriday-steps-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 480px;
+        margin-bottom: 100px;
+    }
+
+    .web-blackfriday-steps-content .number{
+        font-size: 70px;
+        margin-bottom: 10px;
+    }
+
+    .web-blackfriday-steps-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .web-blackfriday-steps-container h3{
+        text-align: center;
+        font-size: 60px;
+        max-width: 600px;
+        margin-bottom: 20px;
+        margin: 0 auto;
+    }
+
+    .web-blackfriday-steps-content .step-text{
+        max-width: 300px;
+    }
+
+    .web-blackfriday-steps-top-img{
+        position: absolute;
+        margin-bottom: auto;
+        margin-top: -100px;
+        right: 0;
+        width: 240px;
+    }
+
+    .web-blackfriday-steps-bottom-img{
+        position: absolute;
+        margin-bottom: auto;
+        left: 0;
+        width: 240px;
+        margin-top: -249px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}

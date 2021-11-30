@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4972b4e09cbed543742ae4c272faae7",
+    "content-hash": "e5e86c246105576052b3b7629cda26e4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -496,6 +496,54 @@
                 }
             ],
             "time": "2020-11-24T19:55:57+00:00"
+        },
+        {
+            "name": "drewm/mailchimp-api",
+            "version": "v2.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drewm/mailchimp-api.git",
+                "reference": "c6cdfab4ca6ddbc3b260913470bd0a4a5cb84c7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/c6cdfab4ca6ddbc3b260913470bd0a4a5cb84c7a",
+                "reference": "c6cdfab4ca6ddbc3b260913470bd0a4a5cb84c7a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.0.*",
+                "vlucas/phpdotenv": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DrewM\\MailChimp\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Drew McLellan",
+                    "email": "drew.mclellan@gmail.com",
+                    "homepage": "http://allinthehead.com/"
+                }
+            ],
+            "description": "Super-simple, minimum abstraction MailChimp API v3 wrapper",
+            "homepage": "https://github.com/drewm/mailchimp-api",
+            "support": {
+                "issues": "https://github.com/drewm/mailchimp-api/issues",
+                "source": "https://github.com/drewm/mailchimp-api/tree/master"
+            },
+            "time": "2019-08-06T09:24:58+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -3290,6 +3338,192 @@
                 "stylesheet"
             ],
             "time": "2020-06-01T09:10:00+00:00"
+        },
+        {
+            "name": "sermepa/sermepa",
+            "version": "1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ssheduardo/sermepa.git",
+                "reference": "76530b5c14ef447c202c8714e62cedc6df57cfcc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ssheduardo/sermepa/zipball/76530b5c14ef447c202c8714e62cedc6df57cfcc",
+                "reference": "76530b5c14ef447c202c8714e62cedc6df57cfcc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sermepa\\Tpv\\": "src/Sermepa/Tpv/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo D",
+                    "email": "ssh.eduardo@gmail.com",
+                    "homepage": "http://ubublog.com/"
+                }
+            ],
+            "description": "Pasarela de pago Redsys, Sermepa",
+            "homepage": "https://github.com/ssheduardo/sermepa",
+            "keywords": [
+                "lacaixa",
+                "pasarela",
+                "payment",
+                "redsys",
+                "sabadell",
+                "sermepa"
+            ],
+            "support": {
+                "issues": "https://github.com/ssheduardo/sermepa/issues",
+                "source": "https://github.com/ssheduardo/sermepa/tree/1.3.2"
+            },
+            "time": "2021-06-16T08:42:38+00:00"
+        },
+        {
+            "name": "spatie/laravel-newsletter",
+            "version": "4.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-newsletter.git",
+                "reference": "c3b9061a8410650aeab1416ed76e1afb57adc685"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-newsletter/zipball/c3b9061a8410650aeab1416ed76e1afb57adc685",
+                "reference": "c3b9061a8410650aeab1416ed76e1afb57adc685",
+                "shasum": ""
+            },
+            "require": {
+                "drewm/mailchimp-api": "^2.4",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Newsletter\\NewsletterServiceProvider"
+                    ],
+                    "aliases": {
+                        "Newsletter": "Spatie\\Newsletter\\NewsletterFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Newsletter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://murze.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Manage newsletters in Laravel",
+            "homepage": "https://github.com/spatie/laravel-newsletter",
+            "keywords": [
+                "laravel",
+                "mailchimp",
+                "newsletter"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-newsletter/issues",
+                "source": "https://github.com/spatie/laravel-newsletter/tree/4.10.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2021-05-18T11:28:48+00:00"
+        },
+        {
+            "name": "ssheduardo/redsys-laravel",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ssheduardo/redsys-laravel.git",
+                "reference": "19b9c6aa8f0f34fc7adba72bb4fc52f89761aafd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ssheduardo/redsys-laravel/zipball/19b9c6aa8f0f34fc7adba72bb4fc52f89761aafd",
+                "reference": "19b9c6aa8f0f34fc7adba72bb4fc52f89761aafd",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^6.0|^7.0|^8.0",
+                "php": "^7.2|^8.0",
+                "sermepa/sermepa": "^1.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ssheduardo\\Redsys\\RedsysServiceProvider"
+                    ],
+                    "aliases": {
+                        "Redsys": "Ssheduardo\\Redsys\\Facades\\Redsys"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ssheduardo\\Redsys\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": ":Eduardo D",
+                    "email": "ssh.eduardo@gmail.com",
+                    "homepage": "http://ubublog.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Package redsys for laravel 8",
+            "homepage": "https://github.com/ssheduardo/redsys-laravel",
+            "keywords": [
+                "lacaixa",
+                "pasarela",
+                "payment",
+                "redsys",
+                "sabadell",
+                "tpv"
+            ],
+            "support": {
+                "issues": "https://github.com/ssheduardo/redsys-laravel/issues",
+                "source": "https://github.com/ssheduardo/redsys-laravel/tree/1.4.2"
+            },
+            "time": "2021-02-04T10:49:51+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8387,5 +8621,5 @@
         "php": "^7.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

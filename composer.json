@@ -19,6 +19,8 @@
         "laravel/ui": "^3.2",
         "laravelcollective/html": "^6.2",
         "nesbot/carbon": "^2.45",
+        "spatie/laravel-newsletter": "^4.10",
+        "ssheduardo/redsys-laravel": "~1.4.0",
         "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {

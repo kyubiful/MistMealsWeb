@@ -36,9 +36,9 @@ class MenuMail extends Mailable
         $pdf = PDF::loadView('pdf.menu', $data)->setPaper('a4', 'landscape');
 
         return $this->subject('Mist Meals - Menú')
-                    ->view('emails.menuMail', $data)
-                    ->attachData($pdf->output(), 'mist-meals-menu.pdf', [
-                        'mime' => 'application/pdf',
-                    ]);
+            ->view('emails.menuMail', $data)
+            ->attachData($pdf->output(), 'mist-meals-menu.pdf', [
+                'mime' => 'application/pdf',
+            ]);
     }
 }

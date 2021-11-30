@@ -1,0 +1,63 @@
+.web-home-banner{
+    width: 100vw;
+    margin-top: 50px;
+}
+
+.web-home-banner-container{
+    width: 100vw;
+    overflow: hidden;
+}
+
+.web-home-banner-container img{
+    width: 100vw;
+}
+
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+    .web-home-banner-container{
+        width: 100vw;
+        height: auto;
+    }
+
+    .web-home-banner-container img{
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}

@@ -1,4 +1,4 @@
-@extends('admin.layouts.auth')
+@extends('web.layout.master')
 
 @section('content')
 <div class="container-scroller">
@@ -6,15 +6,16 @@
         <div class="content-wrapper d-flex align-items-center auth px-0">
         <div class="row w-100 mx-0">
             <div class="col-lg-4 mx-auto">
-            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                <h4>@lang('global.app_reset_password')</h4>
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5 reset-password-container">
+                <h4>Recuperar contraseña</h4>
                 <h6 class="font-weight-light">
-                    @lang('global.app_change_notifications_field_1_label')</h6>
+                    Introduce tu dirección de correo electrónico
+                </h6>
                     {{-- <div class="card-header">{{ __('Reset Password') }}</div> --}}
                     <div class="card-body">
                         @if (session('status'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            Correo enviado con éxito, por favor verifique su bandeja de entrada
                         </div>
                         @endif
                         <form method="POST" class="pt-3" action="{{ route('password.email') }}">
@@ -27,19 +28,19 @@
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>El correo electrónico no existe</strong>
                                 </span>
                                 @enderror
                             </div>
                             <div class="mt-3">
                                 <button type="submit"
-                                    class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
-                                    @lang('global.app_send')
+                                    class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn reset-password-btn">
+                                    Enviar
                                 </button>
                             </div>
                             <div class="text-center mt-4 font-weight-light">
-                                {{ trans('auth.register.logintxt') }} <a href="{{ route('login') }}"
-                                    class="text-primary">{{ trans('auth.register.login') }}</a>
+                                ¿Tienes cuenta? <a href="{{ route('web.user.login') }}"
+                                    class="reset-password-link">Inicia sesión</a>
                             </div>
                         </form>
                     </div>
@@ -48,4 +49,5 @@
         </div>
     </div>
 </div>
+@include('web.layout.newsletter')
 @endsection

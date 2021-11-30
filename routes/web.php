@@ -33,19 +33,49 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::get('/menu/config/{id}', 'MenuController@step1')->name('menu.step1');
   Route::post('/menu/config/{id}', 'MenuController@step1Store')->name('menu.step1.store');
   Route::get('/menu/dishes', 'MenuController@step2')->name('menu.step2');
+  Route::post('/menu/platos/carts', 'MenuController@addToCart')->name('menu.addtocart');
   Route::post('/menu/mail', 'MenuController@sendMailMenu')->name('menu.mail');
   Route::get('/menu/pdf', 'MenuController@pdfMenu')->name('menu.pdf');
 
   Route::get('/contacto', 'ContactoController@index')->name('contacto');
-  Route::post('/contacto', 'ContactoController@store')->name('contacto.store');
+  Route::post('/contacto', 'ContactoController@send')->name('contacto.send');
 
   Route::get('/aviso-legal', 'CondicionesController@avisolegal')->name('avisolegal');
   Route::get('/politica-cookies', 'CondicionesController@cookies')->name('politicacookies');
   Route::get('/politica-privacidad', 'CondicionesController@privacidad')->name('politicaprivacidad');
 
+  Route::get('/platos', 'PlatosController@index')->name('platos');
+  Route::resource('/platos.carts', 'PlatosCartController')->only(['store', 'destroy']);
+  Route::post('/platos/{plato}/carts/remove', 'PlatosCartController@remove')->name('platos.carts.remove');
+  Route::resource('/carts', 'CartController')->only(['index']);
+  Route::post('carts/discount', 'CartController@verifyDiscountCode')->name('cart.discount');
+  Route::get('carts/discount/remove', 'CartController@removeDiscountCookie')->name('cart.discount.remove');
+  Route::resource('/orders', 'OrderController')->only(['create', 'store']);
+  Route::resource('/orders.payments', 'OrderPaymentController')->only(['create', 'store']);
+
+  // Route::get('/blackfriday2', 'BlackFridayController@index2')->name('blackfriday2');
+  // Route::get('/blackfriday', 'BlackFridayController@index')->name('blackfriday');
+  // Route::get('/cybermonday', 'BlackFridayController@cybermonday')->name('cybermonday');
+
+  Route::post('/home/cpVerify', 'AvailableCPController@verifyCP')->name('verifyCP');
+  Route::get('/home/endPopup', 'HomeController@endHomePopup')->name('endHomePopup');
+  Route::post('home/cpTime', 'HomeController@getDeliveryDay')->name('deliveryDayCP');
+
+  Route::post('/tpv', 'RedsysController@index')->name('tpv');
+
+  Route::get('/redsys/notification', 'RedsysController@comprobar');
+  Route::post('/redsys/notification', 'RedsysController@comprobar');
+  Route::get('/holded/discount', 'RedsysController@free')->name('holded.free');
+  Route::post('/holded/discount', 'RedsysController@free')->name('holded.free');
+
+  Route::post('/mailchimp/subscribe', 'MailChimpController@store')->name('mailchimp.store');
+
   Route::get('/revolucion', function () {
     return view('web.revolucion.index');
   })->name('revolucion');
+
+  Route::get('/faqs', 'FaqsController@index')->name('faqs');
+  Route::get('/como-funciona', 'ComoFuncionaController@index')->name('comofunciona');
 });
 
 Auth::routes();

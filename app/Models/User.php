@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Order;
+use App\Notifications\UserResetPassword;
 
 class User extends Authenticatable
 {
@@ -37,6 +39,22 @@ class User extends Authenticatable
         'objetivo_id',
         'estado_civil_id',
         'estado_laboral_id',
+        'address',
+        'address_number',
+        'address_letter',
+        'cp',
+        'region',
+        'province',
+        'city',
+        'invoice_address',
+        'invoice_address_number',
+        'invoice_address_letter',
+        'invoice_cp',
+        'invoice_region',
+        'invoice_province',
+        'invoice_city',
+        'invoice_nif',
+        'phone'
     ];
 
     /**
@@ -101,5 +119,25 @@ class User extends Authenticatable
     public function scopeIsAdmin($query)
     {
         return ($this->role != null && $this->role->name == 'admin');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'customer_id');
+    }
+
+    public function payments()
+    {
+        return $this->hasManyThrough(Payment::class, Order::class, 'customer_id');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new UserResetPassword($token));
+    }
+
+    public function discountCodes()
+    {
+        return $this->belongsToMany(DiscountCode::class);
     }
 }

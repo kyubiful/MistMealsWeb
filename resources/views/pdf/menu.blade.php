@@ -49,22 +49,26 @@
 
         img.claim {
             position: absolute;
-            top: 55px;
-            left: 120px;
-            width: 422px;
-            height: 661px;
+            top: 100px;
+            left: 170px;
+            width: 350px;
+            height: 590px;
         }
 
         img.tag {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: -40;
+            left: -55;
+            width: 550px;
+            z-index: 9999;
         }
 
         img.tag-bottom {
             position: absolute;
-            top: 610px;
+            top: 590px;
             left: 820px;
+            width: 376px;
+            z-index: 9999;
         }
 
         .top .user {
@@ -190,9 +194,9 @@
 @if($user->objetivo_id == 1)
     <img class="claim" src="img/pdf/MISTMEALS_DOBETTER_PNG.png">
 @elseif($user->objetivo_id == 2)
-    <img class="claim" src="img/pdf/MISTMEALS_MUSCLEUP_PNG.png">
-@elseif($user->objetivo_id == 3)
     <img class="claim" src="img/pdf/MISTMEALS_FOCUSON_PNG.png">
+@elseif($user->objetivo_id == 3)
+    <img class="claim" src="img/pdf/MISTMEALS_MUSCLEUP_PNG.png">
 @endif
 
 <!-- <div class="first-page-data">
@@ -205,11 +209,11 @@
 
 <div class="page-break"></div>
 @if($user->objetivo_id == 1)
-    <img class="tag" src="img/pdf/keeper_claim.png">
+    <img class="tag" src="img/pdf/Born_this_weight_Do_Better_Mistmeas.png">
 @elseif($user->objetivo_id == 2)
-    <img class="tag" src="img/pdf/promoter_claim.png">
+    <img class="tag" src="img/pdf/No_more_eatcuses_Focus_on_mistmeals.png">
 @elseif($user->objetivo_id == 3)
-    <img class="tag" src="img/pdf/fighter_claim.png">
+    <img class="tag" src="img/pdf/Stop_Burning_our_Calories_Muscle_up_mistmeals.png">
 @endif
 <div class="top">
     <div class="user">
@@ -236,13 +240,13 @@
     <table>
         <tr>
             <td></td>
-            <td class="table-title">LUNES</td>
-            <td class="table-title">MARTES</td>
-            <td class="table-title">MIERCOLES</td>
-            <td class="table-title">JUEVES</td>
-            <td class="table-title">VIERNES</td>
-            <td class="table-title">SABADO</td>
-            <td class="table-title">DOMINGO</td>
+            <td class="table-title">Día 1</td>
+            <td class="table-title">Día 2</td>
+            <td class="table-title">Día 3</td>
+            <td class="table-title">Día 4</td>
+            <td class="table-title">Día 5</td>
+            <td class="table-title">Día 6</td>
+            <td class="table-title">Día 7</td>
         </tr>
         <tr>
             <td class="table-title">COMIDA</td>
@@ -265,13 +269,13 @@
         <tr>
             <td class="table-title">TOTAL KCAL</td>
             @foreach($lunch as $i => $el)
-                <td class="table-result">{{ round( $lunch[$i]->calorias +  $dinner[$i]->calorias, 0 ) }}</td>
+                <td class="table-result">{{ round( $lunch[$i]->calorias*($lunch[$i]->peso/100) +  $dinner[$i]->calorias*($dinner[$i]->peso/100), 0 ) }}</td>
             @endforeach
         </tr>
         <tr>
             <td class="table-title">RESTO*</td>
             @foreach($lunch as $i => $el)
-                <td class="table-result">{{ round( $user->calorias_propuestas - ($lunch[$i]->calorias +  $dinner[$i]->calorias), 0 ) }}</td>
+                <td class="table-result">{{ round( $user->calorias_propuestas - ($lunch[$i]->calorias*($lunch[$i]->peso/100) +  $dinner[$i]->calorias*($dinner[$i]->peso/100)), 0 ) }}</td>
             @endforeach
         </tr>
     </table>
@@ -281,11 +285,11 @@
     </div>
 </div>
 @if($user->objetivo_id == 1)
-    <img class="tag-bottom" src="img/pdf/keeper_claim1.png">
+    <img class="tag-bottom" src="img/pdf/Born_this_weight_Do_Better_Mistmeas2.png">
 @elseif($user->objetivo_id == 2)
-    <img class="tag-bottom" src="img/pdf/promoter_claim1.png">
+    <img class="tag-bottom" src="img/pdf/No_more_eatcuses_Focus_on_mistmeals2.png">
 @elseif($user->objetivo_id == 3)
-    <img class="tag-bottom" src="img/pdf/fighter_claim1.png">
+    <img class="tag-bottom" src="img/pdf/Stop_Burning_our_Calories_Muscle_up_mistmeals2.png">
 @endif
 </body>
 </html>

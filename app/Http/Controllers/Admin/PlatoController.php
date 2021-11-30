@@ -123,6 +123,7 @@ class PlatoController extends Controller
       'plato_codigo_id' => $request->plato_codigo_id,
       'base_proteina_id' => $request->base_proteina_id,
       'plato_peso_id' => $request->plato_peso_id,
+      'peso' => $request->peso,
       'imagen_1' => $request->imagen_1,
       'imagen_2' => $request->imagen_2,
     ]);
@@ -206,7 +207,7 @@ class PlatoController extends Controller
     } else {
       $number = 1;
     }
-    
+
 
     if ($number >= 100) {
       $cod_plato_comp = $cod_plato_comp . '-' . $number;
@@ -228,6 +229,7 @@ class PlatoController extends Controller
       'plato_codigo_id' => $request->plato_codigo_id,
       'base_proteina_id' => $request->base_proteina_id,
       'plato_peso_id' => $request->plato_peso_id,
+      'peso' => $request->peso,
       'imagen_1' => $request->imagen_1 == null ? $plato->imagen_1 : $request->imgen_1,
       'imagen_2' => $request->imagen_2 == null ? $plato->imagen_2 : $request->imgen_2,
     ]);

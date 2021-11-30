@@ -12,14 +12,22 @@ use App\Models\Sexo;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
+use App\Services\CartService;
 
 class MenuController extends Controller
 {
+    public $cartService;
     //
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
 
     public function index(Request $request)
     {
@@ -98,27 +106,46 @@ class MenuController extends Controller
         $user = User::findOrFail($userId);
         $lunch = session('lunch');
         $dinner = session('dinner');
+        $lunchDishes = session('lunchDishes');
+        $dinnerDishes = session('dinnerDishes');
 
         if ($lunch == null && $dinner == null) {
 
-            $dishesArr = Helper::calculateDishes($user->calorias_propuestas);
+            $dishes = Helper::calculateDishes($user->calorias_propuestas);
 
-            $ids_ordered1 = implode(',', $dishesArr[0]);
-            $ids_ordered2 = implode(',', $dishesArr[1]);
-
-            $lunch = Plato::with('plato_alergeno', 'plato_etiqueta', 'plato_peso', 'plato_info_nutricional')->whereIn('id', $dishesArr[0])->orderByRaw("FIELD(id, $ids_ordered1)")->get();
-            $dinner = Plato::with('plato_alergeno', 'plato_etiqueta', 'plato_peso', 'plato_info_nutricional')->whereIn('id', $dishesArr[1])->orderByRaw("FIELD(id, $ids_ordered2)")->get();
+            $lunch =  $dishes[0];
+            $dinner = $dishes[1];
+            $lunchDishes = $dishes[2];
+            $dinnerDishes = $dishes[3];
 
             session(['lunch' => $lunch]);
             session(['dinner' => $dinner]);
-
+            session(['lunchDishes' => $lunchDishes]);
+            session(['dinnerDishes' => $dinnerDishes]);
         }
 
         $semana = ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5', 'Día 6', 'Día 7'];
 
         $bodyclass = "menu-step2";
 
-        return view('web.menu.step2', compact('user', 'lunch', 'dinner', 'semana', 'bodyclass'));
+        return view('web.menu.step2', compact('user', 'lunch', 'dinner', 'lunchDishes', 'dinnerDishes', 'semana', 'bodyclass'));
+    }
+
+    public function addToCart(Request $request)
+    {
+        $menu = $request->id;
+        $cart = $this->cartService->getFromCookieOrCreate();
+
+        for ($i = 0; $i < count($menu); $i++) {
+            $quantity = $cart->products()->find($menu[$i])->pivot->quantity ?? 0;
+
+            $cart->products()->syncWithoutDetaching([
+                $menu[$i] => ['quantity' => $quantity + 1],
+            ]);
+        }
+
+        $cookie = $this->cartService->makeCookie($cart);
+        return redirect('carts')->cookie($cookie);
     }
 
     public function pdfMenu(Request $request)
@@ -138,7 +165,6 @@ class MenuController extends Controller
                     'name' => "Name"
                 ]);
             }
-
         }
 
         $lunch = session('lunch');
@@ -188,7 +214,6 @@ class MenuController extends Controller
                     'name' => "Name"
                 ]);
             }
-
         }
 
         $lunch = session('lunch');
@@ -225,5 +250,4 @@ class MenuController extends Controller
 
         return PDF::loadView('pdf.menu', $data)->setPaper('a4', 'landscape')->stream('mist-meals-menu.pdf');
     }
-
 }

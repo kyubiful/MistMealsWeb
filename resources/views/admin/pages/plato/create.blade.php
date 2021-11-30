@@ -165,7 +165,7 @@
                                 </div><!-- Col -->
                             </div>
                             <div class="row form-group">
-                                <div class="col-sm-4">
+                                <div class="col-sm-2">
                                     <div class="form-group">
                                         {!! Form::label('plato_peso_id', trans('admin.page.plato.table.weight')) !!}
                                         {!! Form::select('plato_peso_id', $platos_pesos->pluck('valor', 'id'), old('plato_peso_id'), ['class' => 'form-control', 'id' => 'plato_peso_id', 'required']) !!}
@@ -173,11 +173,17 @@
                                 </div><!-- Col -->
                                 <div class="col-sm-4">
                                     <div class="form-group">
+                                        {!! Form::label('peso', trans('Cantidad (gramos)')) !!}
+                                        {!! Form::number('peso', 0, ['id' => 'peso', 'class' => 'form-control', 'placeholder' => 'peso', 'min' => 0, 'step' => '0.01', 'required']) !!}
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
                                         {!! Form::label('precio', trans('admin.page.plato.table.price')) !!}
                                         {!! Form::number('precio', 0, ['id' => 'precio', 'class' => 'form-control', 'placeholder' => trans('admin.page.menu.table.price'), 'min' => 0, 'step' => '0.01', 'required']) !!}
                                     </div>
                                 </div><!-- Col -->
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <div class="form-group">
                                         {!! Form::label('base_proteina_id', trans('admin.page.plato.table.protein')) !!}
                                         {!! Form::select('base_proteina_id', $bases_proteina->pluck('nombre', 'id'), old('base_proteina_id'), ['class' => 'form-control', 'id' => 'base_proteina_id', 'required']) !!}

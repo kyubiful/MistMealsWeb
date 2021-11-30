@@ -1,0 +1,124 @@
+.global-plates-plate-container-m.hidden{
+	z-index: -1;
+	visibility: hidden;
+}
+
+.global-plates-plate-container-l.hidden{
+	z-index: -1;
+	visibility: hidden;
+}
+
+.global-plates-plate-container-m{
+	width: 206px;
+	background-color: black;
+}
+
+.global-plates-plate-container-l{
+	width: 206px;
+	background-color: black;
+}
+
+.global-plates-plate-img{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.global-plates-plate-img img{
+	width: 206px;
+}
+
+.global-plates-plate-price-name{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.global-plates-plate-price-name form{
+	width: 100%;
+}
+
+.global-plates-plate-price{
+	font-family: TuskerGrotesk65 !important;
+	font-size: 18px;
+}
+
+.global-plates-plate-name{
+	font-family: TuskerGrotesk35 !important;
+	font-size: 14px;
+}
+
+.global-plates-plate-name-info-nutri span{
+	color: #F9F2E1;
+}
+
+.global-plates-plate-name-info-nutri span b{
+	color: #FFCF00;
+}
+
+.global-plates-plate-quantity{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin-top: 24px;
+
+}
+.globa-plates-plate-weight-btn-container{
+	width: 56px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.global-plates-plate-weight{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 16px;
+}
+
+.global-plates-plate-weight-btn-m{
+	width: 24px;
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.global-plates-plate-weight-btn-m.active{
+	background-color: #533FB8;
+}
+
+
+.global-plates-plate-weight-btn-l{
+	width: 24px;
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.global-plates-plate-weight-btn-l.active{
+	background-color: #533FB8;
+}
+
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}

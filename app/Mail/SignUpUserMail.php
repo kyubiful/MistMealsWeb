@@ -31,7 +31,7 @@ class SignUpUserMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mist Meals - Registro Usuario')
+        return $this->subject('Bienvenido al EATIVISM, bienvenido a MISTMEALS')
             ->view('emails.signUpUser');
     }
 }

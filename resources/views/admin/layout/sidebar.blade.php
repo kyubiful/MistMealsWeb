@@ -38,6 +38,12 @@
                     <span class="link-title">{{ trans('admin.menu.config') }}</span>
                 </a>
             </li>
+            <li class="nav-item {{ active_class(['admin/discount*']) }}">
+                <a href="{{ url('/admin/discount') }}" class="nav-link">
+                    <i class="link-icon" data-feather="layers"></i>
+                    <span class="link-title">Cupones de descuento</span>
+                </a>
+            </li>
 
             <li class="nav-item nav-category">Datos</li>
             <li class="nav-item {{ active_class(['admin/user*']) }}">

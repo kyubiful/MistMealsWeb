@@ -1,0 +1,38 @@
+.global-primary-btn-container{
+    background: none;
+    border: none;
+}
+
+.global-primary-btn{
+    background-image: url('/img/global/btn-primary.svg');
+    background-repeat: no-repeat;
+    min-width: 203px;
+    width: fit-content;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: CoreSansC35 !important;
+    color: #F9F2E1;
+    transition: all 0.2s ease;
+}
+
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}

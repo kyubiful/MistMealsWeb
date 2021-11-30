@@ -18,7 +18,7 @@ class MenusPlatosTableSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         DB::table('menus_platos')->truncate();
-        DB::insert('insert into menus_platos (id,menu_id,plato_id) values (?,?,?)', [1, 1, 1]);
+        // DB::insert('insert into menus_platos (id,menu_id,plato_id) values (?,?,?)', [1, 1, 1]);
 
         Schema::enableForeignKeyConstraints();
     }

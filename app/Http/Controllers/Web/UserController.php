@@ -17,6 +17,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
 class UserController extends Controller
 {
@@ -75,6 +76,7 @@ class UserController extends Controller
         ]);
 
         $user = User::create($request->all());
+        Newsletter::subscribeOrUpdate($request->email);
 
         // Login
         Auth::attempt($credentials);
@@ -86,7 +88,7 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return response()->json(array(
                 'status' => 500,
-                'message' => $e.getMessage()
+                'message' => $e->getMessage()
             ));
         }
 
@@ -95,11 +97,11 @@ class UserController extends Controller
             'message' => '',
             'link' => route('web.home')
         ));
-
     }
 
     public function profile(Request $request)
     {
+
         if (!(auth()->check())) {
             return redirect()->route('web.home');
         }
@@ -141,7 +143,6 @@ class UserController extends Controller
             'status' => 200,
             'message' => 'Datos guardados correctamente!',
         ));
-
     }
 
     public function login(Request $request)
@@ -171,5 +172,4 @@ class UserController extends Controller
 
         return redirect()->route('web.home');
     }
-
 }

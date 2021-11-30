@@ -1,0 +1,232 @@
+.home-top-banner-section a{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.home-top-banner-section{
+    display: flex;
+    flex-direction: column;
+    margin-top: 75px;
+}
+
+.home-top-banner-content-alacarta{
+    background-image: url('/img/home/alacarta.png');
+    background-repeat: no-repeat;
+    height: 324px;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.home-top-banner-content-mealplan{
+    background-image: url('/img/home/yourmealplan.png');
+    background-repeat: no-repeat;
+    height: 324px;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.home-top-banner-content-name-box{
+    background-color: rgba(255,255,255,0.2);
+    height: 97px;
+    border: 1px solid white;
+    width: 100%;
+}
+
+.home-top-banner-content-box-title-desktop{
+    display: none;
+}
+
+.home-top-banner-content-name-box .banner-padding{
+    padding: 5px;
+}
+
+.home-top-banner-content-name-box-content{
+    display: flex;
+    flex: wrap;
+    align-items: center;
+    justify-content: start;
+}
+
+.home-top-banner-content-box-title .first{
+    font-family: TuskerGrotesk35 !important;
+    font-size: 42px;
+}
+
+.home-top-banner-content-box-title .second{
+    font-family: TuskerGrotesk65;
+    font-size: 40px;
+    -webkit-text-stroke: 1px white;
+    color: rgba(255,255,255,0);
+}
+
+.home-top-banner-content-box-alacarta-text{
+    font-size: 11px;
+    line-height: 15.2px;
+    width: 27%;
+    margin-left: 2px;
+}
+
+.home-top-banner-content-box-mealplan-text{
+    font-size: 11px;
+    line-height: 15.2px;
+    width: 24%;
+    margin-left: 2px;
+}
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+    .home-top-banner-section{
+        flex-direction: row;
+        margin-top: 100px;
+    }
+
+    .home-top-banner-content-alacarta{
+        height: 575px;
+        width: 50vw;
+    }
+
+    .home-top-banner-content-mealplan{
+        height: 575px;
+        width: 50vw;
+    }
+
+    .banner-padding{
+        height: 100%;
+    }
+
+    .home-top-banner-content-name-box{
+        height: 184px;
+    }
+
+    .home-top-banner-content-name-box:hover{
+        background-color: #533FB8;
+        border: 1px solid #533FB8;
+        transition: all .3s ease-in-out;
+    }
+
+    .home-top-banner-content-box-title-container .first{
+        font-family: TuskerGrotesk35 !important;
+        font-size: 80px;
+        line-height: 86px;
+        width: 357px;
+    }
+
+    .home-top-banner-content-box-title-alacarta .first-alacarta{
+        font-family: TuskerGrotesk35 !important;
+        font-size: 80px;
+        line-height: 86px;
+        width: 235px;
+    }
+
+    .home-top-banner-content-box-mealplan-text .second{
+        font-family: TuskerGrotesk65 !important;
+        font-size: 35px;
+        line-height: 40px;
+        -webkit-text-stroke: 1px white;
+        color: rgba(255,255,255,0);
+    }
+
+    .home-top-banner-content-box-title-desktop{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .home-top-banner-content-box-title-container .dot{
+        width: 10px;
+    }
+
+    .home-top-banner-content-box-title-alacarta{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 255px;
+        height: 172px;
+    }
+
+    .home-top-banner-content-box-title{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 367px;
+        height: 172px;
+    }
+
+    .home-top-banner-content-box-title-container{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    .home-top-banner-right-desktop{
+        display: flex;
+        align-items: center;
+    }
+
+    .home-top-banner-right-desktop-container{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+
+    }
+
+    .home-top-banner-desktop-go{
+        margin-top: 12px;
+        height: 25px;
+    }
+
+    .home-top-banner-right-desktop-text{
+        margin-left: 10px;
+        line-height: 21px;
+        max-width: 275px;
+    }
+
+    .home-top-banner-content-box-mealplan-text{
+        width: 100%;
+        margin-left: 10px;
+    }
+
+    .home-top-banner-content-name-box .banner-padding{
+        padding: 1.2%;
+    }
+    .home-top-banner-do-better-img-container{
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 113px;
+        position: absolute;
+    }
+
+    .home-top-banner-do-better-img{
+        background-image: url('/img/home/dobetter.png');
+        background-repeat: no-repeat;
+        width: 246px;
+        height: 113px;
+        z-index: 4;
+    }
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}

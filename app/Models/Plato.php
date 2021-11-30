@@ -21,6 +21,8 @@ class Plato extends Model
     'plato_peso_id',
     'imagen_1',
     'imagen_2',
+    'peso',
+    'active'
   ];
 
   public function plato_codigo()
@@ -66,7 +68,7 @@ class Plato extends Model
   public function getUrlImage1Attribute()
   {
     if ($this->imagen_1 && existsResource($this->getFolder() . $this->imagen_1)) {
-      return getUrlResource($this->getFolder() . $this->imagen_1);
+      return 'storage/'.$this->getFolder() . $this->imagen_1;
     }
 
     return '/assets/images/no-product.png';
@@ -75,7 +77,7 @@ class Plato extends Model
   public function getUrlImage2Attribute()
   {
     if ($this->imagen_2 && existsResource($this->getFolder() . $this->imagen_2)) {
-      return getUrlResource($this->getFolder() . $this->imagen_2);
+      return 'storage/'.$this->getFolder() . $this->imagen_2;
     }
 
     return '/assets/images/no-product.png';
@@ -94,4 +96,18 @@ class Plato extends Model
   {
     return '/plato/' . $this->id . '/';
   }
+
+  public function carts(){
+    return $this->morphedByMany(Cart::class, 'productable')->withPivot('quantity');
+  }
+
+  public function orders(){
+    return $this->morphedByMany(Order::class, 'productable')->withPivot('quantity');
+  }
+
+  public function getTotalAttribute()
+  {
+    return $this->pivot->quantity * $this->precio;
+  }
+
 }

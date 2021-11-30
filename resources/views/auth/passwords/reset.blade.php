@@ -1,4 +1,4 @@
-@extends('admin.layouts.auth')
+@extends('web.layout.master')
 
 @section('content')
 <div class="container-scroller">
@@ -6,10 +6,11 @@
             <div class="content-wrapper d-flex align-items-center auth px-0">
             <div class="row w-100 mx-0">
                 <div class="col-lg-4 mx-auto">
-                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                    <h4> @lang('global.app_forgot_password')</h4>
+                <div class="auth-form-light text-left py-5 px-4 px-sm-5 new-password-container">
+                    <h4> Contraseña nueva </h4>
                     <h6 class="font-weight-light">
-                        @lang('global.app_change_notifications_field_1_label')</h6>
+                        Por favor, introduzca una nueva contraseña 
+                    </h6>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('password.update') }}">
@@ -22,7 +23,7 @@
                                     placeholder="Email">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>Correo electrónico no válido</strong>
                                 </span>
                                 @enderror
                             </div>
@@ -30,28 +31,28 @@
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
                                     required autocomplete="new-password"
-                                    placeholder="@lang('global.app_new_password')">
+                                    placeholder="nueva contraseña">
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>La contraseña no coincide</strong>
                                 </span>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <input id="password-confirm" type="password" class="form-control"
                                     name="password_confirmation" required autocomplete="new-password"
-                                    placeholder="@lang('global.app_password_confirm')">
+                                    placeholder="Confirme nueva contraseña">
                             </div>
                             <div class="form-group mb-0">
 
                                 <button type="submit"
-                                    class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
-                                    {{ __('Reset Password') }}
+                                    class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn new-password-btn">
+                                    Restablecer contraseña
                                 </button>
 
                                 <div class="text-center mt-4 font-weight-light">
-                                        {{ trans('auth.register.logintxt') }} <a href="{{ route('login') }}"
-                                            class="text-primary">{{ trans('auth.register.login') }}</a>
+                                        ¿Tienes cuenta? <a href="{{ route('web.user.login') }}"
+                                            class="new-password-link">Inicia sesión</a>
                                 </div>
                             </div>
                         </form>
@@ -61,4 +62,5 @@
         </div>
     </div>
 </div>
+@include('web.layout.newsletter')
 @endsection

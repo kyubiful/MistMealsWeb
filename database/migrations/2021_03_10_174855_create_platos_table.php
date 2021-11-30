@@ -26,6 +26,7 @@ class CreatePlatosTable extends Migration
             $table->foreignId('plato_codigo_id')->nullable()->constrained('platos_codigos');
             $table->foreignId('base_proteina_id')->nullable()->constrained('base_proteina');
             $table->foreignId('plato_peso_id')->nullable()->constrained('platos_pesos');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
