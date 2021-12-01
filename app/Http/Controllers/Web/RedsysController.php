@@ -385,11 +385,13 @@ class RedsysController extends Controller
 
 				$payment->save();
 
-				if ($discountCode!=null AND $discountCode->unique == 1) {
-					$user->discountCodes()->attach($discountCode->id);
+				if ($discountCode!=null) {
+					if($discountCode->unique == 1){
+						$user->discountCodes()->attach($discountCode->id);
+					}
+					$discountCode->uses = $discountCode->uses + 1;
+					$discountCode->save();
 				}
-				$discountCode->uses = $discountCode->uses + 1;
-				$discountCode->save();
 
 				Order::whereId($order_id)->update(['status' => 'pagado']);
 
