@@ -205,8 +205,10 @@
     .home-top-banner-content-name-box .banner-padding{
         padding: 1.2%;
     }
-    .home-top-banner-do-better-img-container{
+
+    .home-top-banner-envio-img-container{
         margin-top: 30px;
+        margin-left: -17px;
         display: flex;
         justify-content: center;
         width: 100%;
@@ -214,11 +216,29 @@
         position: absolute;
     }
 
-    .home-top-banner-do-better-img{
-        background-image: url('/img/home/dobetter.png');
+    .home-top-banner-envio-img{
+        background-image: url('/img/home/envio.svg');
         background-repeat: no-repeat;
-        width: 246px;
+        width: 322px;
+        height: 178px;
+        z-index: 4;
+    }
+
+    .home-top-banner-discount-img-container{
+        margin-top: 156px;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
         height: 113px;
+        position: absolute;
+    }
+
+    .home-top-banner-discount-img{
+        background-image: url('/img/home/discount.svg');
+        background-repeat: no-repeat;
+        width: 322px;
+        height: 199px;
         z-index: 4;
     }
 }
