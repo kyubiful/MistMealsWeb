@@ -7,9 +7,8 @@
   </div>
 </div>
   @if(Cookie::get('newsletterpopup')!=1)
-    <x-web-home-popup-discount/>
+    <!-- <x-web-home-popup-discount/> -->
   @endif
-
   @if(session()->has('popupCp2') AND session()->get('popupCp2')==2 AND Cookie::get('popupCpEnd') == false)
   <section class="home-popup-container">
     <div class="home-popup-content">
