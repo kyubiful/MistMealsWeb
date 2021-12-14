@@ -28,6 +28,9 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::get('/usuario/logout', 'UserController@logout')->name('user.logout');
   Route::get('/usuario/profile', 'UserController@profile')->name('user.profile');
   Route::post('/usuario/profile/edit', 'UserController@profileEdit')->name('user.profile.edit');
+  Route::get('/usuario/loginSignup', 'UserController@loginSignup')->name('user.loginSignup');
+  Route::post('/usuario/signup/storeCart', 'UserController@signupStoreCart')->name('user.signup.storeCart');
+  Route::post('/usuario/loginCart', 'UserController@loginCart')->name('user.loginCart');
 
   Route::get('/menu', 'MenuController@index')->name('menu');
   Route::get('/menu/config/{id}', 'MenuController@step1')->name('menu.step1');
