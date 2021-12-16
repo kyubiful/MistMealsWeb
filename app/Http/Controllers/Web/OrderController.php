@@ -17,7 +17,7 @@ class OrderController extends Controller
   public function __construct(CartService $cartService)
   {
     $this->cartService = $cartService;
-    $this->middleware('user.auth');
+    $this->middleware('user.authCart');
   }
   /**
    * Show the form for creating a new resource.
