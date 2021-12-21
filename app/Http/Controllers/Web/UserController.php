@@ -64,6 +64,7 @@ class UserController extends Controller
 
     public function signupStore(Request $request)
     {
+
         // Check
         if (User::where('email', $request->email)->exists()) {
             return response()->json(array(

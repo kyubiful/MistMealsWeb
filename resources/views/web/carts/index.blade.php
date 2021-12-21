@@ -28,7 +28,7 @@
             <input type="text" name="discount_name" placeholder="Código descuento">
             <input type="submit" value="Aplicar">
           </form>
-          @if(Cookie::get('descuento')!=null AND Cookie::get('descuento_type')!=null)
+          @if(Cookie::get('descuento') != null AND Cookie::get('descuento_type') != null)
           <p>Descuento aplicado:
             @if(Cookie::get('descuento_type')=='fijo')
               {{Cookie::get('descuento')}}€

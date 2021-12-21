@@ -3606,7 +3606,7 @@ if (popupMsg != null) {
 
 // global
 
-let newsletterBtn = document.querySelector('.newsletter-btn');
+let newsletterBtn = document.querySelector('.newsletter-btn')
 
 newsletterBtn.addEventListener('click', () => {
 
@@ -3616,9 +3616,122 @@ newsletterBtn.addEventListener('click', () => {
     if (typeof(url) != 'undefined') {
       window.location = url;
     }
-  };
+  }
   gtag('event', 'conversion', {
       'send_to': 'AW-10805779259/EFI4CNvl3YMDELu2zKAo',
       'event_callback': callback
-  });
+  })
 })
+
+if (window.location.href.indexOf("orders/create") > -1) {
+
+  let newAccountPaymentBtn = document.querySelector('#new-account-btn')
+  let newAccountPaymentPassword = document.querySelector('.payment-password')
+  let newAccountPaymentConfirmPassword = document.querySelector('.payment-conf-password')
+  let newAccountBoolean = document.querySelector('.new-account-payment-boolean')
+  let orderContinueBtn = document.querySelector('.order-continue-btn')
+  let newAccountPaymentEmail = document.querySelector('input[type="email"]')
+  let paymentPasswordErrorMsg = document.querySelector('.payment-password-error-msg')
+
+  // Solo funciona si existen los campos de usuarios no registrados
+
+  if(newAccountPaymentEmail != null) {
+
+    // Si le damos atrás en el navegador y tiene datos en el correo setea el disable del botón a false
+    window.onload = () => {
+      if(newAccountPaymentEmail.value != '') {
+        orderContinueBtn.disabled = false
+      }
+    }
+
+  // Input password requerido si se quiere crear una cuenta nueva
+    newAccountPaymentBtn.addEventListener('click', () => {
+      newAccountPaymentPassword.toggleAttribute('required')
+      newAccountPaymentConfirmPassword.toggleAttribute('required')
+      if(newAccountBoolean.value == 'false') {
+        newAccountBoolean.value = true
+
+        if(newAccountPaymentEmail.value == '' || newAccountPaymentPassword.value == '' || newAccountPaymentConfirmPassword.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+
+      } else {
+        newAccountBoolean.value = false
+        if(newAccountPaymentEmail.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      }
+    })
+
+  // Deshabilitar el botón de pago si no se ha puesto al menos el correo
+    if(newAccountPaymentEmail.value == '') {
+      orderContinueBtn.disabled = true
+    }
+
+    newAccountPaymentEmail.addEventListener('keyup', () => {
+      if(newAccountBoolean.value == 'false') {
+        if(newAccountPaymentEmail.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      } else {
+        if(newAccountPaymentEmail.value == '' || newAccountPaymentPassword.value == '' || newAccountPaymentConfirmPassword.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      }
+    })
+
+    newAccountPaymentPassword.addEventListener('keyup', () => {
+      if(newAccountBoolean.value == 'false') {
+        if(newAccountPaymentEmail.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      } else {
+        if(newAccountPaymentEmail.value == '' || newAccountPaymentPassword.value == '' || newAccountPaymentConfirmPassword.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+
+        if(newAccountPaymentPassword.value == newAccountPaymentConfirmPassword.value) {
+          paymentPasswordErrorMsg.innerHTML = ''
+        } else {
+          paymentPasswordErrorMsg.innerHTML = '*Las contraseñas no coinciden'
+        }
+      }
+    })
+
+    newAccountPaymentConfirmPassword.addEventListener('keyup', () => {
+      if(newAccountBoolean.value == 'false') {
+        if(newAccountPaymentEmail.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      } else {
+        if(newAccountPaymentEmail.value == '' || newAccountPaymentPassword.value == '' || newAccountPaymentConfirmPassword.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+
+        if(newAccountPaymentPassword.value == newAccountPaymentConfirmPassword.value) {
+          paymentPasswordErrorMsg.innerHTML = ''
+        } else {
+          paymentPasswordErrorMsg.innerHTML = '*Las contraseñas no coinciden'
+        }
+      }
+    })
+
+  }
+
+}

@@ -7,7 +7,7 @@
   </div>
   @else
   <div>
-    <form class="order-form" method="POST" action="{{ route('web.orders.store') }}">
+    <form class="order-form" method="POST" action="">
       @csrf
       <div class="order-form-container">
 
@@ -41,6 +41,11 @@
         <div class="order-inp-1">
           <p>Ciudad</p> <input class="order-inp" type="text" name="city" id="" value="{{ $user->city }}" disabled>
         </div>
+        @if($register == false)
+        <div class="order-inp-1">
+          <p>Email</p> <input class="order-inp" type="email" name="city" id="" value="{{$email}}" disabled>
+        </div>
+        @endif
         @if($order->invoice == 1)
         <h1>Detalles de facturación</h1>
         <div class="order-form-content">
@@ -120,7 +125,7 @@
     </form>
   </div>
   <div class="order-continue">
-  <a href="{{ route('web.orders.create') }}">Volver</a>
+  <a href="{{ route('web.orders.create') }}" class="order-payment-back-btn">Volver</a>
     <h4 class="payment-amount">Total:
       @if(Cookie::get('descuento_type')!='free')
         {{$amount}}€
@@ -129,7 +134,7 @@
       @endif
     </h4>
     @if(Cookie::get('descuento_type') != 'free')
-    {!! \App\Http\Controllers\Web\RedsysController::index($amount) !!}
+    {!! \App\Http\Controllers\Web\RedsysController::index($user, $amount) !!}
     @else
     <a class="payment-btn-submit" id="btn_submit" name="btn_submit" href="{{route('web.holded.free')}}">Realizar pedido</a>
     @endif
@@ -143,8 +148,6 @@
 <script type="text/javascript">
   paymentBtnSubmit = document.querySelector('.payment-btn-submit')
   paymentAmount = document.querySelector('.payment-amount')
-
-  console.log(paymentBtnSubmit)
 
   let amount = paymentAmount.innerHTML
   amount = amount.split(" ")

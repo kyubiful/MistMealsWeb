@@ -35,8 +35,17 @@ class CartController extends Controller
         $discountCode = DB::table('discount_code')->select('name', 'value', 'tipo', 'start', 'end', 'active','unique')->where('name', $discount)->first();
         $time = Carbon::now()->toDateTimeString();
 
+        if($request->user() == null) {
+
+          if(!is_null($discountCode) AND $discountCode->unique == 1) {
+            return redirect()->back()->with('discountMessageError', 'Este código no puede ser usado sin estar registrado');
+          }
+
+        }
+
+
         if($discountCode==null OR ($discountCode->start > $time OR $discountCode->end < $time OR $discountCode->active == 0))
-        { 
+        {
           return redirect()->back()->with('discountMessageError', 'Código no válido');
         }
 
@@ -64,7 +73,7 @@ class CartController extends Controller
               return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
             }
           }else{
-            return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto'); 
+            return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
           }
         }else{
           return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');

@@ -2786,6 +2786,23 @@ body .platos-count-content p {
   font-size: 40px;
 }
 
+.order-payment-back-btn {
+  background-color: #533fb8;
+  color: #f9f2e1 !important;
+  border: 1px solid #533fb8;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: 0.3s;
+}
+
+.order-payment-back-btn:hover {
+  background-color: #f9f2e1;
+  color: #533fb8;
+  border: 1px solid #533fb8;
+}
+
 .order-form button {
   background-color: #533fb8;
   color: #f9f2e1;
@@ -2802,7 +2819,16 @@ body .platos-count-content p {
   color: #533fb8;
   border: 1px solid #533fb8;
 }
+.order-form button:disabled {
+  opacity: .5;
+  background-color: grey;
+  color: black;
+  border-color: grey;
+}
 
+.order-form button:disabled:hover {
+  background-color: grey;
+}
 .order-accordion-button input[type="checkbox"] {
   width: 14px;
   height: 14px;

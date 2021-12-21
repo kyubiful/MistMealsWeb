@@ -73,6 +73,39 @@
           </div>
         </div>
       </div>
+        @if($register == false)
+        <div class="order-inp-1">
+          <p>Email</p> <input class="order-inp" type="email" name="email" id="" value="" required>
+        </div>
+        <div style="width: 100%;">
+          <div class="accordion" id="accordionExample">
+            <div class="card" style="border: none;">
+
+              <div class="card-header" id="headingOne" style="margin-left: 1%; padding: 0px;">
+                <h2 class="mb-0">
+                  <p id="new-account-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    ¿Quieres crearte una cuenta?
+                  </p>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body" style="margin: 0px; margin-top: 1%; padding: 0px;">
+                  <div class="order-inp-1">
+                    <p>Contraseña</p> <input class="order-inp payment-password" type="password" name="password" id="" value="" >
+                    <input type="hidden" class="new-account-payment-boolean" name="new_account_payment_boolean" value="false"/>
+                  </div>
+                  <div class="order-inp-1">
+                    <p>Confirmación de contraseña</p> <input class="order-inp payment-conf-password" type="password" name="confirm_password" id="" value="" >
+                  </div>
+                </div>
+                <p class="payment-password-error-msg" style="color: red; margin-left: 1%;"></p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        @endif
 
       <table>
         <thead>
@@ -124,7 +157,7 @@
       @endif
       </div>
       <div class="order-continue">
-        <a href="{{ route('web.carts.index') }}">Volver</a>
+        <a href="{{ route('web.carts.index') }}" class="order-payment-back-btn">Volver</a>
         <h4>Total:
           @if(Cookie::get('descuento')==null)
             {{ round($cart->total,2) }}€
@@ -136,7 +169,7 @@
             0€
           @endif
         </h4>
-        <button type="submit">Continuar pago</button>
+        <button type="submit" class="order-continue-btn">Continuar pago</button>
       </div>
     </form>
   </div>
