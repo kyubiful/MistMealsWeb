@@ -2687,6 +2687,39 @@ body .platos-count-content p {
 }
 
 /* Order view */
+.order-payment-back-btn {
+  background-color: #533fb8;
+  color: #f9f2e1 !important;
+  border: 1px solid #533fb8;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: 0.3s;
+}
+
+.order-payment-back-btn:hover {
+  background-color: #f9f2e1;
+  color: #533fb8 !important;
+  border: 1px solid #533fb8;
+}
+
+.order-payment-new-user {
+  background-color: #533fb8;
+  color: #f9f2e1 !important;
+  border: 1px solid #533fb8;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: 0.3s;
+}
+
+.order-payment-new-user:hover {
+  background-color: #f9f2e1;
+  color: #533fb8 !important;
+  border: 1px solid #533fb8;
+}
 
 .order-form-container {
   padding-top: 200px;
@@ -2784,23 +2817,6 @@ body .platos-count-content p {
 
 .order-form h4 {
   font-size: 40px;
-}
-
-.order-payment-back-btn {
-  background-color: #533fb8;
-  color: #f9f2e1 !important;
-  border: 1px solid #533fb8;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  transition: 0.3s;
-}
-
-.order-payment-back-btn:hover {
-  background-color: #f9f2e1;
-  color: #533fb8;
-  border: 1px solid #533fb8;
 }
 
 .order-form button {
@@ -4342,6 +4358,40 @@ body .platos-count-content p {
     overflow-x: auto;
   }
 
+  .order-payment-new-user {
+    background-color: #533fb8;
+    color: #f9f2e1 !important;
+    border: 1px solid #533fb8;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+  }
+
+  .order-payment-new-user:hover {
+    background-color: #f9f2e1;
+    color: #533fb8 !important;
+    border: 1px solid #533fb8;
+  }
+
+  .order-payment-back-btn {
+    background-color: rgba(0,0,0,0) !important;
+    color: rgba(0,0,0,0) !important;
+    border: none;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+  }
+
+  .order-payment-back-btn:hover {
+    background-color: rgba(0,0,0,0) !important;
+    color: rgba(0,0,0,0) !important;
+    border: none;
+  }
+
   .order-continue {
     margin-bottom: -60px;
   }
@@ -4350,6 +4400,7 @@ body .platos-count-content p {
     color: rgba(0, 0, 0, 0);
     background: url("../img/orders/Arrow.png") no-repeat;
     margin-bottom: 0px;
+    background-position: center;
   }
 
   .menu-step2-plates-count-content {

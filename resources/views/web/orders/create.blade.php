@@ -83,7 +83,7 @@
 
               <div class="card-header" id="headingOne" style="margin-left: 1%; padding: 0px;">
                 <h2 class="mb-0">
-                  <p id="new-account-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <p class="order-payment-new-user" id="new-account-btn" style="margin-bottom: 15px; width: fit-content;" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     ¿Quieres crearte una cuenta?
                   </p>
                 </h2>
