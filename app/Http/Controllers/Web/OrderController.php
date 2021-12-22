@@ -43,6 +43,14 @@ class OrderController extends Controller
       $user = new User;
       $register = false;
 
+      if(!session('user')) {
+        session(['user' => $user]);
+      }
+
+      if(!session('email')) {
+        session(['email' => '']);
+      }
+
     } else {
       $user = User::findOrFail(auth()->user()->id);
       $register = true;
@@ -165,7 +173,10 @@ class OrderController extends Controller
         }
 
       } else {
-        session(['email' => $request->email]);
+
+          session(['email' => $request->email]);
+          session(['user' => $user]);
+
       }
 
     } else {

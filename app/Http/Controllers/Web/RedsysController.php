@@ -197,6 +197,8 @@ class RedsysController extends Controller
 		Order::whereId($order_id)->update(['status' => 'pagado']);
 
 		$this->cartService->deleteCookie();
+
+		$request->session()->forget(['user', 'email']);
 		return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
 	}
 
@@ -345,6 +347,7 @@ class RedsysController extends Controller
 				Order::whereId($order_id)->update(['status' => 'pagado']);
 
 				$this->cartService->deleteCookie();
+				$request->session()->forget(['user', 'email']);
 				return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
 			} else {
 				return redirect('/')->with('message', 'error');

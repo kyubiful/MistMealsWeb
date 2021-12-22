@@ -13,6 +13,7 @@
 
       <h1>Detalles del pedido</h1>
       <div class="order-form-content">
+        @if($register == 'true')
         <div class="order-inp-1">
           <p>Nombre</p> <input class="order-inp" type="text" name="name" id="" placeholder="Nombre" value="{{ $user->name }}" required>
         </div>
@@ -40,6 +41,35 @@
         <div class="order-inp-1">
           <p>Ciudad</p> <input class="order-inp" type="text" name="city" id="" placeholder="Ciudad" value="{{ $user->city }}" required>
         </div>
+        @else
+        <div class="order-inp-1">
+          <p>Nombre</p> <input class="order-inp" type="text" name="name" id="" placeholder="Nombre" value="{{ session('user')->name }}" required>
+        </div>
+        <div class="order-inp-1">
+          <p>Apellidos</p> <input class="order-inp" type="text" name="surname" id="" placeholder="Apellidos" value="{{ session('user')->surname }}" required>
+        </div>
+        <div class="order-inp-2">
+          <p>Dirección</p> <input class="order-inp" type="text" name="address" id="" placeholder="Dirección" value="{{ session('user')->address }}" required>
+        </div>
+        <div class="order-inp-3">
+          <p>Número</p> <input class="order-inp" type="text" name="address_number" placeholder="Número" id="" value="{{ session('user')->address_number }}" required>
+        </div>
+        <div class="order-inp-3">
+          <p>Piso</p> <input class="order-inp" type="text" name="address_letter" id="" placeholder="Piso" value="{{ session('user')->address_letter }}">
+        </div>
+        <div class="order-inp-4">
+          <p>Código postal</p> <input class="order-inp" type="text" name="cp" id="" placeholder="Código Postal" value="{{ session('user')->cp }}" required>
+        </div>
+        <div class="order-inp-1">
+          <p>Teléfono</p> <input class="order-inp" type="text" name="phone" id="" placeholder="Teléfono" value="{{ session('user')->phone }}" required>
+        </div>
+        <div class="order-inp-1">
+          <p>Provincia</p> <input class="order-inp" type="text" name="province" id="" placeholder="Provincia" value="{{ session('user')->province }}" required>
+        </div>
+        <div class="order-inp-1">
+          <p>Ciudad</p> <input class="order-inp" type="text" name="city" id="" placeholder="Ciudad" value="{{ session('user')->city }}" required>
+        </div>
+        @endif
       </div>
 
       <p>
@@ -75,7 +105,7 @@
       </div>
         @if($register == false)
         <div class="order-inp-1">
-          <p>Email</p> <input class="order-inp" type="email" name="email" id="" value="" required>
+          <p>Email</p> <input class="order-inp" type="email" name="email" id="" value="{{session('email')}}" placeholder="Email" required>
         </div>
         <div style="width: 100%;">
           <div class="accordion" id="accordionExample">
