@@ -32,6 +32,7 @@
     </div>
   </section>
   @endif
+
   <section class="home-popup-container2 home-popup-hidden">
     <div class="home-popup-content">
       <button class="home-popup-btn2">X</button>
@@ -71,4 +72,5 @@
    <x-slot name="mensaje">Ha habído un problema a la hora de realizar el pago, por favor intentelo de nuevo</x-slot>
   </x-web-home-message>
   @endif
+
   @endsection

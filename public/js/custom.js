@@ -3598,8 +3598,10 @@ if (window.location.pathname == "/platos") {
 
 // fadeout popup msg
 let popupMsg = document.querySelector(".home-msg-container");
+let popupMsgClose = document.querySelector(".home-msg-close");
+
 if (popupMsg != null) {
-  setTimeout(() => {
+  popupMsgClose.addEventListener('click', () => {
     popupMsg.classList.toggle("fade");
   }, 5000);
 }
