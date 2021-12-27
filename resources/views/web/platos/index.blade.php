@@ -295,29 +295,32 @@
 
   let pagina = 2
   const cargando = document.querySelector('#cargando')
-  const btn2 = document.querySelector('#testbtn')
   window.onscroll = () => {
-    cargando.removeAttribute('hidden')
-    console.log((window.innerHeight + window.pageYOffset), document.body.offsetHeight)
-    if((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-      fetch(`/platos/paginate?page=${pagina}`,{
+    getPlates()
+  }
+
+  const getPlates = () => {
+    if((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 1200) {
+      window.onscroll = ''
+      fetch(`/platos/paginate?page=${pagina}`, {
         method:'get'
       })
-      .then(response => response.text() )
-      .then(html => {
-        if(html == '') {
-          btn2.addEventListener('click', () => '')
+      .then( response => response.text() )
+      .then( html => {
+        if(html.replace(/(\r\n|\n|\r)/gm, "") === `<div style="display: flex; justify-content: center; flex-wrap: wrap;"><div class="platos-container contenedor"></div><div class="platos-container-l"></div></div>`) { 
+          window.onscroll = ''
         } else {
+          cargando.removeAttribute('hidden')
+          setTimeout( () => {
           cargando.setAttribute('hidden','')
           document.querySelector(".contenedor").innerHTML += html
-          pagina++
           platosAjax()
           platosJs()
-          if(pagina<=3) {
-            window.onscroll = ''
-            }
+          window.onscroll = () => { getPlates() }
+          pagina++
+          }
+          , 500)
         }
-
       })
       .catch(error => console.log(error))
     }

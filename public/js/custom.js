@@ -3524,7 +3524,6 @@ if (window.location.pathname == "/orders/create") {
 
 if (window.location.pathname == "/platos") {
   function platosJs() {
-    console.log('platosjs')
     const containerL = document.querySelectorAll(".plato-container-l");
     const containersL = document.querySelector(".platos-container-l");
 
