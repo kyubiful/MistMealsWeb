@@ -117,11 +117,9 @@
 </div>
 </div>
 </div>
-<div id="cargando" hidden>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span>
-  <p class="mp-mobile-hidden">Cargando...</p>
-</div>
-<!-- {{ $platos->links() }} -->
+<div id="cargando" hidden>Cargando...</div>
+<button id="testbtn">click</button>
+{{ $platos->links() }}
 <!-- <div class="plates-modal">
   <div>
     <button class="plates-modal-hide">X</button>
@@ -290,16 +288,14 @@
       platosAjax()
     }
 
-    one++
+    i++
   }
 
   let pagina = 2
   const cargando = document.querySelector('#cargando')
   const btn2 = document.querySelector('#testbtn')
-  window.onscroll = () => {
+  btn2.addEventListener('click', () =>{
     cargando.removeAttribute('hidden')
-    console.log((window.innerHeight + window.pageYOffset), document.body.offsetHeight)
-    if((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
       fetch(`/platos/paginate?page=${pagina}`,{
         method:'get'
       })
@@ -307,20 +303,17 @@
       .then(html => {
         if(html == '') {
           btn2.addEventListener('click', () => '')
+          console.log('entra')
         } else {
           cargando.setAttribute('hidden','')
           document.querySelector(".contenedor").innerHTML += html
           pagina++
           platosAjax()
           platosJs()
-          if(pagina<=3) {
-            window.onscroll = ''
-            }
         }
 
       })
       .catch(error => console.log(error))
-    }
-  }
+  })
 </script>
 @endsection

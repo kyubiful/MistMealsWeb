@@ -14,6 +14,12 @@ class PlatosController extends Controller
         return view('web.platos.index', compact('platos'));
     }
 
+    public function scroll()
+    {
+        $platos = Plato::paginate(16);
+        return view('web.platos.scroll', compact('platos'));
+    }
+
     public function addToCart()
     {
     }

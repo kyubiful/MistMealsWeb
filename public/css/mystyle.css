@@ -2129,6 +2129,7 @@ body .platos-count-container {
   justify-content: center;
   padding: 20px;
   z-index: 8;
+  margin-bottom: 40px;
 }
 
 body .platos-count-content {
@@ -2179,12 +2180,12 @@ body .platos-count-content p {
 
 .platos-container {
   background-color: #000000;
-  padding-top: 70px;
+  padding-top: 0px;
   width: 912px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 90px;
+  margin-bottom: 0px;
 }
 
 .plate-quantity-container {
@@ -2244,12 +2245,10 @@ body .platos-count-content p {
 
 .platos-container-l {
   position: absolute;
-  padding-top: 70px;
   width: 912px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 90px;
   pointer-events: none;
 }
 
@@ -2572,6 +2571,7 @@ body .platos-count-content p {
   position: relative;
   background-color: #009167;
   z-index: 4;
+  margin-top: 40px;
 }
 
 .mistmeals-pagination {
@@ -4153,16 +4153,12 @@ body .platos-count-content p {
   .platos-container {
     padding: 0px;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
     width: auto;
   }
 
   .platos-container-l {
     padding: 0px;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
     width: auto;
   }
 

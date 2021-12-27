@@ -1,145 +1,95 @@
-@extends('web.layout.master')
-@section('content')
-<div class="preloader-wrapper" id="preloader-wrapper">
-  <div class="percentage-wrapper">
-    <div class="loadbar-percent"></div>
-    <div id="percent"></div>
-  </div>
-</div>
-<div class="platos-top-background">
-  <p class="platos-top-title">PLATOS</p>
-</div>
-<div class="platos-top-label"></div>
-<div class="platos-count-container">
-  <div class="platos-count-content">
-    <div>
-      @inject('cartService','App\Services\CartService')
-      <p>Platos seleccionados (<span class="platos-count-number">{{$cartService->countProducts()}}</span>)</p>
-      <p style="font-size: 13px; font-family: coresansc65 !important;">Selecciona mínimo 5 platos*</p>
-    </div>
-    <div>
-      <a class="plates-modal-cart-btn-top" href="{{route('web.carts.index')}}">IR AL CARRITO</a>
-    </div>
-  </div>
-</div>
-<div class="contenedor">
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-  <div class="platos-container">
-    @foreach($platos as $i => $plato)
-    @if($plato->plato_peso->valor == 'M')
-    <div class="plato-container">
-      <div style="display: flex; justify-content: flex-end">
-        <img src="{{ asset($plato->getUrlImage1Attribute()) }}" class="plato-img" data-toggle="modal" data-target="#modal-dish-{{$plato->id}}" alt="">
-        <p style="position: absolute; color: #5340b7; margin-top: 5px; margin-right: 5px; background-color: #ffcf01; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: inherit;">{{$plato->plato_peso->valor}}</p>
-      </div>
-      <div class="plato-content">
-        <p class="plato-price">{{ $plato->precio }}€</p>
-        <p class="global-plates-plate-name plato-title">{{ $plato->nombre }}</p>
-        <div class="plato-info">
-          <span class="plate-info-btn" data-toggle="modal" data-target="#modal-dish-{{$plato->id}}">?</span>
-          <span>{{ bcdiv($plato->calorias*$plato->peso/100, '1', 0) }} <b>cal</b></span>
-          <span>{{ bcdiv($plato->plato_info_nutricional->proteinas*$plato->peso/100, '1', 0) }} <b>P</b></span>
-          <span>{{ bcdiv($plato->plato_info_nutricional->carbohidratos*$plato->peso/100, '1', 0)}} <b>C</b></span>
-          <span>{{ bcdiv($plato->plato_info_nutricional->grasas*$plato->peso/100, '1', 0) }} <b>G</b></span>
-          <span>{{ bcdiv($plato->plato_info_nutricional->fibra*$plato->peso/100, '1', 0) }} <b>F</b></span>
-        </div>
-        <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}" class="plate_form" name="plate_form_{{$plato->id}}">
-          @csrf
-          <div class="plate-quantity-container">
-            <p>Cantidad</p>
-            <div style="display: flex; align-content: center; align-items: center; flex-direction: row; width: 80px; justify-content: space-evenly;">
-              <button type="button" class="plate-btn-less">-</button>
-              <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
-              <button type="button" class="plate-btn-more">+</button>
-              <input type="hidden" name="plate-id" class="global-plates-plate-id" value="{{$plato->id}}">
-              <input type="hidden" name="plate-price" class="global-plates-plate-price-value" value="{{$plato->precio}}">
-            </div>
-          </div>
-          <div class="plato-peso-switch-content">
-            <p>Tamaño</p>
-            <div class="plato-peso-switch-container">
-              <label class="plato-peso-switch-m active">M</label>
-              <label class="plato-peso-switch-l">L</label>
-            </div>
-          </div>
-          <button class="mist_btn plato-btn" type="submit">Añadir</button>
-        </form>
-      </div>
+<div class="platos-container contenedor">
+@foreach($platos as $i => $plato)
+@if($plato->plato_peso->valor == 'M')
+<div class="plato-container">
+  <div style="display: flex; justify-content: flex-end">
+    <img src="{{ asset($plato->getUrlImage1Attribute()) }}" class="plato-img" data-toggle="modal" data-target="#modal-dish-{{$plato->id}}" alt="">
+    <p style="position: absolute; color: #5340b7; margin-top: 5px; margin-right: 5px; background-color: #ffcf01; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: inherit;">{{$plato->plato_peso->valor}}</p>
+  </div>
+  <div class="plato-content">
+    <p class="plato-price">{{ $plato->precio }}€</p>
+    <p class="global-plates-plate-name plato-title">{{ $plato->nombre }}</p>
+    <div class="plato-info">
+      <span class="plate-info-btn" data-toggle="modal" data-target="#modal-dish-{{$i}}">?</span>
+      <span>{{ bcdiv($plato->calorias*$plato->peso/100, '1', 0) }} <b>cal</b></span>
+      <span>{{ bcdiv($plato->plato_info_nutricional->proteinas*$plato->peso/100, '1', 0) }} <b>P</b></span>
+      <span>{{ bcdiv($plato->plato_info_nutricional->carbohidratos*$plato->peso/100, '1', 0)}} <b>C</b></span>
+      <span>{{ bcdiv($plato->plato_info_nutricional->grasas*$plato->peso/100, '1', 0) }} <b>G</b></span>
+      <span>{{ bcdiv($plato->plato_info_nutricional->fibra*$plato->peso/100, '1', 0) }} <b>F</b></span>
     </div>
-    @endif
-    @endforeach
-  </div>
-  <div class="platos-container-l">
-    @foreach($platos as $i => $plato)
-    @if($plato->plato_peso->valor == 'L')
-    <div class="plato-container-l">
-      <div style="display: flex; justify-content: flex-end;">
-        <img src="{{ asset($plato->getUrlImage1Attribute()) }}" class="plato-img" data-toggle="modal" data-target="#modal-dish-{{$plato->id}}" alt="">
-        <p style="position: absolute; color: #ffcf01; margin-top: 5px; margin-right: 5px; background-color: #5340b7; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: inherit;">{{$plato->plato_peso->valor}}</p>
-      </div>
-      <div class="plato-content">
-        <p class="plato-price">{{ $plato->precio }}€</p>
-        <p class="global-plates-plate-name plato-title">{{ $plato->nombre }}</p>
-        <div class="plato-info">
-          <span class="plate-info-btn" data-toggle="modal" data-target="#modal-dish-{{$plato->id}}">?</span>
-          <span>{{ bcdiv($plato->calorias*$plato->peso/100, '1', 0) }} <b>cal</b></span>
-          <span>{{ bcdiv($plato->plato_info_nutricional->proteinas*$plato->peso/100, '1', 0) }} <b>P</b></span>
-          <span>{{ bcdiv($plato->plato_info_nutricional->carbohidratos*$plato->peso/100, '1', 0)}} <b>C</b></span>
-          <span>{{ bcdiv($plato->plato_info_nutricional->grasas*$plato->peso/100, '1', 0) }} <b>G</b></span>
-          <span>{{ bcdiv($plato->plato_info_nutricional->fibra*$plato->peso/100, '1', 0) }} <b>F</b></span>
+    <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}" class="plate_form" name="plate_form_{{$plato->id}}">
+      @csrf
+      <div class="plate-quantity-container">
+        <p>Cantidad</p>
+        <div style="display: flex; align-content: center; align-items: center; flex-direction: row; width: 80px; justify-content: space-evenly;">
+          <button type="button" class="plate-btn-less">-</button>
+          <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
+          <button type="button" class="plate-btn-more">+</button>
+          <input type="hidden" name="plate-id" class="global-plates-plate-id" value="{{$plato->id}}">
+          <input type="hidden" name="plate-price" class="global-plates-plate-price-value" value="{{$plato->precio}}">
         </div>
-        <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}" class="plate_form" name="plate_form_{{$plato->id}}">
-          @csrf
-          <div class="plate-quantity-container">
-            <p>Cantidad</p>
-            <div style="display: flex; align-content: center; align-items: center; flex-direction: row; width: 80px; justify-content: space-evenly;">
-              <button type="button" class="plate-btn-less">-</button>
-              <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
-              <button type="button" class="plate-btn-more">+</button>
-              <input type="hidden" name="plate-id" class="global-plates-plate-id" value="{{$plato->id}}">
-              <input type="hidden" name="plate-price" class="global-plates-plate-price-value" value="{{$plato->precio}}">
-            </div>
-          </div>
-          <div class="plato-peso-switch-content-fake">
-            <p>Tamaño</p>
-            <div class="plato-peso-switch-container-fake">
-              <label class="plato-peso-switch-m-fake">M</label>
-              <label class="plato-peso-switch-l-fake">L</label>
-            </div>
-          </div>
-          <button class="mist_btn plato-btn" type="submit">Añadir</button>
-        </form>
       </div>
+      <div class="plato-peso-switch-content">
+        <p>Tamaño</p>
+        <div class="plato-peso-switch-container">
+          <label class="plato-peso-switch-m active">M</label>
+          <label class="plato-peso-switch-l">L</label>
+        </div>
+      </div>
+      <button class="mist_btn plato-btn" type="submit">Añadir</button>
+    </form>
+  </div>
+</div>
+@endif
+@endforeach
+</div>
+<div class="platos-container-l">
+@foreach($platos as $i => $plato)
+@if($plato->plato_peso->valor == 'L')
+<div class="plato-container-l">
+  <div style="display: flex; justify-content: flex-end;">
+    <img src="{{ asset($plato->getUrlImage1Attribute()) }}" class="plato-img" data-toggle="modal" data-target="#modal-dish-{{$plato->id}}" alt="">
+    <p style="position: absolute; color: #ffcf01; margin-top: 5px; margin-right: 5px; background-color: #5340b7; border-radius: 50%; width: 20px; height: 20px; text-align: center; line-height: inherit;">{{$plato->plato_peso->valor}}</p>
+  </div>
+  <div class="plato-content">
+    <p class="plato-price">{{ $plato->precio }}€</p>
+    <p class="global-plates-plate-name plato-title">{{ $plato->nombre }}</p>
+    <div class="plato-info">
+      <span class="plate-info-btn" data-toggle="modal" data-target="#modal-dish-{{$i}}">?</span>
+      <span>{{ bcdiv($plato->calorias*$plato->peso/100, '1', 0) }} <b>cal</b></span>
+      <span>{{ bcdiv($plato->plato_info_nutricional->proteinas*$plato->peso/100, '1', 0) }} <b>P</b></span>
+      <span>{{ bcdiv($plato->plato_info_nutricional->carbohidratos*$plato->peso/100, '1', 0)}} <b>C</b></span>
+      <span>{{ bcdiv($plato->plato_info_nutricional->grasas*$plato->peso/100, '1', 0) }} <b>G</b></span>
+      <span>{{ bcdiv($plato->plato_info_nutricional->fibra*$plato->peso/100, '1', 0) }} <b>F</b></span>
     </div>
-    @endif
-    @endforeach
+    <form method="POST" action="{{ route('web.platos.carts.store', [$plato->id]) }}" class="plate_form" name="plate_form_{{$plato->id}}">
+      @csrf
+      <div class="plate-quantity-container">
+        <p>Cantidad</p>
+        <div style="display: flex; align-content: center; align-items: center; flex-direction: row; width: 80px; justify-content: space-evenly;">
+          <button type="button" class="plate-btn-less">-</button>
+          <input type="number" name="plateQuantity" class="plate-quantity-display" value="1" min="0">
+          <button type="button" class="plate-btn-more">+</button>
+          <input type="hidden" name="plate-id" class="global-plates-plate-id" value="{{$plato->id}}">
+          <input type="hidden" name="plate-price" class="global-plates-plate-price-value" value="{{$plato->precio}}">
+        </div>
+      </div>
+      <div class="plato-peso-switch-content-fake">
+        <p>Tamaño</p>
+        <div class="plato-peso-switch-container-fake">
+          <label class="plato-peso-switch-m-fake">M</label>
+          <label class="plato-peso-switch-l-fake">L</label>
+        </div>
+      </div>
+      <button class="mist_btn plato-btn" type="submit">Añadir</button>
+    </form>
   </div>
 </div>
-</div>
-</div>
-<div id="cargando" hidden>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span>
-  <p class="mp-mobile-hidden">Cargando...</p>
-</div>
-<!-- {{ $platos->links() }} -->
-<!-- <div class="plates-modal">
-  <div>
-    <button class="plates-modal-hide">X</button>
-  </div>
-  <div>
-    <h3>Añadido al carrito</h3>
-  </div>
-  <div>
-    <p class="plates-modal-info-name"></p>
-    <p class="plates-modal-info-price"><b></b></p>
-  </div>
-  <div class="plates-buttons">
-    <a class="plates-modal-cart-btn" href="{{route('web.carts.index')}}">VER CARRITO</a>
-  </div>
-</div> -->
-
+@endif
+@endforeach
 @foreach($platos as $i => $el)
-<div id="modal-dish-{{ $el->id }}" class="platos-info-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div id="modal-dish-{{ $el->id }}" class="platos-info-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header" style="border: none">
@@ -258,7 +208,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="nav_recipe_lunch_{{ $el->id }}" role="tabpanel" style="padding-top: 20px;">
+                    <div class="tab-pane fade" id="nav_recipe_lunch_{{ $i }}" role="tabpanel" style="padding-top: 20px;">
                       <div class="row justify-content-center">
                         <div class="col-lg-12">
                           <p class="dish-recipe-text"><b>Modo de empleo:</b> {{$el->receta}}</p>
@@ -278,49 +228,5 @@
   </div>
 </div>
 @endforeach
-@include('web.layout.newsletter')
-
-<script>
-
-  let one = 0
-  window.onload = () => {
-
-    if(one==0){
-      platosJs()
-      platosAjax()
-    }
-
-    one++
-  }
-
-  let pagina = 2
-  const cargando = document.querySelector('#cargando')
-  const btn2 = document.querySelector('#testbtn')
-  window.onscroll = () => {
-    cargando.removeAttribute('hidden')
-    console.log((window.innerHeight + window.pageYOffset), document.body.offsetHeight)
-    if((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-      fetch(`/platos/paginate?page=${pagina}`,{
-        method:'get'
-      })
-      .then(response => response.text() )
-      .then(html => {
-        if(html == '') {
-          btn2.addEventListener('click', () => '')
-        } else {
-          cargando.setAttribute('hidden','')
-          document.querySelector(".contenedor").innerHTML += html
-          pagina++
-          platosAjax()
-          platosJs()
-          if(pagina<=3) {
-            window.onscroll = ''
-            }
-        }
-
-      })
-      .catch(error => console.log(error))
-    }
-  }
-</script>
-@endsection
+</div>
+</div>
