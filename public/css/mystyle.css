@@ -446,6 +446,36 @@ p {
   opacity: 0.6;
 }
 
+.mist_btn_step1 {
+  background: url("../img/mist-button.png") no-repeat;
+  width: 250px;
+  height: 49px;
+  background-size: cover;
+  display: block;
+  border: none;
+  color: #f9f2e1;
+  text-align: center;
+  line-height: 49px;
+  margin: auto;
+  font-size: 15px;
+}
+
+.mist_btn_step1:hover {
+  background: url("../img/mist-button-hover.png") no-repeat !important;
+  color: #533fb8;
+  background-size: cover !important;
+}
+
+.mist_btn_step1:focus {
+  background: url("../img/mist-button-pressed.png") no-repeat;
+  color: #533fb8;
+  font-weight: bold;
+}
+
+.mist_btn_step1:disabled {
+  opacity: 0.6;
+}
+
 .mist_btn_disable {
   background: url("../img/mist-button.png") no-repeat;
   width: 203px;

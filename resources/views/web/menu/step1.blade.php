@@ -70,13 +70,16 @@
                 <h2>NOMBRE Y EDAD</h2>
                 <div class="info-wp">
                   <div class="single_contact_form">
-                    {!! Form::input('text', 'name', $user != null ? $user->name : '', ['id' => 'name', 'class' => 'form-control cu_input', 'placeholder' => 'Nombre']) !!}
+                    {!! Form::input('text', 'name', $user != null ? $user->name : '', ['id' => 'name', 'class' => 'form-control cu_input', 'placeholder' => 'Nombre', 'required']) !!}
                   </div>
                   <div class="single_contact_form">
                     {!! Form::number('edad', $user != null ? $user->edad : '', ['class' => 'form-control cu_input', 'placeholder' => 'Edad', 'required', 'id'=>'edad', 'min' => 18, 'max' => 80, 'step' => '1']); !!}
                   </div>
+                  <div class="single_contact_form">
+                    {!! Form::input('email', 'email', $user != null ? $user->email : '', ['id' => 'email', 'class' => 'form-control cu_input', 'placeholder' => 'Email', 'required']) !!}
+                  </div>
                   <div class="single_contact_form mt-5">
-                    <button type="submit" class="mist_btn animate_btn text-uppercase">Ver mi Meal Plan</button>
+                    <button type="submit" class="mist_btn_step1 animate_btn text-uppercase" style="background-size: cover; width: 250px;">Ver mi Meal Plan</button>
                   </div>
                   @if (!auth()->check())
                   <div class="custom-control custom-checkbox step1-policy">
@@ -155,7 +158,7 @@
       valueH.innerHTML = this.value;
     }
 
-  }); 
+  });
 
   $('#contactForm1').submit(function(e) {
 
@@ -187,7 +190,7 @@
 
       // Spinner ON
       $button.prop("disabled", true);
-      $button.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando...');
+      $button.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span style="font-size: 12px;">Creando plan personalizado...</span>');
 
       $.ajax({
         data: fd,
