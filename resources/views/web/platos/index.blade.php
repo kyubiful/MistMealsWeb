@@ -117,8 +117,8 @@
 </div>
 </div>
 </div>
-<div id="cargando" hidden>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 10px; height: 10px;"></span>
+<div id="cargando" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;" hidden>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width: 25px; height: 25px; margin-right: 20px;"></span>
   <p class="mp-mobile-hidden">Cargando...</p>
 </div>
 <!-- {{ $platos->links() }} -->
