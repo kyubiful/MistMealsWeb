@@ -48,6 +48,7 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::get('/politica-privacidad', 'CondicionesController@privacidad')->name('politicaprivacidad');
 
   Route::get('/platos', 'PlatosController@index')->name('platos');
+  Route::get('/platos/paginate', 'PlatosController@scroll')->name('platos.scroll');
   Route::resource('/platos.carts', 'PlatosCartController')->only(['store', 'destroy']);
   Route::post('/platos/{plato}/carts/remove', 'PlatosCartController@remove')->name('platos.carts.remove');
   Route::resource('/carts', 'CartController')->only(['index']);
