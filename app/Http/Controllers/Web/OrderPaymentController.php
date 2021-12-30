@@ -30,7 +30,7 @@ class OrderPaymentController extends Controller
   {
 
     $descuentoName = $request->cookie('descuento_name');
-    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo')->where('name', $descuentoName)->first();
+    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo','one_use','uses')->where('name', $descuentoName)->first();
     $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
     $cart = $this->cartService->getFromCookie();
     $amount = $cart->total;
@@ -57,6 +57,13 @@ class OrderPaymentController extends Controller
               return redirect('/carts')->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
             }
           }
+        }
+      }
+      if($discountCode->one_use==1)
+      {
+        if($discountCode->uses=!1)
+        {
+          return redirect('/carts')->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
         }
       }
     }

@@ -32,10 +32,9 @@ class OrderController extends Controller
 
     $cart = $this->cartService->getFromCookie();
     $descuentoName = $request->cookie('descuento_name');
-    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo')->where('name', $descuentoName)->first();
+    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo','one_use','uses')->where('name', $descuentoName)->first();
 
     if($request->user() == null) {
-
       if(!is_null($discountCode) AND $discountCode->unique == 1){
         return redirect('/carts')->with('discountMessageError', 'Este código no puede ser usado sin estar registrado');
       }
@@ -58,22 +57,35 @@ class OrderController extends Controller
 
     $descuentoName = $request->cookie('descuento_name');
 
-    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique')->where('name', $descuentoName)->first();
+    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique','one_use','uses')->where('name', $descuentoName)->first();
 
     if (!isset($cart) || $cart->products->isEmpty()) {
-      return redirect()->back()->withErrors('Su carrito está vacío');
+      return redirect('/carts')->withErrors('Su carrito está vacío');
     }
 
     $numberProducts = $this->cartService->countProducts();
 
+    // Verificación del código de descuento
     if ($discountCode != null) {
+      // Si es código de descuento de un solo uso por usuario
       if ($discountCode->unique == 1) {
+        // Si el usuario ha usado algún código de descuento anteriormente
         if (count($user->discountCodes) > 0) {
           foreach ($user->discountCodes as $userDiscountCode) {
+            // Si coincide con el código a usar se le devolverá atrás quitandole la información de la cookie
             if ($userDiscountCode->name == $discountCode->name) {
-              return redirect()->back()->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
+              return redirect('/carts')->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
             }
           }
+        }
+      }
+      // Si el código de descuento es de un sólo uso
+      if($discountCode->one_use==1)
+      {
+        // si el código ha sido usado se le enviará un mensaje avisando de que el código ha sido usado
+        if($discountCode->uses!=0)
+        {
+          return redirect('/carts')->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
         }
       }
     }
