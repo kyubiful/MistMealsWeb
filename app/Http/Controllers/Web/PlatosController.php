@@ -10,13 +10,13 @@ class PlatosController extends Controller
 {
     public function index(Request $request)
     {
-        $platos = Plato::paginate(16);
+        $platos = Plato::where( 'active', true )->paginate(16);
         return view('web.platos.index', compact('platos'));
     }
 
     public function scroll()
     {
-        $platos = Plato::paginate(16);
+        $platos = Plato::where( 'active', true )->paginate(16);
         return view('web.platos.scroll', compact('platos'));
     }
 
