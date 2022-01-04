@@ -61,7 +61,7 @@ class OrderPaymentController extends Controller
       }
       if($discountCode->one_use==1)
       {
-        if($discountCode->uses=!1)
+        if($discountCode->uses!=0)
         {
           return redirect('/carts')->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
         }
