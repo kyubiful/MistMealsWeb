@@ -3083,6 +3083,16 @@ body .platos-count-content p {
   width: 470px;
 }
 
+.cart-discount-img{
+  background-image: url('/img/home/discount.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 235px;
+  height: 199px;
+  z-index: 4;
+  margin-top: -100px;
+}
+
 @media (max-width: 991px) {
   .subtitle.negative-margin {
     margin-top: -20px;

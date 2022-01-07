@@ -9,19 +9,27 @@
   <div class="cart-products">
     <h1>Carrito</h1>
     @foreach($cart->products as $i => $plato)
-    <!-- <img src="{{ asset($plato->getUrlImage1Attribute()) }}" alt=""> -->
-    <form class="cart-products-content" method="POST" action="{{ route('web.platos.carts.destroy', ['cart' => $cart->id, $plato->id]) }}">
-      @csrf
-      @method('DELETE')
-      <div class="cart-product-content-product">
-        <span class="cart-product-name">{{ $plato->pivot->quantity }}x {{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</span> <span class="cart-product-price"><b>{{ $plato->total }}€</b></span><button type="submit">x</button>
+      <div class="cart-product-content-product" style="margin-bottom: 10px;">
+        <img src="{{ asset($plato->getUrlImage1Attribute()) }}" style="width: 200px; height: 200px;" alt="">
+        <span class="cart-product-name">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</span>
+        <span class="cart-product-price"><b>{{ $plato->total }}€</b></span>
+        <a href="{{ route('web.cart.removeOnePlate', ['plateID' => $plato->id]) }}">-</a>
+          <input type="number" value="{{ $plato->pivot->quantity }}">
+          <a href="{{ route('web.cart.addOnePlate', ['plateID' => $plato->id]) }}">+</a>
+        </form>
+        <form class="cart-products-content" method="POST" action="{{ route('web.platos.carts.destroy', ['cart' => $cart->id, 'plato' => $plato->id]) }}">
+          @csrf
+          @method('DELETE')
+          <button type="submit">x</button>
+        </form>
       </div>
-    </form>
     @endforeach
   </div>
   <div class="cart-price">
     <div class="cart-price-content">
       <div>
+        <div class="cart-discount-img">
+        </div>
         <div class="cart-cod-desc">
           <form method="POST" action="{{ route('web.cart.discount') }}">
             @csrf
