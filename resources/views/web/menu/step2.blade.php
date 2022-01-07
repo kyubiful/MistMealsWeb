@@ -508,5 +508,6 @@
 <script>
   gtag('event', 'conversion', {'send_to': 'AW-10805779259/GT4JCLy_hYQDELu2zKAo'});
   fbq('track', 'CalculatedPlan')
+  platosAjax();
 </script>
 @endpush

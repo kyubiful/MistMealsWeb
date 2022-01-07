@@ -102,8 +102,6 @@ function platosAjax() {
     const plates_menu_remove = document.querySelectorAll('.plate_form_menu_remove');
     const button_menu_remove = document.querySelectorAll('.plato-menu-btn-remove');
 
-
-
     for(let i = 0; i < plates_menu.length; i++){
 
         plates_menu[i].addEventListener('submit', (e) => {

@@ -31,6 +31,11 @@ class CartController extends Controller
 
     public function verifyDiscountCode(Request $request)
     {
+
+      if($request->discount_name == null) {
+        return redirect()->back()->with('discountMessageError', 'Código no válido');
+      }
+
         $discount = $request->discount_name;
         $discountCode = DB::table('discount_code')->select('name', 'value', 'tipo', 'start', 'end', 'active','unique','one_use','uses')->where('name', $discount)->first();
         $time = Carbon::now()->toDateTimeString();
@@ -82,6 +87,9 @@ class CartController extends Controller
             // Si no está registrado se le enviará un mensaje
             return redirect()->back()->with('discountMessageError', 'Este código no puede ser usado sin estar registrado');
           }
+        } else {
+          // Si el código tiene usos ilimitados
+          return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
         }
 
         // Lógica código de descuento un uso
