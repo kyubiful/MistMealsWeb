@@ -11,7 +11,7 @@
     <p class="plato-price">{{ $plato->precio }}€</p>
     <p class="global-plates-plate-name plato-title">{{ $plato->nombre }}</p>
     <div class="plato-info">
-      <span class="plate-info-btn" data-toggle="modal" data-target="#modal-dish-{{$i}}">?</span>
+      <span class="plate-info-btn" data-toggle="modal" data-target="#modal-dish-{{$plato->id}}">?</span>
       <span>{{ bcdiv($plato->calorias*$plato->peso/100, '1', 0) }} <b>cal</b></span>
       <span>{{ bcdiv($plato->plato_info_nutricional->proteinas*$plato->peso/100, '1', 0) }} <b>P</b></span>
       <span>{{ bcdiv($plato->plato_info_nutricional->carbohidratos*$plato->peso/100, '1', 0)}} <b>C</b></span>
@@ -103,7 +103,7 @@
             <div class="col-sm-12">
               <div class="row dish-card-fdirection">
                 <div class="col-8 col-sm-6 dish-img-card">
-                  <div id="dish-lunch-carousel-{{ $i }}" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false" data-keyboard="true">
+                  <div id="dish-lunch-carousel-{{ $el->id }}" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false" data-keyboard="true">
                     <div class="carousel-inner dish-carousel-menu">
                       <div class="carousel-item active">
                         <img class="w-100 d-block" src="{{ asset(asset($el->getUrlImage1Attribute())) }}" alt="{{ $el->nombre }}_1">
@@ -128,9 +128,9 @@
                 </div>
                 <div class="col-4 col-sm-6 product_description_iner dish-img-card">
                   <div class="nav nav-tabs" role="tablist" style="justify-content: left">
-                    <a class="nav-item nav-link active dish-card-menu" data-toggle="tab" href="#nav_nutritional_lunch_{{ $el->id }}" role="tab" aria-controls="nav_nutritional_lunch_{{ $i }}" aria-selected="false">Nutricional </a>
-                    <a class="nav-item nav-link dish-card-menu" data-toggle="tab" href="#nav_description_lunch_{{ $el->id }}" role="tab" aria-controls="nav_description_lunch_{{ $i }}" aria-selected="true">Ingredientes</a>
-                    <a class="nav-item nav-link dish-card-menu" data-toggle="tab" href="#nav_recipe_lunch_{{ $el->id }}" role="tab" aria-controls="nav_description_lunch_{{ $i }}" aria-selected="true">Modo de empleo</a>
+                    <a class="nav-item nav-link active dish-card-menu" data-toggle="tab" href="#nav_nutritional_lunch_{{ $el->id }}" role="tab" aria-controls="nav_nutritional_lunch_{{ $el->id }}" aria-selected="false">Nutricional </a>
+                    <a class="nav-item nav-link dish-card-menu" data-toggle="tab" href="#nav_description_lunch_{{ $el->id }}" role="tab" aria-controls="nav_description_lunch_{{ $el->id }}" aria-selected="true">Ingredientes</a>
+                    <a class="nav-item nav-link dish-card-menu" data-toggle="tab" href="#nav_recipe_lunch_{{ $el->id }}" role="tab" aria-controls="nav_description_lunch_{{ $el->id }}" aria-selected="true">Modo de empleo</a>
                   </div>
                   <div class="tab-content">
                     <div class="tab-pane fade show active" id="nav_nutritional_lunch_{{ $el->id }}" role="tabpanel" style="padding-top: 20px;">
@@ -208,7 +208,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="nav_recipe_lunch_{{ $i }}" role="tabpanel" style="padding-top: 20px;">
+                    <div class="tab-pane fade" id="nav_recipe_lunch_{{ $el->id }}" role="tabpanel" style="padding-top: 20px;">
                       <div class="row justify-content-center">
                         <div class="col-lg-12">
                           <p class="dish-recipe-text"><b>Modo de empleo:</b> {{$el->receta}}</p>
