@@ -489,6 +489,7 @@ p {
   cursor: none;
   margin: auto;
   opacity: 0.6;
+  pointer-events: none;
 }
 
 .mist_btn_disable:hover {
@@ -2472,7 +2473,7 @@ body .platos-count-content p {
 
 .plato-btn.active {
   background: url("/img/platos/ok_btn.png") no-repeat;
-  background-size: contain;
+  background-size: contain !important;
   transition: all 1s ease;
 }
 
@@ -4247,8 +4248,9 @@ body .platos-count-content p {
   }
 
   .plato-btn.active {
+    background: url(/img/platos/ok_btn.png) no-repeat !important;
     width: 100% !important;
-    background-size: cover;
+    background-size: 100% 100% !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -4273,10 +4275,11 @@ body .platos-count-content p {
   }
 
   .plato-content .mist_btn:focus {
-    background-size: cover;
+    background-size: cover !important;
   }
   .plato-content .mist_btn:hover {
-    background-size: cover !important;
+    width: 100%;
+    background-size: 100% 100% !important;
   }
 
   .plato-title {

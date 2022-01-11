@@ -135,6 +135,10 @@ class PlatosCartController extends Controller
 
         $quantity = $cart->products()->find($plate->id)->pivot->quantity ?? 0;
 
+        $infoName = $cart->products()->find($plate->id)->nombre;
+        $infoPrice = $cart->products()->find($plate->id)->precio;
+        $totalPrice = $infoPrice * $plateQuantity;
+
         if($quantity <= 1) {
 
             $this->destroy($plate, $cart);
@@ -143,6 +147,8 @@ class PlatosCartController extends Controller
             return response()->json([
                 'status' => 500,
                 'message' => 'Plate removed',
+                'infoPrice' => $infoPrice,
+                'infoName' => $infoName,
             ])->withCookie($cookie);
         }
 
