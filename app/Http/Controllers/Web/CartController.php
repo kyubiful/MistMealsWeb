@@ -40,6 +40,12 @@ class CartController extends Controller
         $discountCode = DB::table('discount_code')->select('name', 'value', 'tipo', 'start', 'end', 'active','unique','one_use','uses')->where('name', $discount)->first();
         $time = Carbon::now()->toDateTimeString();
 
+        // Si el código el tiempo de uso del código ha terminado o no existe se enviará un mensaje al usuario
+        if($discountCode==null OR ($discountCode->start > $time OR $discountCode->end < $time OR $discountCode->active == 0))
+        {
+          return redirect()->back()->with('discountMessageError', 'Código no válido');
+        }
+
         // Inicialización de las cookies a devolver
         $cookieDiscountValue = cookie('descuento', $discountCode->value, 60);
         $cookieDiscountName = cookie('descuento_name', $discountCode->name, 60);
@@ -50,12 +56,6 @@ class CartController extends Controller
           if(!is_null($discountCode) AND $discountCode->unique == 1) {
             return redirect()->back()->with('discountMessageError', 'Este código no puede ser usado sin estar registrado');
           }
-        }
-
-        // Si el código el tiempo de uso del código ha terminado se enviará un mensaje al usuario
-        if($discountCode==null OR ($discountCode->start > $time OR $discountCode->end < $time OR $discountCode->active == 0))
-        {
-          return redirect()->back()->with('discountMessageError', 'Código no válido');
         }
 
         // Lógica código de descuento un sólo uso por usuario
