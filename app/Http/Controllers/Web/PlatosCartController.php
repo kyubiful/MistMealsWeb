@@ -97,6 +97,80 @@ class PlatosCartController extends Controller
         // return redirect()->back()->cookie($cookie)->with('itemName',$infoName)->with('infoPrice', $totalPrice)->with('itemQuantity', $plateQuantity);
     }
 
+    public function addOnePlate(Request $request)
+    {
+        $plateID = $request->plateID;
+        $plateQuantity = 1;
+
+        $cart = $this->cartService->getFromCookieOrCreate();
+
+        $quantity = $cart->products()->find($plateID)->pivot->quantity ?? 0;
+
+        $cart->products()->syncWithoutDetaching([
+            $plateID => ['quantity' => ($quantity + $plateQuantity)],
+        ]);
+
+        $infoName = $cart->products()->find($plateID)->nombre;
+        $infoPrice = $cart->products()->find($plateID)->precio;
+        $totalPrice = $infoPrice * $plateQuantity;
+
+        $cookie = $this->cartService->makeCookie($cart);
+
+        return response()->json([
+            'status' => 500,
+            'message' => 'One plate added',
+            'infoPrice' => $infoPrice,
+            'infoName' => $infoName,
+            'itemQuantity' => $plateQuantity
+        ])->withCookie($cookie);
+    }
+
+    public function RemoveOnePlate(Request $request)
+    {
+        $plateID = $request->plateID;
+        $plate = Plato::where('id', $plateID)->first();
+        $plateQuantity = 1;
+
+        $cart = $this->cartService->getFromCookieOrCreate();
+
+        $quantity = $cart->products()->find($plate->id)->pivot->quantity ?? 0;
+
+        $infoName = $cart->products()->find($plate->id)->nombre;
+        $infoPrice = $cart->products()->find($plate->id)->precio;
+        $totalPrice = $infoPrice * $plateQuantity;
+
+        if($quantity <= 1) {
+
+            $this->destroy($plate, $cart);
+
+            $cookie = $this->cartService->makeCookie($cart);
+            return response()->json([
+                'status' => 500,
+                'message' => 'Plate removed',
+                'infoPrice' => $infoPrice,
+                'infoName' => $infoName,
+            ])->withCookie($cookie);
+        }
+
+        $cart->products()->syncWithoutDetaching([
+            $plate->id => ['quantity' => ($quantity - $plateQuantity)],
+        ]);
+
+        $infoName = $cart->products()->find($plate->id)->nombre;
+        $infoPrice = $cart->products()->find($plate->id)->precio;
+        $totalPrice = $infoPrice * $plateQuantity;
+
+        $cookie = $this->cartService->makeCookie($cart);
+
+        return response()->json([
+            'status' => 500,
+            'message' => 'One plate removed',
+            'infoPrice' => $infoPrice,
+            'infoName' => $infoName,
+            'itemQuantity' => $plateQuantity
+        ])->withCookie($cookie);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

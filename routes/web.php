@@ -19,8 +19,14 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
-  Route::get('/', 'HomeController@index')->name('home');
 
+  // Rutas de la Home
+  Route::get('/', 'HomeController@index')->name('home');
+  Route::post('/home/cpVerify', 'AvailableCPController@verifyCP')->name('verifyCP');
+  Route::get('/home/endPopup', 'HomeController@endHomePopup')->name('endHomePopup');
+  Route::post('home/cpTime', 'HomeController@getDeliveryDay')->name('deliveryDayCP');
+
+  // Rutas del Usuario
   Route::get('/usuario/signup', 'UserController@signup')->name('user.signup');
   Route::post('/usuario/signup/store', 'UserController@signupStore')->name('user.signup.store');
   Route::get('/usuario/login', 'UserController@loginForm')->name('user.login.form');
@@ -32,6 +38,7 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::post('/usuario/signup/storeCart', 'UserController@signupStoreCart')->name('user.signup.storeCart');
   Route::post('/usuario/loginCart', 'UserController@loginCart')->name('user.loginCart');
 
+  // Rutas del menú
   Route::get('/menu', 'MenuController@index')->name('menu');
   Route::get('/menu/config/{id}', 'MenuController@step1')->name('menu.step1');
   Route::post('/menu/config/{id}', 'MenuController@step1Store')->name('menu.step1.store');
@@ -40,20 +47,29 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   Route::post('/menu/mail', 'MenuController@sendMailMenu')->name('menu.mail');
   Route::get('/menu/pdf', 'MenuController@pdfMenu')->name('menu.pdf');
 
+  // Rutas del Contacto
   Route::get('/contacto', 'ContactoController@index')->name('contacto');
   Route::post('/contacto', 'ContactoController@send')->name('contacto.send');
 
+  // Rutas de politicas
   Route::get('/aviso-legal', 'CondicionesController@avisolegal')->name('avisolegal');
   Route::get('/politica-cookies', 'CondicionesController@cookies')->name('politicacookies');
   Route::get('/politica-privacidad', 'CondicionesController@privacidad')->name('politicaprivacidad');
 
+  // Rutas de Platos
   Route::get('/platos', 'PlatosController@index')->name('platos');
   Route::get('/platos/paginate', 'PlatosController@scroll')->name('platos.scroll');
   Route::resource('/platos.carts', 'PlatosCartController')->only(['store', 'destroy']);
   Route::post('/platos/{plato}/carts/remove', 'PlatosCartController@remove')->name('platos.carts.remove');
+
+  // Rutas de la vista de carrito
   Route::resource('/carts', 'CartController')->only(['index']);
   Route::post('carts/discount', 'CartController@verifyDiscountCode')->name('cart.discount');
   Route::get('carts/discount/remove', 'CartController@removeDiscountCookie')->name('cart.discount.remove');
+  Route::get('carts/addOnePlate', 'PlatosCartController@addOnePlate')->name('cart.addOnePlate');
+  Route::get('carts/removeOnePlate', 'PlatosCartController@removeOnePlate')->name('cart.removeOnePlate');
+
+  // Rutas de la vista de Order
   Route::resource('/orders', 'OrderController')->only(['create', 'store']);
   Route::resource('/orders.payments', 'OrderPaymentController')->only(['create', 'store']);
 
@@ -61,24 +77,28 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   // Route::get('/blackfriday', 'BlackFridayController@index')->name('blackfriday');
   // Route::get('/cybermonday', 'BlackFridayController@cybermonday')->name('cybermonday');
 
-  Route::post('/home/cpVerify', 'AvailableCPController@verifyCP')->name('verifyCP');
-  Route::get('/home/endPopup', 'HomeController@endHomePopup')->name('endHomePopup');
-  Route::post('home/cpTime', 'HomeController@getDeliveryDay')->name('deliveryDayCP');
-
   Route::post('/tpv', 'RedsysController@index')->name('tpv');
 
+  // Rutas de Redsys
   Route::get('/redsys/notification', 'RedsysController@comprobar');
   Route::post('/redsys/notification', 'RedsysController@comprobar');
+
+  // Rutas de Holded
   Route::get('/holded/discount', 'RedsysController@free')->name('holded.free');
   Route::post('/holded/discount', 'RedsysController@free')->name('holded.free');
 
+  // Rutas de Mailchimp
   Route::post('/mailchimp/subscribe', 'MailChimpController@store')->name('mailchimp.store');
 
+  // Rutas de Revolución
   Route::get('/revolucion', function () {
     return view('web.revolucion.index');
   })->name('revolucion');
 
+  // Rutas de FAQs
   Route::get('/faqs', 'FaqsController@index')->name('faqs');
+
+  // Rutas de Cómo Funciona
   Route::get('/como-funciona', 'ComoFuncionaController@index')->name('comofunciona');
 });
 
