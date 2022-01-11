@@ -278,8 +278,8 @@
               product.remove()
               menuCartCount.innerHTML = parseInt(menuCartCount.innerHTML) - 1
               menuCartCountMobile.innerHTML = parseInt(menuCartCountMobile.innerHTML) - 1
-              totalCart.innerHTML = (parseFloat(totalCart.innerHTML.slice(0,-1)).toFixed(2)-parseFloat(data.infoPrice).toFixed(2))+'€'
-              subtotalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1)).toFixed(2)-parseFloat(data.infoPrice).toFixed(2))+'€'
+              totalCart.innerHTML = (parseInt(totalCart.innerHTML.slice(0,-1))-parseInt(data.infoPrice))+'€'
+              subtotalCart.innerHTML = (parseInt(subtotalCart.innerHTML.slice(0,-1))-parseInt(data.infoPrice))+'€'
               if(totalPlates<5){
                 cartMessageSection.innerHTML = '<p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>'
                 if(mistBtn != null){
@@ -304,12 +304,12 @@
               }
             } else {
               numberPlate.innerHTML = parseInt(numberPlate.innerHTML) - 1
-              productPrice.innerHTML = (parseFloat(productPrice.innerHTML.slice(0,-1)).toFixed(2) - parseFloat(data.infoPrice).toFixed(2)) + '€'
+              productPrice.innerHTML = (parseInt(productPrice.innerHTML.slice(0,-1)) - parseInt(data.infoPrice)) + '€'
               totalPlates-=1
               menuCartCount.innerHTML = parseInt(menuCartCount.innerHTML) - 1
               menuCartCountMobile.innerHTML = parseInt(menuCartCountMobile.innerHTML) - 1
-              totalCart.innerHTML = (parseFloat(totalCart.innerHTML.slice(0,-1)).toFixed(2)- parseFloat(data.infoPrice).toFixed(2))+'€'
-              subtotalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1)).toFixed(2)- parseFloat(data.infoPrice).toFixed(2))+'€'
+              totalCart.innerHTML = (parseInt(totalCart.innerHTML.slice(0,-1))- parseInt(data.infoPrice))+'€'
+              subtotalCart.innerHTML = (parseInt(subtotalCart.innerHTML.slice(0,-1))- parseInt(data.infoPrice))+'€'
               if(totalPlates<5){
                 cartMessageSection.innerHTML = '<p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>'
                 if(mistBtn != null){
