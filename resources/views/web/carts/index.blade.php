@@ -19,6 +19,11 @@
   color: #533fb8;
   }
 
+.cart-discount-img{
+  width: 200px !important;
+  margin-top: -130px !important;
+}
+
 @media (max-width: 991px) {
   .cart-product-content-product img {
     width: 100px;
@@ -28,6 +33,12 @@
   .cart-product-content-product span {
     width: 100%;
     text-align: end !important;
+  }
+
+  .cart-discount-img{
+    margin-top: 18px !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
   }
 }
 </style>
@@ -69,7 +80,7 @@
   <div class="cart-price">
     <div class="cart-price-content">
       <div>
-        <div class="cart-discount-img mp-mobile-hidden">
+        <div class="cart-discount-img">
         </div>
         <div class="cart-cod-desc">
           <form method="POST" action="{{ route('web.cart.discount') }}">
@@ -205,9 +216,9 @@
             numberPlate.innerHTML = parseInt(numberPlate.innerHTML) + 1
             menuCartCount.innerHTML = parseInt(menuCartCount.innerHTML) + 1
             menuCartCountMobile.innerHTML = parseInt(menuCartCountMobile.innerHTML) + 1
-            productPrice.innerHTML = (parseInt(productPrice.innerHTML.slice(0,-1)) + parseInt(data.infoPrice)) + '€'
-            totalCart.innerHTML = (parseInt(totalCart.innerHTML.slice(0,-1))+parseInt(data.infoPrice))+'€'
-            subtotalCart.innerHTML = (parseInt(subtotalCart.innerHTML.slice(0,-1))+parseInt(data.infoPrice))+'€'
+            productPrice.innerHTML = (parseFloat(productPrice.innerHTML.slice(0,-1)) + parseFloat(data.infoPrice)) + '€'
+            totalCart.innerHTML = (parseFloat(totalCart.innerHTML.slice(0,-1))+parseFloat(data.infoPrice))+'€'
+            subtotalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1))+parseFloat(data.infoPrice))+'€'
             totalPlates+=1
             if(totalPlates<5){
               cartMessageSection.innerHTML = '<p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>'
@@ -267,8 +278,8 @@
               product.remove()
               menuCartCount.innerHTML = parseInt(menuCartCount.innerHTML) - 1
               menuCartCountMobile.innerHTML = parseInt(menuCartCountMobile.innerHTML) - 1
-              totalCart.innerHTML = (parseInt(totalCart.innerHTML.slice(0,-1))-parseInt(data.infoPrice))+'€'
-              subtotalCart.innerHTML = (parseInt(subtotalCart.innerHTML.slice(0,-1))-parseInt(data.infoPrice))+'€'
+              totalCart.innerHTML = (parseFloat(totalCart.innerHTML.slice(0,-1))-parseFloat(data.infoPrice))+'€'
+              subtotalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1))-parseFloat(data.infoPrice))+'€'
               if(totalPlates<5){
                 cartMessageSection.innerHTML = '<p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>'
                 if(mistBtn != null){
@@ -293,12 +304,12 @@
               }
             } else {
               numberPlate.innerHTML = parseInt(numberPlate.innerHTML) - 1
-              productPrice.innerHTML = (parseInt(productPrice.innerHTML.slice(0,-1)) - parseInt(data.infoPrice)) + '€'
+              productPrice.innerHTML = (parseFloat(productPrice.innerHTML.slice(0,-1)) - parseFloat(data.infoPrice)) + '€'
               totalPlates-=1
               menuCartCount.innerHTML = parseInt(menuCartCount.innerHTML) - 1
               menuCartCountMobile.innerHTML = parseInt(menuCartCountMobile.innerHTML) - 1
-              totalCart.innerHTML = (parseInt(totalCart.innerHTML.slice(0,-1))- parseInt(data.infoPrice))+'€'
-              subtotalCart.innerHTML = (parseInt(subtotalCart.innerHTML.slice(0,-1))- parseInt(data.infoPrice))+'€'
+              totalCart.innerHTML = (parseFloat(totalCart.innerHTML.slice(0,-1))- parseFloat(data.infoPrice))+'€'
+              subtotalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1))- parseFloat(data.infoPrice))+'€'
               if(totalPlates<5){
                 cartMessageSection.innerHTML = '<p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>'
                 if(mistBtn != null){
