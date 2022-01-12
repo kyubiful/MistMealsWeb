@@ -104,10 +104,11 @@
           <p class="cart-price-subtotal"><span>Subtotal</span><span id="cart-subtotal">{{$cart->total}}€</span></p>
           <p class="cart-price-subtotal">
             <span>Descuento</span>
-            <span>
+            <span id="cart-discount">
               @if(Cookie::get('descuento')!=null AND Cookie::get('descuento_type')!=null)
                 @if(Cookie::get('descuento_type')=='porcentaje') -{{round(((Cookie::get('descuento')*$cart->total)/100),2)}}€
                 @elseif(Cookie::get('descuento_type')=='fijo')-{{Cookie::get('descuento')}}€
+                @elseif(Cookie::get('descuento_type')=='free') -{{$cart->total}}€
                 @endif
               @else
                 0€
@@ -123,12 +124,14 @@
             <span id="cart-total">
               @if(Cookie::get('descuento')!=null AND Cookie::get('descuento_type')!=null)
                 @if(Cookie::get('descuento_type')=='porcentaje')
-                  {{round(($cart->total*(100-Cookie::get('descuento'))/100),2)}}€
+                  {{($cart->total*(100-Cookie::get('descuento'))/100)}}€
                 @elseif(Cookie::get('descuento_type')=='fijo')
-                  {{round($cart->total-Cookie::get('descuento'))}}€
+                  {{$cart->total-Cookie::get('descuento')}}€
+                @elseif(Cookie::get('descuento_type')=='free')
+                  0.00€
                 @endif
               @else
-                {{ round($cart->total,2) }}€
+                {{$cart->total}}€
               @endif
 
             </span>
@@ -187,6 +190,22 @@
     let totalPlates = 0
     let totalCart = document.querySelector('#cart-total')
     let subtotalCart = document.querySelector('#cart-subtotal')
+    let discountCart = document.querySelector('#cart-discount')
+    @if(Cookie::get('descuento') != null)
+    let discountQuantity = {{Cookie::get('descuento')}}
+    @else
+    let discountQuantity = null
+    @endif
+    @if(Cookie::get('descuento_type') != null)
+    let discountType = '{{Cookie::get('descuento_type')}}'
+    @else
+    let discountType = null
+    @endif
+    let descuento = 0
+
+    if(discountType != null && discountType === 'fijo') {
+      descuento = parseFloat(discountQuantity).toFixed(2)
+    }
 
     for(let i = 0; i<numberPlates.length; i++){
       totalPlates += parseInt(numberPlates[i].innerHTML)
@@ -217,8 +236,15 @@
             menuCartCount.innerHTML = parseInt(menuCartCount.innerHTML) + 1
             menuCartCountMobile.innerHTML = parseInt(menuCartCountMobile.innerHTML) + 1
             productPrice.innerHTML = (parseFloat(productPrice.innerHTML.slice(0,-1)) + parseFloat(data.infoPrice)).toFixed(2) + '€'
-            totalCart.innerHTML = (parseFloat(totalCart.innerHTML.slice(0,-1)) + parseFloat(data.infoPrice)).toFixed(2) + '€'
+
             subtotalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1)) + parseFloat(data.infoPrice)).toFixed(2) + '€'
+
+            if(discountType === 'porcentaje' || discountType === 'free') {
+              descuento = ((parseFloat(subtotalCart.innerHTML.slice(0,-1)) * parseFloat(discountQuantity))/100).toFixed(2)
+              discountCart.innerHTML = '-' + descuento + '€'
+            }
+
+            totalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1)) - parseFloat(descuento)).toFixed(2) + '€'
             totalPlates += 1
             if(totalPlates < 5 ){
               cartMessageSection.innerHTML = '<p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>'
@@ -278,8 +304,16 @@
               product.remove()
               menuCartCount.innerHTML = parseInt(menuCartCount.innerHTML) - 1
               menuCartCountMobile.innerHTML = parseInt(menuCartCountMobile.innerHTML) - 1
-              totalCart.innerHTML = (parseFloat(totalCart.innerHTML.slice(0,-1)) - parseFloat(data.infoPrice)).toFixed(2) + '€'
+
               subtotalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1)) - parseFloat(data.infoPrice)).toFixed(2) + '€'
+
+              if(discountType === 'porcentaje' || discountType === 'free') {
+                descuento = ((parseFloat(subtotalCart.innerHTML.slice(0,-1)) * parseFloat(discountQuantity))/100).toFixed(2)
+                discountCart.innerHTML = '-' + descuento + '€'
+              }
+
+              totalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1)) - parseFloat(descuento)).toFixed(2) + '€'
+
               if(totalPlates<5){
                 cartMessageSection.innerHTML = '<p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>'
                 if(mistBtn != null){
@@ -303,13 +337,22 @@
                 }
               }
             } else {
+
               numberPlate.innerHTML = parseInt(numberPlate.innerHTML) - 1
               productPrice.innerHTML = (parseFloat(productPrice.innerHTML.slice(0,-1)) - parseFloat(data.infoPrice)).toFixed(2) + '€'
               totalPlates-=1
               menuCartCount.innerHTML = parseInt(menuCartCount.innerHTML) - 1
               menuCartCountMobile.innerHTML = parseInt(menuCartCountMobile.innerHTML) - 1
-              totalCart.innerHTML = (parseFloat(totalCart.innerHTML.slice(0,-1)) - parseFloat(data.infoPrice)).toFixed(2) + '€'
+
               subtotalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1)) - parseFloat(data.infoPrice)).toFixed(2) + '€'
+
+              if(discountType === 'porcentaje' || discountType === 'free') {
+                descuento = ((parseFloat(subtotalCart.innerHTML.slice(0,-1)) * parseFloat(discountQuantity))/100).toFixed(2)
+                discountCart.innerHTML = '-' + descuento + '€'
+              }
+
+              totalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1)) - parseFloat(descuento)).toFixed(2) + '€'
+
               if(totalPlates<5){
                 cartMessageSection.innerHTML = '<p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>'
                 if(mistBtn != null){
