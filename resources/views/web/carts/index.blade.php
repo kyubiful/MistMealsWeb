@@ -116,7 +116,7 @@
 
             </span>
           </p>
-          <p class="cart-price-subtotal"><span><del>Gastos de envío</del></span><span><del>4.15€</del></span></p> <!-- implementar gastos de envío -->
+          <p class="cart-price-subtotal"><span><del>Gastos de envío mínimo</del></span><span><del>4.15€</del></span></p> <!-- implementar gastos de envío -->
         </div>
         <p class="cart-price-total">
           <b>

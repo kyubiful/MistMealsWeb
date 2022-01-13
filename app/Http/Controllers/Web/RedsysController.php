@@ -13,6 +13,7 @@ use Exception;
 use App\Services\CartService;
 use App\Models\User;
 use App\Models\Payment;
+use App\Models\AvailableCP;
 use Barryvdh\DomPDF\Facade as PDF;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
@@ -66,6 +67,8 @@ class RedsysController extends Controller
 	public function free(Request $request)
 	{
 
+		// Inicialización de variables
+
 		if(auth()->user()) {
 			$user = User::findOrFail(auth()->user()->id);
 			$email = $user->email;
@@ -82,14 +85,19 @@ class RedsysController extends Controller
 		$createContactURL = 'https://api.holded.com/api/invoicing/v1/contacts';
 		$descuentoName = $request->cookie('descuento_name');
 		$discountCode = DiscountCode::where('name', $descuentoName)->first();
+    $shippingAmount = AvailableCP::select('amount')->where('cp', $user->cp)->first()->amount;
 		$discount = 0;
 
 		if ($request->cookie('descuento') != null) {
-			$discount = (int)$request->cookie('descuento');
+			if($discountCode->tipo != 'fijo') {
+				$discount = (int)$request->cookie('descuento');
+			}
 		}
 
 		$items = array();
 		$amount = 0;
+
+		// Añadir productos al array de items para enviarlo a holded
 
 		for ($i = 0; $i < $cart->products->count(); $i++) {
 			$product = $cart->products[$i];
@@ -105,6 +113,26 @@ class RedsysController extends Controller
 			$amount = $amount + ($product->precio * $product->pivot->quantity);
 		};
 
+		$shippingAmountItem = array(
+				'name' => 'Gastos de envío',
+				'units' => 1,
+				'subtotal' => round(($shippingAmount / 1.21), 2),
+				'tax' => 21,
+		);
+
+		array_push($items, $shippingAmountItem);
+
+		if($discountCode != null AND $discountCode->tipo == 'fijo') {
+			$discountItem = array(
+				'name' => 'descuento',
+				'units' => 1,
+				'subtotal' => -round(((int)$request->cookie('descuento')),2),
+			);
+			array_push($items, $discountItem);
+		}
+
+		// Creamos un array con los datos del pedido para holded
+
 		$holdedArray = array(
 			'contactCode' => $user->id + 10,
 			'shippingAddress' => $user->address . ' ' . $user->address_number . ' ' . $user->address_letter,
@@ -116,6 +144,8 @@ class RedsysController extends Controller
 			'items' => '',
 			'applyContactDefaults' => False
 		);
+
+		// Creamos un array con los datos del cliente para holded
 
 		$holdedClient = array(
 			'name' => $user->name . ' ' . $user->surname,
@@ -133,6 +163,8 @@ class RedsysController extends Controller
 
 		$holdedClient = json_encode($holdedClient);
 
+		// Creación de cliente en holded
+
 		try {
 			$res = $client->post($createContactURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedClient]);
 			$res = json_decode($res->getBody()->getContents());
@@ -142,8 +174,12 @@ class RedsysController extends Controller
 			dd('Error a la hora de crear el usuario');
 		}
 
+		// Añadimos los items al array que se enviará a holded y lo encodeamos
+
 		$holdedArray['items'] = $items;
 		$holdedArray = json_encode($holdedArray);
+
+		// Creación del pedido en holded
 
 		try {
 			$client->post($salesorderURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
@@ -151,11 +187,15 @@ class RedsysController extends Controller
 			dd('Error a la hora de crear el pedido');
 		}
 
+		// Creación de la factura en holded
+
 		try {
 			$res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
 		} catch (Exception $e) {
 			dd('Error a la hora de crear la factura');
 		}
+
+		// Dejamos la factura creada como pagada
 
 		$res = json_decode($res->getBody()->getContents());
 		$invoiceId = $res->id;
@@ -167,6 +207,8 @@ class RedsysController extends Controller
 			dd('Error a la hora de poner el pedido como pagado');
 		}
 
+		// Envio del mail de confirmación del pedido
+
 		try {
 			Mail::to($email)->send(new OrderMail($cart, null));
 		} catch (\Exception $e) {
@@ -176,6 +218,8 @@ class RedsysController extends Controller
 				'message' => $e->getMessage()
 			));
 		}
+
+		// Creamos un payment en nuestra base de datos
 
 		$order_id = (int)$request->cookie('order_id');
 
@@ -187,6 +231,8 @@ class RedsysController extends Controller
 
 		$payment->save();
 
+		// Asociarmos el código de descuento al usuario si el código es único por usuario
+
 		if ($discountCode->unique == 1)
 		{
 			$user->discountCodes()->attach($discountCode->id);
@@ -194,10 +240,13 @@ class RedsysController extends Controller
 		$discountCode->uses = $discountCode->uses + 1;
 		$discountCode->save();
 
+		// Cambiamos el order a pagado
+
 		Order::whereId($order_id)->update(['status' => 'pagado']);
 
-		$this->cartService->deleteCookie();
+		// Borramos todas las cookies y las variables de sesión que hemos necesitado y redirijimos a la home
 
+		$this->cartService->deleteCookie();
 		$request->session()->forget(['user', 'email']);
 		return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
 	}
@@ -206,11 +255,17 @@ class RedsysController extends Controller
 	{
 
 		try {
+
 			$key = config('redsys.key');
 			$parameters = Redsys::getMerchantParameters($request->input('Ds_MerchantParameters'));
 			$DsResponse = $parameters['Ds_Response'];
 			$DsResponse += 0;
+
+			// Si la respuesta de redsys es positiva
+
 			if (Redsys::check($key, $request->input()) && $DsResponse <= 99) {
+
+				// Inicializamos las variables
 
 				$descuentoName = $request->cookie('descuento_name');
 				$discountCode = DiscountCode::where('name', $descuentoName)->first();
@@ -223,6 +278,7 @@ class RedsysController extends Controller
 					$email = session('email');
 				}
 
+				$shippingAmount = AvailableCP::select('amount')->where('cp', $user->cp)->first()->amount;
 				$cart = $this->cartService->getFromCookie();
 				// $order = Order::findOrFail($request->cookie('order_id'));
 				$client = new Client();
@@ -233,12 +289,15 @@ class RedsysController extends Controller
 				// $updateContactURL = 'https://api.holded.com/api/invoicing/v1/contacts/';
 				$createContactURL = 'https://api.holded.com/api/invoicing/v1/contacts';
 				$discount = 0;
-				if ($request->cookie('descuento') != null) {
+
+				if ($request->cookie('descuento') != null AND $discountCode->tipo != 'fijo') {
 					$discount = (int)$request->cookie('descuento');
 				}
 
 				$items = array();
 				$amount = 0;
+
+				// Añadimos todos los productos al array de items
 
 				for ($i = 0; $i < $cart->products->count(); $i++) {
 					$product = $cart->products[$i];
@@ -254,6 +313,26 @@ class RedsysController extends Controller
 					$amount = $amount + ($product->precio * $product->pivot->quantity);
 				};
 
+				$shippingAmountItem = array(
+						'name' => 'Gastos de envío',
+						'units' => 1,
+						'subtotal' => round(($shippingAmount / 1.21), 2),
+						'tax' => 21,
+				);
+
+				array_push($items, $shippingAmountItem);
+
+				if($discountCode != null AND $discountCode->tipo == 'fijo') {
+					$discountItem = array(
+						'name' => 'Descuento '.$discountCode->name,
+						'units' => 1,
+						'subtotal' => -round(((int)$request->cookie('descuento')),2),
+					);
+					array_push($items, $discountItem);
+				}
+
+				// Creamos un array con los datos del pedido para holded
+
 				$holdedArray = array(
 					'contactCode' => $user->id + 10,
 					'shippingAddress' => $user->address . ' ' . $user->address_number . ' ' . $user->address_letter,
@@ -265,6 +344,8 @@ class RedsysController extends Controller
 					'items' => '',
 					'applyContactDefaults' => False
 				);
+
+				// Creamos un array con los datos del usuario para holded
 
 				$holdedClient = array(
 					'name' => $user->name . ' ' . $user->surname,
@@ -280,6 +361,8 @@ class RedsysController extends Controller
 					)
 				);
 
+				// Creación de usuario en holded
+
 				$holdedClient = json_encode($holdedClient);
 
 				try {
@@ -291,6 +374,8 @@ class RedsysController extends Controller
 					dd('Error a la hora de crear el usuario');
 				}
 
+				// Creación de pedido en holded
+
 				$holdedArray['items'] = $items;
 				$holdedArray = json_encode($holdedArray);
 
@@ -300,11 +385,15 @@ class RedsysController extends Controller
 					dd('Error a la hora de crear el pedido');
 				}
 
+				// Creación de factura en holded
+
 				try {
 					$res = $client->post($invoiceURL, ['headers' => ['key' => config('holded.key')], 'body' => $holdedArray]);
 				} catch (Exception $e) {
 					dd('Error a la hora de crear la factura');
 				}
+
+				// Ponemos el pedido como pagado en holded
 
 				$res = json_decode($res->getBody()->getContents());
 				$invoiceId = $res->id;
@@ -316,6 +405,8 @@ class RedsysController extends Controller
 					dd('Error a la hora de poner el pedido como pagado');
 				}
 
+				// Enviamos correo de confirmación
+
 				try {
 					Mail::to($email)->send(new OrderMail($cart, null));
 				} catch (\Exception $e) {
@@ -325,6 +416,8 @@ class RedsysController extends Controller
 						'message' => $e->getMessage()
 					));
 				}
+
+				// Creamos un payment en nuestra base de datos
 
 				$order_id = (int)$request->cookie('order_id');
 
@@ -336,6 +429,8 @@ class RedsysController extends Controller
 
 				$payment->save();
 
+				// Asociamos el código de descuento al usuario si es de tipo único
+
 				if ($discountCode!=null) {
 					if($discountCode->unique == 1){
 						$user->discountCodes()->attach($discountCode->id);
@@ -344,15 +439,25 @@ class RedsysController extends Controller
 					$discountCode->save();
 				}
 
+				// Ponemos el order como pagado en nuestra base de datos
+
 				Order::whereId($order_id)->update(['status' => 'pagado']);
+
+				// Borramos todas las cookies y variables de sesión que necesitabamos y devolvemos al usuario a la home
 
 				$this->cartService->deleteCookie();
 				$request->session()->forget(['user', 'email']);
 				return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
 			} else {
+
+				// Si redsys responde con un código de error
+
 				return redirect('/')->with('message', 'error');
 			}
 		} catch (Exception $e) {
+
+			// Si hay algún problema a la hora de tener contacto con redsys
+
 			dd('Error fuera del try principal', $e);
 			return redirect('/')->with('message', 'error');
 		}

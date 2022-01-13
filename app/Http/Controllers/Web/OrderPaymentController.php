@@ -28,7 +28,6 @@ class OrderPaymentController extends Controller
    */
   public function create(Order $order, Request $request)
   {
-
     $descuentoName = $request->cookie('descuento_name');
     $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo','one_use','uses')->where('name', $descuentoName)->first();
     $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
@@ -48,6 +47,7 @@ class OrderPaymentController extends Controller
     }
 
     if (in_array($user->cp, $availableCP) == false) return redirect()->back()->with('message', 'invalid cp');
+    $shippingAmount = AvailableCP::select('amount')->where('cp', $user->cp)->first()->amount;
 
     if (!is_null($discountCode)) {
       if ($discountCode->unique == 1) {
@@ -85,7 +85,10 @@ class OrderPaymentController extends Controller
       return redirect('/carts')->with('message', 'Máximo 14 platos para este código');
     }
 
-    return view('web.payments.create')->with(['order' => $order, 'amount' => $amount, 'user' => $user, 'cart' => $cart, 'register' => $register, 'email' => $request->session()->get('email')]);
+    $amount += $shippingAmount;
+    $amount = round($amount, 2);
+
+    return view('web.payments.create')->with(['order' => $order, 'amount' => $amount, 'user' => $user, 'cart' => $cart, 'register' => $register, 'email' => $request->session()->get('email'), 'shipping_amount' => $shippingAmount]);
   }
 
   /**

@@ -82,8 +82,8 @@
             <th>Subtotal</th>
           </tr>
         </thead>
-        @foreach($order->products as $i => $plato)
         <tbody>
+        @foreach($order->products as $i => $plato)
           <tr>
             <td>
               {{ $plato->pivot->quantity }}
@@ -100,8 +100,23 @@
               </strong>
             </td>
           </tr>
-        </tbody>
         @endforeach
+          <tr>
+            <td>
+              1
+            </td>
+            <td class="order-product-name">
+              Gastos de envío
+            </td>
+            <td>
+            </td>
+            <td>
+              <strong>
+                {{ $shipping_amount }}€
+              </strong>
+            </td>
+          </tr>
+        </tbody>
       </table>
       @if(Cookie::get('descuento')!=null)
       <table class="order-paymenat-discount-table">
