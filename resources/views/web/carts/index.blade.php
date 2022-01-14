@@ -177,6 +177,8 @@
   @endif
   <script>
 
+    // Inicialización de las variables
+
     let addPlateBtn = document.querySelectorAll('#cart-plate-add-button')
     let removePlateBtn = document.querySelectorAll('#cart-plate-remove-button')
     let numberPlates = document.querySelectorAll('#cart-number-plates')
@@ -192,12 +194,12 @@
     let subtotalCart = document.querySelector('#cart-subtotal')
     let discountCart = document.querySelector('#cart-discount')
     @if(Cookie::get('descuento') != null)
-    let discountQuantity = {{Cookie::get('descuento')}}
+    let discountQuantity = {{ Cookie::get('descuento') }}
     @else
     let discountQuantity = null
     @endif
     @if(Cookie::get('descuento_type') != null)
-    let discountType = '{{Cookie::get('descuento_type')}}'
+    let discountType = '{{ Cookie::get('descuento_type') }}'
     @else
     let discountType = null
     @endif
@@ -210,6 +212,8 @@
     for(let i = 0; i<numberPlates.length; i++){
       totalPlates += parseInt(numberPlates[i].innerHTML)
     }
+
+    // Lógica botón añadir plato
 
     for(let i = 0; i<addPlateBtn.length; i++){
       addPlateBtn[i].addEventListener('click', (e) => {
@@ -276,6 +280,8 @@
       })
     })
     }
+
+    // Lógica botón quitar plato
 
     for(let i = 0; i<removePlateBtn.length; i++){
       removePlateBtn[i].addEventListener('click', (e) => {
