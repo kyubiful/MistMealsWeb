@@ -970,7 +970,7 @@ body.menu-step2 button.plato-menu-btn-remove span {
   padding-top: 20px;
 }
 
-.order-paymenat-discount-table {
+.order-payment-discount-table {
   width: 20% !important;
   margin-left: auto;
   margin-right: 0px;
@@ -4597,6 +4597,10 @@ body .platos-count-content p {
 
   .menu-separation {
     margin-right: auto !important;
+  }
+
+  .order-payment-discount-table {
+    width: 100% !important;
   }
 
   @media (min-width: 576px) {

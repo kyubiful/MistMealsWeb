@@ -118,18 +118,18 @@
           </tr>
         </tbody>
       </table>
-      @if(Cookie::get('descuento')!=null)
-      <table class="order-paymenat-discount-table" style="width: 100%; !important">
+      @if(Cookie::get('descuento') != null)
+      <table class="order-payment-discount-table">
         <tr>
           <td style="background-color: #533fb8; color: #F9F2E1;">
             <b>Descuento</b>
           </td>
           <td style="">
-            @if(Cookie::get('descuento_type')=='porcentaje')
+            @if(Cookie::get('descuento_type') == 'porcentaje')
               -{{round((($cart->total)*((Cookie::get('descuento'))/100)),2)}}€
-            @elseif(Cookie::get('descuento_type')=='fijo')
+            @elseif(Cookie::get('descuento_type') == 'fijo')
               -{{Cookie::get('descuento')}}€
-            @elseif(Cookie::get('descuento_type')=='free')
+            @elseif(Cookie::get('descuento_type') == 'free')
               -{{$cart->total}}€
             @endif
           </td>
@@ -142,7 +142,7 @@
   <div class="order-continue">
   <a href="{{ route('web.orders.create') }}" class="order-payment-back-btn">Volver</a>
     <h4 class="payment-amount">Total:
-      @if(Cookie::get('descuento_type')!='free')
+      @if(Cookie::get('descuento_type') != 'free')
         {{$amount}}€
       @else
         0€
