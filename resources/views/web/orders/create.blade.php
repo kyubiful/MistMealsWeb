@@ -153,7 +153,7 @@
               {{ $plato->pivot->quantity }}
             </td>
             <td class="order-product-name">
-              {{ $plato->nombre }}
+              {{ $plato->nombre }} - {{ $plato->plato_peso->valor }}
             </td>
             <td>
               {{ $plato->precio }}
@@ -167,8 +167,8 @@
         </tbody>
         @endforeach
       </table>
-      @if(Cookie::get('descuento')!=null)
-      <table class="order-paymenat-discount-table">
+      @if(Cookie::get('descuento') != null)
+      <table class="order-paymenat-discount-table" style="width: 100% !important">
         <tr>
           <td style="background-color: #533fb8; color: #F9F2E1;">
             <b>Descuento</b>
