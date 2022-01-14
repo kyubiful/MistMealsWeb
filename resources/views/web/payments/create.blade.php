@@ -92,11 +92,11 @@
               {{ $plato->nombre }} - {{ $plato->plato_peso->valor }}
             </td>
             <td>
-              {{ $plato->precio }}
+              {{ $plato->precio }}€
             </td>
             <td>
               <strong>
-                {{ $plato->total }}€
+                {{ number_format($plato->total, 2) }}€
               </strong>
             </td>
           </tr>
