@@ -91,24 +91,24 @@
           @if(Cookie::get('descuento') != null AND Cookie::get('descuento_type') != null)
           <p>Descuento aplicado:
             @if(Cookie::get('descuento_type')=='fijo')
-              {{Cookie::get('descuento')}}€
+              {{ Cookie::get('descuento') }}€
             @else
-              {{Cookie::get('descuento')}}%
+              {{ Cookie::get('descuento') }}%
             @endif
-            <a style="color: white;" href="{{route('web.cart.discount.remove')}}">X</a>
+            <a style="color: white;" href="{{ route('web.cart.discount.remove') }}">X</a>
           </p>
           @endif
           {{Session()->get('discountMessageError')}}
         </div>
         <div class="cart-price-subtotal-content">
-          <p class="cart-price-subtotal"><span>Subtotal</span><span id="cart-subtotal">{{$cart->total}}€</span></p>
+          <p class="cart-price-subtotal"><span>Subtotal</span><span id="cart-subtotal">{{ $cart->total }}€</span></p>
           <p class="cart-price-subtotal">
             <span>Descuento</span>
             <span id="cart-discount">
-              @if(Cookie::get('descuento')!=null AND Cookie::get('descuento_type')!=null)
-                @if(Cookie::get('descuento_type')=='porcentaje') -{{round(((Cookie::get('descuento')*$cart->total)/100),2)}}€
-                @elseif(Cookie::get('descuento_type')=='fijo')-{{Cookie::get('descuento')}}€
-                @elseif(Cookie::get('descuento_type')=='free') -{{$cart->total}}€
+              @if(Cookie::get('descuento') != null AND Cookie::get('descuento_type') != null)
+                @if(Cookie::get('descuento_type')=='porcentaje') -{{ round(((Cookie::get('descuento')*$cart->total)/100),2) }}€
+                @elseif(Cookie::get('descuento_type')=='fijo') -{{ Cookie::get('descuento') }}€
+                @elseif(Cookie::get('descuento_type')=='free') -{{ $cart->total }}€
                 @endif
               @else
                 0€
@@ -122,11 +122,11 @@
           <b>
             <span>TOTAL</span>
             <span id="cart-total">
-              @if(Cookie::get('descuento')!=null AND Cookie::get('descuento_type')!=null)
+              @if(Cookie::get('descuento') != null AND Cookie::get('descuento_type') != null)
                 @if(Cookie::get('descuento_type')=='porcentaje')
-                  {{($cart->total*(100-Cookie::get('descuento'))/100)}}€
+                  {{ round(($cart->total*(100-Cookie::get('descuento'))/100),2) }}€
                 @elseif(Cookie::get('descuento_type')=='fijo')
-                  {{$cart->total-Cookie::get('descuento')}}€
+                  {{ round(($cart->total-Cookie::get('descuento')),2) }}€
                 @elseif(Cookie::get('descuento_type')=='free')
                   0.00€
                 @endif
@@ -143,11 +143,11 @@
       </div>
       @inject('cartService','App\Services\CartService')
       @if($cartService->countProducts() < 5)
-      <a style="margin: auto;" class="mist_btn_disable" href="{{route('web.orders.create')}}">Tramitar pedido</a>
+      <a style="margin: auto;" class="mist_btn_disable" href="{{ route('web.orders.create') }}">Tramitar pedido</a>
       <div id="cart-message-section">
         <p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>
       </div>
-      @elseif($cartService->countProducts() > 14 AND Cookie::get('descuento_type')=='free')
+      @elseif($cartService->countProducts() > 14 AND Cookie::get('descuento_type') == 'free')
       <a style="margin: auto;" class="mist_btn_disable" href="{{route('web.orders.create')}}">Tramitar pedido</a>
       <div id="cart-message-section">
         <p style="color: red; text-align: center;">*Máximo 14 platos para este código de descuento</p>
@@ -157,7 +157,7 @@
       <div id="cart-message-section">
       </div>
       @endif
-      @if(session('lunch')!==null AND session('dinner')!==null)
+      @if(session('lunch') !== null AND session('dinner') !== null)
       <a class="mist_btn" style="margin: auto; margin-top: 75px;" href="{{ url('/menu/dishes') }}">Volver al menú</a>
       @endif
     </div>
