@@ -20,7 +20,7 @@
   }
 
 .cart-discount-img{
-  width: 200px !important;
+  width: 300px !important;
   margin-top: -130px !important;
 }
 
