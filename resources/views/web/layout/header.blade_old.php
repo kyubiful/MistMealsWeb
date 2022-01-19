@@ -11,7 +11,7 @@
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('web.menu') }}" aria-haspopup="true" aria-expanded="false">
-                                    Meal Plan
+                                    Menú semanal
                                 </a>
                             </li>
                             {{--<li class="nav-item">

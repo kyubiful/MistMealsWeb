@@ -9,7 +9,7 @@
     <div>
       <div>
         <div class="section_tittle style_2 wow fadeInUp" data-wow-delay=".5s">
-          <h2>Meal Plan</h2>
+          <h2>Menú Semanal</h2>
           <p class="subtitle">Elige tu menú</p>
         </div>
       </div>

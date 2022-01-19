@@ -76,7 +76,7 @@
                     {!! Form::number('edad', $user != null ? $user->edad : '', ['class' => 'form-control cu_input', 'placeholder' => 'Edad', 'required', 'id'=>'edad', 'min' => 18, 'max' => 80, 'step' => '1']); !!}
                   </div>
                   <div class="single_contact_form mt-5">
-                    <button type="submit" class="mist_btn animate_btn text-uppercase">Ver mi Meal Plan</button>
+                    <button type="submit" class="mist_btn animate_btn text-uppercase">Ver mi Menú Semanal</button>
                   </div>
                   @if (!auth()->check())
                   <div class="custom-control custom-checkbox step1-policy">
