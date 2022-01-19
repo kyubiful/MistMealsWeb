@@ -114,11 +114,10 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-
         try {
             $user->delete();
         } catch (\Illuminate\Database\QueryException $e) {
-            //
+            dd($e);
         }
 
         return redirect()->route('admin.user');

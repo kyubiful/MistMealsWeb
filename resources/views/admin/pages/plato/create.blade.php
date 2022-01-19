@@ -131,6 +131,14 @@
                 <div class="col-md-5 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
+                            <div class="row form-group">
+                                <div class="col-sm-12" style="display: flex; justify-content: flex-start; align-items: center;">
+                                    <input class="form-check-input" type="checkbox" name="active" id="plate_active" style="position:static; margin-left: 0px; margin-top: 0px;">
+                                    <label class="form-check-label" for="plate_active" style="margin-top: 3px; margin-left: 3px; margin-bottom: auto; line-height: normal;">
+                                        Activo
+                                    </label>
+                                </div>
+                            </div>
                             <h6 class="card-title">@lang('admin.page.plato.dishe')</h6>
                             <p class="card-description">@lang('admin.page.plato.dishe_desc')</p>
                             <div class="row form-group">

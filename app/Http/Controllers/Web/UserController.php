@@ -49,8 +49,22 @@ class UserController extends Controller
         return view('web.user.signup', compact('sexo', 'ejercicio', 'objetivo', 'estadocivil', 'estadolaboral', 'profesion', 'bodyclass'));
     }
 
+    public function loginSignup(Request $request)
+    {
+        $sexo = Sexo::all();
+        $profesion = Profesion::all();
+        $ejercicio = NivelEjercicio::all();
+        $objetivo = Objetivo::all();
+        $estadocivil = EstadoCivil::all();
+        $estadolaboral = EstadoLaboral::all();
+        $bodyclass = "signupform";
+
+        return view('web.user.loginSignup', compact('sexo', 'ejercicio', 'objetivo', 'estadocivil', 'estadolaboral', 'profesion', 'bodyclass'));
+    }
+
     public function signupStore(Request $request)
     {
+
         // Check
         if (User::where('email', $request->email)->exists()) {
             return response()->json(array(
@@ -163,6 +177,80 @@ class UserController extends Controller
             'status' => 200,
             'message' => '',
             'link' => route('web.home')
+        ));
+    }
+
+    public function loginCart(Request $request)
+    {
+        $credentials = array(
+            'email' => $request->email,
+            'password' => $request->passwordLogin
+        );
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            $user = User::findOrFail(auth()->user()->id);
+        } else {
+            return response()->json(array(
+                'status' => 500,
+                'message' => 'Datos incorrectos!'
+            ));
+        }
+
+        return response()->json(array(
+            'status' => 200,
+            'message' => '',
+            'link' => route('web.orders.create')
+        ));
+    }
+
+    public function signupStoreCart(Request $request)
+    {
+        // Check
+        if (User::where('email', $request->email)->exists()) {
+            return response()->json(array(
+                'status' => 500,
+                'message' => 'El email ya existe en el sistema!'
+            ));
+        }
+
+        // Login
+        $credentials = $request->only('email', 'password');
+
+        // Registro
+        $details = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+
+        $request->merge([
+            'password' => bcrypt($request->password),
+            'role_id' => 2,
+            'username' => $request->email,
+        ]);
+
+        $user = User::create($request->all());
+        Newsletter::subscribeOrUpdate($request->email);
+
+        // Login
+        Auth::attempt($credentials);
+
+        // Send mail
+
+        try {
+            Mail::to($request->email)->send(new SignUpUserMail($details));
+        } catch (\Exception $e) {
+            return response()->json(array(
+                'status' => 500,
+                'message' => $e->getMessage()
+            ));
+        }
+
+        return response()->json(array(
+            'status' => 200,
+            'message' => '',
+            'link' => route('web.orders.create')
         ));
     }
 

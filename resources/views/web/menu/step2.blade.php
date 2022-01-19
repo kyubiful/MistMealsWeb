@@ -28,13 +28,6 @@
 
           <div class="text">Más abajo encontrarás nuestra propuesta de menú para ti, basada en tu frecuencia de deporte y tus datos personales.</div>
 
-          <div class="pdf-form">
-            <form method="POST" action="{{ route('web.menu.mail') }}" id="pdfMenu" target="_blank">
-              @csrf
-              <input type="email" name="email" class="form-control cu_input" placeholder="Email" value="{{ str_contains($user->email, '@') ? $user->email : '' }}" required>
-              <button type="submit" class="cu_btn animate_btn text-white">Descargar PDF</button>
-            </form>
-          </div>
         </div>
       </div>
     </div>
@@ -515,5 +508,6 @@
 <script>
   gtag('event', 'conversion', {'send_to': 'AW-10805779259/GT4JCLy_hYQDELu2zKAo'});
   fbq('track', 'CalculatedPlan')
+  platosAjax();
 </script>
 @endpush

@@ -3523,63 +3523,65 @@ if (window.location.pathname == "/orders/create") {
 }
 
 if (window.location.pathname == "/platos") {
-  const containerL = document.querySelectorAll(".plato-container-l");
-  const containersL = document.querySelector(".platos-container-l");
+  function platosJs() {
+    const containerL = document.querySelectorAll(".plato-container-l");
+    const containersL = document.querySelector(".platos-container-l");
 
-  const sizeBtnM = document.querySelectorAll(".plato-peso-switch-m");
-  const sizeBtnL = document.querySelectorAll(".plato-peso-switch-l");
+    const sizeBtnM = document.querySelectorAll(".plato-peso-switch-m");
+    const sizeBtnL = document.querySelectorAll(".plato-peso-switch-l");
 
-  for (let i = 0; i < sizeBtnM.length; i++) {
-    sizeBtnM[i].addEventListener("click", () => {
-      sizeBtnM[i].classList.toggle("active");
-      sizeBtnL[i].classList.toggle("active");
-      containerL[i].classList.toggle("active");
-    });
-  }
+    for (let i = 0; i < sizeBtnM.length; i++) {
+      sizeBtnM[i].addEventListener("click", () => {
+        sizeBtnM[i].classList.toggle("active");
+        sizeBtnL[i].classList.toggle("active");
+        containerL[i].classList.toggle("active");
+      });
+    }
 
-  for (let i = 0; i < sizeBtnL.length; i++) {
-    sizeBtnL[i].addEventListener("click", () => {
-      sizeBtnM[i].classList.toggle("active");
-      sizeBtnL[i].classList.toggle("active");
-      containerL[i].classList.toggle("active");
-    });
-  }
+    for (let i = 0; i < sizeBtnL.length; i++) {
+      sizeBtnL[i].addEventListener("click", () => {
+        sizeBtnM[i].classList.toggle("active");
+        sizeBtnL[i].classList.toggle("active");
+        containerL[i].classList.toggle("active");
+      });
+    }
 
-  const plateBtnMore = document.querySelectorAll(".plate-btn-more");
-  const plateBtnLess = document.querySelectorAll(".plate-btn-less");
-  const plateQuantitiyDisplay = document.querySelectorAll(
-    ".plate-quantity-display"
-  );
+    const plateBtnMore = document.querySelectorAll(".plate-btn-more");
+    const plateBtnLess = document.querySelectorAll(".plate-btn-less");
+    const plateQuantitiyDisplay = document.querySelectorAll(
+      ".plate-quantity-display"
+    );
 
-  for (let i = 0; i < plateQuantitiyDisplay.length; i++) {
-    plateBtnMore[i].addEventListener("click", () => {
-      plateQuantitiyDisplay[i].value =
-        parseInt(plateQuantitiyDisplay[i].value) + 1;
-    });
-
-    plateBtnLess[i].addEventListener("click", () => {
-      if (parseInt(plateQuantitiyDisplay[i].value) > 0) {
+    for (let i = 0; i < plateQuantitiyDisplay.length; i++) {
+      plateBtnMore[i].addEventListener("click", () => {
         plateQuantitiyDisplay[i].value =
-          parseInt(plateQuantitiyDisplay[i].value) - 1;
-      }
-    });
+          parseInt(plateQuantitiyDisplay[i].value) + 1;
+      });
+
+      plateBtnLess[i].addEventListener("click", () => {
+        if (parseInt(plateQuantitiyDisplay[i].value) > 0) {
+          plateQuantitiyDisplay[i].value =
+            parseInt(plateQuantitiyDisplay[i].value) - 1;
+        }
+      });
+    }
+
+    // const hideModalBtn = document.querySelector('.plates-modal-hide');
+    // if(hideModalBtn != null){
+    //   hideModalBtn.addEventListener('click', () => {
+    //     document.querySelector('.plates-modal').classList.remove('active');
+    //     document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    //     document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    //   });
+
+    //   const cartModalBtn = document.querySelector('.plates-modal-cart-btn');
+    //   cartModalBtn.addEventListener('click', () => {
+    //     document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    //     document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    //     document.cookie = "pageHeight=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    //   });
+    // }
   }
-
-  // const hideModalBtn = document.querySelector('.plates-modal-hide');
-  // if(hideModalBtn != null){
-  //   hideModalBtn.addEventListener('click', () => {
-  //     document.querySelector('.plates-modal').classList.remove('active');
-  //     document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-  //     document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-  //   });
-
-  //   const cartModalBtn = document.querySelector('.plates-modal-cart-btn');
-  //   cartModalBtn.addEventListener('click', () => {
-  //     document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-  //     document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-  //     document.cookie = "pageHeight=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-  //   });
-  // }
 }
 
 // MailChimp integration
@@ -3598,15 +3600,17 @@ if (window.location.pathname == "/platos") {
 
 // fadeout popup msg
 let popupMsg = document.querySelector(".home-msg-container");
+let popupMsgClose = document.querySelector(".home-msg-close");
+
 if (popupMsg != null) {
-  setTimeout(() => {
+  popupMsgClose.addEventListener('click', () => {
     popupMsg.classList.toggle("fade");
   }, 5000);
 }
 
 // global
 
-let newsletterBtn = document.querySelector('.newsletter-btn');
+let newsletterBtn = document.querySelector('.newsletter-btn')
 
 newsletterBtn.addEventListener('click', () => {
 
@@ -3616,9 +3620,122 @@ newsletterBtn.addEventListener('click', () => {
     if (typeof(url) != 'undefined') {
       window.location = url;
     }
-  };
+  }
   gtag('event', 'conversion', {
       'send_to': 'AW-10805779259/EFI4CNvl3YMDELu2zKAo',
       'event_callback': callback
-  });
+  })
 })
+
+if (window.location.href.indexOf("orders/create") > -1) {
+
+  let newAccountPaymentBtn = document.querySelector('#new-account-btn')
+  let newAccountPaymentPassword = document.querySelector('.payment-password')
+  let newAccountPaymentConfirmPassword = document.querySelector('.payment-conf-password')
+  let newAccountBoolean = document.querySelector('.new-account-payment-boolean')
+  let orderContinueBtn = document.querySelector('.order-continue-btn')
+  let newAccountPaymentEmail = document.querySelector('input[type="email"]')
+  let paymentPasswordErrorMsg = document.querySelector('.payment-password-error-msg')
+
+  // Solo funciona si existen los campos de usuarios no registrados
+
+  if(newAccountPaymentEmail != null) {
+
+    // Si le damos atrás en el navegador y tiene datos en el correo setea el disable del botón a false
+    window.onload = () => {
+      if(newAccountPaymentEmail.value != '') {
+        orderContinueBtn.disabled = false
+      }
+    }
+
+  // Input password requerido si se quiere crear una cuenta nueva
+    newAccountPaymentBtn.addEventListener('click', () => {
+      newAccountPaymentPassword.toggleAttribute('required')
+      newAccountPaymentConfirmPassword.toggleAttribute('required')
+      if(newAccountBoolean.value == 'false') {
+        newAccountBoolean.value = true
+
+        if(newAccountPaymentEmail.value == '' || newAccountPaymentPassword.value == '' || newAccountPaymentConfirmPassword.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+
+      } else {
+        newAccountBoolean.value = false
+        if(newAccountPaymentEmail.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      }
+    })
+
+  // Deshabilitar el botón de pago si no se ha puesto al menos el correo
+    if(newAccountPaymentEmail.value == '') {
+      orderContinueBtn.disabled = true
+    }
+
+    newAccountPaymentEmail.addEventListener('keyup', () => {
+      if(newAccountBoolean.value == 'false') {
+        if(newAccountPaymentEmail.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      } else {
+        if(newAccountPaymentEmail.value == '' || newAccountPaymentPassword.value == '' || newAccountPaymentConfirmPassword.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      }
+    })
+
+    newAccountPaymentPassword.addEventListener('keyup', () => {
+      if(newAccountBoolean.value == 'false') {
+        if(newAccountPaymentEmail.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      } else {
+        if(newAccountPaymentEmail.value == '' || newAccountPaymentPassword.value == '' || newAccountPaymentConfirmPassword.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+
+        if(newAccountPaymentPassword.value == newAccountPaymentConfirmPassword.value) {
+          paymentPasswordErrorMsg.innerHTML = ''
+        } else {
+          paymentPasswordErrorMsg.innerHTML = '*Las contraseñas no coinciden'
+        }
+      }
+    })
+
+    newAccountPaymentConfirmPassword.addEventListener('keyup', () => {
+      if(newAccountBoolean.value == 'false') {
+        if(newAccountPaymentEmail.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+      } else {
+        if(newAccountPaymentEmail.value == '' || newAccountPaymentPassword.value == '' || newAccountPaymentConfirmPassword.value == '') {
+          orderContinueBtn.disabled = true
+        } else {
+          orderContinueBtn.disabled = false
+        }
+
+        if(newAccountPaymentPassword.value == newAccountPaymentConfirmPassword.value) {
+          paymentPasswordErrorMsg.innerHTML = ''
+        } else {
+          paymentPasswordErrorMsg.innerHTML = '*Las contraseñas no coinciden'
+        }
+      }
+    })
+
+  }
+
+}

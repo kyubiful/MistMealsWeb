@@ -7,9 +7,8 @@
   </div>
 </div>
   @if(Cookie::get('newsletterpopup')!=1)
-    <x-web-home-popup-discount/>
+    <!-- <x-web-home-popup-discount/> -->
   @endif
-
   @if(session()->has('popupCp2') AND session()->get('popupCp2')==2 AND Cookie::get('popupCpEnd') == false)
   <section class="home-popup-container">
     <div class="home-popup-content">
@@ -33,6 +32,7 @@
     </div>
   </section>
   @endif
+
   <section class="home-popup-container2 home-popup-hidden">
     <div class="home-popup-content">
       <button class="home-popup-btn2">X</button>
@@ -72,4 +72,5 @@
    <x-slot name="mensaje">Ha habído un problema a la hora de realizar el pago, por favor intentelo de nuevo</x-slot>
   </x-web-home-message>
   @endif
+
   @endsection

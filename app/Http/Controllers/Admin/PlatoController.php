@@ -112,6 +112,7 @@ class PlatoController extends Controller
     }
 
     // fin string codigo plato compuesto
+    $active = $request->active == 'on' ? true : false;
 
     $plato = Plato::create([
       'codigo' => $cod_plato_comp,
@@ -126,6 +127,7 @@ class PlatoController extends Controller
       'peso' => $request->peso,
       'imagen_1' => $request->imagen_1,
       'imagen_2' => $request->imagen_2,
+      'active' => $active
     ]);
 
     $plato->plato_alergeno()->sync($request->alergenos);
@@ -219,6 +221,8 @@ class PlatoController extends Controller
 
     // fin string codigo plato compuesto
 
+    $active = $request->active == 'on' ? true : false;
+
     $plato->update([
       'codigo' => $cod_plato_comp,
       'nombre' => $request->nombre,
@@ -232,6 +236,7 @@ class PlatoController extends Controller
       'peso' => $request->peso,
       'imagen_1' => $request->imagen_1 == null ? $plato->imagen_1 : $request->imgen_1,
       'imagen_2' => $request->imagen_2 == null ? $plato->imagen_2 : $request->imgen_2,
+      'active' => $active
     ]);
 
     $plato->plato_alergeno()->sync($request->alergenos);

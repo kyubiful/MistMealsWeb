@@ -446,6 +446,36 @@ p {
   opacity: 0.6;
 }
 
+.mist_btn_step1 {
+  background: url("../img/mist-button.png") no-repeat;
+  width: 250px;
+  height: 49px;
+  background-size: cover;
+  display: block;
+  border: none;
+  color: #f9f2e1;
+  text-align: center;
+  line-height: 49px;
+  margin: auto;
+  font-size: 15px;
+}
+
+.mist_btn_step1:hover {
+  background: url("../img/mist-button-hover.png") no-repeat !important;
+  color: #533fb8;
+  background-size: cover !important;
+}
+
+.mist_btn_step1:focus {
+  background: url("../img/mist-button-pressed.png") no-repeat;
+  color: #533fb8;
+  font-weight: bold;
+}
+
+.mist_btn_step1:disabled {
+  opacity: 0.6;
+}
+
 .mist_btn_disable {
   background: url("../img/mist-button.png") no-repeat;
   width: 203px;
@@ -459,6 +489,7 @@ p {
   cursor: none;
   margin: auto;
   opacity: 0.6;
+  pointer-events: none;
 }
 
 .mist_btn_disable:hover {
@@ -939,7 +970,7 @@ body.menu-step2 button.plato-menu-btn-remove span {
   padding-top: 20px;
 }
 
-.order-paymenat-discount-table {
+.order-payment-discount-table {
   width: 20% !important;
   margin-left: auto;
   margin-right: 0px;
@@ -1596,6 +1627,21 @@ body.menu-step2 #accordion .card-body .container .slider-container {
   opacity: 0;
 }
 
+.home-msg-close {
+  color: #533fb8 !important;
+  opacity: 0.7;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  transition: all 3 ease-in-out;
+}
+
+.home-msg-close:hover {
+  opacity: 1;
+}
+
 .home-popup-container2.home-popup-hidden {
   display: none;
 }
@@ -2002,6 +2048,12 @@ nav {
   padding-top: 80px;
 }
 
+.login-form-container-ext2 {
+  background-color: #000000;
+  height: 700px;
+  padding-top: 80px;
+}
+
 .login-img-container {
   height: 720px;
 }
@@ -2108,6 +2160,7 @@ body .platos-count-container {
   justify-content: center;
   padding: 20px;
   z-index: 8;
+  margin-bottom: 40px;
 }
 
 body .platos-count-content {
@@ -2158,12 +2211,12 @@ body .platos-count-content p {
 
 .platos-container {
   background-color: #000000;
-  padding-top: 70px;
+  padding-top: 0px;
   width: 912px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 90px;
+  margin-bottom: 0px;
 }
 
 .plate-quantity-container {
@@ -2223,12 +2276,10 @@ body .platos-count-content p {
 
 .platos-container-l {
   position: absolute;
-  padding-top: 70px;
   width: 912px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 90px;
   pointer-events: none;
 }
 
@@ -2422,7 +2473,7 @@ body .platos-count-content p {
 
 .plato-btn.active {
   background: url("/img/platos/ok_btn.png") no-repeat;
-  background-size: contain;
+  background-size: contain !important;
   transition: all 1s ease;
 }
 
@@ -2551,6 +2602,7 @@ body .platos-count-content p {
   position: relative;
   background-color: #009167;
   z-index: 4;
+  margin-top: 40px;
 }
 
 .mistmeals-pagination {
@@ -2681,6 +2733,39 @@ body .platos-count-content p {
 }
 
 /* Order view */
+.order-payment-back-btn {
+  background-color: #533fb8;
+  color: #f9f2e1 !important;
+  border: 1px solid #533fb8;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: 0.3s;
+}
+
+.order-payment-back-btn:hover {
+  background-color: #f9f2e1;
+  color: #533fb8 !important;
+  border: 1px solid #533fb8;
+}
+
+.order-payment-new-user {
+  background-color: #533fb8;
+  color: #f9f2e1 !important;
+  border: 1px solid #533fb8;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: 0.3s;
+}
+
+.order-payment-new-user:hover {
+  background-color: #f9f2e1;
+  color: #533fb8 !important;
+  border: 1px solid #533fb8;
+}
 
 .order-form-container {
   padding-top: 200px;
@@ -2796,7 +2881,16 @@ body .platos-count-content p {
   color: #533fb8;
   border: 1px solid #533fb8;
 }
+.order-form button:disabled {
+  opacity: .5;
+  background-color: grey;
+  color: black;
+  border-color: grey;
+}
 
+.order-form button:disabled:hover {
+  background-color: grey;
+}
 .order-accordion-button input[type="checkbox"] {
   width: 14px;
   height: 14px;
@@ -2988,6 +3082,16 @@ body .platos-count-content p {
 
 .comofunciona-container2-div {
   width: 470px;
+}
+
+.cart-discount-img{
+  background-image: url('/img/home/discount.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 235px;
+  height: 199px;
+  z-index: 4;
+  margin-top: -100px;
 }
 
 @media (max-width: 991px) {
@@ -3254,6 +3358,12 @@ body .platos-count-content p {
   }
 
   .login-form-container-ext {
+    height: auto;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .login-form-container-ext2 {
     height: auto;
     padding-bottom: 0px !important;
     margin-bottom: 0px !important;
@@ -4084,16 +4194,12 @@ body .platos-count-content p {
   .platos-container {
     padding: 0px;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
     width: auto;
   }
 
   .platos-container-l {
     padding: 0px;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
     width: auto;
   }
 
@@ -4142,8 +4248,9 @@ body .platos-count-content p {
   }
 
   .plato-btn.active {
+    background: url(/img/platos/ok_btn.png) no-repeat !important;
     width: 100% !important;
-    background-size: cover;
+    background-size: 100% 100% !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -4168,10 +4275,11 @@ body .platos-count-content p {
   }
 
   .plato-content .mist_btn:focus {
-    background-size: cover;
+    background-size: cover !important;
   }
   .plato-content .mist_btn:hover {
-    background-size: cover !important;
+    width: 100%;
+    background-size: 100% 100% !important;
   }
 
   .plato-title {
@@ -4304,6 +4412,40 @@ body .platos-count-content p {
     overflow-x: auto;
   }
 
+  .order-payment-new-user {
+    background-color: #533fb8;
+    color: #f9f2e1 !important;
+    border: 1px solid #533fb8;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+  }
+
+  .order-payment-new-user:hover {
+    background-color: #f9f2e1;
+    color: #533fb8 !important;
+    border: 1px solid #533fb8;
+  }
+
+  .order-payment-back-btn {
+    background-color: rgba(0,0,0,0) !important;
+    color: rgba(0,0,0,0) !important;
+    border: none;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.3s;
+  }
+
+  .order-payment-back-btn:hover {
+    background-color: rgba(0,0,0,0) !important;
+    color: rgba(0,0,0,0) !important;
+    border: none;
+  }
+
   .order-continue {
     margin-bottom: -60px;
   }
@@ -4312,6 +4454,7 @@ body .platos-count-content p {
     color: rgba(0, 0, 0, 0);
     background: url("../img/orders/Arrow.png") no-repeat;
     margin-bottom: 0px;
+    background-position: center;
   }
 
   .menu-step2-plates-count-content {
@@ -4454,6 +4597,10 @@ body .platos-count-content p {
 
   .menu-separation {
     margin-right: auto !important;
+  }
+
+  .order-payment-discount-table {
+    width: 100% !important;
   }
 
   @media (min-width: 576px) {

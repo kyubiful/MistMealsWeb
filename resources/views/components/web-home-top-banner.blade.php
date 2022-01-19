@@ -50,8 +50,11 @@
       </div>
     </a>
   </div>
-  <div class="home-top-banner-do-better-img-container">
-    <div class="home-top-banner-do-better-img"></div>
+  <div class="home-top-banner-envio-img-container">
+    <div class="home-top-banner-envio-img"></div>
+  </div>
+  <div class="home-top-banner-discount-img-container">
+    <div class="home-top-banner-discount-img"></div>
   </div>
   <div>
     <a href="{{route('web.menu')}}">

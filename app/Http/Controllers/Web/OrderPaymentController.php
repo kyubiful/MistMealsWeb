@@ -19,7 +19,6 @@ class OrderPaymentController extends Controller
   public function __construct(CartService $cartService)
   {
     $this->cartService = $cartService;
-    $this->middleware('user.auth');
   }
   /**
    * Show the form for creating a new resource.
@@ -30,15 +29,25 @@ class OrderPaymentController extends Controller
   public function create(Order $order, Request $request)
   {
     $descuentoName = $request->cookie('descuento_name');
-    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo')->where('name', $descuentoName)->first();
-    $user = $request->user();
+    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo','one_use','uses')->where('name', $descuentoName)->first();
     $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
-    $user = User::findOrFail(auth()->user()->id);
     $cart = $this->cartService->getFromCookie();
     $amount = $cart->total;
     $numberProducts = $this->cartService->countProducts();
 
+    if($request->user() == null) {
+      $user = User::findOrFail(session('userid'));
+      if(!is_null($discountCode) AND $discountCode->unique == 1){
+        return redirect('/carts')->with('discountMessageError', 'Este código no puede ser usado sin estar registrado');
+      }
+      $register = false;
+    } else {
+      $user = $request->user();
+      $register = true;
+    }
+
     if (in_array($user->cp, $availableCP) == false) return redirect()->back()->with('message', 'invalid cp');
+    $shippingAmount = AvailableCP::select('amount')->where('cp', $user->cp)->first()->amount;
 
     if (!is_null($discountCode)) {
       if ($discountCode->unique == 1) {
@@ -50,7 +59,15 @@ class OrderPaymentController extends Controller
           }
         }
       }
+      if($discountCode->one_use==1)
+      {
+        if($discountCode->uses!=0)
+        {
+          return redirect('/carts')->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
+        }
+      }
     }
+
     if (!is_null($request->cookie('descuento'))) {
       if($request->cookie('descuento_type')=='porcentaje'){
         $amount = $cart->total * ((100 - (int)$request->cookie('descuento')) / 100);
@@ -68,7 +85,10 @@ class OrderPaymentController extends Controller
       return redirect('/carts')->with('message', 'Máximo 14 platos para este código');
     }
 
-    return view('web.payments.create')->with(['order' => $order, 'amount' => $amount, 'user' => $user, 'cart' => $cart]);
+    $amount += $shippingAmount;
+    $amount = round($amount, 2);
+
+    return view('web.payments.create')->with(['order' => $order, 'amount' => $amount, 'user' => $user, 'cart' => $cart, 'register' => $register, 'email' => $request->session()->get('email'), 'shipping_amount' => $shippingAmount]);
   }
 
   /**

@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 use App\Services\CartService;
+use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
 class MenuController extends Controller
 {
@@ -92,6 +93,61 @@ class MenuController extends Controller
 
         $request->session()->forget(['lunch', 'dinner', 'userid']);
         session(['userid' => $user->id]);
+        $userId = $user->id;
+        $lunch = session('lunch');
+        $dinner = session('dinner');
+        $lunchDishes = session('lunchDishes');
+        $dinnerDishes = session('dinnerDishes');
+
+        if ($lunch == null && $dinner == null) {
+
+            $dishes = Helper::calculateDishes($user->calorias_propuestas);
+
+            $lunch =  $dishes[0];
+            $dinner = $dishes[1];
+            $lunchDishes = $dishes[2];
+            $dinnerDishes = $dishes[3];
+
+            session(['lunch' => $lunch]);
+            session(['dinner' => $dinner]);
+            session(['lunchDishes' => $lunchDishes]);
+            session(['dinnerDishes' => $dinnerDishes]);
+        }
+
+        $lunch = session('lunch');
+        $dinner = session('dinner');
+
+        if ($lunch == null && $dinner == null) {
+            return view('errors.500');
+        }
+
+        $semana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+
+        //$pdf = PDF::loadView('pdf.menu', $data);
+
+        $data = [
+            'user' => $user,
+            'lunch' => $lunch,
+            'dinner' => $dinner,
+            'semana' => $semana
+        ];
+
+        if(auth()->check()) {
+            $email = $user->email;
+        } else {
+            $email = $request->email;
+        }
+
+        try {
+            Mail::to($email)->send(new MenuMail($data));
+        } catch (\Exception $e) {
+            $t = response()->json(array(
+                'status' => 500,
+                'message' => 'Error!'
+            ));
+        }
+
+        Newsletter::subscribeOrUpdate($email);
 
         return response()->json(array(
             'status' => 200,

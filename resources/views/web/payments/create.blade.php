@@ -7,7 +7,7 @@
   </div>
   @else
   <div>
-    <form class="order-form" method="POST" action="{{ route('web.orders.store') }}">
+    <form class="order-form" method="POST" action="">
       @csrf
       <div class="order-form-container">
 
@@ -41,6 +41,11 @@
         <div class="order-inp-1">
           <p>Ciudad</p> <input class="order-inp" type="text" name="city" id="" value="{{ $user->city }}" disabled>
         </div>
+        @if($register == false)
+        <div class="order-inp-1">
+          <p>Email</p> <input class="order-inp" type="email" name="city" id="" value="{{$email}}" disabled>
+        </div>
+        @endif
         @if($order->invoice == 1)
         <h1>Detalles de facturación</h1>
         <div class="order-form-content">
@@ -77,39 +82,54 @@
             <th>Subtotal</th>
           </tr>
         </thead>
-        @foreach($order->products as $i => $plato)
         <tbody>
+        @foreach($order->products as $i => $plato)
           <tr>
             <td>
               {{ $plato->pivot->quantity }}
             </td>
             <td class="order-product-name">
-              {{ $plato->nombre }}
+              {{ $plato->nombre }} - {{ $plato->plato_peso->valor }}
             </td>
             <td>
-              {{ $plato->precio }}
+              {{ $plato->precio }}€
             </td>
             <td>
               <strong>
-                {{ $plato->total }}€
+                {{ number_format($plato->total, 2) }}€
+              </strong>
+            </td>
+          </tr>
+        @endforeach
+          <tr>
+            <td>
+              1
+            </td>
+            <td class="order-product-name">
+              Gastos de envío
+            </td>
+            <td>
+            </td>
+            <td>
+              <strong>
+                {{ $shipping_amount }}€
               </strong>
             </td>
           </tr>
         </tbody>
-        @endforeach
       </table>
-      @if(Cookie::get('descuento')!=null)
-      <table class="order-paymenat-discount-table">
+      @if(Cookie::get('descuento') != null)
+      <table class="order-payment-discount-table">
         <tr>
           <td style="background-color: #533fb8; color: #F9F2E1;">
             <b>Descuento</b>
           </td>
           <td style="">
-            @if(Cookie::get('descuento_type')=='porcentaje')
+            @if(Cookie::get('descuento_type') == 'porcentaje')
               -{{round((($cart->total)*((Cookie::get('descuento'))/100)),2)}}€
-            @elseif(Cookie::get('descuento_type')=='fijo')
+            @elseif(Cookie::get('descuento_type') == 'fijo')
               -{{Cookie::get('descuento')}}€
-            @elseif(Cookie::get('descuento_type')=='free')
+            @elseif(Cookie::get('descuento_type') == 'free')
               -{{$cart->total}}€
             @endif
           </td>
@@ -120,16 +140,16 @@
     </form>
   </div>
   <div class="order-continue">
-  <a href="{{ route('web.orders.create') }}">Volver</a>
+  <a href="{{ route('web.orders.create') }}" class="order-payment-back-btn">Volver</a>
     <h4 class="payment-amount">Total:
-      @if(Cookie::get('descuento_type')!='free')
+      @if(Cookie::get('descuento_type') != 'free')
         {{$amount}}€
       @else
         0€
       @endif
     </h4>
     @if(Cookie::get('descuento_type') != 'free')
-    {!! \App\Http\Controllers\Web\RedsysController::index($amount) !!}
+    {!! \App\Http\Controllers\Web\RedsysController::index($user, $amount) !!}
     @else
     <a class="payment-btn-submit" id="btn_submit" name="btn_submit" href="{{route('web.holded.free')}}">Realizar pedido</a>
     @endif
@@ -143,8 +163,6 @@
 <script type="text/javascript">
   paymentBtnSubmit = document.querySelector('.payment-btn-submit')
   paymentAmount = document.querySelector('.payment-amount')
-
-  console.log(paymentBtnSubmit)
 
   let amount = paymentAmount.innerHTML
   amount = amount.split(" ")
