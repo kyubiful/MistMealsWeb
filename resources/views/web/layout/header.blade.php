@@ -12,7 +12,7 @@
       </a>
     </div>
     <ul class="menu">
-      <li><a href="{{ route('web.menu') }}" class="menu-i">Meal Plan</a></li>
+      <li><a href="{{ route('web.menu') }}" class="menu-i">Menú Semanal</a></li>
       <li><a href="{{ route('web.platos') }}" class="menu-i">Platos</a></li>
       <li><a href="{{ route('web.comofunciona') }}" class="menu-i">Cómo funciona</a></li>
       <li><a href="{{ route('web.revolucion') }}" class="menu-i">La Revolución</a></li>

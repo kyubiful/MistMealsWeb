@@ -66,7 +66,7 @@
 
             <div class="home-top-banner-content-name-box-content">
               <div class="home-top-banner-content-box-title mp-desktop-hidden" style="min-width: 277px">
-                <span class="first">YOUR MEAL PLAN</span>
+                <span class="first">MENÚ SEMANAL</span>
                 <img class="dot" src="img/home/dot.svg"/>
                 <span class="second">XXX</span>
               </div>
@@ -80,7 +80,7 @@
             <div class="home-top-banner-content-box-title-desktop">
               <div class="home-top-banner-content-box-title mp-mobile-hidden">
                 <div class="home-top-banner-content-box-title-container">
-                  <p class="first">YOUR MEAL PLAN</p>
+                  <p class="first">PLAN SEMANAL</p>
                   <img class="dot" src="img/home/dot.svg"/>
                 </div>
               </div>

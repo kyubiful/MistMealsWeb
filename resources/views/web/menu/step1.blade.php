@@ -79,7 +79,7 @@
                     {!! Form::input('email', 'email', $user != null ? $user->email : '', ['id' => 'email', 'class' => 'form-control cu_input', 'placeholder' => 'Email', 'required']) !!}
                   </div>
                   <div class="single_contact_form mt-5">
-                    <button type="submit" class="mist_btn_step1 animate_btn text-uppercase" style="background-size: cover; width: 250px;">Ver mi Meal Plan</button>
+                    <button type="submit" class="mist_btn_step1 animate_btn text-uppercase" style="background-size: cover; width: 250px;">Ver mi Menú Semanal</button>
                   </div>
                   @if (!auth()->check())
                   <div class="custom-control custom-checkbox step1-policy">
