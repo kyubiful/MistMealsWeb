@@ -9,7 +9,7 @@
   <div class="web-blackfriday-top-banner-all-text">
     <p class="top-title">¡COMIENZA A ALIMENTARTE BIEN!</p>
     <img class="discount-img wow fadeIn" src="/img/blackfriday/Descuento.png"/>
-    <p class="bottom-title">EN TU MENÚ SEMANAL</p>
+    <p class="bottom-title">EN TU PLAN SEMANAL</p>
     <p class="code-container">CÓDIGO: <span class="discount-code-bf">HOYEMPIEZO30</span></p>
     <img class="logo-img" src="/img/favicon_mistmeals1.png"/>
   </div>

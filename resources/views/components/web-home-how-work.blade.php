@@ -13,7 +13,7 @@
       </div>
       <div class="home-comofunciona-content-inner2">
         <div>
-          <h3>2. configura tu menú semanal</h3>
+          <h3>2. configura tu plan semanal</h3>
           <p class="text">Rellena tus datos (edad, peso, frecuencia de deporte...) y descubre las comidas y cenas que proponemos para tu semana, basado en las calorías y nutrientes que tu cuerpo necesita. modifícalo a tu gusto y añade los platos al carrito.</p>
         </div>
         <p class="subtext"><i>* Nuestros platos han sido pensados por nutricionistas, pero nuestros planes no proporcionan asesoramiento nutricional.</i></p>

@@ -16,7 +16,7 @@
     <div class="web-home-cocinamos-desktop-container">
       <div class="web-home-cocinamos-desktop-content">
         <div>
-          <h2>OPCIÓN 1: MENÚ SEMANAL</h2>
+          <h2>OPCIÓN 1: PLAN SEMANAL</h2>
           <p>Apostamos por la salud, conoce nuestros menús semanales y selecciona el que mejor se adapte a ti: control de calorías, mejora de rendimiento o ganancia muscular.</p>
         </div>
         <div>

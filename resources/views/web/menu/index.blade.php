@@ -25,7 +25,7 @@
     <div class="row justify-content-center mp-mobile-hidden">
       <div class="col-sm-10">
         <div class="section_tittle style_2 wow fadeInDown" data-wow-delay=".5s">
-          <h2>Menú Semanal</h2>
+          <h2>Plan Semanal</h2>
           <p class="subtitle">Elige tu tipo menú</p>
         </div>
       </div>

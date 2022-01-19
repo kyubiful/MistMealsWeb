@@ -66,7 +66,7 @@
 
             <div class="home-top-banner-content-name-box-content">
               <div class="home-top-banner-content-box-title mp-desktop-hidden" style="min-width: 277px">
-                <span class="first">MENÚ SEMANAL</span>
+                <span class="first">PLAN SEMANAL</span>
                 <img class="dot" src="img/home/dot.svg"/>
                 <span class="second">XXX</span>
               </div>

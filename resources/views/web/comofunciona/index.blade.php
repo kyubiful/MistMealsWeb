@@ -41,7 +41,7 @@ Nosotros te lo ponemos fácil: Te contamos como hacer tu pedido en 4 sencillos p
                             </div>
                             <div class="single_testimonial_slider">
                                 <h4>PASO 2,</h4>
-                                <h2>CONFIGURA TU MENÚ SEMANAL</h2>
+                                <h2>CONFIGURA TU PLAN SEMANAL</h2>
                                 <p class="subtitle">
                                     Rellena tus datos (edad, peso, frecuencia de deporte...) y descubre las comidas y cenas que proponemos para tu semana, basado en las calorías y macronutrientes que tu cuerpo necesita.<br>
                                     * Nuestros platos han sido pensados por nutricionistas, pero nuestros planes no proporcionan asesoramiento nutricional.
@@ -77,7 +77,7 @@ Nosotros te lo ponemos fácil: Te contamos como hacer tu pedido en 4 sencillos p
                     </div>
                     <div class="valor">
                         <h4 class="comofunciona-pasos">PASO 2,</h4>
-                        <h2>CONFIGURA TU MENÚ SEMANAL</h2>
+                        <h2>CONFIGURA TU PLAN SEMANAL</h2>
                         <p class="valor-text">
                             Rellena tus datos (edad, peso, frecuencia de deporte...) y descubre las comidas y cenas que proponemos para tu semana, basado en las calorías y macronutrientes que tu cuerpo necesita.<br>
                             * Nuestros platos han sido pensados por nutricionistas, pero nuestros planes no proporcionan asesoramiento nutricional.
