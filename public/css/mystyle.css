@@ -2274,6 +2274,15 @@ body .platos-count-content p {
   background-color: black;
 }
 
+.plato-container-hidden{
+  width: 208px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: black;
+  visibility: hidden;
+  position: absolute;
+}
+
 .platos-container-l {
   position: absolute;
   width: 912px;
@@ -2291,12 +2300,35 @@ body .platos-count-content p {
   opacity: 0;
   z-index: -1;
   transition: all 1s ease;
+  position: absolute;
 }
 
 .plato-container-l.active {
   opacity: 1;
   z-index: 4;
   pointer-events: all;
+}
+
+.plato-container-l-unique {
+  width: 208px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: black;
+  opacity: 0;
+  z-index: -1;
+  transition: all 1s ease;
+  position: absolute;
+}
+
+.plato-container-l-unique.active {
+  opacity: 1;
+  z-index: 4;
+  pointer-events: all;
+}
+
+.dual-plate-container {
+  display: flex;
+  width: 228px;
 }
 
 /* intento de btn */
@@ -2353,6 +2385,40 @@ body .platos-count-content p {
   color: #f9f2e1;
 }
 
+.plato-peso-switch-m-fake-unique {
+  background-color: black;
+  color: #f9f2e1;
+  width: 25px;
+  height: 25px;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.plato-peso-switch-m-fake-unique.active {
+  background-color: #533fb8;
+  color: #f9f2e1;
+}
+
+.plato-peso-switch-m-unique {
+  background-color: black;
+  color: #f9f2e1;
+  width: 25px;
+  height: 25px;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.plato-peso-switch-m-unique.active {
+  background-color: #533fb8;
+  color: #f9f2e1;
+}
+
 .plato-peso-switch-l {
   background-color: black;
   color: #f9f2e1;
@@ -2367,6 +2433,40 @@ body .platos-count-content p {
 }
 
 .plato-peso-switch-l.active {
+  background-color: #533fb8;
+  color: #f9f2e1;
+}
+
+.plato-peso-switch-l-fake-unique {
+  background-color: black;
+  color: #f9f2e1;
+  width: 25px;
+  height: 25px;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.plato-peso-switch-l-fake-unique.active {
+  background-color: #533fb8;
+  color: #f9f2e1;
+}
+
+.plato-peso-switch-l-unique {
+  background-color: black;
+  color: #f9f2e1;
+  width: 25px;
+  height: 25px;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.plato-peso-switch-l-unique.active {
   background-color: #533fb8;
   color: #f9f2e1;
 }
@@ -2393,6 +2493,10 @@ body .platos-count-content p {
   cursor: pointer;
 }
 
+.plato-peso-switch-m-fake.active {
+  background-color: #533fb8;
+  color: #f9f2e1;
+}
 .plato-peso-switch-l-fake {
   background-color: black;
   color: #f9f2e1;
@@ -2404,6 +2508,11 @@ body .platos-count-content p {
   align-items: center;
   cursor: pointer;
   margin-left: 10px;
+}
+
+.plato-peso-switch-l-fake.active {
+  background-color: #533fb8;
+  color: #f9f2e1;
 }
 
 /* fin intento */

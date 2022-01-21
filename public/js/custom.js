@@ -1284,9 +1284,9 @@
 })(jQuery);
 
 if (
-  window.location.pathname == "/menu/config/1" ||
-  window.location.pathname == "/menu/config/2" ||
-  window.location.pathname == "/menu/config/3"
+  window.location.href.indexOf("menu/config/1") > -1 ||
+  window.location.href.indexOf("menu/config/2") > -1 ||
+  window.location.href.indexOf("menu/config/3") > -1
 ) {
   const range = document.querySelectorAll('input[type="range"]');
   const step1WeightMore = document.querySelector(".step1-weight-more");
@@ -1462,7 +1462,7 @@ if (
     }, 500);
   });
 }
-if (window.location.pathname == "/menu/dishes") {
+if (window.location.href.indexOf("menu/dishes") > -1) {
   const openDish = document.querySelectorAll(".open-carousel-img");
   const dishCollapse = document.querySelectorAll(".collapse");
   const card = document.querySelectorAll(".menu-step2 .card .card-header .btn");
@@ -3522,18 +3522,30 @@ if (window.location.pathname == "/orders/create") {
   });
 }
 
-if (window.location.pathname == "/platos") {
+// JavaScript de la vista de platos
+
+if (window.location.href.indexOf("/platos") > -1) {
   function platosJs() {
+
     const containerL = document.querySelectorAll(".plato-container-l");
     const containersL = document.querySelector(".platos-container-l");
 
+    // guardamos en una variable los botones M y L de cada plato
+
     const sizeBtnM = document.querySelectorAll(".plato-peso-switch-m");
     const sizeBtnL = document.querySelectorAll(".plato-peso-switch-l");
+
+    const sizeBtnMFake = document.querySelectorAll('.plato-peso-switch-m-fake')
+    const sizeBtnLFake = document.querySelectorAll('.plato-peso-switch-l-fake')
+
+    // Le añadimos un evento a cada botón y si hacemos clic en uno de ellos se activa o desactiva el otro
 
     for (let i = 0; i < sizeBtnM.length; i++) {
       sizeBtnM[i].addEventListener("click", () => {
         sizeBtnM[i].classList.toggle("active");
         sizeBtnL[i].classList.toggle("active");
+        sizeBtnMFake[i].classList.toggle("active")
+        sizeBtnLFake[i].classList.toggle("active")
         containerL[i].classList.toggle("active");
       });
     }
@@ -3542,12 +3554,36 @@ if (window.location.pathname == "/platos") {
       sizeBtnL[i].addEventListener("click", () => {
         sizeBtnM[i].classList.toggle("active");
         sizeBtnL[i].classList.toggle("active");
+        sizeBtnMFake[i].classList.toggle("active")
+        sizeBtnLFake[i].classList.toggle("active")
         containerL[i].classList.toggle("active");
       });
     }
 
+    for(let i = 0; i < sizeBtnMFake.length; i++) {
+      sizeBtnMFake[i].addEventListener("click", () => {
+        sizeBtnM[i].classList.toggle("active");
+        sizeBtnL[i].classList.toggle("active");
+        sizeBtnMFake[i].classList.toggle("active")
+        sizeBtnLFake[i].classList.toggle("active")
+        containerL[i].classList.toggle("active")
+
+      })
+    }
+
+    for(let i = 0; i < sizeBtnLFake.length; i++) {
+      sizeBtnLFake[i].addEventListener('click', () => {
+        sizeBtnM[i].classList.toggle("active");
+        sizeBtnL[i].classList.toggle("active");
+        sizeBtnMFake[i].classList.toggle("active")
+        sizeBtnLFake[i].classList.toggle("active")
+        containerL[i].classList.toggle("active")
+      })
+    }
+
     const plateBtnMore = document.querySelectorAll(".plate-btn-more");
     const plateBtnLess = document.querySelectorAll(".plate-btn-less");
+
     const plateQuantitiyDisplay = document.querySelectorAll(
       ".plate-quantity-display"
     );
@@ -3565,22 +3601,6 @@ if (window.location.pathname == "/platos") {
         }
       });
     }
-
-    // const hideModalBtn = document.querySelector('.plates-modal-hide');
-    // if(hideModalBtn != null){
-    //   hideModalBtn.addEventListener('click', () => {
-    //     document.querySelector('.plates-modal').classList.remove('active');
-    //     document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    //     document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    //   });
-
-    //   const cartModalBtn = document.querySelector('.plates-modal-cart-btn');
-    //   cartModalBtn.addEventListener('click', () => {
-    //     document.cookie = "infoName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    //     document.cookie = "infoPrice=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    //     document.cookie = "pageHeight=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    //   });
-    // }
   }
 }
 
