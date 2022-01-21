@@ -22,7 +22,7 @@
     </div>
   </div>
 </div>
-<div class="contenedor">
+<div class="platos-contenedor">
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
   <div class="platos-container">
     @foreach($platos as $i => $dualPlato)
@@ -434,13 +434,13 @@
       })
       .then( response => response.text() )
       .then( html => {
-        if(html.replace(/(\r\n|\n|\r)/gm, "") === `<div style="display: flex; justify-content: center; flex-wrap: wrap;"><div class="platos-container contenedor"></div><div class="platos-container-l"></div></div>`) { 
+        if(html.replace(/(\r\n|\n|\r)/gm, "") === `<div style="display: flex; justify-content: center; flex-wrap: wrap;"><div class="platos-container"></div></div>`) { 
           window.onscroll = ''
         } else {
           cargando.removeAttribute('hidden')
           setTimeout( () => {
           cargando.setAttribute('hidden','')
-          document.querySelector(".contenedor").innerHTML += html
+          document.querySelector(".platos-contenedor").innerHTML += html
           if(document.querySelector('.plate-finish-reload')!=null) {
             finishReloadPage = document.querySelector('.plate-finish-reload').innerHTML;
             console.log('finish');

@@ -2299,7 +2299,7 @@ body .platos-count-content p {
   background-color: black;
   opacity: 0;
   z-index: -1;
-  transition: all 1s ease;
+  /* transition: all 1s ease; */
   position: absolute;
 }
 
@@ -4300,24 +4300,46 @@ body .platos-count-content p {
     font-size: 95px;
   }
 
+  .dual-plate-container {
+    width: 50%;
+    min-height: 500px;
+  }
+
+  .plato-container-hidden {
+    width: 50%;
+    max-width: 137px;
+  }
+
   .platos-container {
     padding: 0px;
     justify-content: center;
-    width: auto;
+    width: 100%;
   }
 
   .platos-container-l {
     padding: 0px;
     justify-content: center;
-    width: auto;
+    width: 50%;
   }
 
   .plato-container {
-    width: 40%;
+    width: 100%;
+    max-width: 137px;
   }
 
   .plato-container-l {
-    width: 40%;
+    width: 50%;
+    max-width: 137px;
+  }
+
+  .platos-contenedor {
+    width: 312px;
+    margin: auto;
+  }
+
+  .plato-container-l-unique{
+    width: 45%;
+    max-width: 137px;
   }
 
   .plato-info span {
@@ -4380,6 +4402,10 @@ body .platos-count-content p {
   }
 
   .plato-peso-switch-content p {
+    font-size: 13px;
+  }
+
+  .plato-peso-switch-content-fake p {
     font-size: 13px;
   }
 

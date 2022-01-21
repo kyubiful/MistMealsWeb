@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-<div class="platos-container contenedor">
+<div class="platos-container">
     @foreach($platos as $i => $dualPlato)
       <div class="dual-plate-container">
       @foreach($dualPlato as $i => $plato )
