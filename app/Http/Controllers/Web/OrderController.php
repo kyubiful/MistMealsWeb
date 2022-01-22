@@ -74,6 +74,7 @@ class OrderController extends Controller
           foreach ($user->discountCodes as $userDiscountCode) {
             // Si coincide con el código a usar se le devolverá atrás quitandole la información de la cookie
             if ($userDiscountCode->name == $discountCode->name) {
+              session(['free_shipping' => false]);
               return redirect('/carts')->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
             }
           }
@@ -85,6 +86,7 @@ class OrderController extends Controller
         // si el código ha sido usado se le enviará un mensaje avisando de que el código ha sido usado
         if($discountCode->uses!=0)
         {
+          session(['free_shipping' => false]);
           return redirect('/carts')->with('discountMessageError', 'Código usado anteriormente')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
         }
       }

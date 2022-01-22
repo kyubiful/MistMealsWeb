@@ -116,6 +116,23 @@
               </strong>
             </td>
           </tr>
+          @if($freeShipping == 1)
+          <tr>
+            <td>
+              1
+            </td>
+            <td class="order-product-name">
+              Gastos de envío gratis
+            </td>
+            <td>
+            </td>
+            <td>
+              <strong>
+                -{{ $shipping_amount }}€
+              </strong>
+            </td>
+          </tr>
+        @endif
         </tbody>
       </table>
       @if(Cookie::get('descuento') != null)
