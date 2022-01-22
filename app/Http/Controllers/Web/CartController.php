@@ -37,7 +37,7 @@ class CartController extends Controller
       }
 
         $discount = $request->discount_name;
-        $discountCode = DB::table('discount_code')->select('name', 'value', 'tipo', 'start', 'end', 'active','unique','one_use','uses')->where('name', $discount)->first();
+        $discountCode = DB::table('discount_code')->select('name', 'value', 'tipo', 'start', 'end', 'active','unique','one_use','uses','free_shipping')->where('name', $discount)->first();
         $time = Carbon::now()->toDateTimeString();
 
         // Si el código el tiempo de uso del código ha terminado o no existe se enviará un mensaje al usuario
@@ -77,9 +77,23 @@ class CartController extends Controller
                 }
               }
               // Si no coincide se le devuelve las cookies con la información del código de descuento
+              // Si el código de descuento tiene envío gratis se guardará en la sesión como true y si no se guardará como false
+              if($discountCode->free_shipping == 1)
+              {
+                session(['free_shipping' => true]);
+              } else {
+                session(['free_shipping' => false]);
+              }
               return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
 
             }else{
+              // Si el código de descuento tiene envío gratis se guardará en la sesión como true y si no se guardará como false
+              if($discountCode->free_shipping == 1)
+              {
+                session(['free_shipping' => true]);
+              } else {
+                session(['free_shipping' => false]);
+              }
               // Si el usuario no ha usado ningún código anteriormente se le devolverá las cookies con la información del código de descuento
               return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
             }
@@ -88,6 +102,13 @@ class CartController extends Controller
             return redirect()->back()->with('discountMessageError', 'Este código no puede ser usado sin estar registrado');
           }
         } else {
+          // Si el código de descuento tiene envío gratis se guardará en la sesión como true y si no se guardará como false
+          if($discountCode->free_shipping == 1)
+          {
+            session(['free_shipping' => true]);
+          } else {
+            session(['free_shipping' => false]);
+          }
           // Si el código tiene usos ilimitados
           return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
         }
@@ -100,6 +121,13 @@ class CartController extends Controller
           {
             return redirect()->back()->with('discountMessageError', 'Código usado anteriormente');
           }
+          // Si el código de descuento tiene envío gratis se guardará en la sesión como true y si no se guardará como false
+          if($discountCode->free_shipping == 1)
+          {
+            session(['free_shipping' => true]);
+          } else {
+            session(['free_shipping' => false]);
+          }
           // Si el código no tiene un uso se le enviará un mensaje y se le enviarán las coookies con la información del código de descuento
           return redirect()->back()->withCookie($cookieDiscountValue)->withCookie($cookieDiscountName)->withCookie($cookieDiscountType)->with('discountMessageSuccess', 'Código correcto');
         }
@@ -109,6 +137,7 @@ class CartController extends Controller
 
     public function removeDiscountCookie()
     {
-        return redirect()->back()->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
+      session(['free_shipping' => false]);
+      return redirect()->back()->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
     }
 }

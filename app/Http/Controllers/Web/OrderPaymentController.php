@@ -29,7 +29,7 @@ class OrderPaymentController extends Controller
   public function create(Order $order, Request $request)
   {
     $descuentoName = $request->cookie('descuento_name');
-    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo','one_use','uses')->where('name', $descuentoName)->first();
+    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo','one_use','uses','free_shipping')->where('name', $descuentoName)->first();
     $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
     $cart = $this->cartService->getFromCookie();
     $amount = $cart->total;
@@ -44,6 +44,13 @@ class OrderPaymentController extends Controller
     } else {
       $user = $request->user();
       $register = true;
+    }
+
+    $freeShipping = 0;
+
+    if(!is_null($discountCode))
+    {
+      $freeShipping = $discountCode->free_shipping;
     }
 
     if (in_array($user->cp, $availableCP) == false) return redirect()->back()->with('message', 'invalid cp');
@@ -85,10 +92,14 @@ class OrderPaymentController extends Controller
       return redirect('/carts')->with('message', 'Máximo 14 platos para este código');
     }
 
-    $amount += $shippingAmount;
+    if($request->session()->get('free_shipping') == false || $request->session()->get('free_shipping') == null)
+    {
+      $amount += $shippingAmount;
+    }
+
     $amount = round($amount, 2);
 
-    return view('web.payments.create')->with(['order' => $order, 'amount' => $amount, 'user' => $user, 'cart' => $cart, 'register' => $register, 'email' => $request->session()->get('email'), 'shipping_amount' => $shippingAmount]);
+    return view('web.payments.create')->with(['order' => $order, 'amount' => $amount, 'user' => $user, 'cart' => $cart, 'register' => $register, 'email' => $request->session()->get('email'), 'shipping_amount' => $shippingAmount, 'freeShipping' => $freeShipping]);
   }
 
   /**
