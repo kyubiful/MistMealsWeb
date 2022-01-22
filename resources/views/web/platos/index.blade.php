@@ -280,6 +280,9 @@
                           </div>
                         </div>
                       </div>
+                      <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+                        <p>Peso aproximado: {{ $el->plato_peso->peso }}g</p>
+                      </div>
                     </div>
                   </div>
                 </div>
