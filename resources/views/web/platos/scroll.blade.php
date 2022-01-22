@@ -138,65 +138,40 @@
                         <div class="col-lg-12">
                           <div class="additional_info">
                             <div class="single_additional_info title">
-                              <!-- <h5>@lang('admin.page.plato.serving')</h5> -->
                               <h5></h5>
-                              <!-- <p>{{ sprintf(trans('admin.page.plato.per_%s'), $el->plato_peso->peso) }}</p> -->
                               <p>@lang('admin.page.plato.per_100')</p>
                               <p>Por plato</p>
-
                             </div>
-                            <!-- <div class="single_additional_info">
-                                                                        <h5>@lang('admin.page.plato.info_nutritional.energy')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->energia / 100) * $el->plato_peso->peso, 1) }}kJ</p>
-                                                                        <p>{{ round($el->plato_info_nutricional->energia, 1) }}kJ</p>
-                                                                    </div> -->
                             <div class="single_additional_info">
                               <h5>@lang('admin.page.plato.info_nutritional.calories')</h5>
-                              <!-- <p>{{ round(($el->plato_info_nutricional->calorias / 100) * $el->plato_peso->peso, 1) }} Cal</p> -->
                               <p>{{ round($el->plato_info_nutricional->calorias, 1) }} Cal</p>
                               <p>{{ round($el->plato_info_nutricional->calorias, 1) * ($el->peso/100) }} Cal</p>
                             </div>
                             <div class="single_additional_info">
                               <h5>@lang('admin.page.plato.info_nutritional.protein')</h5>
-                              <!-- <p>{{ round(($el->plato_info_nutricional->proteinas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                               <p>{{ round($el->plato_info_nutricional->proteinas, 1) }}g</p>
                               <p>{{ round($el->plato_info_nutricional->proteinas, 1) * ($el->peso/100) }}g</p>
                             </div>
                             <div class="single_additional_info">
                               <h5>@lang('admin.page.plato.info_nutritional.fats')</h5>
-                              <!-- <p>{{ round(($el->plato_info_nutricional->grasas / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                               <p>{{ round($el->plato_info_nutricional->grasas, 1) }}g</p>
                               <p>{{ round($el->plato_info_nutricional->grasas, 1) * ($el->peso/100) }}g</p>
                             </div>
-                            <!-- <div class="single_additional_info">
-                                                                        <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.satured')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->saturadas / 100) * $el->plato_peso->peso, 1) }}g</p>
-                                                                        <p>{{ round($el->plato_info_nutricional->saturadas, 1) }}g</p>
-                                                                    </div> -->
                             <div class="single_additional_info">
                               <h5>@lang('admin.page.plato.info_nutritional.carbo')</h5>
-                              <!-- <p>{{ round(($el->plato_info_nutricional->carbohidratos / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                               <p>{{ round($el->plato_info_nutricional->carbohidratos, 1) }}g</p>
                               <p>{{ round($el->plato_info_nutricional->carbohidratos, 1) * ($el->peso/100) }}g</p>
                             </div>
-                            <!-- <div class="single_additional_info">
-                                                                        <h5 class="sat-az-left">@lang('admin.page.plato.info_nutritional.sugars')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->azucar / 100) * $el->plato_peso->peso, 1) }}g</p>
-                                                                        <p>{{ round($el->plato_info_nutricional->azucar, 1) }}g</p>
-                                                                    </div> -->
                             <div class="single_additional_info">
                               <h5>@lang('admin.page.plato.info_nutritional.fibre')</h5>
-                              <!-- <p>{{ round(($el->plato_info_nutricional->fibra / 100) * $el->plato_peso->peso, 1) }}g</p> -->
                               <p>{{ round($el->plato_info_nutricional->fibra, 1) }}g</p>
                               <p>{{ round($el->plato_info_nutricional->fibra, 1) * ($el->peso/100) }}g</p>
                             </div>
-                            <!-- <div class="single_additional_info">
-                                                                        <h5>@lang('admin.page.plato.info_nutritional.sodium')</h5>
-                                                                        <p>{{ round(($el->plato_info_nutricional->sodio / 100) * $el->plato_peso->peso, 1) }}mg</p>
-                                                                        <p>{{ round($el->plato_info_nutricional->sodio, 1) }}mg</p>
-                                                                    </div> -->
                           </div>
                         </div>
+                      </div>
+                      <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+                        <p>Peso aproximado: {{ $el->plato_peso->peso }}g</p>
                       </div>
                     </div>
                     <div class="tab-pane fade" id="nav_description_lunch_{{ $el->id }}" role="tabpanel" style="padding-top: 20px;">
@@ -211,7 +186,6 @@
                     <div class="tab-pane fade" id="nav_recipe_lunch_{{ $el->id }}" role="tabpanel" style="padding-top: 20px;">
                       <div class="row justify-content-center">
                         <div class="col-lg-12">
-                          <p class="dish-recipe-text"><b>Modo de empleo:</b> {{$el->receta}}</p>
                         </div>
                       </div>
                     </div>
