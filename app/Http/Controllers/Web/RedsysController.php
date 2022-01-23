@@ -87,6 +87,8 @@ class RedsysController extends Controller
 		$discountCode = DiscountCode::where('name', $descuentoName)->first();
     $shippingAmount = AvailableCP::select('amount')->where('cp', $user->cp)->first()->amount;
 		$discount = 0;
+		$freeShipping = $request->session()->get('free_shipping');
+    $shippingAmount = AvailableCP::select('amount')->where('cp', $user->cp)->first()->amount;
 
 		if ($request->cookie('descuento') != null) {
 			if($discountCode->tipo != 'fijo') {
@@ -129,6 +131,16 @@ class RedsysController extends Controller
 				'subtotal' => -round(((int)$request->cookie('descuento')),2),
 			);
 			array_push($items, $discountItem);
+		}
+
+		if($freeShipping != false OR $freeShipping != null) {
+			$freeShippingItem = array(
+				'name' => 'Gastos de envío gratis',
+				'units' => 1,
+				'subtotal' =>  -round(($shippingAmount / 1.21), 2),
+				'tax' => 21,
+			);
+			array_push($items, $freeShippingItem);
 		}
 
 		// Creamos un array con los datos del pedido para holded
@@ -246,6 +258,7 @@ class RedsysController extends Controller
 
 		// Borramos todas las cookies y las variables de sesión que hemos necesitado y redirijimos a la home
 
+		session(['free_shipping' => false]);
 		$this->cartService->deleteCookie();
 		$request->session()->forget(['user', 'email']);
 		return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
@@ -289,6 +302,8 @@ class RedsysController extends Controller
 				// $updateContactURL = 'https://api.holded.com/api/invoicing/v1/contacts/';
 				$createContactURL = 'https://api.holded.com/api/invoicing/v1/contacts';
 				$discount = 0;
+				$freeShipping = $request->session()->get('free_shipping');
+				$shippingAmount = AvailableCP::select('amount')->where('cp', $user->cp)->first()->amount;
 
 				if ($request->cookie('descuento') != null AND $discountCode->tipo != 'fijo') {
 					$discount = (int)$request->cookie('descuento');
@@ -329,6 +344,16 @@ class RedsysController extends Controller
 						'subtotal' => -round(((int)$request->cookie('descuento')),2),
 					);
 					array_push($items, $discountItem);
+				}
+
+				if($freeShipping != false OR $freeShipping != null) {
+					$freeShippingItem = array(
+						'name' => 'Gastos de envío gratis',
+						'units' => 1,
+						'subtotal' =>  -round(($shippingAmount / 1.21), 2),
+						'tax' => 21,
+					);
+					array_push($items, $freeShippingItem);
 				}
 
 				// Creamos un array con los datos del pedido para holded
@@ -445,6 +470,7 @@ class RedsysController extends Controller
 
 				// Borramos todas las cookies y variables de sesión que necesitabamos y devolvemos al usuario a la home
 
+				session(['free_shpping' => false]);
 				$this->cartService->deleteCookie();
 				$request->session()->forget(['user', 'email']);
 				return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
