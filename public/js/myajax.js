@@ -61,24 +61,29 @@ function platosAjax() {
                         // modalPrice.innerHTML = '<b>'+data.itemQuantity*data.infoPrice+'€</b>';
                         menuCartNumber.innerHTML = parseInt(menuCartNumber.innerHTML)+parseInt(data.itemQuantity);
                         menuCartNumberMobile.innerHTML = parseInt(menuCartNumberMobile.innerHTML)+parseInt(data.itemQuantity);
+
                         if(numberPlates != null){
                             numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
                         }
-                        fbq('track', 'AddToCart', {
-                            'content_ids': plateID,
-                            'content_name': plateName,
-                            'value' : parseInt(plateQuantity) * parseInt(platePrice),
-                            'currency': 'EUR'
-                        });
-                        var callback = function () {
-                        if (typeof(url) != 'undefined') {
-                          window.location = url;
+
+                        if(parseInt(menuCartNumber)>=5||parseInt(menuCartNumberMobile)>=5) {
+                            fbq('track', 'AddToCart', {
+                                'content_ids': plateID,
+                                'content_name': plateName,
+                                'value' : parseInt(plateQuantity) * parseInt(platePrice),
+                                'currency': 'EUR'
+                            });
+                            var callback = function () {
+                                if (typeof(url) != 'undefined') {
+                                  window.location = url;
+                                }
+                            };
+                            gtag('event', 'conversion', {
+                              'send_to': 'AW-10805779259/s4FDCObp3IMDELu2zKAo',
+                              'event_callback': callback
+                            });
                         }
-                        };
-                        gtag('event', 'conversion', {
-                          'send_to': 'AW-10805779259/s4FDCObp3IMDELu2zKAo',
-                          'event_callback': callback
-                        });
+
                         setTimeout(() => {
                             button[i].classList.remove('active');
                             button[i].disabled = false;
