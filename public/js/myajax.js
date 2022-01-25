@@ -67,6 +67,7 @@ function platosAjax() {
                         }
 
                         if(parseInt(menuCartNumber)>=5||parseInt(menuCartNumberMobile)>=5) {
+                            console.log('test')
                             fbq('track', 'AddToCart', {
                                 'content_ids': plateID,
                                 'content_name': plateName,
