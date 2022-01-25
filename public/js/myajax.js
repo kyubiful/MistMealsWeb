@@ -66,10 +66,7 @@ function platosAjax() {
                             numberPlates.innerHTML = parseInt(numberPlates.innerHTML)+parseInt(data.itemQuantity);
                         }
 
-                        console.log(menuCartNumber)
-                        console.log(parseInt(menuCartNumber))
-                        if(parseInt(menuCartNumber)>=5||parseInt(menuCartNumberMobile)>=5) {
-                            console.log('test')
+                        if(parseInt(menuCartNumber.innerHTML)>=5||parseInt(menuCartNumberMobile.innerHTML)>=5) {
                             fbq('track', 'AddToCart', {
                                 'content_ids': plateID,
                                 'content_name': plateName,
