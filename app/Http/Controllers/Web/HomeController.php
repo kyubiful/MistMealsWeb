@@ -84,26 +84,27 @@ class HomeController extends Controller
                 $nextDelivery = $nextThursday->addWeeks(1)->formatLocalized('%A %d de %B');
                 $messageArray = explode(' ', $nextDelivery);
                 if(array_key_exists($messageArray[0], $days) AND array_key_exists($messageArray[3], $months)){
-                    $message = "El pedido te llegará el ".$days[$messageArray[0]].' '.$messageArray[1].' de '.$months[$messageArray[3]];
+                    $message = "El pedido le llegará el ".$days[$messageArray[0]].' '.$messageArray[1].' de '.$months[$messageArray[3]];
                 } else {
-                    $message = "El pedido te llegará el ".$nextDelivery;
+                    $message = "El pedido le llegará el ".$nextDelivery;
                 }
             } else {
                 $nextDelivery = $nextThursday->formatLocalized('%A %d de %B');
                 $messageArray = explode(' ', $nextDelivery);
                 if(array_key_exists($messageArray[0], $days) AND array_key_exists($messageArray[3], $months)){
-                    $message = "El pedido te llegará el ".$days[$messageArray[0]].' '.$messageArray[1].' de '.$months[$messageArray[3]];
+                    $message = "El pedido le llegará el ".$days[$messageArray[0]].' '.$messageArray[1].' de '.$months[$messageArray[3]];
                 } else {
-                    $message = "El pedido te llegará el ".$nextDelivery;
+                    $message = "El pedido le llegará el ".$nextDelivery;
                 }
             }
         } else {
-            $message = "Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y te avisaremos por email cuando estemos por allí ;)";
+            $message = "Vaya! Hasta ahí de momento no llegamos, si quieres puedes registrarte y le avisaremos por email cuando estemos por allí ;)";
         }
 
         return response()->json([
             'status' => 500,
-            'message' => $message
+            'message' => $message,
+            'cp' => $request->cp,
         ]);
 
     }

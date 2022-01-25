@@ -1,0 +1,69 @@
+.thanks-top-banner {
+    margin-top: 200px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: url('/img/thanks/thanks.png') no-repeat;
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+}
+
+
+.thanks-top-banner h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: 'TuskerGrotesk65' !important;
+    margin: auto;
+    text-align: center;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 15px;
+    padding: 10px;
+    width: 73vw;
+}
+
+.thanks-text-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.thanks-text-container h3 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.thanks-text-container p {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.thanks-text-container .thanks-delivery-day {
+    text-decoration-line: underline;
+    font-weight: bold;
+}
+
+@media (min-width: 992px) {
+
+    .thanks-top-banner h2 {
+        font-size: 110px !important;
+    }
+
+    .thanks-text-container {
+    }
+
+    .thanks-text-container h3 {
+        font-size: 55px !important;
+    }
+
+    .thanks-text-container p {
+        font-size: 18px !important;
+    }
+
+    .thanks-text-container .thanks-delivery-day {
+    }
+}

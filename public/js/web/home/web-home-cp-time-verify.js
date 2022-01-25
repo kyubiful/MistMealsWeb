@@ -15,7 +15,7 @@ verifyCPTimeForm.addEventListener('submit', (e) => {
     // modal.classList.remove('active');
 
     // Spinner ON
-    let buttonContent = button[i].innerHTML;
+    let buttonContent = verifyCPTimeButton.innerHTML;
     verifyCPTimeButton.disabled = true;
     verifyCPTimeButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando...';
 
