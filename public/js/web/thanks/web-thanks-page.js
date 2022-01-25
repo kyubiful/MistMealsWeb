@@ -32,24 +32,21 @@ $.ajax({
     }
 });
 
-window.onload = () => {
 
-    var callback = function () {
-      if (typeof(url) != 'undefined') {
-        window.location = url;
-      }
-    };
+var callback = function () {
+  if (typeof(url) != 'undefined') {
+    window.location = url;
+  }
+};
 
-    gtag('event', 'conversion', {
-        'send_to': 'AW-10805779259/-VV7CIHKiYQDELu2zKAo',
-        'currency': 'EUR',
-        'transaction_id': '',
-        'event_callback': callback
-    });
+gtag('event', 'conversion', {
+    'send_to': 'AW-10805779259/-VV7CIHKiYQDELu2zKAo',
+    'currency': 'EUR',
+    'transaction_id': '',
+    'event_callback': callback
+});
 
-    fbq('track', 'Purchase', {
-      'currency': 'EUR'
-    })
-
-}
+fbq('track', 'Purchase', {
+'currency': 'EUR'
+})
 
