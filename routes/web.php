@@ -98,6 +98,9 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
   // Rutas de FAQs
   Route::get('/faqs', 'FaqsController@index')->name('faqs');
 
+  // Ruta de Thanks You Page
+  Route::get('/thanks', 'ThanksYouController@index')->name('thanks');
+
   // Rutas de Cómo Funciona
   Route::get('/como-funciona', 'ComoFuncionaController@index')->name('comofunciona');
 });
