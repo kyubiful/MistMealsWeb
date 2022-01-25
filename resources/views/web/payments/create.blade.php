@@ -175,36 +175,3 @@
 </div>
 @include('web.layout.newsletter')
 @endsection
-@push('custom-scripts')
-
-<script type="text/javascript">
-  paymentBtnSubmit = document.querySelector('.payment-btn-submit')
-  paymentAmount = document.querySelector('.payment-amount')
-
-  let amount = paymentAmount.innerHTML
-  amount = amount.split(" ")
-  amount = parseInt(amount[1].split("€")[0])
-
-  paymentBtnSubmit.addEventListener('click', () => {
-
-    var callback = function () {
-      if (typeof(url) != 'undefined') {
-        window.location = url;
-      }
-    };
-    gtag('event', 'conversion', {
-        'send_to': 'AW-10805779259/-VV7CIHKiYQDELu2zKAo', 'value': amount,
-        'currency': 'EUR',
-        'transaction_id': '',
-        'event_callback': callback
-    });
-
-    fbq('track', 'Purchase', {
-      'value': amount,
-      'currency': 'EUR'
-    })
-
-  })
-</script>
-
-@endpush

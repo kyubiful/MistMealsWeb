@@ -261,7 +261,7 @@ class RedsysController extends Controller
 		session(['free_shipping' => false]);
 		$this->cartService->deleteCookie();
 		$request->session()->forget(['user', 'email']);
-		return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
+		return redirect('/thanks')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
 	}
 
 	public function comprobar(Request $request)
@@ -473,7 +473,7 @@ class RedsysController extends Controller
 				session(['free_shpping' => false]);
 				$this->cartService->deleteCookie();
 				$request->session()->forget(['user', 'email']);
-				return redirect('/')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
+				return redirect('/thanks')->with('message', 'success')->withoutCookie('order_id')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
 			} else {
 
 				// Si redsys responde con un código de error

@@ -31,3 +31,20 @@ $.ajax({
         console.log('error')
     }
 });
+
+var callback = function () {
+  if (typeof(url) != 'undefined') {
+    window.location = url;
+  }
+};
+gtag('event', 'conversion', {
+    'send_to': 'AW-10805779259/-VV7CIHKiYQDELu2zKAo', 'value': amount,
+    'currency': 'EUR',
+    'transaction_id': '',
+    'event_callback': callback
+});
+
+fbq('track', 'Purchase', {
+  'value': amount,
+  'currency': 'EUR'
+})
