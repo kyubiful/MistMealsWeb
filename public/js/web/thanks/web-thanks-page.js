@@ -32,19 +32,24 @@ $.ajax({
     }
 });
 
-var callback = function () {
-  if (typeof(url) != 'undefined') {
-    window.location = url;
-  }
-};
-gtag('event', 'conversion', {
-    'send_to': 'AW-10805779259/-VV7CIHKiYQDELu2zKAo', 'value': amount,
-    'currency': 'EUR',
-    'transaction_id': '',
-    'event_callback': callback
-});
+window.onload = () => {
 
-fbq('track', 'Purchase', {
-  'value': amount,
-  'currency': 'EUR'
-})
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+
+    gtag('event', 'conversion', {
+        'send_to': 'AW-10805779259/-VV7CIHKiYQDELu2zKAo',
+        'currency': 'EUR',
+        'transaction_id': '',
+        'event_callback': callback
+    });
+
+    fbq('track', 'Purchase', {
+      'currency': 'EUR'
+    })
+
+}
+

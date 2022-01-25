@@ -250,6 +250,25 @@
 
             totalCart.innerHTML = (parseFloat(subtotalCart.innerHTML.slice(0,-1)) - parseFloat(descuento)).toFixed(2) + '€'
             totalPlates += 1
+
+            if(parseInt(menuCartCount.innerHTML)>=5||parseInt(menuCartCountMobile.innerHTML)>=5) {
+                fbq('track', 'AddToCart', {
+                    'content_ids': plateID,
+                    'content_name': plateName,
+                    'value' : parseInt(plateQuantity) * parseInt(platePrice),
+                    'currency': 'EUR'
+                });
+                var callback = function () {
+                    if (typeof(url) != 'undefined') {
+                      window.location = url;
+                    }
+                };
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-10805779259/s4FDCObp3IMDELu2zKAo',
+                  'event_callback': callback
+                });
+            }
+
             if(totalPlates < 5 ){
               cartMessageSection.innerHTML = '<p style="color: red; text-align: center;">*Pedido mínimo de 5 platos</p>'
               if(mistBtn != null){
