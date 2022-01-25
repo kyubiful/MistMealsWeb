@@ -253,9 +253,6 @@
 
             if(parseInt(menuCartCount.innerHTML)>=5||parseInt(menuCartCountMobile.innerHTML)>=5) {
                 fbq('track', 'AddToCart', {
-                    'content_ids': plateID,
-                    'content_name': plateName,
-                    'value' : parseInt(plateQuantity) * parseInt(platePrice),
                     'currency': 'EUR'
                 });
                 var callback = function () {
