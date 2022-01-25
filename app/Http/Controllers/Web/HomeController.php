@@ -63,7 +63,7 @@ class HomeController extends Controller
 
         $months = [
             'January' => 'Enero',
-            'Febrary' => 'Febrero',
+            'February' => 'Febrero',
             'March' => 'Marzo',
             'April' => 'Abril',
             'May' => 'Mayo',
