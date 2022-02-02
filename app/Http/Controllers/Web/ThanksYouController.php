@@ -9,7 +9,15 @@ use App\Http\Controllers\Web\HomeController;
 class ThanksYouController extends Controller
 {
 
-    public function index() {
+    public function index(Request $request) {
+
+        if( $request->session()->get('payed') != true ){
+
+            return redirect('/');
+
+        }
+
+        session(['payed' => false]);
         return view('web.thanks.index');
     }
 }
