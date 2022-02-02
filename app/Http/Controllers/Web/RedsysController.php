@@ -11,6 +11,7 @@ use App\Models\Order;
 use Ssheduardo\Redsys\Facades\Redsys;
 use Exception;
 use App\Services\CartService;
+use App\Services\DiscountCodeService;
 use App\Models\User;
 use App\Models\Payment;
 use App\Models\AvailableCP;
@@ -19,15 +20,18 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class RedsysController extends Controller
 {
 
 	public $cartService;
+	public $discountCodeService;
 
-	public function __construct(CartService $cartService)
+	public function __construct(CartService $cartService, DiscountCodeService $discountCodeService)
 	{
 		$this->cartService = $cartService;
+		$this->discountCodeService = $discountCodeService;
 	}
 
 	public static function index($user, $amount)
@@ -219,18 +223,6 @@ class RedsysController extends Controller
 			dd('Error a la hora de poner el pedido como pagado');
 		}
 
-		// Envio del mail de confirmación del pedido
-
-		try {
-			Mail::to($email)->send(new OrderMail($cart, null));
-		} catch (\Exception $e) {
-			dd('Error a la hora de enviar el correo de confirmación del pedido');
-			return response()->json(array(
-				'status' => 500,
-				'message' => $e->getMessage()
-			));
-		}
-
 		// Creamos un payment en nuestra base de datos
 
 		$order_id = (int)$request->cookie('order_id');
@@ -256,8 +248,29 @@ class RedsysController extends Controller
 
 		Order::whereId($order_id)->update(['status' => 'pagado']);
 
+		// Enviamos correo de confirmación
+
+		if(auth()->user()) {
+
+			$this->sendchallengediscountcode($user, $cart);
+
+		} else {
+
+			try {
+				mail::to($email)->send(new ordermail($cart, null));
+			} catch (\exception $e) {
+				dd('error a la hora de enviar el correo de confirmación del pedido', $e);
+				return response()->json(array(
+					'status' => 500,
+					'message' => $e->getmessage()
+				));
+			}
+
+		}
+
 		// Borramos todas las cookies y las variables de sesión que hemos necesitado y redirijimos a la home
 
+		session(['payed' => true]);
 		session(['free_shipping' => false]);
 		$this->cartService->deleteCookie();
 		$request->session()->forget(['user', 'email']);
@@ -430,18 +443,6 @@ class RedsysController extends Controller
 					dd('Error a la hora de poner el pedido como pagado');
 				}
 
-				// Enviamos correo de confirmación
-
-				try {
-					Mail::to($email)->send(new OrderMail($cart, null));
-				} catch (\Exception $e) {
-					dd('Error a la hora de enviar el correo de confirmación del pedido', $e);
-					return response()->json(array(
-						'status' => 500,
-						'message' => $e->getMessage()
-					));
-				}
-
 				// Creamos un payment en nuestra base de datos
 
 				$order_id = (int)$request->cookie('order_id');
@@ -468,8 +469,31 @@ class RedsysController extends Controller
 
 				Order::whereId($order_id)->update(['status' => 'pagado']);
 
-				// Borramos todas las cookies y variables de sesión que necesitabamos y devolvemos al usuario a la home
+				// Enviamos correo de confirmación
 
+				if(auth()->user()) {
+
+					$this->sendchallengediscountcode($user, $cart);
+
+				} else {
+
+					try {
+						mail::to($email)->send(new ordermail($cart, null));
+					} catch (\exception $e) {
+						dd('error a la hora de enviar el correo de confirmación del pedido', $e);
+						return response()->json(array(
+							'status' => 500,
+							'message' => $e->getmessage()
+						));
+					}
+
+				}
+
+
+
+				// Borramos todas las cookies y variables de sesión que necesitabamos y devolvemos al usuario a la thank you page
+
+				session(['payed' => true]);
 				session(['free_shpping' => false]);
 				$this->cartService->deleteCookie();
 				$request->session()->forget(['user', 'email']);
@@ -486,6 +510,47 @@ class RedsysController extends Controller
 
 			dd('Error fuera del try principal', $e);
 			return redirect('/')->with('message', 'error');
+		}
+	}
+
+	public function sendChallengeDiscountCode ($user, $cart) {
+
+		$challengeData = DB::table('challenges')->select('discount_codes_amount', 'duration')->first();
+		$challengeDiscountsAmount = explode(',', $challengeData->discount_codes_amount);
+		$date = Carbon::today();
+		$user->challenge_week += 1;
+
+		if($user->challenge_week == $challengeData->duration) {
+
+			$endDate = Carbon::today()->addDays(30);
+
+			$userWeek = $user->challenge_week - 1;
+			$user->challenge_week = 0;
+			$user->challenge_update = null;
+			$discountCodeCode = $this->discountCodeService->generateRandomCode($user);
+			$discountCode = $this->discountCodeService->saveCode($discountCodeCode, $challengeDiscountsAmount[$userWeek], 'fijo', $date, $endDate);
+
+		} else {
+
+			$endDate = Carbon::parse()->next('monday')->addDays(7);
+
+			$userWeek = $user->challenge_week - 1;
+			$user->challenge_update = $date;
+			$discountCodeCode = $this->discountCodeService->generateRandomCode($user);
+			$discountCode = $this->discountCodeService->saveCode($discountCodeCode, $challengeDiscountsAmount[$userWeek], 'fijo', $date, $endDate);
+
+		}
+
+			$user->save();
+
+		try {
+			Mail::to($user->email)->send(new OrderMail($cart, null));
+		} catch (\Exception $e) {
+			dd('Error a la hora de enviar el correo de confirmación del pedido', $e);
+			return response()->json(array(
+				'status' => 500,
+				'message' => $e->getMessage()
+			));
 		}
 	}
 }
