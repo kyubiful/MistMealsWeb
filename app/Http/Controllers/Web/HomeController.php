@@ -50,7 +50,7 @@ class HomeController extends Controller
         $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
         $cp = $request->cp;
         $nextThursday = new Carbon('Next Thursday');
-        $today = Carbon::now();
+        $today = Carbon::today();
         $days = [
             'Monday' => 'Lunes',
             'Tuesday' => 'Martes',
