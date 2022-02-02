@@ -19,7 +19,8 @@ class DiscountCode extends Model
         'end',
         'active',
         'unique',
-        'uses'
+        'uses',
+        'one_use'
     ];
 
     public function users()
