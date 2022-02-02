@@ -15,7 +15,7 @@ class AddChallengesUsersTable extends Migration
     {
         Schema::table('users', function(Blueprint $table) {
             $table->integer('challenge_week')->default(0);
-            $table->date('challenge_update');
+            $table->timestamp('challenge_update')->nullable();
         });
     }
 
