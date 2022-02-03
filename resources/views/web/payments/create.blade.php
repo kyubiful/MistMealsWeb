@@ -147,7 +147,12 @@
             @elseif(Cookie::get('descuento_type') == 'fijo')
               -{{Cookie::get('descuento')}}€
             @elseif(Cookie::get('descuento_type') == 'free')
-              -{{$cart->total}}€
+              @if ($freeShipping == 1)
+                -{{$cart->total}}€
+              @else
+                -{{$cart->total + $shipping_amount}}€
+              @endif
+              
             @endif
           </td>
         </tr>
@@ -159,14 +164,22 @@
   <div class="order-continue">
   <a href="{{ route('web.orders.create') }}" class="order-payment-back-btn">Volver</a>
     <h4 class="payment-amount">Total:
-      @if(Cookie::get('descuento_type') != 'free')
+      @if (Cookie::get('descuento_type') != 'free')
         {{$amount}}€
       @else
-        0€
+        @if ($freeShipping != 1)
+          @if(Cookie::get('descuento_type') == 'free')
+            0€
+          @else
+            {{ $shipping_amount }}€
+          @endif
+        @else
+          0€
+        @endif
       @endif
     </h4>
     @if(Cookie::get('descuento_type') != 'free')
-    {!! \App\Http\Controllers\Web\RedsysController::index($user, $amount) !!}
+    {!! \App\Http\Controllers\Web\RedsysController::index($user, ($amount)) !!}
     @else
     <a class="payment-btn-submit" id="btn_submit" name="btn_submit" href="{{route('web.holded.free')}}">Realizar pedido</a>
     @endif
