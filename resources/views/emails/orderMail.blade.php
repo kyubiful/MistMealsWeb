@@ -660,21 +660,56 @@
                                       <table style="margin: 0 auto; border: none; margin-bottom: 20px;">
                                         <thead style="background-color: #533fb8; color: #F9F2E1;">
                                           <tr>
-                                            <th style="padding: 10px; font-size:20px">Cantidad</th>
+                                            <th style="padding: 10px; font-size:20px; min-width: 86px;">Cantidad</th>
                                             <th style="padding: 10px; font-size:20px" colspan="2">Nombre</th>
-                                            <th style="padding: 10px; font-size:20px">Total</th>
+                                            <th style="padding: 10px; font-size:20px; min-width: 48px;">Total</th>
                                           </tr>
                                         </thead>
                                         <tbody style="background-color: #f9f2e1;">
-                                      @foreach($data->products as $i => $plato)
+                                      @foreach($data['cart']->products as $i => $plato)
 
+                                      @if($discount->tipo == 'porcentaje' OR $discount->tipo == 'free')
                                           <tr>
                                             <td style="padding: 10px; font-size:15px; color: black;">{{ $plato->pivot->quantity }}</td>
                                             <td style="padding: 10px; font-size:15px; color: black;" colspan="2">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</td>
-                                            <td style="padding: 10px; font-size:15px; color: black;">{{ $plato->total*((100-$discount)/100) }}€</td>
+                                            <td style="padding: 10px; font-size:15px; color: black;">{{ round($plato->total*((100-$discount->value)/100), 2) }}€</td>
                                           </tr>
+                                      @elseif ($discount->tipo == 'fijo')
+                                          <tr>
+                                            <td style="padding: 10px; font-size:15px; color: black;">{{ $plato->pivot->quantity }}</td>
+                                            <td style="padding: 10px; font-size:15px; color: black;" colspan="2">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</td>
+                                            <td style="padding: 10px; font-size:15px; color: black;">{{ round($plato->total, 2) }}€</td>
+                                          </tr>
+                                      @else
+                                          <tr>
+                                            <td style="padding: 10px; font-size:15px; color: black;">{{ $plato->pivot->quantity }}</td>
+                                            <td style="padding: 10px; font-size:15px; color: black;" colspan="2">{{ $plato->nombre }} - {{ $plato->plato_peso->valor }}</td>
+                                            <td style="padding: 10px; font-size:15px; color: black;">{{ round($plato->total, 2) }}€</td>
+                                          </tr>
+                                      @endif
 
                                       @endforeach
+
+                                      @if ($discount->free_shipping != 1)
+                                        <tr> 
+                                          <td style="padding: 10px; font-size:15px; color: black;">1</td>
+                                          <td style="padding: 10px; font-size:15px; color: black;" colspan="2">Gastos de envío</td>
+                                          @if ($discount->tipo == 'free')
+                                          <td style="padding: 10px; font-size:15px; color: black;">0€</td>
+                                          @else
+                                          <td style="padding: 10px; font-size:15px; color: black;">{{$shippingAmount}}€</td>
+                                          @endif
+                                        </tr>
+                                      @endif
+
+                                      @if ($discount->tipo == 'fijo')
+                                        <tr> 
+                                          <td style="padding: 10px; font-size:15px; color: black;">1</td>
+                                          <td style="padding: 10px; font-size:15px; color: black;" colspan="2">Descuento</td>
+                                          <td style="padding: 10px; font-size:15px; color: black;">-{{$discount->value}}€</td>
+                                        </tr>
+                                      @endif
+
                                           <tr>
                                             <td style="background-color: black; height: 20px"></td>
                                             <td style="background-color: black;" colspan="2"></td>
@@ -683,12 +718,40 @@
                                           <tr>
                                             <td style="background-color: black;"></td>
                                             <td style="background-color: black; width: 180px;"></td>
-                                            <td style="background-color: #533fb8; color: #F9F2E1; padding: 10px;"><b>Total</b></td>
-                                            <td style="padding: 10px; font-size:15px; color: black;"><b>{{ $data->total*((100-$discount)/100)}}€</b></td>
+                                            <td style="background-color: #533fb8; color: #F9F2E1; padding: 10px; min-width: 50px;"><b>Total</b></td>
+                                            @if ($discount->tipo != 'fijo')
+                                              @if ($discount->free_shipping == 0)
+                                                @if($discount->tipo == 'free')
+                                                  <td style="padding: 10px; font-size:15px; color: black;"><b>{{ round(($data['cart']->total*((100-$discount->value)/100)), 2) }}€</b></td>
+                                                @else
+                                                  <td style="padding: 10px; font-size:15px; color: black;"><b>{{ round(($data['cart']->total*((100-$discount->value)/100))+$shippingAmount, 2) }}€</b></td>
+                                                @endif
+                                              @else
+                                              <td style="padding: 10px; font-size:15px; color: black;"><b>{{ round($data['cart']->total*((100-$discount->value)/100), 2) }}€</b></td>
+                                              @endif
+                                            @else
+                                              @if ($discount->free_shipping == 0)
+                                              <td style="padding: 10px; font-size:15px; color: black;"><b>{{ round($data['cart']->total - $discount->value + $shippingAmount, 2) }}€</b></td>
+                                              @else
+                                              <td style="padding: 10px; font-size:15px; color: black;"><b>{{ round($data['cart']->total - $discount->value, 2) }}€</b></td>
+                                              @endif
+                                            @endif
                                           </tr>
                                         </tbody>
 
                                       </table>
+
+                                      @isset($data['discount'])
+                                        @if($data['discount'] != null)
+                                        <table style="margin: auto;">
+                                          <tr>
+                                            <td style="color: white; text-align: center; background-color: #533fb8; padding: 10px; border-radius: 15px;">Código de descuento del reto de {{$data['discount']->value}}€: <b>{{ $data['discount']->name }}</b></td>
+                                          </tr>
+                                        </table>
+                                        <p style="color: gray; font-size: 14px; font-size: 14px;"><i>*El código de descuento debe ser usado antes del día {{$data['discount']->end}}</i></p>
+                                        @endif
+                                      @endisset
+
                                       <p style="color:white;">Si tienes cualquier duda sobre tu pedido, o necesitas ayuda con un cambio o devolución pincha <a href="https://www.mistmeals.com/contacto" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">aquí</a>.</p></span></span></p>
                               </td>
                             </tr>
@@ -952,5 +1015,4 @@
     </table>
   </center>
 </body>
-
 </html>
