@@ -478,7 +478,7 @@ class RedsysController extends Controller
 				} else {
 
 					try {
-						mail::to($email)->send(new ordermail($cart, null));
+						mail::to($email)->send(new ordermail(['cart' => $cart], null));
 					} catch (\exception $e) {
 						dd('error a la hora de enviar el correo de confirmación del pedido', $e);
 						return response()->json(array(
@@ -535,7 +535,7 @@ class RedsysController extends Controller
 			$endDate = Carbon::parse()->next('monday')->addDays(7);
 
 			$userWeek = $user->challenge_week - 1;
-			$user->challenge_update = $date;
+			$user->challenge_update = $endDate;
 			$discountCodeCode = $this->discountCodeService->generateRandomCode($user);
 			$discountCode = $this->discountCodeService->saveCode($discountCodeCode, $challengeDiscountsAmount[$userWeek], 'fijo', $date, $endDate);
 
@@ -544,7 +544,7 @@ class RedsysController extends Controller
 			$user->save();
 
 		try {
-			Mail::to($user->email)->send(new OrderMail($cart, null));
+			Mail::to($user->email)->send(new OrderMail(['cart' => $cart, 'discount' => $discountCode], null));
 		} catch (\Exception $e) {
 			dd('Error a la hora de enviar el correo de confirmación del pedido', $e);
 			return response()->json(array(
