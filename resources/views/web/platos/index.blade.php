@@ -6,11 +6,7 @@
     <div id="percent"></div>
   </div>
 </div>
-<div class="platos-top-background">
-  <p class="platos-top-title">PLATOS</p>
-</div>
-<div class="platos-top-label"></div>
-<div class="platos-count-container">
+<div class="platos-count-container" style="margin-top: 100px;">
   <div class="platos-count-content">
     <div>
       @inject('cartService','App\Services\CartService')
