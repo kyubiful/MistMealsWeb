@@ -50,7 +50,7 @@ class HomeController extends Controller
         $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
         $cp = $request->cp;
         $nextThursday = new Carbon('Next Thursday');
-        $today = Carbon::now();
+        $today = Carbon::today();
         $days = [
             'Monday' => 'Lunes',
             'Tuesday' => 'Martes',
@@ -80,7 +80,7 @@ class HomeController extends Controller
         $nextThursdatNumber = (int)$nextThursday->format('d');
 
         if(in_array($cp, $availableCP)){
-            if(($nextThursdatNumber - $todayNumber) <= 4){
+            if(($nextThursdatNumber - $todayNumber) <= 3){
                 $nextDelivery = $nextThursday->addWeeks(1)->formatLocalized('%A %d de %B');
                 $messageArray = explode(' ', $nextDelivery);
                 if(array_key_exists($messageArray[0], $days) AND array_key_exists($messageArray[3], $months)){
