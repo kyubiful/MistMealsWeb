@@ -68,7 +68,7 @@ class Plato extends Model
   public function getUrlImage1Attribute()
   {
     if ($this->imagen_1 && existsResource($this->getFolder() . $this->imagen_1)) {
-      return 'storage/'.$this->getFolder() . $this->imagen_1;
+      return 'storage'.$this->getFolder() . $this->imagen_1;
     }
 
     return '/assets/images/no-product.png';
@@ -77,7 +77,7 @@ class Plato extends Model
   public function getUrlImage2Attribute()
   {
     if ($this->imagen_2 && existsResource($this->getFolder() . $this->imagen_2)) {
-      return 'storage/'.$this->getFolder() . $this->imagen_2;
+      return 'storage'.$this->getFolder() . $this->imagen_2;
     }
 
     return '/assets/images/no-product.png';
