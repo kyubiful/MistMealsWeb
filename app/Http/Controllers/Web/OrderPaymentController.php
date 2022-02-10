@@ -92,8 +92,12 @@ class OrderPaymentController extends Controller
       return redirect('/carts')->with('message', 'Máximo 14 platos para este código');
     }
 
-    if($request->session()->get('free_shipping') == false || $request->session()->get('free_shipping') == null)
-    {
+    if (!is_null($discountCode)) {
+      if($discountCode->free_shipping == 0)
+      {
+        $amount += $shippingAmount;
+      }
+    } else {
       $amount += $shippingAmount;
     }
 
