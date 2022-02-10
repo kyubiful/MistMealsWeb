@@ -26,6 +26,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->command('check:discounts')->weeklyOn(1,'00:00');
+        $schedule->command('check:challenges')->weeklyOn(1,'00:00');
     }
 
     /**
