@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class CheckChallengeContinues extends Command
 {
@@ -55,7 +56,10 @@ class CheckChallengeContinues extends Command
                 $user->save();
 
             }
-        }
+        } 
+
+        $text = "[". date('Y-m-d H:i:s') ."]: Cron reinicio de retos lanzado";
+        Storage::append("cron-status.txt", $text);
 
     }
 }

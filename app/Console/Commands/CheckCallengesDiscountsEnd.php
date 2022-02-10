@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\DiscountCode;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class CheckCallengesDiscountsEnd extends Command
 {
@@ -49,6 +50,10 @@ class CheckCallengesDiscountsEnd extends Command
             if($today > $discount_code_end_date) {
                 $discount->delete();
             }
+
         }
+
+        $text = "[". date('Y-m-d H:i:s') ."]: Cron eliminación de códigos de descuentos lanzado";
+        Storage::append("cron-status.txt", $text);
     }
 }
