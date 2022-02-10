@@ -1,0 +1,158 @@
+.landing-retos-container {
+    margin-bottom: 50px;
+}
+
+.landing-retos-steps-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #FF810C;
+    margin-bottom: 100px;
+    padding-top: 40px;
+
+}
+
+.landing-retos-steps-content {
+    margin: auto;
+    max-width: 1000px;
+}
+
+.landing-retos-steps-container h3{
+    font-family: TuskerGrotesk65 !important;
+    text-align: center;
+    font-size: 28px;
+    padding-bottom: 35px;
+    max-width: 300px;
+    margin: auto;
+}
+
+.landing-retos-steps-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.landing-retos-steps-content .landing-retos-steps-content-text{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.landing-retos-steps-content .number{
+    text-align: center;
+    font-family: CoreSansC65 !important;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.landing-retos-steps-content .step-text{
+    text-align: center;
+    font-family: CoreSansC65 !important;
+    font-size: 23px;
+    max-width: 250px;
+    padding-top: 40px;
+}
+.landing-retos-steps-content .step-text-parentesis{
+    text-align: center;
+    font-weight: normal;
+    font-family: CoreSansC65;
+    font-size: 18px;
+    max-width: 250px;
+}
+
+
+.landing-retos-steps-bottom-img{
+    width: 100px;
+    margin-top: -160px;
+    position: absolute;
+    margin-bottom: auto;
+    left: 0;
+}
+
+.landing-retos-steps-bottom-img-2{
+    width: 100px;
+    margin-top: -160px;
+    position: absolute;
+    margin-bottom: auto;
+    right: 0;
+}
+
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+
+    .landing-retos-steps-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: auto;
+        margin-bottom: 100px;
+    }
+
+    .landing-retos-steps-container .number{
+        font-size: 70px;
+        margin-bottom: 10px;
+        height: 35px;
+        line-height: 1;
+    }
+
+    .landing-retos-steps-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    .landing-retos-steps-container h3{
+        padding-top: 100px;
+        text-align: center;
+        font-size: 60px;
+        max-width: 600px;
+        padding-bottom: 20px;
+        margin: 0 auto;
+    }
+
+    .landing-retos-steps-content .step-text{
+        max-width: 300px;
+        height: 150px;
+    }
+
+    .landing-retos-steps-bottom-img{
+        position: absolute;
+        margin-bottom: auto;
+        left: 0;
+        width: 240px;
+        margin-top: -249px;
+    }
+
+    .landing-retos-steps-bottom-img-2{
+        position: absolute;
+        margin-bottom: auto;
+        right: 0;
+        width: 240px;
+        margin-top: -249px;
+    }
+
+    .landing-retos-steps-content .landing-retos-steps-content-text{
+        width: 300px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}

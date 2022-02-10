@@ -1,0 +1,45 @@
+.landing-retos-banner-dudas-bottom-banner-container{
+    background-color: #FF810C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+
+.landing-retos-banner-dudas-bottom-banner-container .p1{
+    font-family: CoreSansC65;
+    font-size: 15px;
+}
+
+
+
+
+
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+    .landing-retos-banner-dudas-bottom-banner-container .p1{
+     
+        font-size: 20px;
+       
+    }
+   
+   
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}

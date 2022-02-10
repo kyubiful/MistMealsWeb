@@ -95,6 +95,9 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
     return view('web.revolucion.index');
   })->name('revolucion');
 
+  //Rutas de retos
+  Route::get('/retos/landing','RetosController@landing')->name('retos.landing');
+
   // Rutas de FAQs
   Route::get('/faqs', 'FaqsController@index')->name('faqs');
 

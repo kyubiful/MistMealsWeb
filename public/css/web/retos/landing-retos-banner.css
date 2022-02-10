@@ -1,0 +1,51 @@
+.landing-retos-banner-container{
+    background-color: #009167;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 200px;
+}
+
+.landing-retos-banner-container .text-container{
+    max-width: 500px;
+}
+
+.landing-retos-banner-container .p2{
+    font-family: CoreSansC65 !important;
+    text-align: center;
+    font-style: italic;
+    font-size: 16px;
+}
+
+/* Extra small devices (phones) */
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+   .landing-retos-banner-container{
+        height: 300px;
+    }
+
+    .landing-retos-banner-container .p2{
+        font-size: 30px;
+        margin-top: 20px;
+    }
+
+    .landing-retos-banner-container .text-container{
+        max-width: 900px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}
