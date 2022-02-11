@@ -691,7 +691,7 @@
                                       @endforeach
 
                                       @if ($discount->free_shipping != 1)
-                                        <tr> 
+                                        <tr>
                                           <td style="padding: 10px; font-size:15px; color: black;">1</td>
                                           <td style="padding: 10px; font-size:15px; color: black;" colspan="2">Gastos de envío</td>
                                           @if ($discount->tipo == 'free')
@@ -703,7 +703,7 @@
                                       @endif
 
                                       @if ($discount->tipo == 'fijo')
-                                        <tr> 
+                                        <tr>
                                           <td style="padding: 10px; font-size:15px; color: black;">1</td>
                                           <td style="padding: 10px; font-size:15px; color: black;" colspan="2">Descuento</td>
                                           <td style="padding: 10px; font-size:15px; color: black;">-{{$discount->value}}€</td>
@@ -743,6 +743,49 @@
 
                                       @isset($data['discount'])
                                         @if($data['discount'] != null)
+                                        <h2 style="color: white;">PROPONDREMOS EL RETO DE ESTAR 4 SEMANAS SEGUIDAS COMIENDO SANO Y RICO</h2>
+                                        <p style="color: white;">Si lo consigues, habrás ganado 20 EUROS.</p>
+                                        <p style="color: white;">Tendrás que hacer lo siguiente:</p>
+                                        <ul style="color: white;">
+                                          <li>
+                                            <h3 style="color: white;">SEMANA 1</h3>
+                                            <ul>
+                                              <li>
+                                              Con tu primer pedido (en el que podrás usar cualquier cupón de descuento que tengas) obtendrás, automáticamente, un cupón de descuento de 3 euros para gastar en un próximo pedido
+                                              </li>
+                                              <li>
+                                                Tendrás que hacer el segundo pedido antes de las 24 horas del domingo de la semana siguiente
+                                              </li>
+                                            </ul>
+                                          </li>
+                                          <li>
+                                            <h3 style="color: white;">SEMANA 2</h3>
+                                            <ul>
+                                              <li>Harás tu segundo pedido usando el cupón recibido en el anterior pedido</li>
+                                              <li>Ya habrás disfrutado de tu primer descuento de 3 EUROS</li>
+                                              <li>Y obtendrás un nuevo cupón de descuento de 3 euros para gastar en un próximo pedido</li>
+                                              <li>Tendrás que hacer el segundo pedido antes de las 24 horas del domingo de la semana siguiente</li>
+                                            </ul>
+                                          </li>
+                                          <li>
+                                            <h3 style="color: white;">SEMANA 3</h3>
+                                            <ul>
+                                              <li>Harás tu tercer pedido usando el cupón recibido en el anterior pedido</li>
+                                              <li>Ya habrás disfrutado de dos descuentos de 3 + 3 EUROS</li>
+                                              <li>Y obtendrás un nuevo cupón de descuento de 4 euros para gastar en un próximo pedido</li>
+                                              <li>Tendrás que hacer el segundo pedido antes de las 24 horas del domingo de la semana siguiente</li>
+                                            </ul>
+                                          </li>
+                                          <li>
+                                            <h3 style="color: white;">SEMANA 4</h3>
+                                            <ul>
+                                              <li>Harás tu cuarto pedido usando el cupón recibido en el anterior pedido</li>
+                                              <li>Ya habrás disfrutado de tres descuentos de 3 + 3 + 4 EUROS</li>
+                                              <li>Y obtendrás un nuevo cupón de descuento de 10 euros para gastar en un próximo pedido</li>
+                                              <li>Este cupón tendrá una validez de 30 días y cuando lo uses habrás disfrutado de tus cuatro descuentos 3 + 3 + 4 + 10 = ¡¡¡20 EUROS!!!</li>
+                                            </ul>
+                                          </li>
+                                        </ul>
                                         <table style="margin: auto;">
                                           <tr>
                                             <td style="color: white; text-align: center; background-color: #533fb8; padding: 10px; border-radius: 15px;">Código de descuento del reto de {{$data['discount']->value}}€: <b>{{ $data['discount']->name }}</b></td>
@@ -1016,3 +1059,4 @@
   </center>
 </body>
 </html>
+{{dd('test')}}
