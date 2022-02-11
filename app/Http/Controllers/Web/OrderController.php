@@ -57,13 +57,17 @@ class OrderController extends Controller
 
     $descuentoName = $request->cookie('descuento_name');
 
-    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique','one_use','uses')->where('name', $descuentoName)->first();
+    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique','one_use','uses','need_loged')->where('name', $descuentoName)->first();
 
     if (!isset($cart) || $cart->products->isEmpty()) {
       return redirect('/carts')->withErrors('Su carrito está vacío');
     }
 
     $numberProducts = $this->cartService->countProducts();
+
+    if($discountCode->need_loged == 1 AND $request->user() == null) {
+      return redirect('/carts')->with('discountMessageError', 'Este código no puede ser usado sin estar registrado')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
+    }
 
     // Verificación del código de descuento
     if ($discountCode != null) {

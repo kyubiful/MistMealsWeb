@@ -37,8 +37,12 @@ class CartController extends Controller
       }
 
         $discount = $request->discount_name;
-        $discountCode = DB::table('discount_code')->select('name', 'value', 'tipo', 'start', 'end', 'active','unique','one_use','uses','free_shipping')->where('name', $discount)->first();
+        $discountCode = DB::table('discount_code')->select('name', 'value', 'tipo', 'start', 'end', 'active','unique','one_use','uses','free_shipping','need_loged')->where('name', $discount)->first();
         $time = Carbon::now()->toDateTimeString();
+
+        if($discountCode->need_loged == 1 AND $request->user() == null) {
+            return redirect()->back()->with('discountMessageError', 'Este código no puede ser usado sin estar registrado');
+        }
 
         // Si el código el tiempo de uso del código ha terminado o no existe se enviará un mensaje al usuario
         if($discountCode==null OR ($discountCode->start > $time OR $discountCode->end < $time OR $discountCode->active == 0))

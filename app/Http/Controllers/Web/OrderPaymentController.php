@@ -29,7 +29,7 @@ class OrderPaymentController extends Controller
   public function create(Order $order, Request $request)
   {
     $descuentoName = $request->cookie('descuento_name');
-    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo','one_use','uses','free_shipping')->where('name', $descuentoName)->first();
+    $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo','one_use','uses','free_shipping','need_loged')->where('name', $descuentoName)->first();
     $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
     $cart = $this->cartService->getFromCookie();
     $amount = $cart->total;
@@ -47,6 +47,10 @@ class OrderPaymentController extends Controller
     }
 
     $freeShipping = 0;
+
+    if($discountCode->need_loged == 1 AND $request->user() == null) {
+        return redirect('/carts')->with('discountMessageError', 'Este código no puede ser usado sin estar registrado')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
+    }
 
     if(!is_null($discountCode))
     {
