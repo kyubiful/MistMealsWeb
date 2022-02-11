@@ -20,6 +20,7 @@ class DiscountCode extends Model
         'active',
         'unique',
         'uses',
+        'need_loged',
         'one_use'
     ];
 

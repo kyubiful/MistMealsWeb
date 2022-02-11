@@ -17,7 +17,7 @@ class DiscountCodeService
     $code = hash('crc32b' , $user->id.$date->getTimestamp());
     return $code;
   }
-  public function saveCode($code, $value, $tipo, $start, $end, $uses=0, $active=1, $unique=0, $one_use=1)
+  public function saveCode($code, $value, $tipo, $start, $end, $uses=0, $active=1, $unique=0, $one_use=1, $need_loged=1)
   {
     $discountCode = new DiscountCode;
 
@@ -30,6 +30,7 @@ class DiscountCodeService
     $discountCode->active = $active;
     $discountCode->unique = $unique;
     $discountCode->one_use = $one_use;
+    $discountCode->need_loged = $need_loged;
 
     $discountCode->save();
     return $discountCode;
