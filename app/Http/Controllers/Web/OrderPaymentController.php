@@ -48,8 +48,10 @@ class OrderPaymentController extends Controller
 
     $freeShipping = 0;
 
-    if($discountCode->need_loged == 1 AND $request->user() == null) {
-        return redirect('/carts')->with('discountMessageError', 'Este código no puede ser usado sin estar registrado')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
+    if($discountCode != null) {
+      if($discountCode->need_loged == 1 AND $request->user() == null) {
+          return redirect('/carts')->with('discountMessageError', 'Este código no puede ser usado sin estar registrado')->withoutCookie('descuento')->withoutCookie('descuento_name')->withoutCookie('descuento_type');
+      }
     }
 
     if(!is_null($discountCode))
