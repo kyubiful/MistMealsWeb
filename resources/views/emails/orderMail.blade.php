@@ -1059,4 +1059,3 @@
   </center>
 </body>
 </html>
-{{dd('test')}}
