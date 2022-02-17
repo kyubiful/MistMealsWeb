@@ -34,7 +34,7 @@ class RedsysController extends Controller
 		$this->discountCodeService = $discountCodeService;
 	}
 
-	public static function index($user, $amount)
+	public static function cardPayment($user, $amount)
 	{
 		try {
 
@@ -49,6 +49,40 @@ class RedsysController extends Controller
 			Redsys::setTransactiontype('0');
 			Redsys::setTerminal('1');
 			Redsys::setMethod('T'); //Solo pago con tarjeta, no mostramos iupay
+			Redsys::setNotification(config('redsys.url_notification')); //Url de notificacion
+			Redsys::setUrlOk(config('redsys.url_ok')); //Url OK
+			Redsys::setUrlKo(config('redsys.url_ko')); //Url KO
+			Redsys::setVersion('HMAC_SHA256_V1');
+			Redsys::setTradeName('Mist Meals S.L.');
+			Redsys::setTitular($titular);
+			Redsys::setProductDescription('Platos MistMeals');
+			Redsys::setEnviroment(config('redsys.enviroment')); //Entorno test
+
+			$signature = Redsys::generateMerchantSignature($key);
+			Redsys::setMerchantSignature($signature);
+
+			$form = Redsys::createForm();
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $form;
+	}
+
+	public static function bizumPayment($user, $amount)
+	{
+		try {
+
+			$key = config('redsys.key');
+			$merchantcode = config('redsys.merchantcode');
+			$titular = $user->name . ' ' . $user->surname;
+
+			Redsys::setAmount($amount);
+			Redsys::setOrder(time());
+			Redsys::setMerchantcode($merchantcode); //Reemplazar por el código que proporciona el banco
+			Redsys::setCurrency('978');
+			Redsys::setTransactiontype('0');
+			Redsys::setTerminal('1');
+			Redsys::setMethod('z'); //Solo pago con tarjeta, no mostramos iupay
 			Redsys::setNotification(config('redsys.url_notification')); //Url de notificacion
 			Redsys::setUrlOk(config('redsys.url_ok')); //Url OK
 			Redsys::setUrlKo(config('redsys.url_ko')); //Url KO
