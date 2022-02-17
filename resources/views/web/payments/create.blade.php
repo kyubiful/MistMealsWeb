@@ -152,7 +152,7 @@
               @else
                 -{{$cart->total + $shipping_amount}}€
               @endif
-              
+
             @endif
           </td>
         </tr>
@@ -160,6 +160,23 @@
       @endif
       </div>
     </form>
+    <div class="order-form-container" style="padding-top: 0px; padding-bottom: 0px;">
+      <div style="margin-right: 0px; margin-left: auto; max-width: 200px;">
+        <h4> Selecciona método de pago</h4>
+        <form stlye="display: flex;">
+          <div>
+            <input type="radio" id="tarjeta" name="metodo_pago"/>
+            <label for="tarjeta"/> Tarjeta 
+            <img style="height: 45px; background: white; border: 1px solid blue; border-radius: 10px;" src="/img/payments/visa_icon.svg"/>
+            <img style="height: 45px; background: white; border: 1px solid blue; padding: 7px; border-radius: 8px;" src="/img/payments/master_card_icon.svg"/>
+          </div>
+          <div>
+            <input type="radio" id="bizum" name="metodo_pago"/>
+            <label for="bizum"/> Bizum <img style="height: 33px;" src="/img/payments/bizum_icon.png"/>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
   <div class="order-continue">
   <a href="{{ route('web.orders.create') }}" class="order-payment-back-btn">Volver</a>
@@ -179,7 +196,17 @@
       @endif
     </h4>
     @if(Cookie::get('descuento_type') != 'free')
-    {!! \App\Http\Controllers\Web\RedsysController::index($user, ($amount)) !!}
+    <div style="display: flex;">
+      <div class="cardPayment">
+      {!! \App\Http\Controllers\Web\RedsysController::cardPayment($user, ($amount)) !!}
+      </div>
+      <div class="bizumPayment">
+      {!! \App\Http\Controllers\Web\RedsysController::bizumPayment($user, ($amount)) !!}
+      </div>
+      <div class="nonSelectedPayment">
+        <input type="submit" value="Pagar" class="payment-btn-submit" style="opacity: 0.5" disabled/>
+      </div>
+    </div>
     @else
     <a class="payment-btn-submit" id="btn_submit" name="btn_submit" href="{{route('web.holded.free')}}">Realizar pedido</a>
     @endif

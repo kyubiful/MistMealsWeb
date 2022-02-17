@@ -3759,3 +3759,42 @@ if (window.location.href.indexOf("orders/create") > -1) {
   }
 
 }
+
+if (window.location.href.indexOf("payments/create") > -1) {
+  const cardRadio = document.querySelector('#tarjeta')
+  const bizumRadio = document.querySelector('#bizum')
+  const cardPaymentBtn = document.querySelector('.cardPayment')
+  const bizumPaymentBtn = document.querySelector('.bizumPayment')
+  const nonPaymentSelected = document.querySelector('.nonSelectedPayment')
+
+  let cardClicked = 0
+  let bizumClicked = 0
+
+  nonPaymentSelected.style.display = 'block'
+  bizumPaymentBtn.style.display = 'none'
+  cardPaymentBtn.style.display = 'none'
+
+  console.log(cardRadio, bizumRadio, cardPaymentBtn, bizumPaymentBtn, nonPaymentSelected)
+
+  cardRadio.addEventListener('click', () => {
+    if(cardClicked == 0) {
+      cardClicked = 1
+      console.log('test')
+      bizumClicked = 0
+      nonPaymentSelected.style.display = 'none'
+      bizumPaymentBtn.style.display = 'none'
+      cardPaymentBtn.style.display = 'block'
+    }
+  })
+
+  bizumRadio.addEventListener('click', () => {
+    if(bizumClicked == 0) {
+      bizumClicked = 1
+      console.log('bizumtest')
+      cardClicked = 0
+      nonPaymentSelected.style.display = 'none'
+      cardPaymentBtn.style.display = 'none'
+      bizumPaymentBtn.style.display = 'block'
+    }
+  })
+}
