@@ -229,7 +229,7 @@ class OrderController extends Controller
 
     $user->save();
 
-    $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
+    $availableCP = AvailableCP::select('cp')->where('cp', $user->cp)->first();
 
     session(['userid' => $user->id]);
 
@@ -239,7 +239,7 @@ class OrderController extends Controller
       $invoice = true;
     }
 
-    if (in_array($user->cp, $availableCP) == false) {
+    if ($availableCP == null) {
       return redirect()->back()->with('message', 'invalid cp');
     }
 

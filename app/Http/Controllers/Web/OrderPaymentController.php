@@ -30,7 +30,6 @@ class OrderPaymentController extends Controller
   {
     $descuentoName = $request->cookie('descuento_name');
     $discountCode = DB::table('discount_code')->select('name', 'value', 'start', 'end', 'active', 'unique', 'tipo','one_use','uses','free_shipping','need_loged')->where('name', $descuentoName)->first();
-    $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
     $cart = $this->cartService->getFromCookie();
     $amount = $cart->total;
     $numberProducts = $this->cartService->countProducts();
@@ -46,6 +45,8 @@ class OrderPaymentController extends Controller
       $register = true;
     }
 
+    $availableCP = AvailableCP::select('cp')->where('cp', $user->cp)->first();
+
     $freeShipping = 0;
 
     if($discountCode != null) {
@@ -59,7 +60,7 @@ class OrderPaymentController extends Controller
       $freeShipping = $discountCode->free_shipping;
     }
 
-    if (in_array($user->cp, $availableCP) == false) return redirect()->back()->with('message', 'invalid cp');
+    if ($availableCP == null) return redirect()->back()->with('message', 'invalid cp');
     $shippingAmount = AvailableCP::select('amount')->where('cp', $user->cp)->first()->amount;
 
     if (!is_null($discountCode)) {

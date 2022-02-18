@@ -47,8 +47,7 @@ class HomeController extends Controller
 
     public function getDeliveryDay(Request $request){
 
-        $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
-        $cp = $request->cp;
+        $availableCP = AvailableCP::select('cp')->where('cp', $request->cp)->first();
         $nextThursday = new Carbon('Next Thursday');
         $today = Carbon::today();
         $days = [
@@ -79,7 +78,7 @@ class HomeController extends Controller
         $todayNumber = (int)$today->format('d');
         $nextThursdatNumber = (int)$nextThursday->format('d');
 
-        if(in_array($cp, $availableCP)){
+        if($availableCP != null){
             if(($nextThursdatNumber - $todayNumber) <= 3){
                 $nextDelivery = $nextThursday->addWeeks(1)->formatLocalized('%A %d de %B');
                 $messageArray = explode(' ', $nextDelivery);

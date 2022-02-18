@@ -12,11 +12,9 @@ class AvailableCPController extends Controller
 {
   public function verifyCP(Request $request)
   {
-    $availableCP = AvailableCP::select('cp')->pluck('cp')->toArray();
-    $cp = strval($request->cp);
-    $objetivo = Objetivo::all();
+    $availableCP = AvailableCP::select('cp')->where('cp', $request->cp)->toArray();
 
-    if (in_array($cp, $availableCP)) {
+    if ($availableCP != null) {
       // $cp_cookie = Cookie::make('popupCp', 2, 7 * 24 * 60);
       // $cp_cookie_result = Cookie::make('cp_result', true, 7 * 24 * 60);
       return redirect()->back()->with('popupCp2', 2)->withoutCookie('popupCpEnd');
