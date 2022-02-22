@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::group(['prefix' => 'admin'], function () {
   Auth::routes(['login' => false]);
   Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
@@ -106,6 +109,14 @@ Route::group(['as' => 'web.', 'namespace' => 'Web'], function () {
 
   // Rutas de Cómo Funciona
   Route::get('/como-funciona', 'ComoFuncionaController@index')->name('comofunciona');
+
+  // Rutas de las landings de los distintos menús
+  Route::get('/landing/deportistas', 'MenuLandingController@firstLanding')->name('landing.first');
+  Route::get('/landing/conciencia', 'MenuLandingController@secondLanding')->name('landing.second');
+  Route::get('/landing/oficina', 'MenuLandingController@thirdLanding')->name('landing.third');
+  Route::get('/landing/roomies', 'MenuLandingController@fourthLanding')->name('landing.fourth');
+  Route::get('/landing/intercambio', 'MenuLandingController@fifthLanding')->name('landing.fifth');
+
 });
 
 Auth::routes();
