@@ -13,7 +13,7 @@
                     <h3 style="color: #F9F2E1;" >MISTMEALS</h3>
                     <ul>
                         <li><a style="font-size: 15px;" href="{{ route('web.menu') }}">Plan Semanal</a></li>
-                        <li><a style="font-size: 15px;" href="#">Manifiesto</a></li>
+                        <li><a style="font-size: 15px;" href="{{ route('web.revolucion') }}">La Revolución</a></li>
                         <li><a style="font-size: 15px;" href="{{ route('web.comofunciona') }}">Cómo funciona</a></li>
                         <li><a style="font-size: 15px;" href="{{ route('web.faqs') }}">FAQs</a></li>
                     </ul>
@@ -36,6 +36,7 @@
                         <li><a style="font-size: 15px;" href="mailto:hola@mistmeals.com" target="_blank"> hola@mistmeals.com</a></li>
                         <li><a style="font-size: 15px;" href="tel:+34669129090"> +34 669 12 90 90</a></li>
                         <li class="mp-mobile-hidden">Madrid</li>
+                        <li><a style="font-size: 15px;" href="{{ route('web.contacto') }}">Contacto</a></li>
                     </ul>
                 </div>
             </div>
