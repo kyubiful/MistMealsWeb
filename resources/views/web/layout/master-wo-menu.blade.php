@@ -84,7 +84,7 @@
 
   <div class="footer-popup-background">
     <div class="footer-popup-container">
-      <div>De momento solo repartimos en algunas zonas de Madrid, pero no te preocupes, dentro de poco llegaremos a tu ciudad ;)</div>
+      <div>De momento solo repartimos en la península, pero no te preocupes, dentro de poco llegaremos a tu ciudad ;)</div>
     </div>
   </div>
 
