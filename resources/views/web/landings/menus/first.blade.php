@@ -9,7 +9,10 @@
 <section class="first-section">
   <div class="first-section-text-container">
     <img class="first-section-text-image" style="margin-bottom: 10px;" src="/img/landings/menus/first/first-section-text.svg">
-    <p id="first-section-second-text">Si buscas disciplina en tu alimentación de manera rápida y sencilla <span id="second">¡No busques más!</span></p>
+    <p id="first-section-second-text">
+      Los planes semanales de MistMeals te permiten alimentarte de forma
+      <span id="second">SANA, FÁCIL Y NUTRITIVA</span>
+    </p>
     <a id="third-first-new-button" href="{{route('web.platos')}}">
       <img style="margin-top: 10px;" src="/img/landings/menus/first/first-new-button.svg">
     </a>
@@ -21,7 +24,7 @@
     <div id="second-section-text">
       <p>¿No sabes que comer después de tus entrenamientos?</p>
       <p>¿Quieres ser más disciplinado con tus alimentos y no sabes cómo?</p> 
-      <p>¿Quieres alimentarte sanamente y complementar tu rutina de ejercicios?</p>
+      <p>¿Quieres complementar tu rutina de ejercicios con una alimentación sana?</p>
     </div>
   </div>
   <img id="second-section-img-desktop-2" src="/img/landings/menus/first/second-section-img-desktop-2.png" />
@@ -30,7 +33,7 @@
 <section class="third-section-container">
   <img id="third-section-mobile-img" src="/img/landings/menus/first/third-section-img-mobile.png"/>
   <div id="third-section">
-    <p>Nosotros <span>te ayudamos a complementar tu rutina de cuidado personal</span> de manera balanceada y fácil</p>
+    <p>Nosotros <span>te ayudamos a complementar tu rutina de cuidado personal</span> de manera EQUILIBRADA Y FÁCIL</p>
     <a id="third-second-new-button" href="{{route('web.platos')}}">
       <img src="/img/landings/menus/first/second-new-button.svg">
     </a>
@@ -71,4 +74,16 @@
   <img id="fifth-img-mobile" src="/img/landings/menus/first/bolsas-img-mobile.png"/>
 </section>
 <div class="bottom-section-container"></div>
+<section class="first-section">
+  <div class="first-section-text-container">
+    <img class="first-section-text-image" style="margin-bottom: 10px;" src="/img/landings/menus/first/first-section-text.svg">
+    <p id="first-section-second-text">
+      Los planes semanales de MistMeals te permiten alimentarte de forma
+      <span id="second">SANA, FÁCIL Y NUTRITIVA</span>
+    </p>
+    <a id="third-first-new-button" href="{{route('web.platos')}}">
+      <img style="margin-top: 10px;" src="/img/landings/menus/first/first-new-button.svg">
+    </a>
+  </div>
+</section>
 @endsection
